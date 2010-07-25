@@ -10460,7 +10460,7 @@ begin
    end;
    JvHttpUrlGrabber.ProxyUserName := dmMain.ProxyUser;
    JvHttpUrlGrabber.ProxyPassword := dmMain.ProxyPass;
-   JvHttpUrlGrabber.URL := 'http://quice.indomit.ru/lastver.php';
+   JvHttpUrlGrabber.URL := 'http://truice.googlecode.com/hg/version.txt';
    try
     IsFirst := true;
     JvHttpUrlGrabber.Start;
