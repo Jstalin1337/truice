@@ -194,7 +194,7 @@ var
   s: WideString;
 begin
   s := getPChar(field);
-  Result := UTF8Decode(s);
+  Result := UTF8ToString(s);
 end;
 
 function TDBCFile.getUInt(field: Cardinal): Cardinal;

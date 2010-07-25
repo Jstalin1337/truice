@@ -351,8 +351,8 @@ type
     gbCreature: TGroupBox;
     lbctEntry: TLabel;
     edctEntry: TJvComboEdit;
-    edctmodelid_A: TLabeledEdit;
-    edctmodelid_H: TLabeledEdit;
+    edctmodelid1: TLabeledEdit;
+    edctmodelid2: TLabeledEdit;
     edctname: TLabeledEdit;
     edctsubname: TLabeledEdit;
     edctminlevel: TLabeledEdit;
@@ -1170,8 +1170,8 @@ type
     btBrowseItemPopup: TBitBtn;
     editmaxMoneyLoot: TLabeledEdit;
     editminMoneyLoot: TLabeledEdit;
-    edctmodelid_H2: TLabeledEdit;
-    edctmodelid_A2: TLabeledEdit;
+    edctmodelid4: TLabeledEdit;
+    edctmodelid3: TLabeledEdit;
     edglmap: TJvComboEdit;
     lbglmap: TLabel;
     edclmap: TJvComboEdit;
@@ -1239,34 +1239,20 @@ type
     edhislot: TLabeledEdit;
     edhiitem: TLabeledEdit;
     lbhiitem_template: TLabel;
-    edcocondition_value1: TLabeledEdit;
-    edcocondition_value2: TLabeledEdit;
-    edcpcondition_value1: TLabeledEdit;
-    edcpcondition_value2: TLabeledEdit;
-    edcscondition_value2: TLabeledEdit;
-    edcscondition_value1: TLabeledEdit;
-    edgocondition_value2: TLabeledEdit;
-    edgocondition_value1: TLabeledEdit;
-    edilcondition_value2: TLabeledEdit;
-    edilcondition_value1: TLabeledEdit;
-    edidcondition_value2: TLabeledEdit;
-    edidcondition_value1: TLabeledEdit;
-    edipcondition_value2: TLabeledEdit;
-    edipcondition_value1: TLabeledEdit;
-    edcolootcondition: TJvComboEdit;
-    lbcolootcondition: TLabel;
-    lbcplootcondition: TLabel;
-    edcplootcondition: TJvComboEdit;
-    edcslootcondition: TJvComboEdit;
-    lbcslootcondition: TLabel;
-    edgolootcondition: TJvComboEdit;
-    lbgolootcondition: TLabel;
-    edillootcondition: TJvComboEdit;
-    lbillootcondition: TLabel;
-    edidlootcondition: TJvComboEdit;
-    lbidlootcondition: TLabel;
-    ediplootcondition: TJvComboEdit;
-    lbiplootcondition: TLabel;
+    edcolootmode: TJvComboEdit;
+    lbcolootmode: TLabel;
+    lbcplootmode: TLabel;
+    edcplootmode: TJvComboEdit;
+    edcslootmode: TJvComboEdit;
+    lbcslootmode: TLabel;
+    edgolootmode: TJvComboEdit;
+    lbgolootmode: TLabel;
+    edillootmode: TJvComboEdit;
+    lbillootmode: TLabel;
+    edidlootmode: TJvComboEdit;
+    lbidlootmode: TLabel;
+    ediplootmode: TJvComboEdit;
+    lbiplootmode: TLabel;
     edqtSpecialFlags: TJvComboEdit;
     lbqtSpecialFlags: TLabel;
     edqtRepObjectiveValue: TLabeledEdit;
@@ -1418,10 +1404,8 @@ type
     edimgroupid: TLabeledEdit;
     edimmincountOrRef: TLabeledEdit;
     edimmaxcount: TLabeledEdit;
-    edimlootcondition: TJvComboEdit;
+    edimlootmode: TJvComboEdit;
     Label3: TLabel;
-    edimcondition_value1: TLabeledEdit;
-    edimcondition_value2: TLabeledEdit;
     btMillingLootAdd: TSpeedButton;
     btMillingLootUpd: TSpeedButton;
     btMillingLootDel: TSpeedButton;
@@ -1491,10 +1475,8 @@ type
     edirgroupid: TLabeledEdit;
     edirmincountOrRef: TLabeledEdit;
     edirmaxcount: TLabeledEdit;
-    edirlootcondition: TJvComboEdit;
+    edirlootmode: TJvComboEdit;
     Label4: TLabel;
-    edircondition_value1: TLabeledEdit;
-    edircondition_value2: TLabeledEdit;
     btScriptReferenceLoot: TButton;
     btFullScriptReferenceLoot: TButton;
     edirentry: TJvComboEdit;
@@ -4349,14 +4331,14 @@ begin
     model := edclmodelid.Text
   else
   begin
-    if (edctmodelid_A.Text <> '') and (edctmodelid_A.Text <> '0')  then
-      model := edctmodelid_A.Text;
-    if (edctmodelid_H.Text <> '') and (edctmodelid_H.Text <> '0')  then
+    if (edctmodelid1.Text <> '') and (edctmodelid1.Text <> '0')  then
+      model := edctmodelid1.Text;
+    if (edctmodelid2.Text <> '') and (edctmodelid2.Text <> '0')  then
     begin
       if model <> '' then
-        model := Format('%s,%s',[model, edctmodelid_H.Text])
+        model := Format('%s,%s',[model, edctmodelid2.Text])
       else
-        model := edctmodelid_H.Text;
+        model := edctmodelid2.Text;
     end;
   end;
   if model <> '' then
@@ -7019,80 +7001,70 @@ begin
     lvList.Clear;
     // load creature loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''creature_loot_template'' as `table` '+
       'FROM `creature_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
 
     // load gameobject loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''gameobject_loot_template'' as `table` '+
       'FROM `gameobject_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
 
     // load item loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''item_loot_template'' as `table` '+
       'FROM `item_loot_template` WHERE (`item`=%s)', [key]);
     QueryResult_AddToList;
 
     // load pickpocketing loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''pickpocketing_loot_template'' as `table` '+
       'FROM `pickpocketing_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
 
     // load skinning loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''skinning_loot_template'' as `table` '+
       'FROM `skinning_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
 
     // load enchanting loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''disenchant_loot_template'' as `table` '+
       'FROM `disenchant_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
 
     // load fishing loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''fishing_loot_template'' as `table` '+
       'FROM `fishing_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
 
     // load prospecting loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''prospecting_loot_template'' as `table` '+
       'FROM `prospecting_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
 
     // load milling loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''milling_loot_template'' as `table` '+
       'FROM `milling_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
 
    //load reference loot
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`, `ChanceOrQuestChance`, '+
-      '`groupid`, `mincountOrRef`, `maxcount`, '+
-      '`lootcondition`, `condition_value1`, `condition_value1`, '+
+      '`lootmode`, `groupid`, `mincountOrRef`, `maxcount`, '+
       '''reference_loot_template'' as `table` '+
       'FROM `reference_loot_template` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
@@ -7100,8 +7072,7 @@ begin
     // load npc_vendor
     MyQuery.SQL.Text := Format('SELECT `entry`, `item`,  '''' as `ChanceOrQuestChance`, '+
       ''''' as `groupid`, '''' as `mincountOrRef`, `maxcount`, '+
-      ''''' as `lootcondition`, '''' as `condition_value1`, '+
-      ''''' as `condition_value2`, ''npc_vendor'' as `table` '+
+      ''''' as `lootmode`, ''npc_vendor'' as `table` '+
       'FROM `npc_vendor` WHERE (`item`=%s)',[key]);
     QueryResult_AddToList;
   finally
@@ -7542,12 +7513,10 @@ begin
     Caption := TCustomEdit(FindComponent(pfx + 'entry')).Text;
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'item')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'ChanceOrQuestChance')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'lootmode')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'groupid')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'mincountOrRef')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'maxcount')).Text);
-    SubItems.Add(TCustomEdit(FindComponent(pfx + 'lootcondition')).Text);
-    SubItems.Add(TCustomEdit(FindComponent(pfx + 'condition_value1')).Text);
-    SubItems.Add(TCustomEdit(FindComponent(pfx + 'condition_value2')).Text);
   end;
 end;
 
@@ -7590,12 +7559,10 @@ begin
       Caption := TCustomEdit(FindComponent(pfx + 'entry')).Text;
       SubItems[0] := TCustomEdit(FindComponent(pfx + 'item')).Text;
       SubItems[1] := TCustomEdit(FindComponent(pfx + 'ChanceOrQuestChance')).Text;
-      SubItems[2] := TCustomEdit(FindComponent(pfx + 'groupid')).Text;
-      SubItems[3] := TCustomEdit(FindComponent(pfx + 'mincountOrRef')).Text;
-      SubItems[4] := TCustomEdit(FindComponent(pfx + 'maxcount')).Text;
-      SubItems[5] := TCustomEdit(FindComponent(pfx + 'lootcondition')).Text;
-      SubItems[6] := TCustomEdit(FindComponent(pfx + 'condition_value1')).Text;
-      SubItems[7] := TCustomEdit(FindComponent(pfx + 'condition_value2')).Text;
+      SubItems[2] := TCustomEdit(FindComponent(pfx + 'lootmode')).Text;
+      SubItems[3] := TCustomEdit(FindComponent(pfx + 'groupid')).Text;
+      SubItems[4] := TCustomEdit(FindComponent(pfx + 'mincountOrRef')).Text;
+      SubItems[5] := TCustomEdit(FindComponent(pfx + 'maxcount')).Text;
     end;
   end;
 end;
@@ -7616,12 +7583,10 @@ begin
       TCustomEdit(FindComponent(pfx + 'entry')).Text := Caption;
       TCustomEdit(FindComponent(pfx + 'item')).Text := SubItems[0];
       TCustomEdit(FindComponent(pfx + 'ChanceOrQuestChance')).Text := SubItems[1];
-      TCustomEdit(FindComponent(pfx + 'groupid')).Text := SubItems[2];
-      TCustomEdit(FindComponent(pfx + 'mincountOrRef')).Text := SubItems[3];
-      TCustomEdit(FindComponent(pfx + 'maxcount')).Text := SubItems[4];
-      TCustomEdit(FindComponent(pfx + 'lootcondition')).Text := SubItems[5];
-      TCustomEdit(FindComponent(pfx + 'condition_value1')).Text := SubItems[6];
-      TCustomEdit(FindComponent(pfx + 'condition_value2')).Text := SubItems[7];
+      TCustomEdit(FindComponent(pfx + 'lootmode')).Text := SubItems[2];
+      TCustomEdit(FindComponent(pfx + 'groupid')).Text := SubItems[3];
+      TCustomEdit(FindComponent(pfx + 'mincountOrRef')).Text := SubItems[4];
+      TCustomEdit(FindComponent(pfx + 'maxcount')).Text := SubItems[5];
     end;
   end;
 end;
@@ -8875,7 +8840,7 @@ end;
 function TMainForm.GetDBVersion: string;
 begin
   Result := '';
-  MyTempQuery.SQL.Text := 'SELECT * FROM `db_version`';
+  MyTempQuery.SQL.Text := 'SELECT * FROM `version`';
   try
     MyTempQuery.Open;
     if not MyTempQuery.Eof then

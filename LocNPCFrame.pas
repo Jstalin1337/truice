@@ -71,6 +71,7 @@ var
   ed: TCustomEdit;
   loc: string;
 begin
+  ed := nil;
   loc:= LoadLocales();
   for i := 0 to 7 do
   begin

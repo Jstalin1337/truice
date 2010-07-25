@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 700
-    ActivePage = tsCreature
+    ActivePage = tsItem
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -6397,7 +6397,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsCreatureEquipTemplate
+        ActivePage = tsSkinLoot
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -7075,26 +7075,26 @@ object MainForm: TMainForm
               TabOrder = 0
               OnButtonClick = edctEntryButtonClick
             end
-            object edctmodelid_A: TLabeledEdit
+            object edctmodelid1: TLabeledEdit
               Left = 8
               Top = 174
               Width = 75
               Height = 21
               Hint = 'Graphical model that client must apply on this creature.'
-              EditLabel.Width = 70
+              EditLabel.Width = 63
               EditLabel.Height = 13
-              EditLabel.Caption = 'edctmodelid_A'
+              EditLabel.Caption = 'edctmodelid1'
               TabOrder = 3
             end
-            object edctmodelid_H: TLabeledEdit
+            object edctmodelid2: TLabeledEdit
               Left = 176
               Top = 174
               Width = 75
               Height = 21
               Hint = 'Graphical model that client must apply on this creature.'
-              EditLabel.Width = 71
+              EditLabel.Width = 63
               EditLabel.Height = 13
-              EditLabel.Caption = 'edctmodelid_H'
+              EditLabel.Caption = 'edctmodelid2'
               TabOrder = 5
             end
             object edctname: TLabeledEdit
@@ -7223,26 +7223,26 @@ object MainForm: TMainForm
               EditLabel.Caption = 'edctmaxgold'
               TabOrder = 8
             end
-            object edctmodelid_H2: TLabeledEdit
+            object edctmodelid4: TLabeledEdit
               Left = 256
               Top = 174
               Width = 75
               Height = 21
               Hint = 'Graphical model that client must apply on this creature.'
-              EditLabel.Width = 77
+              EditLabel.Width = 63
               EditLabel.Height = 13
-              EditLabel.Caption = 'edctmodelid_H2'
+              EditLabel.Caption = 'edctmodelid4'
               TabOrder = 6
             end
-            object edctmodelid_A2: TLabeledEdit
+            object edctmodelid3: TLabeledEdit
               Left = 88
               Top = 174
               Width = 75
               Height = 21
               Hint = 'Graphical model that client must apply on this creature.'
-              EditLabel.Width = 76
+              EditLabel.Width = 63
               EditLabel.Height = 13
-              EditLabel.Caption = 'edctmodelid_A2'
+              EditLabel.Caption = 'edctmodelid3'
               TabOrder = 4
             end
             object edctIconName: TLabeledEdit
@@ -9679,6 +9679,8 @@ object MainForm: TMainForm
         object tsCreatureLoot: TTabSheet
           Caption = 'Creature Loot'
           ImageIndex = 4
+          ExplicitLeft = 184
+          ExplicitTop = 139
           DesignSize = (
             872
             601)
@@ -9871,12 +9873,12 @@ object MainForm: TMainForm
             Color = clInfoBk
             ParentColor = False
           end
-          object lbcolootcondition: TLabel
+          object lbcolootmode: TLabel
             Left = 430
             Top = 524
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lvcoCreatureLoot: TJvListView
             Left = 8
@@ -10040,7 +10042,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Creature Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btScriptCreatureClick
           end
           object btFullScriptCreatureLoot: TButton
@@ -10049,30 +10051,10 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL Creature Loot Script'
-            TabOrder = 11
+            TabOrder = 9
             OnClick = btFullScriptCreatureLootClick
           end
-          object edcocondition_value1: TLabeledEdit
-            Left = 517
-            Top = 540
-            Width = 121
-            Height = 21
-            EditLabel.Width = 105
-            EditLabel.Height = 13
-            EditLabel.Caption = 'edcocondition_value1'
-            TabOrder = 8
-          end
-          object edcocondition_value2: TLabeledEdit
-            Left = 645
-            Top = 540
-            Width = 121
-            Height = 21
-            EditLabel.Width = 105
-            EditLabel.Height = 13
-            EditLabel.Caption = 'edcocondition_value2'
-            TabOrder = 9
-          end
-          object edcolootcondition: TJvComboEdit
+          object edcolootmode: TJvComboEdit
             Left = 430
             Top = 540
             Width = 80
@@ -10305,12 +10287,12 @@ object MainForm: TMainForm
             Color = clInfoBk
             ParentColor = False
           end
-          object lbcplootcondition: TLabel
+          object lbcplootmode: TLabel
             Left = 430
             Top = 519
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lvcoPickpocketLoot: TJvListView
             Left = 8
@@ -10474,7 +10456,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Pickpocket Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btScriptCreatureClick
           end
           object btFullScriptPickpocketLoot: TButton
@@ -10483,30 +10465,10 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL Pickpocket Loot Script'
-            TabOrder = 11
+            TabOrder = 9
             OnClick = btFullScriptPickpocketLootClick
           end
-          object edcpcondition_value1: TLabeledEdit
-            Left = 515
-            Top = 535
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value1'
-            TabOrder = 8
-          end
-          object edcpcondition_value2: TLabeledEdit
-            Left = 643
-            Top = 535
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value2'
-            TabOrder = 9
-          end
-          object edcplootcondition: TJvComboEdit
+          object edcplootmode: TJvComboEdit
             Left = 430
             Top = 535
             Width = 80
@@ -10739,12 +10701,12 @@ object MainForm: TMainForm
             Color = clInfoBk
             ParentColor = False
           end
-          object lbcslootcondition: TLabel
+          object lbcslootmode: TLabel
             Left = 431
             Top = 520
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lvcoSkinLoot: TJvListView
             Left = 3
@@ -10907,7 +10869,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Skin Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btScriptCreatureClick
           end
           object btFullScriptSkinLoot: TButton
@@ -10916,30 +10878,10 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL Creature Loot Script'
-            TabOrder = 11
+            TabOrder = 9
             OnClick = btFullScriptSkinLootClick
           end
-          object edcscondition_value2: TLabeledEdit
-            Left = 643
-            Top = 536
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value2'
-            TabOrder = 9
-          end
-          object edcscondition_value1: TLabeledEdit
-            Left = 515
-            Top = 536
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value1'
-            TabOrder = 8
-          end
-          object edcslootcondition: TJvComboEdit
+          object edcslootmode: TJvComboEdit
             Left = 430
             Top = 536
             Width = 80
@@ -14318,7 +14260,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsGOLocation
+        ActivePage = tsGOLoot
         Align = alClient
         TabOrder = 0
         object tsSearchGO: TTabSheet
@@ -16046,12 +15988,12 @@ object MainForm: TMainForm
             Color = clInfoBk
             ParentColor = False
           end
-          object lbgolootcondition: TLabel
+          object lbgolootmode: TLabel
             Left = 432
             Top = 533
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lvgoGOLoot: TJvListView
             Left = 8
@@ -16215,7 +16157,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show GO Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btScriptGOClick
           end
           object btFullScriptGOLoot: TButton
@@ -16224,30 +16166,10 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL GO Loot Script'
-            TabOrder = 11
+            TabOrder = 9
             OnClick = btFullScriptGOLootClick
           end
-          object edgocondition_value2: TLabeledEdit
-            Left = 645
-            Top = 549
-            Width = 121
-            Height = 21
-            EditLabel.Width = 105
-            EditLabel.Height = 13
-            EditLabel.Caption = 'edgocondition_value2'
-            TabOrder = 9
-          end
-          object edgocondition_value1: TLabeledEdit
-            Left = 518
-            Top = 549
-            Width = 121
-            Height = 21
-            EditLabel.Width = 105
-            EditLabel.Height = 13
-            EditLabel.Caption = 'edgocondition_value1'
-            TabOrder = 8
-          end
-          object edgolootcondition: TJvComboEdit
+          object edgolootmode: TJvComboEdit
             Left = 431
             Top = 549
             Width = 80
@@ -16979,7 +16901,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsItemTemplate
+        ActivePage = tsReferenceLoot
         Align = alClient
         TabOrder = 1
         object tsSearchItem: TTabSheet
@@ -21089,12 +21011,12 @@ object MainForm: TMainForm
             Color = clInfoBk
             ParentColor = False
           end
-          object lbillootcondition: TLabel
+          object lbillootmode: TLabel
             Left = 430
             Top = 532
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lvitItemLoot: TJvListView
             Left = 8
@@ -21258,7 +21180,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Item Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btScriptItemLootClick
           end
           object btFullScriptItemLoot: TButton
@@ -21267,32 +21189,12 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL Item Loot Script'
-            TabOrder = 11
+            TabOrder = 9
             OnClick = btFullScriptItemLootClick
           end
-          object edilcondition_value2: TLabeledEdit
-            Left = 644
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value2'
-            TabOrder = 9
-          end
-          object edilcondition_value1: TLabeledEdit
-            Left = 517
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value1'
-            TabOrder = 8
-          end
-          object edillootcondition: TJvComboEdit
+          object edillootmode: TJvComboEdit
             Left = 430
-            Top = 548
+            Top = 547
             Width = 80
             Height = 21
             ButtonWidth = 22
@@ -21530,12 +21432,12 @@ object MainForm: TMainForm
             Color = clInfoBk
             ParentColor = False
           end
-          object lbidlootcondition: TLabel
+          object lbidlootmode: TLabel
             Left = 430
             Top = 532
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lvitDisLoot: TJvListView
             Left = 8
@@ -21699,7 +21601,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Disenchant Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btScriptItemLootClick
           end
           object btFullScriptDisLoot: TButton
@@ -21708,30 +21610,10 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL Disenchant Loot Script'
-            TabOrder = 11
+            TabOrder = 9
             OnClick = btFullScriptDisLootClick
           end
-          object edidcondition_value2: TLabeledEdit
-            Left = 644
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value2'
-            TabOrder = 9
-          end
-          object edidcondition_value1: TLabeledEdit
-            Left = 517
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value1'
-            TabOrder = 8
-          end
-          object edidlootcondition: TJvComboEdit
+          object edidlootmode: TJvComboEdit
             Left = 430
             Top = 548
             Width = 80
@@ -21971,12 +21853,12 @@ object MainForm: TMainForm
             Color = clInfoBk
             ParentColor = False
           end
-          object lbiplootcondition: TLabel
+          object lbiplootmode: TLabel
             Left = 430
             Top = 532
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lvitProsLoot: TJvListView
             Left = 8
@@ -22140,7 +22022,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Prospecting Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btScriptItemLootClick
           end
           object btFullScriptProsLoot: TButton
@@ -22149,30 +22031,10 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL Prospecting Loot Script'
-            TabOrder = 11
+            TabOrder = 9
             OnClick = btFullScriptProsLootClick
           end
-          object edipcondition_value2: TLabeledEdit
-            Left = 644
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value2'
-            TabOrder = 9
-          end
-          object edipcondition_value1: TLabeledEdit
-            Left = 517
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value1'
-            TabOrder = 8
-          end
-          object ediplootcondition: TJvComboEdit
+          object ediplootmode: TJvComboEdit
             Left = 430
             Top = 548
             Width = 80
@@ -22227,9 +22089,9 @@ object MainForm: TMainForm
           object Label3: TLabel
             Left = 430
             Top = 532
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object btMillingLootAdd: TSpeedButton
             Left = 185
@@ -22566,7 +22428,7 @@ object MainForm: TMainForm
             EditLabel.Caption = 'maxcount'
             TabOrder = 6
           end
-          object edimlootcondition: TJvComboEdit
+          object edimlootmode: TJvComboEdit
             Left = 430
             Top = 548
             Width = 80
@@ -22603,33 +22465,13 @@ object MainForm: TMainForm
             TabOrder = 7
             OnButtonClick = GetLootCondition
           end
-          object edimcondition_value1: TLabeledEdit
-            Left = 517
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value1'
-            TabOrder = 8
-          end
-          object edimcondition_value2: TLabeledEdit
-            Left = 644
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value2'
-            TabOrder = 9
-          end
           object btFullScriptMillingLoot: TButton
             Left = 661
             Top = 588
             Width = 185
             Height = 25
             Caption = 'Show FULL Milling Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btFullScriptMillingLootClick
           end
           object btScriptMillingLoot: TButton
@@ -22638,7 +22480,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Milling Loot Script'
-            TabOrder = 11
+            TabOrder = 9
             OnClick = btScriptItemLootClick
           end
         end
@@ -22837,9 +22679,9 @@ object MainForm: TMainForm
           object Label4: TLabel
             Left = 430
             Top = 532
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lbirentry: TLabel
             Left = 8
@@ -22994,7 +22836,7 @@ object MainForm: TMainForm
             EditLabel.Caption = 'maxcount'
             TabOrder = 5
           end
-          object edirlootcondition: TJvComboEdit
+          object edirlootmode: TJvComboEdit
             Left = 430
             Top = 548
             Width = 80
@@ -23031,33 +22873,13 @@ object MainForm: TMainForm
             TabOrder = 6
             OnButtonClick = GetLootCondition
           end
-          object edircondition_value1: TLabeledEdit
-            Left = 517
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value1'
-            TabOrder = 7
-          end
-          object edircondition_value2: TLabeledEdit
-            Left = 644
-            Top = 548
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value2'
-            TabOrder = 8
-          end
           object btScriptReferenceLoot: TButton
             Left = 8
             Top = 588
             Width = 169
             Height = 25
             Caption = 'Show Reference Loot Script'
-            TabOrder = 9
+            TabOrder = 7
             OnClick = btScriptItemLootClick
           end
           object btFullScriptReferenceLoot: TButton
@@ -23066,7 +22888,7 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL Reference Loot Script'
-            TabOrder = 10
+            TabOrder = 8
             OnClick = btFullScriptReferenceLootClick
           end
           object edirentry: TJvComboEdit
@@ -23119,7 +22941,7 @@ object MainForm: TMainForm
               072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
               1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
               0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-            TabOrder = 11
+            TabOrder = 9
             OnButtonClick = edirentryButtonClick
           end
         end
@@ -27319,8 +27141,8 @@ object MainForm: TMainForm
     Params = <>
     Connection = MyMangosConnection
     Delimiter = ';'
-    Left = 632
-    Top = 41
+    Left = 568
+    Top = 9
   end
   object Timer1: TTimer
     Interval = 60000
