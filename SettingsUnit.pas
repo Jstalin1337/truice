@@ -103,7 +103,8 @@ begin
   cbxLanguage.ItemIndex := cbxLanguage.Items.IndexOf(dmMain.Language);
   dmMain.Translate.TranslateForm(TForm(Self));
 
-  cbAutomaticCheckForUpdates.Checked := dmMain.IsAutoUpdates;
+  //cbAutomaticCheckForUpdates.Checked := dmMain.IsAutoUpdates;
+  cbAutomaticCheckForUpdates.Checked := false; //disable autoupdates for now
   edProxyServer.Text := dmMain.ProxyServer;
   edProxyPort.Text := dmMain.ProxyPort;
   edUsername.Text := dmMain.ProxyUser;
@@ -213,7 +214,8 @@ begin
     4: dmMain.Site:=sD;
   end;
   dmMain.Language:=cbxLanguage.Text;
-  dmMain.IsAutoUpdates := cbAutomaticCheckForUpdates.Checked;
+  //dmMain.IsAutoUpdates := cbAutomaticCheckForUpdates.Checked;
+  dmMain.IsAutoUpdates := false; //disable autoupdates for now
   dmMain.ProxyServer := edProxyServer.Text;
   dmMain.ProxyPort := edProxyPort.Text;
   dmMain.ProxyUser := edUsername.Text;

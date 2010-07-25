@@ -421,9 +421,9 @@ var
 begin
   try
     if Part='' then
-      Section:='Software\'+SoftwareCompany+'\' + Trim(ProgramName)
+      Section:='Software\'+ Trim(ProgramName)
     else
-      Section:='Software\'+SoftwareCompany+'\' + Trim(ProgramName) + '\' + Trim(Part);
+      Section:='Software\'+ Trim(ProgramName) + '\' + Trim(Part);
     with TRegistry.Create do
     try
       case Root of
@@ -458,9 +458,9 @@ begin
   {  if (Trim(ProgramName)='') then
       raise Exception.Create('ProgramName can not be empty');}
     if Part='' then
-      Section:='Software\'+SoftwareCompany+'\' + Trim(ProgramName)
+      Section:='Software\'+ Trim(ProgramName)
     else
-      Section:='Software\'+SoftwareCompany+'\' + Trim(ProgramName) + '\' + Trim(Part);
+      Section:='Software\'+ Trim(ProgramName) + '\' + Trim(Part);
     with TRegistry.Create do
     try
       case Root of
@@ -486,9 +486,9 @@ begin
 {  if (Trim(ProgramName)='') then
     raise Exception.Create('ProgramName can not be empty');}
   if Part='' then
-    Section:='Software\'+SoftwareCompany+'\' + Trim(ProgramName)
+    Section:='Software\' + Trim(ProgramName)
   else
-    Section:='Software\'+SoftwareCompany+'\' + Trim(ProgramName) + '\' + Trim(Part);
+    Section:='Software\' + Trim(ProgramName) + '\' + Trim(Part);
   with TRegistry.Create do
   try
     case Root of
@@ -521,9 +521,9 @@ begin
 {  if (Trim(ProgramName)='') then
     raise Exception.Create('ProgramName can not be empty');}
   if Part='' then
-    Section:='Software\'+SoftwareCompany+'\' + Trim(ProgramName)
+    Section:='Software\'+ Trim(ProgramName)
   else
-    Section:='Software\'+SoftwareCompany+'\' + Trim(ProgramName) + '\' + Trim(Part);
+    Section:='Software\'+ Trim(ProgramName) + '\' + Trim(Part);
   with TRegistry.Create do
   try
     case Root of

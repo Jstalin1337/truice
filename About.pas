@@ -122,7 +122,7 @@ end;
 
 procedure TAboutBox.LinkSiteClick(Sender: TObject);
 begin
-  BrowseURL1.URL:='http://quice.indomit.ru';
+  BrowseURL1.URL:='http://code.google.com/p/truice/';
   BrowseURL1.Execute;
 end;
 
@@ -134,7 +134,7 @@ end;
          
 procedure TAboutBox.PayPalClick(Sender: TObject);
 begin
-  BrowseURL2.URL:='http://sourceforge.net/donate/index.php?group_id=196709';
+  BrowseURL2.URL:='http://code.google.com/p/truice/';
   BrowseURL2.Execute;
 end;
 

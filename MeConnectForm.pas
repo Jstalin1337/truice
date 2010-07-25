@@ -282,7 +282,7 @@ procedure TMeConnectForm.FormCreate(Sender: TObject);
 begin
   ClientHeight:=292;
   DoInit;  
-  Caption := Format('Quice %s',[VERSION_EXE]);
+  Caption := Format('Truice %s',[VERSION_EXE]);
   dmMain.Translate.CreateDefaultTranslation(TForm(Self));
 end;
 
@@ -292,7 +292,7 @@ var
   AC: TWinControl;
 begin
   dmMain.Translate.TranslateForm(TForm(Self));
-  Caption := Format('Quice %s',[VERSION_EXE]);
+  Caption := Format('Truice %s',[VERSION_EXE]);
   mDBname:=ReadFromRegistry(CurrentUser, '', 'mDatabase',  tpString);
   cDBname:=ReadFromRegistry(CurrentUser, '', 'cDatabase',  tpString);
   rDBname:=ReadFromRegistry(CurrentUser, '', 'rDatabase',  tpString);

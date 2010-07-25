@@ -8,8 +8,8 @@ uses
 
 const
   DefaultLanguage = 'Default';
-  SoftwareCompany = 'Indomit Software';
-  ProgramName = 'Quice';
+  SoftwareCompany = 'Truice';
+  ProgramName = 'Truice';
 
 type
   TType = (ttNPC, ttItem, ttObject, ttQuest, ttChar);
@@ -357,10 +357,10 @@ begin
   Text[134]:='Search filter is empty. This task returns all entries from table.$B$BAre you sure to continue?';
   Text[135]:='Script Command';
   Text[136]:='Characters found: %d';
-  Text[137]:='New version of Quice (%s) is available. You want to download it?';
+  Text[137]:='New version of Truice (%s) is available. You want to download it?';
   Text[138]:='You have got the latest version.';  
   Text[139]:='The error has accured while loading Creature Addon:';
-  Text[140]:='Are you sure to uninstall Quice?';
+  Text[140]:='Are you sure to uninstall Truice?';
   Text[141]:='Trainer Type';
   Text[142]:='Race';
   Text[143]:='Class';

@@ -2609,7 +2609,7 @@ end;
 
 procedure TMainForm.UpdateCaption;
 begin
-  Caption := Format('Quice - Connection: %s:%d / %s', [MyMangosConnection.HostName, MyMangosConnection.Port, GetDBVersion]);
+  Caption := Format('Truice - Connection: %s:%d / %s', [MyMangosConnection.HostName, MyMangosConnection.Port, GetDBVersion]);
   Application.Title := Caption;
 end;
 
@@ -3456,7 +3456,7 @@ begin
   with TRegistry.Create do
   try
      RootKey := HKEY_CURRENT_USER;
-     OpenKey('SOFTWARE\Indomit Software\Quice', true);
+     OpenKey('SOFTWARE\Truice', true);
      WriteString('Language', dmMain.Language);
      WriteString('DBCDir', dmMain.DBCDir);
      WriteInteger('DBCLocale', dmMain.DBCLocale);
@@ -3492,7 +3492,7 @@ begin
   with TRegistry.Create do
   try
     RootKey := HKEY_CURRENT_USER;
-    if not OpenKey('SOFTWARE\Indomit Software\Quice', false) then exit;
+    if not OpenKey('SOFTWARE\Truice', false) then exit;
     try
       case ReadInteger('SQLSyntaxStyle') of
        0: SyntaxStyle := ssReplace;
@@ -3629,7 +3629,7 @@ begin
       begin
         if MessageDlg(Format(dmMain.Text[137],[CreateVer(LastVer)]), mtConfirmation, mbYesNoCancel, 0, mbYes) = mrYes then
         begin
-          BrowseURL1.URL := 'http://quice.indomit.ru/?act=1';
+          BrowseURL1.URL := 'http://code.google.com/p/truice/';
           BrowseURL1.Execute;
         end;
       end
@@ -3711,12 +3711,12 @@ begin
     DeleteFile(s+'LANG\German.lng');
     DeleteFile(s+'LANG\Russian.lng');
     RemoveDir(s+'LANG');
-    DeleteFile(s+'Quice.sql');
+    DeleteFile(s+'Truice.sql');
     with TStringList.Create do
     begin
       Add(':try');
-      Add('del /Q Quice.exe');
-      Add('if exist Quice.exe goto try');
+      Add('del /Q Truice.exe');
+      Add('if exist Truice.exe goto try');
       Add('del /Q uninstall.bat');
       SaveToFile(s+'uninstall.bat');
     end;
