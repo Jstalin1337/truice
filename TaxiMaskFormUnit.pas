@@ -39,7 +39,7 @@ end;
 
 procedure TTaxiMaskForm.SetData(const Value: string);
 begin
-  ExtractStrings([' '], [], pansichar(Value), vleMain.Strings);
+  ExtractStrings([' '], [], PWideChar(Value), vleMain.Strings);
   SetKeys;
 end;
 

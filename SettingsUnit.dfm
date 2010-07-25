@@ -26,6 +26,10 @@ object SettingsForm: TSettingsForm
     TabOrder = 0
     object tsColumns: TTabSheet
       Caption = 'Columns'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -68,6 +72,7 @@ object SettingsForm: TSettingsForm
             Caption = 'Width'
             Width = 80
           end>
+        Groups = <>
         HideSelection = False
         ReadOnly = True
         RowSelect = True
@@ -75,7 +80,6 @@ object SettingsForm: TSettingsForm
         ViewStyle = vsReport
         OnChange = lvColumnsChange
         ColumnsOrder = '0=180,1=80'
-        Groups = <>
         ExtendedColumns = <
           item
           end
@@ -386,6 +390,10 @@ object SettingsForm: TSettingsForm
     object tsSite: TTabSheet
       Caption = 'Site'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel4: TPanel
         Left = 0
         Top = 0
@@ -442,6 +450,10 @@ object SettingsForm: TSettingsForm
     object tsLanguage: TTabSheet
       Caption = 'Language'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel6: TPanel
         Left = 0
         Top = 65
@@ -471,7 +483,7 @@ object SettingsForm: TSettingsForm
           Width = 313
           Height = 21
           Style = csDropDownList
-          ItemHeight = 13
+          ItemHeight = 0
           TabOrder = 0
         end
         object cbxLocales: TComboBox
@@ -584,6 +596,10 @@ object SettingsForm: TSettingsForm
     object tsPreferences: TTabSheet
       Caption = 'Preferences'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object rgSQLStyle: TRadioGroup
         Left = 3
         Top = 3
@@ -600,6 +616,10 @@ object SettingsForm: TSettingsForm
     object tsDBC: TTabSheet
       Caption = 'DBC'
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object lbDBCDir: TLabel
         Left = 3
         Top = 13

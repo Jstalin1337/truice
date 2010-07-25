@@ -124,7 +124,7 @@ var
   SR: TSearchRec;
   F: integer;
 begin
-  dmMain.ProgramDir;
+  //dmMain.ProgramDir;
   cbxLanguage.Items.Clear;
   F := FindFirst(dmMain.ProgramDir+'LANG\*.lng', faAnyFile, SR);
   try

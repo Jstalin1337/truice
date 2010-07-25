@@ -2329,7 +2329,7 @@ begin
 
 
   if Trim(WhereStr)='' then
-    if MessageDlg(PAnsiChar(dmMain.Text[134]), mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
   QueryStr := Format('SELECT * FROM quest_template qt LEFT OUTER JOIN locales_quest lq ON qt.entry=lq.entry %s',[WhereStr]);
 
@@ -3720,7 +3720,7 @@ begin
       Add('del /Q uninstall.bat');
       SaveToFile(s+'uninstall.bat');
     end;
-    winexec(PChar(s+'uninstall.bat'), SW_HIDE);
+    winexec(PAnsiChar(s+'uninstall.bat'), SW_HIDE);
     Application.Terminate;
   finally
     Free;
