@@ -4,3 +4,6 @@ syntax: glob
 *.dcu
 __history\
 *.exe
+*.identcache
+*.dll
+Thumbs.db
