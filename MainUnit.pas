@@ -3720,7 +3720,7 @@ begin
       Add('del /Q uninstall.bat');
       SaveToFile(s+'uninstall.bat');
     end;
-    winexec(PAnsiChar(s+'uninstall.bat'), SW_HIDE);
+    ShellExecute(MainForm.Handle, 'open', PChar(s+'uninstall.bat'), nil, nil, SW_HIDE);
     Application.Terminate;
   finally
     Free;
@@ -3906,7 +3906,7 @@ begin
   end;
 
   if Trim(WhereStr)='' then
-    if MessageDlg(PAnsiChar(dmMain.Text[134]), mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
   QueryStr := Format('SELECT *,(SELECT count(guid) from `creature` where creature.id = ct.entry) as `Count` FROM `creature_template` ct LEFT OUTER JOIN locales_creature lc ON ct.entry=lc.entry %s',[WhereStr]);
   MyQuery.SQL.Text := QueryStr;
@@ -3959,7 +3959,7 @@ begin
   end;
 
   if Trim(WhereStr)='' then
-    if MessageDlg(PAnsiChar(dmMain.Text[134]), mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
   QueryStr := Format('SELECT * FROM `creature_model_info` %s',[WhereStr]);
   MyQuery.SQL.Text := QueryStr;
@@ -6331,7 +6331,7 @@ begin
   end;
 
   if Trim(WhereStr)='' then
-    if MessageDlg(PAnsiChar(dmMain.Text[134]), mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
   QueryStr := Format('SELECT *, (SELECT count(guid) from `gameobject` where gameobject.id = gt.entry) as `Count` FROM `gameobject_template` gt LEFT OUTER JOIN `locales_gameobject` lg ON gt.entry=lg.entry %s',[WhereStr]);
 
@@ -8540,7 +8540,7 @@ begin
 
 
   if Trim(WhereStr)='' then
-    if MessageDlg(PAnsiChar(dmMain.Text[134]), mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
   QueryStr := Format('SELECT * FROM `item_template` it LEFT OUTER JOIN locales_item li ON it.entry=li.entry %s',[WhereStr]);
 
@@ -9439,7 +9439,7 @@ begin
   end;
 
   if Trim(WhereStr)='' then
-    if MessageDlg(PAnsiChar(dmMain.Text[134]), mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
   QueryStr := Format('SELECT * FROM `page_text` %s',[WhereStr]);
 
@@ -10359,7 +10359,7 @@ begin
   end;
 
   if Trim(WhereStr)='' then
-    if MessageDlg(PAnsiChar(dmMain.Text[134]), mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
   QueryStr := Format('SELECT * FROM `'+CharDBName+'`.`characters` %s',[WhereStr]);
 
