@@ -1,4 +1,4 @@
-program Quice;
+program Truice;
 
 uses
   Forms,
@@ -30,7 +30,7 @@ uses
 {$R *.res}
 begin
   Application.Initialize;
-  Application.Title := 'Quice';
+  Application.Title := 'Truice';
   Application.ShowMainForm:=false;
   Application.CreateForm(TdmMain, dmMain);
   Application.CreateForm(TMainForm, MainForm);

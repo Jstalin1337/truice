@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 300
   Top = 66
-  Caption = 'Quice'
+  Caption = 'Truice'
   ClientHeight = 700
   ClientWidth = 888
   Color = clBtnFace
@@ -201,8 +201,7 @@ object MainForm: TMainForm
               Anchors = [akTop, akRight]
               Caption = 'Search'
               Default = True
-              TabOrder = 6
-              OnClick = btSearchClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -247,6 +246,9 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
+              ParentDoubleBuffered = False
+              TabOrder = 6
+              OnClick = btSearchClick
             end
             object btClear: TBitBtn
               Left = 785
@@ -255,6 +257,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Clear'
+              DoubleBuffered = True
+              ParentDoubleBuffered = False
               TabOrder = 7
               OnClick = btClearClick
             end
@@ -437,6 +441,7 @@ object MainForm: TMainForm
                 Caption = 'Details'
                 Width = 300
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -445,7 +450,6 @@ object MainForm: TMainForm
             OnChange = lvQuestChange
             OnDblClick = lvQuestDblClick
             ColumnsOrder = '0=60,1=180,2=300'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -472,9 +476,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Edit Quest'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 1
-              OnClick = btEditQuestClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -528,6 +531,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 1
+              OnClick = btEditQuestClick
             end
             object btNewQuest: TBitBtn
               Left = 8
@@ -535,8 +541,7 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'New Quest'
-              TabOrder = 0
-              OnClick = btNewQuestClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -581,6 +586,9 @@ object MainForm: TMainForm
                 2C143F426020202020202020202020243409280A1C2020202020202020202020
                 1943303220202020202020202020202020202020202020202020}
               Margin = 3
+              ParentDoubleBuffered = False
+              TabOrder = 0
+              OnClick = btNewQuestClick
             end
             object btDeleteQuest: TBitBtn
               Left = 216
@@ -588,9 +596,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Delete Quest'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 2
-              OnClick = btDeleteQuestClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -644,6 +651,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 2
+              OnClick = btDeleteQuestClick
             end
             object btBrowseSite: TBitBtn
               Left = 328
@@ -651,9 +661,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Browse Site'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 3
-              OnClick = btBrowseSiteClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -707,6 +716,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 3
+              OnClick = btBrowseSiteClick
             end
             object btCheckQuest: TBitBtn
               Left = 456
@@ -714,9 +726,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Check Quest'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 4
-              OnClick = btCheckQuestClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -770,6 +781,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 4
+              OnClick = btCheckQuestClick
             end
             object btCheckAll: TBitBtn
               Left = 757
@@ -778,9 +792,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Check All Quests'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 5
-              OnClick = btCheckAllClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -834,6 +847,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 5
+              OnClick = btCheckAllClick
             end
             object StatusBar: TStatusBar
               Left = 1
@@ -850,10 +866,8 @@ object MainForm: TMainForm
               Top = 10
               Width = 17
               Height = 25
+              DoubleBuffered = True
               Enabled = False
-              PopupMenu = pmBrowseSite
-              TabOrder = 7
-              OnClick = btBrowsePopupClick
               Glyph.Data = {
                 32010000424D3201000000000000360000002800000009000000090000000100
                 180000000000FC00000000000000000000000000000000000000FFFFFFFFFFFF
@@ -865,6 +879,10 @@ object MainForm: TMainForm
                 FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
+              ParentDoubleBuffered = False
+              PopupMenu = pmBrowseSite
+              TabOrder = 7
+              OnClick = btBrowsePopupClick
             end
           end
         end
@@ -4996,6 +5014,7 @@ object MainForm: TMainForm
                 Caption = 'Description'
                 Width = 80
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -5005,7 +5024,6 @@ object MainForm: TMainForm
             OnDblClick = lvqtGiverTemplateDblClick
             OnSelectItem = lvqtGiverTemplateSelectItem
             ColumnsOrder = '0=80,1=80,2=180,3=80'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -5058,13 +5076,13 @@ object MainForm: TMainForm
               item
                 Width = 70
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
             ViewStyle = vsReport
             ColumnsOrder = '0=70,1=70,2=70,3=70,4=70,5=70,6=70,7=70,8=70,9=70,10=70,11=70'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -5245,6 +5263,7 @@ object MainForm: TMainForm
                 Caption = 'Description'
                 Width = 180
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -5254,7 +5273,6 @@ object MainForm: TMainForm
             OnDblClick = lvqtTakerTemplateDblClick
             OnSelectItem = lvqtTakerTemplateSelectItem
             ColumnsOrder = '0=80,1=80,2=180,3=180'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -5297,13 +5315,13 @@ object MainForm: TMainForm
               item
                 Width = 160
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
             ViewStyle = vsReport
             ColumnsOrder = '0=70,1=70,2=70,3=70,4=70,5=70,6=70,7=160'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -5553,6 +5571,7 @@ object MainForm: TMainForm
               item
                 Width = 60
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -5561,7 +5580,6 @@ object MainForm: TMainForm
             OnChange = lvqtStartScriptChange
             OnSelectItem = lvqtStartScriptSelectItem
             ColumnsOrder = '0=60,1=60,2=60,3=60,4=60,5=300,6=60,7=60,8=60,9=60'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -5966,6 +5984,7 @@ object MainForm: TMainForm
               item
                 Width = 60
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -5974,7 +5993,6 @@ object MainForm: TMainForm
             OnChange = lvqtEndScriptChange
             OnSelectItem = lvqtEndScriptSelectItem
             ColumnsOrder = '0=60,1=60,2=60,3=60,4=60,5=300,6=60,7=60,8=60,9=60'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -6427,8 +6445,7 @@ object MainForm: TMainForm
               Anchors = [akTop, akRight]
               Caption = 'Search'
               Default = True
-              TabOrder = 4
-              OnClick = btSearchCreatureClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -6473,6 +6490,9 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
+              ParentDoubleBuffered = False
+              TabOrder = 4
+              OnClick = btSearchCreatureClick
             end
             object btClearSearchCreature: TBitBtn
               Left = 787
@@ -6481,6 +6501,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Clear'
+              DoubleBuffered = True
+              ParentDoubleBuffered = False
               TabOrder = 5
               OnClick = btClearSearchCreatureClick
             end
@@ -6634,6 +6656,7 @@ object MainForm: TMainForm
                 Caption = 'subname_loc*'
                 Width = 112
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -6642,7 +6665,6 @@ object MainForm: TMainForm
             OnChange = lvSearchCreatureChange
             OnDblClick = lvSearchCreatureDblClick
             ColumnsOrder = '0=60,1=150,2=150,3=50,4=60,5=60,6=50,7=120,8=112'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -6675,9 +6697,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Edit Creature'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 1
-              OnClick = btEditCreatureClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -6731,6 +6752,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 1
+              OnClick = btEditCreatureClick
             end
             object btNewCreature: TBitBtn
               Left = 8
@@ -6738,8 +6762,7 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'New Creature'
-              TabOrder = 0
-              OnClick = btNewCreatureClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -6784,6 +6807,9 @@ object MainForm: TMainForm
                 2C143F426020202020202020202020243409280A1C2020202020202020202020
                 1943303220202020202020202020202020202020202020202020}
               Margin = 3
+              ParentDoubleBuffered = False
+              TabOrder = 0
+              OnClick = btNewCreatureClick
             end
             object btDeleteCreature: TBitBtn
               Left = 216
@@ -6791,9 +6817,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Del Creature'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 2
-              OnClick = btDeleteCreatureClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -6847,6 +6872,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 2
+              OnClick = btDeleteCreatureClick
             end
             object btBrowseCreature: TBitBtn
               Left = 328
@@ -6854,9 +6882,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Browse Site'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 3
-              OnClick = btBrowseCreatureClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -6910,6 +6937,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 3
+              OnClick = btBrowseCreatureClick
             end
             object StatusBarCreature: TStatusBar
               Left = 1
@@ -6926,10 +6956,8 @@ object MainForm: TMainForm
               Top = 10
               Width = 17
               Height = 25
+              DoubleBuffered = True
               Enabled = False
-              PopupMenu = pmBrowseSite
-              TabOrder = 5
-              OnClick = btBrowsePopupClick
               Glyph.Data = {
                 32010000424D3201000000000000360000002800000009000000090000000100
                 180000000000FC00000000000000000000000000000000000000FFFFFFFFFFFF
@@ -6941,6 +6969,10 @@ object MainForm: TMainForm
                 FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
+              ParentDoubleBuffered = False
+              PopupMenu = pmBrowseSite
+              TabOrder = 5
+              OnClick = btBrowsePopupClick
             end
           end
         end
@@ -8932,6 +8964,7 @@ object MainForm: TMainForm
               item
                 Width = 100
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -8939,7 +8972,6 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnSelectItem = lvclCreatureLocationSelectItem
             ColumnsOrder = '0=60,1=60,2=70,3=100,4=100,5=100,6=100'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -9313,6 +9345,7 @@ object MainForm: TMainForm
                 Caption = 'modelid_other_gender'
                 Width = 120
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -9320,7 +9353,6 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnSelectItem = lvCreatureModelSearchSelectItem
             ColumnsOrder = '0=80,1=120,2=120,3=80,4=120'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -9353,8 +9385,7 @@ object MainForm: TMainForm
               Anchors = [akTop, akRight]
               Caption = 'Search'
               Default = True
-              TabOrder = 1
-              OnClick = btCreatureModelSearchClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -9399,6 +9430,9 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
+              ParentDoubleBuffered = False
+              TabOrder = 1
+              OnClick = btCreatureModelSearchClick
             end
             object edCreatureModelSearch: TLabeledEdit
               Left = 8
@@ -9881,6 +9915,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -9890,7 +9925,6 @@ object MainForm: TMainForm
             OnDblClick = lvcoCreatureLootDblClick
             OnSelectItem = lvcoCreatureLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -10315,6 +10349,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -10323,7 +10358,6 @@ object MainForm: TMainForm
             OnChange = lvcoPickpocketLootChange
             OnSelectItem = lvcoPickpocketLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -10749,6 +10783,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -10757,7 +10792,6 @@ object MainForm: TMainForm
             OnChange = lvcoSkinLootChange
             OnSelectItem = lvcoSkinLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -11167,6 +11201,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -11175,7 +11210,6 @@ object MainForm: TMainForm
             OnChange = lvcvNPCVendorChange
             OnSelectItem = lvcvNPCVendorSelectItem
             ColumnsOrder = '0=80,1=80,2=80,3=80,4=100,5=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -11541,6 +11575,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -11549,7 +11584,6 @@ object MainForm: TMainForm
             OnChange = lvcrNPCTrainerChange
             OnSelectItem = lvcrNPCTrainerSelectItem
             ColumnsOrder = '0=80,1=80,2=80,3=80,4=80,5=80,6=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -12367,6 +12401,7 @@ object MainForm: TMainForm
               item
                 Width = 48
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -12377,7 +12412,6 @@ object MainForm: TMainForm
             ColumnsOrder = 
               '0=48,1=25,2=60,3=60,4=60,5=48,6=48,7=48,8=48,9=48,10=48,11=48,12' +
               '=48,13=48,14=48,15=48,16=48'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -12854,6 +12888,7 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
@@ -12861,7 +12896,6 @@ object MainForm: TMainForm
                 ViewStyle = vsReport
                 OnDblClick = lvCreatureStartsEndsDblClick
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -12912,6 +12946,7 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
@@ -12919,7 +12954,6 @@ object MainForm: TMainForm
                 ViewStyle = vsReport
                 OnDblClick = lvCreatureStartsEndsDblClick
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -12970,13 +13004,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -13416,6 +13450,7 @@ object MainForm: TMainForm
               item
                 Width = 36
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -13426,7 +13461,6 @@ object MainForm: TMainForm
             ColumnsOrder = 
               '0=36,1=36,2=36,3=36,4=36,5=36,6=36,7=36,8=36,9=36,10=36,11=36,12' +
               '=36,13=36,14=36,15=36,16=36,17=36,18=36,19=36,20=36,21=36,22=36'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -14345,8 +14379,7 @@ object MainForm: TMainForm
               Anchors = [akTop, akRight]
               Caption = 'Search'
               Default = True
-              TabOrder = 4
-              OnClick = btSearchGOClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -14391,6 +14424,9 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
+              ParentDoubleBuffered = False
+              TabOrder = 4
+              OnClick = btSearchGOClick
             end
             object btClearSearchGO: TBitBtn
               Left = 787
@@ -14399,6 +14435,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Clear'
+              DoubleBuffered = True
+              ParentDoubleBuffered = False
               TabOrder = 5
               OnClick = btClearSearchGOClick
             end
@@ -14548,6 +14586,7 @@ object MainForm: TMainForm
                 AutoSize = True
                 Caption = 'castbarcaption_loc*'
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -14556,7 +14595,6 @@ object MainForm: TMainForm
             OnChange = lvSearchGOChange
             OnDblClick = lvSearchGODblClick
             ColumnsOrder = '0=60,1=180,2=180,3=50,4=50,5=176,6=176'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -14588,9 +14626,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Edit GO'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 1
-              OnClick = btEditGOClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -14644,6 +14681,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 1
+              OnClick = btEditGOClick
             end
             object btNewGO: TBitBtn
               Left = 8
@@ -14651,8 +14691,7 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'New GO'
-              TabOrder = 0
-              OnClick = btNewGOClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -14697,6 +14736,9 @@ object MainForm: TMainForm
                 2C143F426020202020202020202020243409280A1C2020202020202020202020
                 1943303220202020202020202020202020202020202020202020}
               Margin = 3
+              ParentDoubleBuffered = False
+              TabOrder = 0
+              OnClick = btNewGOClick
             end
             object btDeleteGO: TBitBtn
               Left = 216
@@ -14704,9 +14746,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Delete GO'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 2
-              OnClick = btDeleteGOClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -14760,6 +14801,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 2
+              OnClick = btDeleteGOClick
             end
             object btBrowseGO: TBitBtn
               Left = 328
@@ -14767,9 +14811,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Browse Site'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 3
-              OnClick = btBrowseGOClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -14823,6 +14866,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 3
+              OnClick = btBrowseGOClick
             end
             object StatusBarGO: TStatusBar
               Left = 1
@@ -14839,10 +14885,8 @@ object MainForm: TMainForm
               Top = 10
               Width = 17
               Height = 25
+              DoubleBuffered = True
               Enabled = False
-              PopupMenu = pmBrowseSite
-              TabOrder = 5
-              OnClick = btBrowsePopupClick
               Glyph.Data = {
                 32010000424D3201000000000000360000002800000009000000090000000100
                 180000000000FC00000000000000000000000000000000000000FFFFFFFFFFFF
@@ -14854,6 +14898,10 @@ object MainForm: TMainForm
                 FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
+              ParentDoubleBuffered = False
+              PopupMenu = pmBrowseSite
+              TabOrder = 5
+              OnClick = btBrowsePopupClick
             end
           end
         end
@@ -15527,6 +15575,7 @@ object MainForm: TMainForm
               item
                 Width = 100
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -15534,7 +15583,6 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnSelectItem = lvglGOLocationSelectItem
             ColumnsOrder = '0=60,1=60,2=70,3=100,4=100,5=100,6=100'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -16042,6 +16090,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -16050,7 +16099,6 @@ object MainForm: TMainForm
             OnChange = lvgoGOLootChange
             OnSelectItem = lvgoGOLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -16467,6 +16515,7 @@ object MainForm: TMainForm
               item
                 Width = 60
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -16475,7 +16524,6 @@ object MainForm: TMainForm
             OnChange = lvgbButtonScriptChange
             OnSelectItem = lvgbButtonScriptSelectItem
             ColumnsOrder = '0=60,1=60,2=60,3=60,4=60,5=300,6=60,7=60,8=60,9=60'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -16703,13 +16751,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -16760,13 +16808,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -16817,13 +16865,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -17020,8 +17068,7 @@ object MainForm: TMainForm
               Anchors = [akTop, akRight]
               Caption = 'Search'
               Default = True
-              TabOrder = 7
-              OnClick = btSearchItemClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -17066,6 +17113,9 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
+              ParentDoubleBuffered = False
+              TabOrder = 7
+              OnClick = btSearchItemClick
             end
             object btClearSearchItem: TBitBtn
               Left = 787
@@ -17074,6 +17124,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Clear'
+              DoubleBuffered = True
+              ParentDoubleBuffered = False
               TabOrder = 8
               OnClick = btClearSearchItemClick
             end
@@ -17365,6 +17417,7 @@ object MainForm: TMainForm
             Font.Height = -11
             Font.Name = 'MS Sans Serif'
             Font.Style = []
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -17375,7 +17428,6 @@ object MainForm: TMainForm
             OnCustomDrawSubItem = lvSearchItemCustomDrawSubItem
             OnDblClick = lvSearchItemDblClick
             ColumnsOrder = '0=60,1=200,2=60,3=60,4=60,5=60,6=60,7=82,8=150'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -17411,9 +17463,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Edit Item'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 1
-              OnClick = btEditItemClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -17467,6 +17518,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 1
+              OnClick = btEditItemClick
             end
             object btNewItem: TBitBtn
               Left = 8
@@ -17474,8 +17528,7 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'New Item'
-              TabOrder = 0
-              OnClick = btNewItemClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -17520,6 +17573,9 @@ object MainForm: TMainForm
                 2C143F426020202020202020202020243409280A1C2020202020202020202020
                 1943303220202020202020202020202020202020202020202020}
               Margin = 3
+              ParentDoubleBuffered = False
+              TabOrder = 0
+              OnClick = btNewItemClick
             end
             object btDeleteItem: TBitBtn
               Left = 216
@@ -17527,9 +17583,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Delete Item'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 2
-              OnClick = btDeleteItemClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -17583,6 +17638,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 2
+              OnClick = btDeleteItemClick
             end
             object btBrowseItem: TBitBtn
               Left = 328
@@ -17590,9 +17648,8 @@ object MainForm: TMainForm
               Width = 97
               Height = 25
               Caption = 'Browse Site'
+              DoubleBuffered = True
               Enabled = False
-              TabOrder = 3
-              OnClick = btBrowseItemClick
               Glyph.Data = {
                 36060000424D3606000000000000360000002800000020000000100000000100
                 18000000000000060000120B0000120B00000000000000000000C0C0C0C0C0C0
@@ -17646,6 +17703,9 @@ object MainForm: TMainForm
                 C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
               Margin = 3
               NumGlyphs = 2
+              ParentDoubleBuffered = False
+              TabOrder = 3
+              OnClick = btBrowseItemClick
             end
             object StatusBarItem: TStatusBar
               Left = 1
@@ -17662,10 +17722,8 @@ object MainForm: TMainForm
               Top = 10
               Width = 17
               Height = 25
+              DoubleBuffered = True
               Enabled = False
-              PopupMenu = pmBrowseSite
-              TabOrder = 5
-              OnClick = btBrowsePopupClick
               Glyph.Data = {
                 32010000424D3201000000000000360000002800000009000000090000000100
                 180000000000FC00000000000000000000000000000000000000FFFFFFFFFFFF
@@ -17677,6 +17735,10 @@ object MainForm: TMainForm
                 FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
+              ParentDoubleBuffered = False
+              PopupMenu = pmBrowseSite
+              TabOrder = 5
+              OnClick = btBrowsePopupClick
             end
           end
         end
@@ -21071,6 +21133,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -21079,7 +21142,6 @@ object MainForm: TMainForm
             OnChange = lvitItemLootChange
             OnSelectItem = lvitItemLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -21512,6 +21574,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -21520,7 +21583,6 @@ object MainForm: TMainForm
             OnChange = lvitDisLootChange
             OnSelectItem = lvitDisLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -21953,6 +22015,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -21961,7 +22024,6 @@ object MainForm: TMainForm
             OnChange = lvitProsLootChange
             OnSelectItem = lvitProsLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -22385,6 +22447,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -22393,7 +22456,6 @@ object MainForm: TMainForm
             OnChange = lvitMillingLootChange
             OnSelectItem = lvitMillingLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -22823,6 +22885,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -22831,7 +22894,6 @@ object MainForm: TMainForm
             OnChange = lvitReferenceLootChange
             OnSelectItem = lvitReferenceLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -23274,6 +23336,7 @@ object MainForm: TMainForm
               item
                 Width = 90
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -23282,7 +23345,6 @@ object MainForm: TMainForm
             OnChange = lvitEnchantmentChange
             OnSelectItem = lvitEnchantmentSelectItem
             ColumnsOrder = '0=90,1=90,2=90'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -23382,6 +23444,7 @@ object MainForm: TMainForm
               item
                 Width = 150
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -23389,7 +23452,6 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnDblClick = lvitItemLootedFromDblClick
             ColumnsOrder = '0=50,1=50,2=60,3=60,4=60,5=60,6=60,7=50,8=50,9=150,10=150'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -23471,13 +23533,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -23528,13 +23590,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -23585,13 +23647,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -23642,13 +23704,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -23699,13 +23761,13 @@ object MainForm: TMainForm
                     Caption = 'category'
                     Width = 80
                   end>
+                Groups = <>
                 HideSelection = False
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
                 ViewStyle = vsReport
                 ColumnsOrder = '0=80,1=200,2=80,3=150,4=150,5=80'
-                Groups = <>
                 ExtendedColumns = <
                   item
                   end
@@ -24048,6 +24110,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -24056,7 +24119,6 @@ object MainForm: TMainForm
             OnChange = lvotFishingLootChange
             OnSelectItem = lvotFishingLootSelectItem
             ColumnsOrder = '0=60,1=60,2=120,3=60,4=60,5=60,6=60,7=60,8=60,9=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -24339,6 +24401,7 @@ object MainForm: TMainForm
                 Caption = 'Next_Page'
                 Width = 80
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -24346,7 +24409,6 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnSelectItem = lvSearchPageTextSelectItem
             ColumnsOrder = '0=60,1=700,2=80'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -24374,6 +24436,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Clear'
+              DoubleBuffered = True
+              ParentDoubleBuffered = False
               TabOrder = 4
               OnClick = btClearClick
             end
@@ -24385,8 +24449,7 @@ object MainForm: TMainForm
               Anchors = [akTop, akRight]
               Caption = 'Search'
               Default = True
-              TabOrder = 3
-              OnClick = btSearchPageTextClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -24431,6 +24494,9 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
+              ParentDoubleBuffered = False
+              TabOrder = 3
+              OnClick = btSearchPageTextClick
             end
             object edSearchPageTextNextPage: TLabeledEdit
               Left = 536
@@ -24642,6 +24708,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Clear'
+              DoubleBuffered = True
+              ParentDoubleBuffered = False
               TabOrder = 0
               OnClick = btClearClick
             end
@@ -24653,8 +24721,7 @@ object MainForm: TMainForm
               Anchors = [akTop, akRight]
               Caption = 'Search'
               Default = True
-              TabOrder = 1
-              OnClick = btSearchGameEventClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -24699,6 +24766,9 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
+              ParentDoubleBuffered = False
+              TabOrder = 1
+              OnClick = btSearchGameEventClick
             end
             object edSearchGameEventDesc: TLabeledEdit
               Left = 96
@@ -25135,6 +25205,7 @@ object MainForm: TMainForm
                   Width = 160
                 end>
               Enabled = False
+              Groups = <>
               HideSelection = False
               ReadOnly = True
               RowSelect = True
@@ -25144,7 +25215,6 @@ object MainForm: TMainForm
               OnDblClick = lvGameEventCreatureDblClick
               OnSelectItem = lvGameEventCreatureSelectItem
               ColumnsOrder = '0=80,1=50,2=80,3=160'
-              Groups = <>
               ExtendedColumns = <
                 item
                 end
@@ -25178,6 +25248,7 @@ object MainForm: TMainForm
                   Width = 160
                 end>
               Enabled = False
+              Groups = <>
               HideSelection = False
               ReadOnly = True
               RowSelect = True
@@ -25187,7 +25258,6 @@ object MainForm: TMainForm
               OnDblClick = lvGameEventGODblClick
               OnSelectItem = lvGameEventGOSelectItem
               ColumnsOrder = '0=80,1=50,2=80,3=160'
-              Groups = <>
               ExtendedColumns = <
                 item
                 end
@@ -25329,6 +25399,7 @@ object MainForm: TMainForm
                   Caption = 'description'
                   Width = 250
                 end>
+              Groups = <>
               HideSelection = False
               ReadOnly = True
               RowSelect = True
@@ -25337,7 +25408,6 @@ object MainForm: TMainForm
               OnChange = lvSearchGameEventChange
               OnSelectItem = lvSearchGameEventSelectItem
               ColumnsOrder = '0=80,1=120,2=120,3=80,4=80,5=80,6=250'
-              Groups = <>
               ExtendedColumns = <
                 item
                 end
@@ -25743,8 +25813,7 @@ object MainForm: TMainForm
               Anchors = [akTop, akRight]
               Caption = 'Search'
               Default = True
-              TabOrder = 2
-              OnClick = btCharSearchClick
+              DoubleBuffered = True
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -25789,6 +25858,9 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
+              ParentDoubleBuffered = False
+              TabOrder = 2
+              OnClick = btCharSearchClick
             end
             object btCharClear: TBitBtn
               Left = 787
@@ -25797,6 +25869,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Clear'
+              DoubleBuffered = True
+              ParentDoubleBuffered = False
               TabOrder = 3
               OnClick = btCharClearClick
             end
@@ -25846,6 +25920,7 @@ object MainForm: TMainForm
                 Caption = 'gmstate'
                 Width = 60
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -25853,7 +25928,6 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnDblClick = lvSearchCharDblClick
             ColumnsOrder = '0=60,1=60,2=180,3=70,4=70,5=60'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -26719,6 +26793,7 @@ object MainForm: TMainForm
               item
                 Width = 200
               end>
+            Groups = <>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
@@ -26727,7 +26802,6 @@ object MainForm: TMainForm
             OnChange = lvCharacterInventoryChange
             OnSelectItem = lvCharacterInventorySelectItem
             ColumnsOrder = '0=60,1=60,2=60,3=100,4=100,5=200'
-            Groups = <>
             ExtendedColumns = <
               item
               end
@@ -26915,6 +26989,8 @@ object MainForm: TMainForm
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Execute'
+              DoubleBuffered = True
+              ParentDoubleBuffered = False
               TabOrder = 0
               OnClick = btSQLOpenClick
             end
