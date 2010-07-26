@@ -1503,6 +1503,17 @@ type
     edqtRewRepValueId5: TLabeledEdit;
     editExtraFlags: TLabeledEdit;
     edctspeed_run: TLabeledEdit;
+    edctVehicleId: TLabeledEdit;
+    edctspell5: TJvComboEdit;
+    Label5: TLabel;
+    edctspell8: TJvComboEdit;
+    Label6: TLabel;
+    edctspell7: TJvComboEdit;
+    Label7: TLabel;
+    edctspell6: TJvComboEdit;
+    Label8: TLabel;
+    edctexp: TLabeledEdit;
+    edctWDBVerified: TLabeledEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
