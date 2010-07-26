@@ -376,7 +376,7 @@ begin
   Text[153]:='Error: Character (guid = %d) not found';
   Text[154]:='The error has accured while loading the Character:';
   Text[155]:='AreaTrigger';
-  Text[156]:='LootCondition';
+  Text[156]:='LootMode';
   Text[157]:='The error has accured while loading Creature EventAI:';  
 end;
 

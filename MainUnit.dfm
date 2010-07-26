@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 700
-    ActivePage = tsCreature
+    ActivePage = tsQuest
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsSearch
+        ActivePage = tsQuestPart1
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -6397,7 +6397,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsNPCVendor
+        ActivePage = tsEditCreature
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -23677,7 +23677,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsOtherScript
+        ActivePage = tsFishingLoot
         Align = alClient
         TabOrder = 1
         object tsFishingLoot: TTabSheet
@@ -23886,12 +23886,12 @@ object MainForm: TMainForm
             Height = 13
             Caption = 'Choose Zone for fishing loot:'
           end
-          object lbotlootcondition: TLabel
+          object lbotlootmode: TLabel
             Left = 421
             Top = 548
-            Width = 60
+            Width = 43
             Height = 13
-            Caption = 'lootcondition'
+            Caption = 'lootmode'
           end
           object lvotFishingLoot: TJvListView
             Left = 8
@@ -24045,7 +24045,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Fishing Loot Script'
-            TabOrder = 12
+            TabOrder = 10
             OnClick = btScriptFishingLootClick
           end
           object btFullScriptFishLoot: TButton
@@ -24054,7 +24054,7 @@ object MainForm: TMainForm
             Width = 185
             Height = 25
             Caption = 'Show FULL Fishing Loot Script'
-            TabOrder = 13
+            TabOrder = 11
             OnClick = btFullScriptFishLootClick
           end
           object edotentry: TJvComboEdit
@@ -24140,27 +24140,7 @@ object MainForm: TMainForm
             TabOrder = 1
             OnClick = btGetLootForZoneClick
           end
-          object edotcondition_value2: TLabeledEdit
-            Left = 635
-            Top = 562
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value2'
-            TabOrder = 11
-          end
-          object edotcondition_value1: TLabeledEdit
-            Left = 508
-            Top = 562
-            Width = 121
-            Height = 21
-            EditLabel.Width = 81
-            EditLabel.Height = 13
-            EditLabel.Caption = 'condition_value1'
-            TabOrder = 10
-          end
-          object edotlootcondition: TJvComboEdit
+          object edotlootmode: TJvComboEdit
             Left = 421
             Top = 562
             Width = 80

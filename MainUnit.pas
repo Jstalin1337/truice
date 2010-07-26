@@ -1326,10 +1326,8 @@ type
     edctmechanic_immune_mask: TJvComboEdit;
     lbctmechanic_immune_mask: TLabel;
     ZSQLProcessor: TZSQLProcessor;
-    edotcondition_value2: TLabeledEdit;
-    edotcondition_value1: TLabeledEdit;
-    edotlootcondition: TJvComboEdit;
-    lbotlootcondition: TLabel;
+    edotlootmode: TJvComboEdit;
+    lbotlootmode: TLabel;
     nDBCDir: TMenuItem;
     edctscale: TLabeledEdit;
     Timer1: TTimer;
@@ -5701,7 +5699,8 @@ end;
 
 procedure TMainForm.GetLootCondition(Sender: TObject);
 begin
-  GetValueFromSimpleList(Sender, 156, 'LootCondition', false);
+  //GetValueFromSimpleList(Sender, 156, 'LootMode', false);
+  GetSomeFlags(Sender, 'LootMode');
 end;
 
 procedure TMainForm.CompleteButtonScriptScript;
