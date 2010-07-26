@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 700
-    ActivePage = tsItem
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -6397,7 +6397,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsSkinLoot
+        ActivePage = tsNPCVendor
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -9679,8 +9679,6 @@ object MainForm: TMainForm
         object tsCreatureLoot: TTabSheet
           Caption = 'Creature Loot'
           ImageIndex = 4
-          ExplicitLeft = 184
-          ExplicitTop = 139
           DesignSize = (
             872
             601)
@@ -16901,7 +16899,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsReferenceLoot
+        ActivePage = tsProspectingLoot
         Align = alClient
         TabOrder = 1
         object tsSearchItem: TTabSheet

@@ -2389,6 +2389,7 @@ begin
 
   tsNPCVendor.TabVisible := false;
   tsNPCTrainer.TabVisible := false;
+  tsCreatureMovement.TabVisible := false; //deactivate creature_movement tab
   //tsCreatureEventAI.TabVisible := false;
 
   ItemColors[0] := $9D9D9D;
@@ -5581,8 +5582,8 @@ end;
 
 procedure TMainForm.LoadCreatureMovement(GUID: integer);
 begin
-    LoadQueryToListView(Format('SELECT * FROM `creature_movement` WHERE (`id` = %d)',
-      [GUID]),lvcmMovement);
+    //LoadQueryToListView(Format('SELECT * FROM `creature_movement` WHERE (`id` = %d)',
+    //  [GUID]),lvcmMovement); -- currently disabled; mangos had an inferior waypoint system
 end;
 
 procedure TMainForm.LoadCreatureOnKillReputation(id: string);
@@ -5802,13 +5803,14 @@ procedure TMainForm.CompleteCreatureMovementScript;
 var
   caguid,cmpoint, Fields, Values: string;
 begin
-  mectLog.Clear;
+  {mectLog.Clear;
   caguid := trim( edcmid.Text );
   cmpoint := trim( edcmpoint.Text );
   if (caguid='') or (cmpoint='') then exit;
   SetFieldsAndValues(Fields, Values, 'creature_movement', PFX_CREATURE_MOVEMENT, mectLog);
   mectScript.Text := Format('DELETE FROM `creature_movement` WHERE (`id`=%s) AND (`point`=%s);'#13#10+
-      'INSERT INTO `creature_movement` (%s) VALUES (%s);'#13#10,[caguid, cmpoint, Fields, Values]);
+      'INSERT INTO `creature_movement` (%s) VALUES (%s);'#13#10,[caguid, cmpoint, Fields, Values]); }
+  //disable creature_movement
 end;
 
 procedure TMainForm.CompleteCreatureOnKillReputationScript;
@@ -7939,8 +7941,8 @@ end;
 procedure TMainForm.btFullCreatureMovementScriptClick(Sender: TObject);
 begin
   PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-  mectScript.Text := FullScript('creature_movement', 'id', edclguid.Text);
-//  ShowFullMvmntScript('creature_movement', lvcmMovement, mectScript, edclguid.Text);
+  //mectScript.Text := FullScript('creature_movement', 'id', edclguid.Text); //disable creature_movement
+  //ShowFullMvmntScript('creature_movement', lvcmMovement, mectScript, edclguid.Text);
 end;
 
 procedure TMainForm.btFullScriptGOLocationClick(Sender: TObject);
