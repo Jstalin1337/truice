@@ -357,10 +357,8 @@ type
     edctsubname: TLabeledEdit;
     edctminlevel: TLabeledEdit;
     edctmaxlevel: TLabeledEdit;
-    edctminhealth: TLabeledEdit;
-    edctmaxhealth: TLabeledEdit;
-    edctminmana: TLabeledEdit;
-    edctmaxmana: TLabeledEdit;
+    edctHealth_mod: TLabeledEdit;
+    edctMana_mod: TLabeledEdit;
     edctmingold: TLabeledEdit;
     edctmaxgold: TLabeledEdit;
     gbCreature2: TGroupBox;
@@ -415,7 +413,7 @@ type
     edcttrainer_class: TJvComboEdit;
     edcttrainer_race: TJvComboEdit;
     gbArmorSpeed: TGroupBox;
-    edctarmor: TLabeledEdit;
+    edctArmor_mod: TLabeledEdit;
     edctspeed_walk: TLabeledEdit;
     btScriptCreatureTemplate: TButton;
     tsCreatureLocation: TTabSheet;

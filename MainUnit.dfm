@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 700
-    ActivePage = tsQuest
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -7145,61 +7145,27 @@ object MainForm: TMainForm
               EditLabel.Caption = 'edctmaxlevel'
               TabOrder = 10
             end
-            object edctminhealth: TLabeledEdit
+            object edctHealth_mod: TLabeledEdit
               Left = 8
               Top = 248
               Width = 75
               Height = 21
-              Hint = 
-                'Maximum creature'#39's health points for creature level equal minlev' +
-                'el. '#13#10'Spawned creature have health in linear proportion to level' +
-                ' position in range minlevel .. maxlevel'
-              EditLabel.Width = 66
+              Hint = 'Creature'#39's Mana Mod'
+              EditLabel.Width = 78
               EditLabel.Height = 13
-              EditLabel.Caption = 'edctminhealth'
+              EditLabel.Caption = 'edctHealth_mod'
               TabOrder = 11
             end
-            object edctmaxhealth: TLabeledEdit
-              Left = 88
-              Top = 248
-              Width = 75
-              Height = 21
-              Hint = 
-                'Maximum creature'#39's health points for creature level equal maxlev' +
-                'el. '#13#10'Spawned creature have health in linear proportion to level' +
-                ' position in range minlevel .. maxlevel'
-              EditLabel.Width = 69
-              EditLabel.Height = 13
-              EditLabel.Caption = 'edctmaxhealth'
-              TabOrder = 12
-            end
-            object edctminmana: TLabeledEdit
+            object edctMana_mod: TLabeledEdit
               Left = 176
               Top = 248
               Width = 75
               Height = 21
-              Hint = 
-                'Maximum creature'#39's mana points for creature level equal minlevel' +
-                '. '#13#10'Spawned creature have mana in linear proportion to level pos' +
-                'ition in range minlevel .. maxlevel'
-              EditLabel.Width = 63
+              Hint = 'Creature'#39's Mana Mod'
+              EditLabel.Width = 74
               EditLabel.Height = 13
-              EditLabel.Caption = 'edctminmana'
-              TabOrder = 13
-            end
-            object edctmaxmana: TLabeledEdit
-              Left = 256
-              Top = 248
-              Width = 75
-              Height = 21
-              Hint = 
-                'Maximum creature'#39's mana points for creature level equal maxlevel' +
-                '. '#13#10'Spawned creature have mana in linear proportion to level pos' +
-                'ition in range minlevel .. maxlevel'
-              EditLabel.Width = 66
-              EditLabel.Height = 13
-              EditLabel.Caption = 'edctmaxmana'
-              TabOrder = 14
+              EditLabel.Caption = 'edctMana_mod'
+              TabOrder = 12
             end
             object edctmingold: TLabeledEdit
               Left = 8
@@ -7253,7 +7219,7 @@ object MainForm: TMainForm
               EditLabel.Width = 49
               EditLabel.Height = 13
               EditLabel.Caption = 'IconName'
-              TabOrder = 15
+              TabOrder = 13
             end
             object edctdifficulty_entry_1: TJvComboEdit
               Left = 88
@@ -7305,7 +7271,7 @@ object MainForm: TMainForm
                 072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
                 1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
                 0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-              TabOrder = 16
+              TabOrder = 14
               OnButtonClick = edctEntryButtonClick
             end
             object edctKillCredit1: TLabeledEdit
@@ -7317,7 +7283,7 @@ object MainForm: TMainForm
               EditLabel.Width = 67
               EditLabel.Height = 13
               EditLabel.Caption = 'edctKillCredit1'
-              TabOrder = 17
+              TabOrder = 15
             end
             object edctKillCredit2: TLabeledEdit
               Left = 178
@@ -7328,7 +7294,7 @@ object MainForm: TMainForm
               EditLabel.Width = 67
               EditLabel.Height = 13
               EditLabel.Caption = 'edctKillCredit2'
-              TabOrder = 18
+              TabOrder = 16
             end
             object edctdifficulty_entry_2: TJvComboEdit
               Left = 178
@@ -7380,7 +7346,7 @@ object MainForm: TMainForm
                 072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
                 1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
                 0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-              TabOrder = 19
+              TabOrder = 17
               OnButtonClick = edctEntryButtonClick
             end
             object edctdifficulty_entry_3: TJvComboEdit
@@ -7433,7 +7399,7 @@ object MainForm: TMainForm
                 072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
                 1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
                 0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-              TabOrder = 20
+              TabOrder = 18
               OnButtonClick = edctEntryButtonClick
             end
           end
@@ -8691,12 +8657,12 @@ object MainForm: TMainForm
             Height = 133
             Caption = 'Armor-Speed'
             TabOrder = 5
-            object edctarmor: TLabeledEdit
+            object edctArmor_mod: TLabeledEdit
               Left = 8
               Top = 28
               Width = 107
               Height = 21
-              Hint = 'Creature'#39's armor.'
+              Hint = 'Creature'#39's armor mod.'
               EditLabel.Width = 26
               EditLabel.Height = 13
               EditLabel.Caption = 'armor'
