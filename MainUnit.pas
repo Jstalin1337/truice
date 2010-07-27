@@ -1343,7 +1343,7 @@ type
     edcdmoveflags: TLabeledEdit;
     edcamoveflags: TLabeledEdit;
     edqtSuggestedPlayers: TLabeledEdit;
-    edqtSkillOrClass: TJvComboEdit;
+    edqtSkillOrClassMask: TJvComboEdit;
     rbqtSkill: TRadioButton;
     rbqtClass: TRadioButton;
     edqtZoneOrSort: TJvComboEdit;
@@ -1512,6 +1512,13 @@ type
     edctexp: TLabeledEdit;
     edctWDBVerified: TLabeledEdit;
     edcapath_id: TLabeledEdit;
+    edcdpath_id: TLabeledEdit;
+    UpDown3: TUpDown;
+    edqtMaxLevel: TLabeledEdit;
+    edqtRepObjectiveValue2: TLabeledEdit;
+    edqtRepObjectiveFaction2: TJvComboEdit;
+    lbqtRepObjectiveFaction2: TLabel;
+    edqtWDBVerified: TLabeledEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1869,8 +1876,8 @@ type
     procedure lvSearchItemCustomDrawSubItem(Sender: TCustomListView; Item: TListItem;
       SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
     procedure Timer1Timer(Sender: TObject);
-    procedure edqtSkillOrClassChange(Sender: TObject);
-    procedure edqtSkillOrClassButtonClick(Sender: TObject);
+    procedure edqtSkillOrClassMaskChange(Sender: TObject);
+    procedure edqtSkillOrClassMaskButtonClick(Sender: TObject);
     procedure edcnevent_typeChange(Sender: TObject);
     procedure edcnaction1_typeChange(Sender: TObject);
     procedure edcnaction2_typeChange(Sender: TObject);
@@ -2844,7 +2851,7 @@ begin
   GetSomeFlags(Sender, 'SpecialFlags');
 end;
 
-procedure TMainForm.edqtSkillOrClassButtonClick(Sender: TObject);
+procedure TMainForm.edqtSkillOrClassMaskButtonClick(Sender: TObject);
 begin
   if rbqtSkill.Checked then
     GetSkill(Sender)
@@ -2852,9 +2859,9 @@ begin
     GetValueFromSimpleList(Sender, 143, 'Class', false);
 end;
 
-procedure TMainForm.edqtSkillOrClassChange(Sender: TObject);
+procedure TMainForm.edqtSkillOrClassMaskChange(Sender: TObject);
 begin
-  if StrToIntDef(edqtSkillOrClass.Text,0)>=0 then rbqtSkill.Checked := true else
+  if StrToIntDef(edqtSkillOrClassMask.Text,0)>=0 then rbqtSkill.Checked := true else
   rbqtClass.Checked := true;
 end;
 
