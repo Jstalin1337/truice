@@ -1448,7 +1448,7 @@ type
     edgtquestItem4: TLabeledEdit;
     edgtquestItem5: TLabeledEdit;
     edgtquestItem6: TLabeledEdit;
-    editFaction: TLabeledEdit;
+    editFlagsExtra: TLabeledEdit;
     edqtReqItemId5: TJvComboEdit;
     edqtReqItemCount5: TLabeledEdit;
     edqtReqItemCount6: TLabeledEdit;
@@ -1498,7 +1498,7 @@ type
     edqtRewRepValueId3: TLabeledEdit;
     edqtRewRepValueId4: TLabeledEdit;
     edqtRewRepValueId5: TLabeledEdit;
-    editExtraFlags: TLabeledEdit;
+    editWDBVerified: TLabeledEdit;
     edctspeed_run: TLabeledEdit;
     edctVehicleId: TLabeledEdit;
     edctspell5: TJvComboEdit;
@@ -1519,6 +1519,9 @@ type
     edqtRepObjectiveFaction2: TJvComboEdit;
     lbqtRepObjectiveFaction2: TLabel;
     edqtWDBVerified: TLabeledEdit;
+    edqtRewardArenaPoints: TLabeledEdit;
+    edqtunk0: TLabeledEdit;
+    edgtWDBVerified: TLabeledEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
