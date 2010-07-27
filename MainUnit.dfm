@@ -6397,7 +6397,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 647
-        ActivePage = tsEditCreature
+        ActivePage = tsCreatureLoot
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -8884,9 +8884,9 @@ object MainForm: TMainForm
               Width = 107
               Height = 21
               Hint = 'Creature'#39's armor mod.'
-              EditLabel.Width = 26
+              EditLabel.Width = 53
               EditLabel.Height = 13
-              EditLabel.Caption = 'armor'
+              EditLabel.Caption = 'Armor_mod'
               TabOrder = 0
             end
             object edctspeed_walk: TLabeledEdit
@@ -8997,41 +8997,13 @@ object MainForm: TMainForm
             EditLabel.Caption = 'flags_extra'
             TabOrder = 12
           end
-          object gbUnk: TGroupBox
-            Left = 585
-            Top = 355
-            Width = 121
-            Height = 93
-            Caption = 'unk'
-            TabOrder = 13
-            object edctunk16: TLabeledEdit
-              Left = 8
-              Top = 31
-              Width = 89
-              Height = 21
-              EditLabel.Width = 30
-              EditLabel.Height = 13
-              EditLabel.Caption = 'unk16'
-              TabOrder = 0
-            end
-            object edctunk17: TLabeledEdit
-              Left = 8
-              Top = 68
-              Width = 89
-              Height = 21
-              EditLabel.Width = 30
-              EditLabel.Height = 13
-              EditLabel.Caption = 'unk17'
-              TabOrder = 1
-            end
-          end
           object GroupBox3: TGroupBox
             Left = 9
             Top = 437
             Width = 222
             Height = 133
             Caption = 'QuestItems'
-            TabOrder = 14
+            TabOrder = 13
             object edctquestItem1: TLabeledEdit
               Left = 8
               Top = 32
@@ -12008,7 +11980,7 @@ object MainForm: TMainForm
             ParentColor = False
           end
           object lbcaemote: TLabel
-            Left = 398
+            Left = 536
             Top = 104
             Width = 29
             Height = 13
@@ -12025,7 +11997,7 @@ object MainForm: TMainForm
             TabOrder = 0
           end
           object edcamount: TLabeledEdit
-            Left = 8
+            Left = 146
             Top = 120
             Width = 121
             Height = 21
@@ -12038,7 +12010,7 @@ object MainForm: TMainForm
             TabOrder = 1
           end
           object edcabytes1: TLabeledEdit
-            Left = 144
+            Left = 282
             Top = 120
             Width = 121
             Height = 21
@@ -12049,7 +12021,7 @@ object MainForm: TMainForm
             TabOrder = 2
           end
           object edcabytes2: TLabeledEdit
-            Left = 271
+            Left = 409
             Top = 120
             Width = 121
             Height = 21
@@ -12060,7 +12032,7 @@ object MainForm: TMainForm
             TabOrder = 3
           end
           object edcaemote: TJvComboEdit
-            Left = 398
+            Left = 536
             Top = 120
             Width = 121
             Height = 21
@@ -12116,7 +12088,7 @@ object MainForm: TMainForm
             OnClick = btScriptCreatureClick
           end
           object edcamoveflags: TLabeledEdit
-            Left = 525
+            Left = 663
             Top = 120
             Width = 121
             Height = 21
@@ -12124,6 +12096,17 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'moveflags'
             TabOrder = 7
+          end
+          object edcapath_id: TLabeledEdit
+            Left = 10
+            Top = 120
+            Width = 121
+            Height = 21
+            Hint = 'No description available.'
+            EditLabel.Width = 35
+            EditLabel.Height = 13
+            EditLabel.Caption = 'path_id'
+            TabOrder = 8
           end
         end
         object tsNPCgossip: TTabSheet

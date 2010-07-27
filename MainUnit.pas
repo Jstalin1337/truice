@@ -1417,9 +1417,6 @@ type
     edglphaseMask: TLabeledEdit;
     tsLocalesNPCText: TTabSheet;
     NPCTextLoc1: TNPCTextLoc;
-    gbUnk: TGroupBox;
-    edctunk16: TLabeledEdit;
-    edctunk17: TLabeledEdit;
     edgeholiday: TLabeledEdit;
     edgtIconName: TLabeledEdit;
     edctdmg_multiplier: TLabeledEdit;
@@ -1514,6 +1511,7 @@ type
     Label8: TLabel;
     edctexp: TLabeledEdit;
     edctWDBVerified: TLabeledEdit;
+    edcapath_id: TLabeledEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -7723,29 +7721,25 @@ begin
   begin
     for i := 0 to lvList.Items.Count - 2 do
     begin
-      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s),'#13#10,[
+      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s),'#13#10,[
         lvList.Items[i].Caption,
         lvList.Items[i].SubItems[0],
         lvList.Items[i].SubItems[1],
         lvList.Items[i].SubItems[2],
         lvList.Items[i].SubItems[3],
         lvList.Items[i].SubItems[4],
-        lvList.Items[i].SubItems[5],
-        lvList.Items[i].SubItems[6],
-        lvList.Items[i].SubItems[7]
+        lvList.Items[i].SubItems[5]
       ]);
     end;
     i := lvList.Items.Count - 1;
-    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s);',[
+    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s);',[
       lvList.Items[i].Caption,
       lvList.Items[i].SubItems[0],
       lvList.Items[i].SubItems[1],
       lvList.Items[i].SubItems[2],
       lvList.Items[i].SubItems[3],
       lvList.Items[i].SubItems[4],
-      lvList.Items[i].SubItems[5],
-      lvList.Items[i].SubItems[6],
-      lvList.Items[i].SubItems[7]
+      lvList.Items[i].SubItems[5]
     ]);
   end;
   if values<>'' then
