@@ -7097,11 +7097,11 @@ begin
     lvList.Items.EndUpdate;
   end;
 
-  lvList.Columns[10].Caption := 'name';
+  lvList.Columns[8].Caption := 'name';
   for I := 0 to lvList.Items.Count - 1 do
   begin
     id := lvList.Items[i].Caption;
-    table := lvList.Items[i].SubItems[8];
+    table := lvList.Items[i].SubItems[lvList.Items[i].SubItems.Count-1];
     MyQuery.SQL.Text := '';
     if table = 'creature_loot_template' then
       MyQuery.SQL.Text := Format('SELECT `name` FROM `creature_template` WHERE `lootid` = %s',[id]);

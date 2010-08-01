@@ -35,11 +35,9 @@ object MainForm: TMainForm
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitHeight = 700
     object tsQuest: TTabSheet
       Caption = 'Quest'
       ImageIndex = 1
-      ExplicitHeight = 672
       object pnQuestTop: TPanel
         Left = 0
         Top = 0
@@ -66,11 +64,9 @@ object MainForm: TMainForm
         ParentShowHint = False
         ShowHint = False
         TabOrder = 0
-        ExplicitHeight = 647
         object tsSearch: TTabSheet
           Caption = 'Search'
           ImageIndex = 5
-          ExplicitHeight = 619
           object pnSearch: TPanel
             Left = 0
             Top = 0
@@ -472,7 +468,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 558
             DesignSize = (
               872
               61)
@@ -896,7 +891,6 @@ object MainForm: TMainForm
           Caption = 'Quest Part 1'
           ParentShowHint = False
           ShowHint = True
-          ExplicitHeight = 619
           object gbqtKeys: TGroupBox
             Left = 10
             Top = 8
@@ -1191,7 +1185,7 @@ object MainForm: TMainForm
             Caption = 'Zone, Sort, Level'
             TabOrder = 1
             object UpDown2: TUpDown
-              Left = 167
+              Left = 168
               Top = 113
               Width = 16
               Height = 21
@@ -1200,8 +1194,8 @@ object MainForm: TMainForm
               TabOrder = 3
             end
             object UpDown1: TUpDown
-              Left = 40
-              Top = 111
+              Left = 42
+              Top = 113
               Width = 16
               Height = 21
               Associate = edqtMinLevel
@@ -1359,7 +1353,7 @@ object MainForm: TMainForm
             end
             object UpDown3: TUpDown
               Left = 105
-              Top = 111
+              Top = 113
               Width = 16
               Height = 21
               Associate = edqtMaxLevel
@@ -1945,7 +1939,6 @@ object MainForm: TMainForm
           ImageIndex = 1
           ParentShowHint = False
           ShowHint = True
-          ExplicitHeight = 619
           object gbRequirementsEnd: TGroupBox
             Left = 8
             Top = 8
@@ -4968,7 +4961,6 @@ object MainForm: TMainForm
         object tsQuestGiver: TTabSheet
           Caption = 'Quest Givers'
           ImageIndex = 3
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -5218,7 +5210,6 @@ object MainForm: TMainForm
         object tsQuestTaker: TTabSheet
           Caption = 'Quest Takers'
           ImageIndex = 4
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -5462,7 +5453,6 @@ object MainForm: TMainForm
         object tsStartScript: TTabSheet
           Caption = 'Start Script'
           ImageIndex = 6
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -5874,7 +5864,6 @@ object MainForm: TMainForm
         object tsCompleteScript: TTabSheet
           Caption = 'Complete Script'
           ImageIndex = 7
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -6288,7 +6277,6 @@ object MainForm: TMainForm
         object tsLocalesQuest: TTabSheet
           Caption = 'Locales Quest'
           ImageIndex = 9
-          ExplicitHeight = 619
           object gbLocalesQuest: TsGroupBox
             Left = 3
             Top = 3
@@ -6459,7 +6447,6 @@ object MainForm: TMainForm
           Caption = 'SQL-Script Tab'
           ImageIndex = 2
           OnShow = tsScriptTabShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -6513,7 +6500,6 @@ object MainForm: TMainForm
     object tsCreature: TTabSheet
       Caption = 'Creature'
       ImageIndex = 2
-      ExplicitHeight = 672
       object PageControl3: TPageControl
         Left = 0
         Top = 25
@@ -6523,10 +6509,8 @@ object MainForm: TMainForm
         Align = alClient
         MultiLine = True
         TabOrder = 0
-        ExplicitHeight = 647
         object tsSearchCreature: TTabSheet
           Caption = 'Search'
-          ExplicitHeight = 601
           object Panel4: TPanel
             Left = 0
             Top = 0
@@ -6816,7 +6800,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 540
             object btEditCreature: TBitBtn
               Left = 112
               Top = 10
@@ -7105,7 +7088,6 @@ object MainForm: TMainForm
         object tsEditCreature: TTabSheet
           Caption = 'Creature Template'
           ImageIndex = 1
-          ExplicitHeight = 601
           object lbctmechanic_immune_mask: TLabel
             Left = 237
             Top = 454
@@ -9196,7 +9178,6 @@ object MainForm: TMainForm
         object tsCreatureLocation: TTabSheet
           Caption = 'Creature Location'
           ImageIndex = 2
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -9602,7 +9583,6 @@ object MainForm: TMainForm
           Caption = 'Model Info'
           ImageIndex = 13
           OnShow = tsCreatureModelInfoShow
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -9800,7 +9780,6 @@ object MainForm: TMainForm
           Caption = 'Equip Template'
           ImageIndex = 14
           OnShow = tsCreatureEquipTemplateShow
-          ExplicitHeight = 601
           object Panel23: TPanel
             Left = 0
             Top = 0
@@ -9968,7 +9947,6 @@ object MainForm: TMainForm
         object tsCreatureLoot: TTabSheet
           Caption = 'Creature Loot'
           ImageIndex = 4
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -10383,7 +10361,6 @@ object MainForm: TMainForm
         object tsPickpocketLoot: TTabSheet
           Caption = 'Pickpocket Loot'
           ImageIndex = 7
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -10798,7 +10775,6 @@ object MainForm: TMainForm
         object tsSkinLoot: TTabSheet
           Caption = 'Skin Loot'
           ImageIndex = 8
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -11212,7 +11188,6 @@ object MainForm: TMainForm
         object tsNPCVendor: TTabSheet
           Caption = 'NPC Vendor'
           ImageIndex = 5
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -11584,7 +11559,6 @@ object MainForm: TMainForm
         object tsNPCTrainer: TTabSheet
           Caption = 'NPC Trainer'
           ImageIndex = 6
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -11973,9 +11947,6 @@ object MainForm: TMainForm
           Caption = 'Creature Template Addon'
           ImageIndex = 16
           OnShow = tsCreatureTemplateAddonShow
-          ExplicitLeft = -575
-          ExplicitTop = -12
-          ExplicitHeight = 601
           object lbcdCreatureTemplateAddonHint: TLabel
             Left = 8
             Top = 8
@@ -12121,7 +12092,6 @@ object MainForm: TMainForm
           Caption = 'Creature Addon'
           ImageIndex = 9
           OnShow = reaShow
-          ExplicitHeight = 601
           object lbcaCreatureAddonHint: TLabel
             Left = 8
             Top = 8
@@ -12266,7 +12236,6 @@ object MainForm: TMainForm
           Caption = 'NPC gossip'
           ImageIndex = 10
           OnShow = tsNPCgossipShow
-          ExplicitHeight = 601
           object lbHintNPCGossip: TLabel
             Left = 8
             Top = 8
@@ -12418,7 +12387,6 @@ object MainForm: TMainForm
         object tsCreatureMovement: TTabSheet
           Caption = 'Creature Movement'
           ImageIndex = 12
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -12934,7 +12902,6 @@ object MainForm: TMainForm
           Caption = 'On Kill Reputation'
           ImageIndex = 15
           OnShow = tsCreatureOnKillReputationShow
-          ExplicitHeight = 601
           object lbckRewOnKillRepFaction1: TLabel
             Left = 17
             Top = 64
@@ -13113,7 +13080,6 @@ object MainForm: TMainForm
           Caption = 'Involved in'
           ImageIndex = 11
           OnShow = tsCreatureUsedShow
-          ExplicitHeight = 601
           object pcCreatureInfo: TPageControl
             Left = 0
             Top = 41
@@ -13308,7 +13274,6 @@ object MainForm: TMainForm
         object tsCreatureEventAI: TTabSheet
           Caption = 'Event AI'
           ImageIndex = 17
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -14489,7 +14454,6 @@ object MainForm: TMainForm
           Caption = 'Script'
           ImageIndex = 3
           OnShow = tsCreatureScriptShow
-          ExplicitHeight = 601
           DesignSize = (
             872
             602)
@@ -14541,7 +14505,6 @@ object MainForm: TMainForm
         object tsLocalesNPCText: TTabSheet
           Caption = 'Locales NPC Text'
           ImageIndex = 18
-          ExplicitHeight = 601
           inline NPCTextLoc1: TNPCTextLoc
             Left = 0
             Top = 0
@@ -14549,6 +14512,7 @@ object MainForm: TMainForm
             Height = 602
             Align = alClient
             TabOrder = 0
+            ExplicitHeight = 602
             inherited gbNPCTextLoc: TGroupBox
               Height = 415
               ExplicitHeight = 415
@@ -14583,7 +14547,6 @@ object MainForm: TMainForm
     object tsGameObject: TTabSheet
       Caption = 'Game Object'
       ImageIndex = 3
-      ExplicitHeight = 672
       object PageControl4: TPageControl
         Left = 0
         Top = 25
@@ -14592,10 +14555,8 @@ object MainForm: TMainForm
         ActivePage = tsEditGO
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 647
         object tsSearchGO: TTabSheet
           Caption = 'Search'
-          ExplicitHeight = 619
           object Panel6: TPanel
             Left = 0
             Top = 0
@@ -14893,7 +14854,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 558
             object btEditGO: TBitBtn
               Left = 112
               Top = 10
@@ -15182,7 +15142,6 @@ object MainForm: TMainForm
         object tsEditGO: TTabSheet
           Caption = 'GO Template'
           ImageIndex = 1
-          ExplicitHeight = 619
           object gbGO1: TGroupBox
             Left = 3
             Top = 6
@@ -15806,7 +15765,6 @@ object MainForm: TMainForm
         object tsGOLocation: TTabSheet
           Caption = 'GO Location'
           ImageIndex = 2
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -16134,7 +16092,6 @@ object MainForm: TMainForm
           Caption = 'GO Loot'
           ImageIndex = 4
           OnShow = tsGOLootShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -16556,7 +16513,6 @@ object MainForm: TMainForm
           Caption = 'GO Script'
           ImageIndex = 6
           OnShow = tsButtonScriptShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -16978,7 +16934,6 @@ object MainForm: TMainForm
           Caption = 'Involved in'
           ImageIndex = 5
           OnShow = tsGOInvolvedInShow
-          ExplicitHeight = 619
           object pcGameObjectInfo: TPageControl
             Left = 0
             Top = 41
@@ -17172,7 +17127,6 @@ object MainForm: TMainForm
           Caption = 'Script'
           ImageIndex = 3
           OnShow = tsGOScriptShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -17235,7 +17189,6 @@ object MainForm: TMainForm
     object tsItem: TTabSheet
       Caption = 'Item'
       ImageIndex = 3
-      ExplicitHeight = 672
       object Panel9: TPanel
         Left = 0
         Top = 0
@@ -17250,13 +17203,11 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsItemTemplate
+        ActivePage = tsItemLootedFrom
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 647
         object tsSearchItem: TTabSheet
           Caption = 'Search'
-          ExplicitHeight = 619
           object Panel10: TPanel
             Left = 0
             Top = 0
@@ -17730,7 +17681,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 558
             object btEditItem: TBitBtn
               Left = 112
               Top = 10
@@ -18019,7 +17969,6 @@ object MainForm: TMainForm
         object tsItemTemplate: TTabSheet
           Caption = 'Item Template'
           ImageIndex = 1
-          ExplicitHeight = 619
           object lbitentry: TLabel
             Left = 8
             Top = 2
@@ -21167,7 +21116,6 @@ object MainForm: TMainForm
           Caption = 'Item Loot'
           ImageIndex = 4
           OnShow = tsItemLootShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -21589,7 +21537,6 @@ object MainForm: TMainForm
           Caption = 'Disenchant Loot'
           ImageIndex = 4
           OnShow = tsDisenchantLootShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -22011,7 +21958,6 @@ object MainForm: TMainForm
           Caption = 'Prospecting Loot'
           ImageIndex = 5
           OnShow = tsProspectingLootShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -22433,7 +22379,6 @@ object MainForm: TMainForm
           Caption = 'Milling Loot'
           ImageIndex = 9
           OnShow = tsMillingLootShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -22845,7 +22790,6 @@ object MainForm: TMainForm
         object tsReferenceLoot: TTabSheet
           Caption = 'Reference Loot'
           ImageIndex = 10
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -23308,7 +23252,6 @@ object MainForm: TMainForm
           Caption = 'Enchantment'
           ImageIndex = 6
           OnShow = tsEnchantmentShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -23589,7 +23532,6 @@ object MainForm: TMainForm
           Caption = 'Looted From'
           ImageIndex = 7
           OnShow = tsItemLootedFromShow
-          ExplicitHeight = 619
           object lvitItemLootedFrom: TJvListView
             Left = 0
             Top = 0
@@ -23620,12 +23562,6 @@ object MainForm: TMainForm
               item
               end
               item
-              end
-              item
-                Width = 150
-              end
-              item
-                Width = 150
               end>
             Groups = <>
             HideSelection = False
@@ -23634,7 +23570,7 @@ object MainForm: TMainForm
             TabOrder = 0
             ViewStyle = vsReport
             OnDblClick = lvitItemLootedFromDblClick
-            ColumnsOrder = '0=50,1=50,2=60,3=60,4=60,5=60,6=60,7=50,8=50,9=150,10=150'
+            ColumnsOrder = '0=50,1=50,2=60,3=60,4=60,5=60,6=60,7=50,8=50'
             ExtendedColumns = <
               item
               end
@@ -23653,20 +23589,13 @@ object MainForm: TMainForm
               item
               end
               item
-              end
-              item
-              end
-              item
               end>
-            ExplicitWidth = 880
-            ExplicitHeight = 626
           end
         end
         object tsItemInvolvedIn: TTabSheet
           Caption = 'Involved in'
           ImageIndex = 8
           OnShow = tsItemInvolvedInShow
-          ExplicitHeight = 619
           object Panel22: TPanel
             Left = 0
             Top = 0
@@ -23974,7 +23903,6 @@ object MainForm: TMainForm
           Caption = 'Script'
           ImageIndex = 3
           OnShow = tsItemScriptShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -24028,7 +23956,6 @@ object MainForm: TMainForm
     object tsOther: TTabSheet
       Caption = 'Other'
       ImageIndex = 4
-      ExplicitHeight = 672
       object Panel12: TPanel
         Left = 0
         Top = 0
@@ -24046,11 +23973,9 @@ object MainForm: TMainForm
         ActivePage = tsPageText
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 647
         object tsFishingLoot: TTabSheet
           Caption = 'Fishing Loot'
           ImageIndex = 4
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -24549,7 +24474,6 @@ object MainForm: TMainForm
         object tsPageText: TTabSheet
           Caption = 'Page Text'
           ImageIndex = 2
-          ExplicitHeight = 619
           object lvSearchPageText: TJvListView
             Left = 0
             Top = 89
@@ -24706,7 +24630,6 @@ object MainForm: TMainForm
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 401
             DesignSize = (
               872
               218)
@@ -24861,7 +24784,6 @@ object MainForm: TMainForm
         object tsGameEvents: TTabSheet
           Caption = 'Game Events'
           ImageIndex = 3
-          ExplicitHeight = 619
           object GroupBox2: TGroupBox
             Left = 0
             Top = 0
@@ -24970,7 +24892,6 @@ object MainForm: TMainForm
             Align = alBottom
             Enabled = False
             TabOrder = 1
-            ExplicitTop = 327
             DesignSize = (
               872
               292)
@@ -25535,7 +25456,6 @@ object MainForm: TMainForm
             Height = 239
             Align = alClient
             TabOrder = 2
-            ExplicitHeight = 238
             object lvSearchGameEvent: TJvListView
               Left = 1
               Top = 1
@@ -25606,7 +25526,6 @@ object MainForm: TMainForm
               Align = alBottom
               BevelOuter = bvNone
               TabOrder = 1
-              ExplicitTop = 178
               object btGameEventDel: TSpeedButton
                 Left = 843
                 Top = 27
@@ -25871,7 +25790,6 @@ object MainForm: TMainForm
           Caption = 'Script'
           ImageIndex = 3
           OnShow = tsOtherScriptShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -25925,7 +25843,6 @@ object MainForm: TMainForm
     object tsChars: TTabSheet
       Caption = 'Character'
       ImageIndex = 6
-      ExplicitHeight = 672
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -25946,10 +25863,8 @@ object MainForm: TMainForm
         ActivePage = tsCharacter
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 647
         object tsCharSearch: TTabSheet
           Caption = 'Search'
-          ExplicitHeight = 619
           object Panel16: TPanel
             Left = 0
             Top = 0
@@ -26132,13 +26047,11 @@ object MainForm: TMainForm
               item
                 Width = 50
               end>
-            ExplicitTop = 600
           end
         end
         object tsCharacter: TTabSheet
           Caption = 'Character'
           ImageIndex = 1
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -26742,7 +26655,6 @@ object MainForm: TMainForm
         object tsCharacterInventory: TTabSheet
           Caption = 'Inventory'
           ImageIndex = 3
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -27082,7 +26994,6 @@ object MainForm: TMainForm
           Caption = 'Script'
           ImageIndex = 2
           OnShow = tsCharacterScriptShow
-          ExplicitHeight = 619
           DesignSize = (
             872
             620)
@@ -27136,7 +27047,6 @@ object MainForm: TMainForm
     object tsSQL: TTabSheet
       Caption = 'SQL'
       ImageIndex = 5
-      ExplicitHeight = 672
       object Panel14: TPanel
         Left = 0
         Top = 0
@@ -27154,10 +27064,8 @@ object MainForm: TMainForm
         ActivePage = tsSQL1
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 647
         object tsSQL1: TTabSheet
           Caption = 'Recordset1'
-          ExplicitHeight = 619
           object Panel15: TPanel
             Left = 0
             Top = 0
