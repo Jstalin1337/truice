@@ -20,6 +20,8 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+			<DCC_RangeChecking>true</DCC_RangeChecking>
 			<DCC_DebugInformation>false</DCC_DebugInformation>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_E>false</DCC_E>

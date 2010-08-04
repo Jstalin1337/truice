@@ -3757,13 +3757,13 @@ end;
 procedure TMainForm.btDelQuestGiverClick(Sender: TObject);
 begin
   if Assigned(lvqtGiverTemplate.Selected) then
-    lvqtGiverTemplate.Selected.Delete;
+    lvqtGiverTemplate.DeleteSelected;
 end;
 
 procedure TMainForm.btDelQuestTakerClick(Sender: TObject);
 begin
   if Assigned(lvqtTakerTemplate.Selected) then
-    lvqtTakerTemplate.Selected.Delete;
+    lvqtTakerTemplate.DeleteSelected;
 end;
 
 procedure TMainForm.edSearchChange(Sender: TObject);
@@ -7588,7 +7588,7 @@ end;
 procedure TMainForm.LootDel(lvList: TJvListView);
 begin
   if Assigned(lvList.Selected) then
-    lvList.Selected.Delete;
+    lvList.DeleteSelected;
 end;           
 
 procedure TMainForm.SetLootEditFields(pfx: string;
@@ -7966,7 +7966,7 @@ end;
 procedure TMainForm.btVendorDelClick(Sender: TObject);
 begin
   if Assigned(lvcvNPCVendor.Selected) then
-    lvcvNPCVendor.Selected.Delete;
+    lvcvNPCVendor.DeleteSelected;
 end;
 
 procedure TMainForm.btFullScriptVendorClick(Sender: TObject);
@@ -8082,7 +8082,7 @@ end;
 procedure TMainForm.btTrainerDelClick(Sender: TObject);
 begin
   if Assigned(lvcrNPCTrainer.Selected) then
-    lvcrNPCTrainer.Selected.Delete;
+    lvcrNPCTrainer.DeleteSelected;
 end;
 
 procedure TMainForm.btFullScriptTrainerClick(Sender: TObject);
@@ -9250,7 +9250,7 @@ end;
 procedure TMainForm.btgeCreatureGuidDelClick(Sender: TObject);
 begin
   if Assigned(lvGameEventCreature.Selected) then
-    lvGameEventCreature.Selected.Delete;
+    lvGameEventCreature.DeleteSelected;
 end;
 
 procedure TMainForm.btgeCreatureGuidInvClick(Sender: TObject);
@@ -9274,7 +9274,7 @@ end;
 procedure TMainForm.btgeGOguidDelClick(Sender: TObject);
 begin
   if Assigned(lvGameEventGO.Selected) then
-    lvGameEventGO.Selected.Delete;
+    lvGameEventGO.DeleteSelected;
 end;
 
 procedure TMainForm.btgeGOGuidInvClick(Sender: TObject);
@@ -9972,7 +9972,7 @@ end;
 procedure TMainForm.ScriptDel(lvList: TJvListView);
 begin
   if Assigned(lvList.Selected) then
-    lvList.Selected.Delete;
+    lvList.DeleteSelected;
 end;           
 
 
@@ -10400,7 +10400,7 @@ end;
 procedure TMainForm.btCharInvDelClick(Sender: TObject);
 begin
   if Assigned(lvCharacterInventory.Selected) then
-    lvCharacterInventory.Selected.Delete;
+    lvCharacterInventory.DeleteSelected;
 end;
 
 procedure TMainForm.btCharInvUpdClick(Sender: TObject);

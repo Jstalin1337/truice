@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsItem
+    ActivePage = tsQuest
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsQuestPart2
+        ActivePage = tsQuestTaker
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsCreatureTemplateAddon
+        ActivePage = tsCreatureLoot
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -14552,7 +14552,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsEditGO
+        ActivePage = tsGOLocation
         Align = alClient
         TabOrder = 0
         object tsSearchGO: TTabSheet
@@ -17203,7 +17203,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsItemLootedFrom
+        ActivePage = tsItemTemplate
         Align = alClient
         TabOrder = 1
         object tsSearchItem: TTabSheet
