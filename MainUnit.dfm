@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsQuestTaker
+        ActivePage = tsSearch
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsCreatureLoot
+        ActivePage = tsNPCVendor
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -11188,12 +11188,14 @@ object MainForm: TMainForm
         object tsNPCVendor: TTabSheet
           Caption = 'NPC Vendor'
           ImageIndex = 5
+          ExplicitLeft = -199
+          ExplicitTop = 40
           DesignSize = (
             872
             602)
           object lbcvitem: TLabel
-            Left = 96
-            Top = 475
+            Left = 192
+            Top = 474
             Width = 19
             Height = 13
             Caption = 'item'
@@ -11378,7 +11380,7 @@ object MainForm: TMainForm
             ParentColor = False
           end
           object lbcvExtendedCost: TLabel
-            Left = 378
+            Left = 464
             Top = 476
             Width = 66
             Height = 13
@@ -11408,6 +11410,8 @@ object MainForm: TMainForm
               end
               item
                 Width = 200
+              end
+              item
               end>
             Groups = <>
             HideSelection = False
@@ -11417,8 +11421,10 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnChange = lvcvNPCVendorChange
             OnSelectItem = lvcvNPCVendorSelectItem
-            ColumnsOrder = '0=80,1=80,2=80,3=80,4=100,5=200'
+            ColumnsOrder = '0=80,1=80,2=80,3=80,4=100,5=200,6=50'
             ExtendedColumns = <
+              item
+              end
               item
               end
               item
@@ -11444,7 +11450,7 @@ object MainForm: TMainForm
             TabOrder = 1
           end
           object edcvitem: TJvComboEdit
-            Left = 96
+            Left = 192
             Top = 491
             Width = 80
             Height = 21
@@ -11481,7 +11487,7 @@ object MainForm: TMainForm
             OnButtonClick = GetItem
           end
           object edcvmaxcount: TLabeledEdit
-            Left = 200
+            Left = 285
             Top = 491
             Width = 80
             Height = 21
@@ -11491,7 +11497,7 @@ object MainForm: TMainForm
             TabOrder = 3
           end
           object edcvincrtime: TLabeledEdit
-            Left = 288
+            Left = 374
             Top = 491
             Width = 80
             Height = 21
@@ -11519,7 +11525,7 @@ object MainForm: TMainForm
             OnClick = btFullScriptVendorClick
           end
           object edcvExtendedCost: TJvComboEdit
-            Left = 378
+            Left = 464
             Top = 492
             Width = 80
             Height = 21
@@ -11554,6 +11560,16 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 7
             OnButtonClick = edcvExtendedCostButtonClick
+          end
+          object edcvslot: TLabeledEdit
+            Left = 97
+            Top = 491
+            Width = 80
+            Height = 21
+            EditLabel.Width = 16
+            EditLabel.Height = 13
+            EditLabel.Caption = 'slot'
+            TabOrder = 8
           end
         end
         object tsNPCTrainer: TTabSheet
