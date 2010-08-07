@@ -126,7 +126,7 @@ begin
   with TRegistry.Create do
   try
     RootKey:= HKEY_CURRENT_USER;
-    if OpenKey('Software\'+SoftwareCompany+'\' + Trim(ProgramName) + '\servers', false) then
+    if OpenKey('Software\' + Trim(ProgramName) + '\servers', false) then
       GetKeyNames(Items);
   finally
     Free;

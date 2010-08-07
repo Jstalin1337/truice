@@ -14,9 +14,9 @@ uses
 
 const
   REV = '9656';
-  VERSION_1   = '1';
-  VERSION_2   = '2';
-  VERSION_3   = '49';
+  VERSION_1   = '1'; //*10000
+  VERSION_2   = '2'; //*100
+  VERSION_3   = '50';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3;
 
   SCRIPT_TAB_NO_QUEST       =  8;
@@ -3455,7 +3455,7 @@ begin
   with TRegistry.Create do
   try
      RootKey := HKEY_CURRENT_USER;
-     OpenKey('SOFTWARE\Truice', true);
+     OpenKey('SOFTWARE\' + Trim(ProgramName), true);
      WriteString('Language', dmMain.Language);
      WriteString('DBCDir', dmMain.DBCDir);
      WriteInteger('DBCLocale', dmMain.DBCLocale);
@@ -3491,7 +3491,7 @@ begin
   with TRegistry.Create do
   try
     RootKey := HKEY_CURRENT_USER;
-    if not OpenKey('SOFTWARE\Truice', false) then exit;
+    if not OpenKey('SOFTWARE\' + Trim(ProgramName), false) then exit;
     try
       case ReadInteger('SQLSyntaxStyle') of
        0: SyntaxStyle := ssReplace;
@@ -3659,7 +3659,7 @@ begin
   with TRegistry.Create do
   try
     RootKey := HKEY_CURRENT_USER;
-    s := 'Software\'+SoftwareCompany+'\' + Trim(ProgramName) + '\';
+    s := 'Software\' + Trim(ProgramName) + '\';
     DeleteKey(s+'lvSearchItem\Columns');
     DeleteKey(s+'lvSearchItem\Sort');
     DeleteKey(s+'lvSearchItem');
