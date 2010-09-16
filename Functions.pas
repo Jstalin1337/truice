@@ -56,8 +56,8 @@ const
   I_Map                  =  4;
   I_ItemPetFood          =  1;
   I_AreaTable            = 11;
-  I_SpellName            = 142;
-  I_SpellRank            = 159;
+  I_SpellName            = 141;
+  I_SpellRank            = 158;
 
   MAX_ITEM_LENGTH        = 1000;
 
