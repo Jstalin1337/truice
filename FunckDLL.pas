@@ -21,7 +21,7 @@ begin
  with TRegistry.Create do
   try
     RootKey := HKEY_CURRENT_USER;
-    if not OpenKey('SOFTWARE\Indomit Software\Quice', false) then exit;
+    if not OpenKey('SOFTWARE\Truice', false) then exit;
     try
      case ReadInteger('Locales') of
       0: result:= '_loc1';
