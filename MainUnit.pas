@@ -2102,7 +2102,6 @@ type
 
     CharDBName: string;
     RealmDBName: string;
-    ScriptDBName: string;
 
     function Connect: boolean;
 

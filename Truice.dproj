@@ -20,6 +20,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>C:\Users\Public\Documents\RAD Studio\AlphaControlsv6.6\D2009\dcu;C:\Users\Public\Documents\RAD Studio\AlphaControlsv6.6\D2009;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
 			<DCC_RangeChecking>true</DCC_RangeChecking>
 			<DCC_DebugInformation>false</DCC_DebugInformation>

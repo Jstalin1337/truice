@@ -31,10 +31,8 @@ type
     cbUnicode: TCheckBox;
     edcDatabase: TComboBox;
     lbcDatabase: TLabel;
-    edsDatabase: TComboBox;
     edrDatabase: TComboBox;
     lbrDatabase: TLabel;
-    lbsDatabase: TLabel;
     procedure btConnectClick(Sender: TObject);
     procedure edServerDropDown(Sender: TObject);
     procedure GetDataBases(Sender: TObject);
@@ -79,7 +77,6 @@ begin
   edExit(nil);
   MainForm.CharDBName := edcDatabase.Text;
   MainForm.RealmDBName := edrDatabase.Text;
-  MainForm.ScriptDBName := edsDatabase.Text;
   try
     if MainForm.MyMangosConnection.Connected then
       MainForm.MyMangosConnection.Disconnect;
@@ -141,7 +138,6 @@ begin
   edmDatabase.Items.Clear;
   edcDatabase.Items.Clear;
   edrDatabase.Items.Clear;
-  edsDatabase.Items.Clear;
   OldCursor := Screen.Cursor;
   Screen.Cursor := crSQLWait;
   try
@@ -151,7 +147,6 @@ begin
     MainForm.MyMangosConnection.GetCatalogNames(edmDatabase.Items);
     edcDatabase.Items.AddStrings(edmDatabase.Items);
     edrDatabase.Items.AddStrings(edmDatabase.Items);
-    edsDatabase.Items.AddStrings(edmDatabase.Items);
     if not WasConnected then
       MainForm.MyMangosConnection.Disconnect;
   finally
@@ -230,7 +225,6 @@ begin
   WriteToRegistry(CurrentUser, '', 'cDatabase', tpString, edcDatabase.Text);
   WriteToRegistry(CurrentUser, '', 'mDatabase', tpString, edmDatabase.Text);
   WriteToRegistry(CurrentUser, '', 'rDatabase', tpString, edrDatabase.Text);
-  WriteToRegistry(CurrentUser, '', 'sDatabase', tpString, edsDatabase.Text);
   WriteToRegistry(CurrentUser, '', 'Port',      tpString, edPort.Text);
   WriteToRegistry(CurrentUser, '', 'Charset',   tpString, edCharSet.Text);
   WriteToRegistry(CurrentUser, '', 'Unicode',   tpBool,   cbUnicode.Checked);
@@ -240,7 +234,6 @@ begin
   WriteToRegistry(CurrentUser, 'servers\' + edServer.Text, 'mDatabase', tpString, edmDatabase.Text);
   WriteToRegistry(CurrentUser, 'servers\' + edServer.Text, 'cDatabase', tpString, edcDatabase.Text);
   WriteToRegistry(CurrentUser, 'servers\' + edServer.Text, 'rDatabase', tpString, edrDatabase.Text);
-  WriteToRegistry(CurrentUser, 'servers\' + edServer.Text, 'sDatabase', tpString, edsDatabase.Text);
   WriteToRegistry(CurrentUser, 'servers\' + edServer.Text, 'Port',      tpString, edPort.Text);
   WriteToRegistry(CurrentUser, 'servers\' + edServer.Text, 'Charset',   tpString, edCharSet.Text);
   WriteToRegistry(CurrentUser, 'servers\' + edServer.Text, 'Unicode',   tpBool,   cbUnicode.Checked);
@@ -273,7 +266,6 @@ begin
   edmDatabase.Clear;
   edcDatabase.Clear;
   edrDatabase.Clear;
-  edsDatabase.Clear;
   edCharSet.Clear;
   cbUnicode.Checked:=false;
 end;
@@ -308,8 +300,6 @@ begin
       edcDatabase.ItemIndex:=edcDatabase.Items.IndexOf(cDBName);
     if rDBname<>'' then
       edrDatabase.ItemIndex:=edrDatabase.Items.IndexOf(rDBName);
-    if sDBname<>'' then
-      edsDatabase.ItemIndex:=edsDatabase.Items.IndexOf(sDBName);
   except
     if edmDatabase.Text='' then
       edmDatabase.Text:=mDBName;
@@ -317,8 +307,6 @@ begin
       edcDatabase.Text:=cDBName;
     if edrDatabase.Text='' then
       edrDatabase.Text:=rDBName;
-    if edsDatabase.Text='' then
-      edsDatabase.Text:=sDBName;
   end;
 
   AC := edServer;
@@ -357,10 +345,6 @@ begin
   end;
   try
     edrDatabase.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'rDatabase',  tpString);
-  except
-  end;
-  try
-    edsDatabase.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'sDatabase',  tpString);
   except
   end;
   try

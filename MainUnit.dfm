@@ -11188,8 +11188,6 @@ object MainForm: TMainForm
         object tsNPCVendor: TTabSheet
           Caption = 'NPC Vendor'
           ImageIndex = 5
-          ExplicitLeft = -199
-          ExplicitTop = 40
           DesignSize = (
             872
             602)
