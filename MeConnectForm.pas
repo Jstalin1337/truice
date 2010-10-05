@@ -78,9 +78,9 @@ begin
   MainForm.CharDBName := edcDatabase.Text;
   MainForm.RealmDBName := edrDatabase.Text;
   try
-    if MainForm.MyMangosConnection.Connected then
-      MainForm.MyMangosConnection.Disconnect;
-    MainForm.MyMangosConnection.Connect;
+    if MainForm.MyTrinityConnection.Connected then
+      MainForm.MyTrinityConnection.Disconnect;
+    MainForm.MyTrinityConnection.Connect;
     if Trim(edCharSet.Text) <> '' then
     begin
       MainForm.MyTempQuery.SQL.Text := Format('SET NAMES %s',[edCharSet.Text]);
@@ -141,14 +141,14 @@ begin
   OldCursor := Screen.Cursor;
   Screen.Cursor := crSQLWait;
   try
-    WasConnected := MainForm.MyMangosConnection.Connected;
+    WasConnected := MainForm.MyTrinityConnection.Connected;
     if not WasConnected then    
-      MainForm.MyMangosConnection.Connect;
-    MainForm.MyMangosConnection.GetCatalogNames(edmDatabase.Items);
+      MainForm.MyTrinityConnection.Connect;
+    MainForm.MyTrinityConnection.GetCatalogNames(edmDatabase.Items);
     edcDatabase.Items.AddStrings(edmDatabase.Items);
     edrDatabase.Items.AddStrings(edmDatabase.Items);
     if not WasConnected then
-      MainForm.MyMangosConnection.Disconnect;
+      MainForm.MyTrinityConnection.Disconnect;
   finally
     Screen.Cursor := OldCursor;
   end;
@@ -157,11 +157,11 @@ end;
 procedure TMeConnectForm.edExit(Sender: TObject);
 begin
   try
-    MainForm.MyMangosConnection.Password := edPassword.Text;
-    MainForm.MyMangosConnection.HostName := edServer.Text;
-    MainForm.MyMangosConnection.User := edUsername.Text;
-    MainForm.MyMangosConnection.Database := edmDatabase.Text;
-    MainForm.MyMangosConnection.Port := StrToIntDef(edPort.Text, 3306);
+    MainForm.MyTrinityConnection.Password := edPassword.Text;
+    MainForm.MyTrinityConnection.HostName := edServer.Text;
+    MainForm.MyTrinityConnection.User := edUsername.Text;
+    MainForm.MyTrinityConnection.Database := edmDatabase.Text;
+    MainForm.MyTrinityConnection.Port := StrToIntDef(edPort.Text, 3306);
   except
     ActiveControl := Sender as TWinControl;
     raise;

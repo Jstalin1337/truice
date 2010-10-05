@@ -104,7 +104,7 @@ end;
 
 procedure TAreaTableForm.FormCreate(Sender: TObject);
 begin
-  if not MainForm.MyMangosConnection.Connected then Exit;
+  if not MainForm.MyTrinityConnection.Connected then Exit;
   dmMain.Translate.CreateDefaultTranslation(TForm(Self));
   dmMain.Translate.TranslateForm(TForm(Self));
 end;

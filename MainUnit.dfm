@@ -27153,16 +27153,16 @@ object MainForm: TMainForm
       end
     end
   end
-  object MyMangosConnection: TZConnection
-    Protocol = 'mysql'
+  object MyTrinityConnection: TZConnection
+    Protocol = 'mysql-5'
     Port = 3306
-    Database = 'mangos'
-    BeforeConnect = MyMangosConnectionBeforeConnect
+    Database = 'world'
+    BeforeConnect = MyTrinityConnectionBeforeConnect
     Left = 600
     Top = 8
   end
   object MyQuery: TZQuery
-    Connection = MyMangosConnection
+    Connection = MyTrinityConnection
     Params = <>
     Left = 632
     Top = 8
@@ -27280,19 +27280,19 @@ object MainForm: TMainForm
     end
   end
   object MyTempQuery: TZQuery
-    Connection = MyMangosConnection
+    Connection = MyTrinityConnection
     Params = <>
     Left = 664
     Top = 8
   end
   object MyLootQuery: TZQuery
-    Connection = MyMangosConnection
+    Connection = MyTrinityConnection
     Params = <>
     Left = 693
     Top = 9
   end
   object MyQueryAll: TZQuery
-    Connection = MyMangosConnection
+    Connection = MyTrinityConnection
     Params = <>
     Left = 725
     Top = 9
@@ -27398,7 +27398,7 @@ object MainForm: TMainForm
     Top = 474
   end
   object MySQLQuery: TZQuery
-    Connection = MyMangosConnection
+    Connection = MyTrinityConnection
     Params = <>
     Left = 849
     Top = 474
@@ -27426,7 +27426,7 @@ object MainForm: TMainForm
   end
   object ZSQLProcessor: TZSQLProcessor
     Params = <>
-    Connection = MyMangosConnection
+    Connection = MyTrinityConnection
     Delimiter = ';'
     Left = 568
     Top = 9

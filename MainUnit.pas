@@ -81,7 +81,7 @@ type
 
   TMainForm = class(TForm)
     MainMenu: TMainMenu;
-    MyMangosConnection: TZConnection;
+    MyTrinityConnection: TZConnection;
     MyLootQuery: TZQuery;
     MyQuery: TZQuery;
     MyQueryAll: TZQuery;
@@ -1619,7 +1619,7 @@ type
       Selected: Boolean);
     procedure lvcrNPCTrainerSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
-    procedure MyMangosConnectionBeforeConnect(Sender: TObject);
+    procedure MyTrinityConnectionBeforeConnect(Sender: TObject);
     procedure btCreatureLootAddClick(Sender: TObject);
     procedure btCreatureLootUpdClick(Sender: TObject);
     procedure btCreatureLootDelClick(Sender: TObject);
@@ -2146,7 +2146,7 @@ uses StrUtils, Functions, WhoUnit, ItemUnit, CreatureOrGOUnit, ListUnit, CheckUn
 
 procedure TMainForm.FormActivate(Sender: TObject);
 begin
-  if not MyMangosConnection.Connected then
+  if not MyTrinityConnection.Connected then
     Application.Terminate
   else
   begin
@@ -2433,7 +2433,7 @@ end;
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Spells.Free;
-  MyMangosConnection.Disconnect;
+  MyTrinityConnection.Disconnect;
   SaveToReg;
 end;
 
@@ -2607,7 +2607,7 @@ end;
 
 procedure TMainForm.UpdateCaption;
 begin
-  Caption := Format('Truice - Connection: %s:%d / %s', [MyMangosConnection.HostName, MyMangosConnection.Port, GetDBVersion]);
+  Caption := Format('Truice - Connection: %s:%d / %s', [MyTrinityConnection.HostName, MyTrinityConnection.Port, GetDBVersion]);
   Application.Title := Caption;
 end;
 
@@ -3220,7 +3220,7 @@ begin
   CheckForm.Show;
   CheckForm.pbCheckQuest.Position := 0;
   CheckForm.btStop.SetFocus;
-  Thread := TCheckQuestThread.Create(MyMangosConnection, qList, false);
+  Thread := TCheckQuestThread.Create(MyTrinityConnection, qList, false);
 end;
 
 procedure TMainForm.btCheckAllClick(Sender: TObject);
@@ -3243,7 +3243,7 @@ begin
   CheckForm.pbCheckQuest.Position := 0;  
   CheckForm.btStop.SetFocus;
 
-  Thread := TCheckQuestThread.Create(MyMangosConnection, qList, false);
+  Thread := TCheckQuestThread.Create(MyTrinityConnection, qList, false);
 end;
 
 procedure TMainForm.ClearFields(Where: TType);
@@ -5911,7 +5911,7 @@ begin
     else
     begin
       Result := false;
-      if not MyMangosConnection.Connected then
+      if not MyTrinityConnection.Connected then
         Application.Terminate;
     end;
   finally
@@ -7470,17 +7470,17 @@ begin
   end;
 end;
 
-procedure TMainForm.MyMangosConnectionBeforeConnect(Sender: TObject);
+procedure TMainForm.MyTrinityConnectionBeforeConnect(Sender: TObject);
 begin
   try
-//    MyMangosConnection.Options.Charset := ReadFromRegistry(CurrentUser, '', 'Charset', tpString);
+//    MyTrinityConnection.Options.Charset := ReadFromRegistry(CurrentUser, '', 'Charset', tpString);
   except
-//    MyMangosConnection.Options.Charset := '';
+//    MyTrinityConnection.Options.Charset := '';
   end;
   try
-//    MyMangosConnection.Options.UseUnicode := ReadFromRegistry(CurrentUser, '', 'Unicode', tpBool);
+//    MyTrinityConnection.Options.UseUnicode := ReadFromRegistry(CurrentUser, '', 'Unicode', tpBool);
   except
-//    MyMangosConnection.Options.UseUnicode := false;
+//    MyTrinityConnection.Options.UseUnicode := false;
   end;
 end;
 
@@ -9480,8 +9480,8 @@ end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
 begin
-  if MyMangosConnection.Connected then
-    MyMangosConnection.Ping;
+  if MyTrinityConnection.Connected then
+    MyTrinityConnection.Ping;
 end;
 
 procedure TMainForm.btSQLOpenClick(Sender: TObject);
