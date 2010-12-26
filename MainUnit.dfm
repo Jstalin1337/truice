@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsCreatureScript
+        ActivePage = tsCreatureEventAI
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -14467,6 +14467,174 @@ object MainForm: TMainForm
         object tsCreatureSmartAI: TTabSheet
           Caption = 'SmartAI'
           ImageIndex = 19
+          DesignSize = (
+            872
+            602)
+          object lvcySmartAI: TJvListView
+            Left = 3
+            Top = 12
+            Width = 855
+            Height = 278
+            Anchors = [akLeft, akTop, akRight]
+            Columns = <
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end>
+            Groups = <>
+            HideSelection = False
+            ReadOnly = True
+            RowSelect = True
+            TabOrder = 0
+            ViewStyle = vsReport
+            OnChange = lvcnEventAIChange
+            OnSelectItem = lvcnEventAISelectItem
+            ColumnsOrder = 
+              '0=36,1=36,2=36,3=36,4=36,5=36,6=36,7=36,8=36,9=36,10=36,11=36,12' +
+              '=36,13=36,14=36,15=36,16=36,17=36,18=36,19=36,20=36,21=36,22=36,' +
+              '23=50,24=50,25=50,26=50,27=50'
+            ExtendedColumns = <
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end>
+          end
+          object cyFullScript: TButton
+            Left = 726
+            Top = 574
+            Width = 145
+            Height = 25
+            Caption = 'Show FULL SmartAI Script'
+            TabOrder = 1
+            OnClick = cyFullScriptClick
+          end
         end
         object tsLocalesNPCText: TTabSheet
           Caption = 'Locales NPC Text'

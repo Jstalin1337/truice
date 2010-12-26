@@ -19,12 +19,12 @@ const
   VERSION_3   = '50';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3;
 
-  SCRIPT_TAB_NO_QUEST       =  8;
-  SCRIPT_TAB_NO_CREATURE    = 17;
-  SCRIPT_TAB_NO_GAMEOBJECT  =  6;
+  SCRIPT_TAB_NO_QUEST       =   8;
+  SCRIPT_TAB_NO_CREATURE    =  19;
+  SCRIPT_TAB_NO_GAMEOBJECT  =   6;
   SCRIPT_TAB_NO_ITEM        =  10;
-  SCRIPT_TAB_NO_OTHER       =  3;
-  SCRIPT_TAB_NO_CHARACTER   =  3;
+  SCRIPT_TAB_NO_OTHER       =   3;
+  SCRIPT_TAB_NO_CHARACTER   =   3;
 
   WM_FREEQL = WM_USER + 1;
 
@@ -39,6 +39,7 @@ const
   PFX_CREATURE_MOVEMENT           = 'cm';
   PFX_CREATURE_LOOT_TEMPLATE      = 'co';
   PFX_CREATURE_EVENTAI            = 'cn';
+  PFX_CREATURE_SMARTAI            = 'cy';
   PFX_PICKPOCKETING_LOOT_TEMPLATE = 'cp';
   PFX_SKINNING_LOOT_TEMPLATE      = 'cs';
   PFX_NPC_VENDOR                  = 'cv';
@@ -61,6 +62,7 @@ const
   PFX_CHARACTER                   = 'ht';
   PFX_CHARACTER_INVENTORY         = 'hi';
   mob_eventai = 'EventAI';
+  mob_smartai = 'SmartAI';
   PFX_LOCALES_QUEST               = 'lq';
   PFX_LOCALES_NPC_TEXT            = 'lx';
 
@@ -1524,6 +1526,8 @@ type
     edgtWDBVerified: TLabeledEdit;
     edcvslot: TLabeledEdit;
     tsCreatureSmartAI: TTabSheet;
+    lvcySmartAI: TJvListView;
+    cyFullScript: TButton;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1915,6 +1919,7 @@ type
     procedure btFullScriptReferenceLootClick(Sender: TObject);
     procedure edirentryButtonClick(Sender: TObject);
     procedure GetSpawnMask(Sender: TObject);
+    procedure cyFullScriptClick(Sender: TObject);
 
 
 
@@ -2046,6 +2051,8 @@ type
     procedure EventAIUpd(pfx: string; lvList: TJvListView);
     procedure EventAiDel(lvList: TJvListView);
     procedure ShowFullEventAiScript(TableName: string; lvList: TJvListView; Memo: TMemo; entry: string);
+
+    procedure ShowFullSmartAIScript(TableName: string; lvList: TJvListView; Memo: TMemo; entry: string);
     
     {other}
     function MakeUpdate(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
@@ -4145,8 +4152,8 @@ begin
     if npcflag and 16 = 16 then istrainer := true else istrainer := false;
 
     // is eventAI ?
-    if MyQuery.FieldByName('AIName').AsString = mob_eventai then
-    isEventAI := true else isEventAI := false;
+    //if MyQuery.FieldByName('AIName').AsString = mob_eventai then
+    isEventAI := true; //else isEventAI := false;
 
     if MyQuery.FieldByName('equipment_id').AsInteger <> 0 then isEquip:= true else isEquip:= false;
 
@@ -4184,6 +4191,13 @@ begin
       '`action3_type` as `a3t`,  `action3_param1` as `a31`,  `action3_param2` as `a32`,  `action3_param3` as `a33`, '+
       '`comment` as `cmt` FROM `creature_ai_scripts` WHERE `creature_id`=%d',[Entry]), lvcnEventAI);
     //tsCreatureEventAI.TabVisible := isEventAI;
+
+    LoadQueryToListView(Format('SELECT `entryorguid` as `entry`,  `source_type` as `src`, `id`, `link`, `event_type` as `et`,  '+
+      '`event_phase_mask` as `epm`, `event_chance` as `ec`,  `event_flags` as `ef`, `event_param1` as `ep1`,  `event_param2` as `ep2`, '+
+      '`event_param3` as `ep3`, `event_param4` as `ep4`,  `action_type` as `at`,  `action_param1` as `a1`,  `action_param2` as `a2`, '+
+      '`action_param3` as `a3`, `action_param4` as `a4`,  `action_param5` as `a5`,  `action_param6` as `a6`, `target_type` as `tt`, '+
+      '`target_param1` as `t1`,  `target_param2` as `t2`,  `target_param3` as `t3`, `target_x` as `tx`, `target_y` as `ty`, '+
+      '`target_z` as `tz`, `target_o` as `to`, `comment` as `cmt` FROM `smart_scripts` WHERE `entryorguid`=%d',[Entry]), lvcySmartAI);
 
     if istrainer then
     begin
@@ -7836,6 +7850,94 @@ begin
     Memo.Text := Format('DELETE FROM `%s` WHERE (`creature_id`=%s);', [TableName, entry]);
 end;
 
+procedure TMainForm.ShowFullSmartAIScript(TableName: string; lvList: TJvListView;
+  Memo: TMemo; entry: string);
+var
+  i: integer;
+  Values: string;
+begin
+  Memo.Clear;
+  Values := '';
+  if lvList.Items.Count<>0 then
+  begin
+    for i := 0 to lvList.Items.Count - 2 do
+    begin
+      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+''''+'%s'+''''+'),'#13#10,[
+        lvList.Items[i].Caption,
+        lvList.Items[i].SubItems[0],
+        lvList.Items[i].SubItems[1],
+        lvList.Items[i].SubItems[2],
+        lvList.Items[i].SubItems[3],
+        lvList.Items[i].SubItems[4],
+        lvList.Items[i].SubItems[5],
+        lvList.Items[i].SubItems[6],
+        lvList.Items[i].SubItems[7],
+        lvList.Items[i].SubItems[8],
+        lvList.Items[i].SubItems[9],
+        lvList.Items[i].SubItems[10],
+        lvList.Items[i].SubItems[11],
+        lvList.Items[i].SubItems[12],
+        lvList.Items[i].SubItems[13],
+        lvList.Items[i].SubItems[14],
+        lvList.Items[i].SubItems[15],
+        lvList.Items[i].SubItems[16],
+        lvList.Items[i].SubItems[17],
+        lvList.Items[i].SubItems[18],
+        lvList.Items[i].SubItems[19],
+        lvList.Items[i].SubItems[20],
+        lvList.Items[i].SubItems[21],
+        lvList.Items[i].SubItems[22],
+        lvList.Items[i].SubItems[23],
+        lvList.Items[i].SubItems[24],
+        lvList.Items[i].SubItems[25],
+        lvList.Items[i].SubItems[26]
+      ]);
+    end;
+    i := lvList.Items.Count - 1;
+    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+''''+'%s'+''''+');',[
+      lvList.Items[i].Caption,
+      lvList.Items[i].SubItems[0],
+      lvList.Items[i].SubItems[1],
+      lvList.Items[i].SubItems[2],
+      lvList.Items[i].SubItems[3],
+      lvList.Items[i].SubItems[4],
+      lvList.Items[i].SubItems[5],
+      lvList.Items[i].SubItems[6],
+      lvList.Items[i].SubItems[7],
+      lvList.Items[i].SubItems[8],
+      lvList.Items[i].SubItems[9],
+      lvList.Items[i].SubItems[10],
+      lvList.Items[i].SubItems[11],
+      lvList.Items[i].SubItems[12],
+      lvList.Items[i].SubItems[13],
+      lvList.Items[i].SubItems[14],
+      lvList.Items[i].SubItems[15],
+      lvList.Items[i].SubItems[16],
+      lvList.Items[i].SubItems[17],
+      lvList.Items[i].SubItems[18],
+      lvList.Items[i].SubItems[19],
+      lvList.Items[i].SubItems[20],
+      lvList.Items[i].SubItems[21],
+      lvList.Items[i].SubItems[22],
+      lvList.Items[i].SubItems[23],
+      lvList.Items[i].SubItems[24],
+      lvList.Items[i].SubItems[25],
+      lvList.Items[i].SubItems[26]
+    ]);
+  end;
+  if values<>'' then
+  begin
+      Memo.Text := Format('DELETE FROM `%0:s` WHERE (`entryorguid`=%1:s);'#13#10+
+        'INSERT INTO `%0:s` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, '+
+				'`event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, '+
+				'`action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, '+
+				'`action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, '+
+				'`target_y`, `target_z`, `target_o`, `comment`) VALUES '#13#10'%2:s',[TableName, entry, Values]);
+  end
+  else
+    Memo.Text := Format('DELETE FROM `%s` WHERE (`entryorguid`=%s);', [TableName, entry]);
+end;
+
 procedure TMainForm.btPickpocketLootAddClick(Sender: TObject);
 begin
   LootAdd('edcp', lvcoPickpocketLoot);
@@ -7934,7 +8036,11 @@ begin
   ShowFullEventAiScript('creature_ai_scripts', lvcnEventAI, mectScript, edctEntry.Text);
 end;
 
-
+procedure TMainForm.cyFullScriptClick(Sender: TObject);
+begin
+  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
+  ShowFullSmartAIScript('smart_scripts', lvcySmartAI, mectScript, edctEntry.Text);
+end;
 
 procedure TMainForm.btFullScriptReferenceLootClick(Sender: TObject);
 begin
