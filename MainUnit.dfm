@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsQuest
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsSearch
+        ActivePage = tsQuestPart1
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsNPCVendor
+        ActivePage = tsCreatureScript
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -14464,6 +14464,41 @@ object MainForm: TMainForm
             TabOrder = 25
           end
         end
+        object tsCreatureSmartAI: TTabSheet
+          Caption = 'SmartAI'
+          ImageIndex = 19
+        end
+        object tsLocalesNPCText: TTabSheet
+          Caption = 'Locales NPC Text'
+          ImageIndex = 18
+          inline NPCTextLoc1: TNPCTextLoc
+            Left = 0
+            Top = 0
+            Width = 872
+            Height = 602
+            Align = alClient
+            TabOrder = 0
+            ExplicitHeight = 602
+            inherited gbNPCTextLoc: TGroupBox
+              Height = 415
+              ExplicitHeight = 415
+              inherited lblxentry: TLabel
+                Width = 24
+                ExplicitWidth = 24
+              end
+              inherited Panel1: TPanel
+                Left = 161
+                Top = 147
+                Width = 524
+                Font.Color = cl3DDkShadow
+                Font.Name = 'Microsoft Sans Serif'
+                ExplicitLeft = 161
+                ExplicitTop = 147
+                ExplicitWidth = 524
+              end
+            end
+          end
+        end
         object tsCreatureScript: TTabSheet
           Caption = 'Script'
           ImageIndex = 3
@@ -14516,37 +14551,6 @@ object MainForm: TMainForm
             OnClick = btExecuteCreatureScriptClick
           end
         end
-        object tsLocalesNPCText: TTabSheet
-          Caption = 'Locales NPC Text'
-          ImageIndex = 18
-          inline NPCTextLoc1: TNPCTextLoc
-            Left = 0
-            Top = 0
-            Width = 872
-            Height = 602
-            Align = alClient
-            TabOrder = 0
-            ExplicitHeight = 602
-            inherited gbNPCTextLoc: TGroupBox
-              Height = 415
-              ExplicitHeight = 415
-              inherited lblxentry: TLabel
-                Width = 24
-                ExplicitWidth = 24
-              end
-              inherited Panel1: TPanel
-                Left = 161
-                Top = 147
-                Width = 524
-                Font.Color = cl3DDkShadow
-                Font.Name = 'Microsoft Sans Serif'
-                ExplicitLeft = 161
-                ExplicitTop = 147
-                ExplicitWidth = 524
-              end
-            end
-          end
-        end
       end
       object Panel3: TPanel
         Left = 0
@@ -14566,7 +14570,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsGOLocation
+        ActivePage = tsSearchGO
         Align = alClient
         TabOrder = 0
         object tsSearchGO: TTabSheet
@@ -17217,7 +17221,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsItemTemplate
+        ActivePage = tsSearchItem
         Align = alClient
         TabOrder = 1
         object tsSearchItem: TTabSheet
@@ -27158,13 +27162,13 @@ object MainForm: TMainForm
     Port = 3306
     Database = 'world'
     BeforeConnect = MyTrinityConnectionBeforeConnect
-    Left = 600
+    Left = 632
     Top = 8
   end
   object MyQuery: TZQuery
     Connection = MyTrinityConnection
     Params = <>
-    Left = 632
+    Left = 656
     Top = 8
   end
   object pmQuest: TPopupMenu
@@ -27282,24 +27286,24 @@ object MainForm: TMainForm
   object MyTempQuery: TZQuery
     Connection = MyTrinityConnection
     Params = <>
-    Left = 664
+    Left = 680
     Top = 8
   end
   object MyLootQuery: TZQuery
     Connection = MyTrinityConnection
     Params = <>
-    Left = 693
+    Left = 709
     Top = 9
   end
   object MyQueryAll: TZQuery
     Connection = MyTrinityConnection
     Params = <>
-    Left = 725
+    Left = 733
     Top = 9
   end
   object pmCreature: TPopupMenu
-    Left = 849
-    Top = 474
+    Left = 385
+    Top = 10
     object nEditCreature: TMenuItem
       Caption = 'Edit Creature'
       OnClick = btEditCreatureClick
@@ -27324,8 +27328,8 @@ object MainForm: TMainForm
     end
   end
   object pmGO: TPopupMenu
-    Left = 849
-    Top = 474
+    Left = 409
+    Top = 10
     object nEditGO: TMenuItem
       Caption = 'Edit GO'
       OnClick = btEditCreatureClick
@@ -27347,8 +27351,8 @@ object MainForm: TMainForm
   end
   object pmBrowseSite: TPopupMenu
     AutoPopup = False
-    Left = 849
-    Top = 474
+    Left = 433
+    Top = 10
     object pmwowhead: TMenuItem
       Caption = 'wowhead'
       OnClick = pmSiteClick
@@ -27371,8 +27375,8 @@ object MainForm: TMainForm
     end
   end
   object pmItem: TPopupMenu
-    Left = 849
-    Top = 474
+    Left = 457
+    Top = 10
     object nEditItem: TMenuItem
       Caption = 'Edit Item'
       OnClick = btEditItemClick
@@ -27394,18 +27398,18 @@ object MainForm: TMainForm
   end
   object DataSource: TDataSource
     DataSet = MySQLQuery
-    Left = 849
-    Top = 474
+    Left = 817
+    Top = 10
   end
   object MySQLQuery: TZQuery
     Connection = MyTrinityConnection
     Params = <>
-    Left = 849
-    Top = 474
+    Left = 481
+    Top = 10
   end
   object ActionList1: TActionList
-    Left = 848
-    Top = 473
+    Left = 504
+    Top = 9
     object BrowseURL1: TBrowseURL
       Category = 'Internet'
       Caption = '&Browse URL'
@@ -27421,21 +27425,21 @@ object MainForm: TMainForm
     ProxyIgnoreList = '<local>'
     OnDoneStream = JvHttpUrlGrabberDoneStream
     OnError = JvHttpUrlGrabberError
-    Left = 848
-    Top = 473
+    Left = 528
+    Top = 9
   end
   object ZSQLProcessor: TZSQLProcessor
     Params = <>
     Connection = MyTrinityConnection
     Delimiter = ';'
-    Left = 568
+    Left = 608
     Top = 9
   end
   object Timer1: TTimer
     Interval = 60000
     OnTimer = Timer1Timer
-    Left = 848
-    Top = 472
+    Left = 552
+    Top = 8
   end
   object sHintManager1: TsHintManager
     HintKind.Bevel = 0
@@ -27454,7 +27458,7 @@ object MainForm: TMainForm
     HintKind.Font.Style = []
     Predefinitions = shComicsTransparent
     SkinSection = 'HINT'
-    Left = 848
-    Top = 472
+    Left = 584
+    Top = 8
   end
 end

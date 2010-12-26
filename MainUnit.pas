@@ -1523,6 +1523,7 @@ type
     edqtunk0: TLabeledEdit;
     edgtWDBVerified: TLabeledEdit;
     edcvslot: TLabeledEdit;
+    tsCreatureSmartAI: TTabSheet;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1914,7 +1915,6 @@ type
     procedure btFullScriptReferenceLootClick(Sender: TObject);
     procedure edirentryButtonClick(Sender: TObject);
     procedure GetSpawnMask(Sender: TObject);
-    
 
 
 
@@ -8892,6 +8892,7 @@ begin
     F.Free;
   end;
 end;
+
 
 procedure TMainForm.LangButtonClick(Sender: TObject);
 begin
