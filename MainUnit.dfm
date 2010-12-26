@@ -13288,8 +13288,6 @@ object MainForm: TMainForm
         object tsCreatureEventAI: TTabSheet
           Caption = 'Event AI'
           ImageIndex = 17
-          ExplicitLeft = -229
-          ExplicitTop = -26
           DesignSize = (
             872
             602)
@@ -14468,8 +14466,7 @@ object MainForm: TMainForm
         object tsCreatureSmartAI: TTabSheet
           Caption = 'SmartAI'
           ImageIndex = 19
-          ExplicitLeft = -527
-          ExplicitTop = 24
+          ExplicitTop = 45
           DesignSize = (
             872
             602)
@@ -14643,6 +14640,195 @@ object MainForm: TMainForm
             NumGlyphs = 2
             OnClick = btSmartAIUpdClick
           end
+          object lbcysource_type: TLabel
+            Left = 3
+            Top = 304
+            Width = 58
+            Height = 13
+            Caption = 'source_type'
+          end
+          object lbcyid: TLabel
+            Left = 130
+            Top = 304
+            Width = 8
+            Height = 13
+            Caption = 'id'
+          end
+          object lbcylink: TLabel
+            Left = 209
+            Top = 304
+            Width = 16
+            Height = 13
+            Caption = 'link'
+          end
+          object lbcyevent_phase_mask: TLabel
+            Left = 305
+            Top = 304
+            Width = 93
+            Height = 13
+            Caption = 'event_phase_mask'
+          end
+          object lbcyevent_chance: TLabel
+            Left = 408
+            Top = 304
+            Width = 69
+            Height = 13
+            Caption = 'event_chance'
+          end
+          object lbcyevent_flags: TLabel
+            Left = 485
+            Top = 304
+            Width = 55
+            Height = 13
+            Caption = 'event_flags'
+          end
+          object lbcyevent_type: TLabel
+            Left = 3
+            Top = 347
+            Width = 53
+            Height = 13
+            Caption = 'event_type'
+          end
+          object lbcyevent_param1: TLabel
+            Left = 130
+            Top = 347
+            Width = 68
+            Height = 13
+            Caption = 'event_param1'
+          end
+          object lbcyevent_param2: TLabel
+            Left = 257
+            Top = 347
+            Width = 68
+            Height = 13
+            Caption = 'event_param2'
+          end
+          object lbcyevent_param3: TLabel
+            Left = 384
+            Top = 347
+            Width = 68
+            Height = 13
+            Caption = 'event_param3'
+          end
+          object lbcyevent_param4: TLabel
+            Left = 512
+            Top = 347
+            Width = 68
+            Height = 13
+            Caption = 'event_param4'
+          end
+          object lbcyaction_type: TLabel
+            Left = 3
+            Top = 389
+            Width = 55
+            Height = 13
+            Caption = 'action_type'
+          end
+          object lbcyaction_param1: TLabel
+            Left = 130
+            Top = 390
+            Width = 70
+            Height = 13
+            Caption = 'action_param1'
+          end
+          object lbcyaction_param2: TLabel
+            Left = 258
+            Top = 392
+            Width = 70
+            Height = 13
+            Caption = 'action_param2'
+          end
+          object lbcyaction_param3: TLabel
+            Left = 384
+            Top = 392
+            Width = 70
+            Height = 13
+            Caption = 'action_param3'
+          end
+          object lbcyaction_param4: TLabel
+            Left = 511
+            Top = 392
+            Width = 70
+            Height = 13
+            Caption = 'action_param4'
+          end
+          object lbcyaction_param5: TLabel
+            Left = 130
+            Top = 431
+            Width = 70
+            Height = 13
+            Caption = 'action_param5'
+          end
+          object lbcyaction_param6: TLabel
+            Left = 257
+            Top = 430
+            Width = 70
+            Height = 13
+            Caption = 'action_param6'
+          end
+          object lbcytarget_type: TLabel
+            Left = 3
+            Top = 474
+            Width = 53
+            Height = 13
+            Caption = 'target_type'
+          end
+          object lbcytarget_param1: TLabel
+            Left = 130
+            Top = 474
+            Width = 68
+            Height = 13
+            Caption = 'target_param1'
+          end
+          object lbcytarget_param2: TLabel
+            Left = 257
+            Top = 474
+            Width = 68
+            Height = 13
+            Caption = 'target_param2'
+          end
+          object lbcytarget_param3: TLabel
+            Left = 384
+            Top = 474
+            Width = 68
+            Height = 13
+            Caption = 'target_param3'
+          end
+          object lbcytarget_x: TLabel
+            Left = 2
+            Top = 520
+            Width = 38
+            Height = 13
+            Caption = 'target_x'
+          end
+          object lbcytarget_y: TLabel
+            Left = 130
+            Top = 519
+            Width = 38
+            Height = 13
+            Caption = 'target_y'
+          end
+          object lbcytarget_z: TLabel
+            Left = 257
+            Top = 520
+            Width = 38
+            Height = 13
+            Caption = 'target_z'
+          end
+          object lbcytarget_o: TLabel
+            Left = 384
+            Top = 520
+            Width = 39
+            Height = 13
+            Caption = 'target_o'
+          end
+          object lbcycomment: TLabel
+            Left = 3
+            Top = 567
+            Width = 43
+            Height = 13
+            Caption = 'comment'
+          end
           object lvcySmartAI: TJvListView
             Left = 3
             Top = 23
@@ -14809,16 +14995,17 @@ object MainForm: TMainForm
             OnClick = cyFullScriptClick
           end
           object edcysource_type: TJvComboEdit
-            Left = 1
-            Top = 315
+            Left = 3
+            Top = 318
             Width = 121
             Height = 21
             TabOrder = 2
             Text = 'edcysource_type'
+            OnButtonClick = GetSAISourceType
           end
           object edcyid: TJvComboEdit
-            Left = 128
-            Top = 315
+            Left = 130
+            Top = 318
             Width = 73
             Height = 21
             ShowButton = False
@@ -14826,8 +15013,8 @@ object MainForm: TMainForm
             Text = 'edcyid'
           end
           object edcylink: TJvComboEdit
-            Left = 207
-            Top = 315
+            Left = 209
+            Top = 318
             Width = 90
             Height = 21
             ShowButton = False
@@ -14835,16 +15022,17 @@ object MainForm: TMainForm
             Text = 'edcylink'
           end
           object edcyevent_type: TJvComboEdit
-            Left = 1
-            Top = 354
+            Left = 3
+            Top = 363
             Width = 121
             Height = 21
             TabOrder = 5
             Text = 'edcyevent_type'
+            OnButtonClick = GetSAIEventType
           end
           object edcyevent_phase_mask: TJvComboEdit
-            Left = 308
-            Top = 315
+            Left = 310
+            Top = 318
             Width = 78
             Height = 21
             ShowButton = False
@@ -14852,8 +15040,8 @@ object MainForm: TMainForm
             Text = 'edcyevent_phase_mask'
           end
           object edcyevent_chance: TJvComboEdit
-            Left = 392
-            Top = 315
+            Left = 408
+            Top = 318
             Width = 61
             Height = 21
             ShowButton = False
@@ -14861,168 +15049,188 @@ object MainForm: TMainForm
             Text = 'edcyevent_chance'
           end
           object edcyevent_flags: TJvComboEdit
-            Left = 466
-            Top = 316
+            Left = 485
+            Top = 317
             Width = 106
             Height = 21
             TabOrder = 8
             Text = 'edcyevent_flags'
+            OnButtonClick = GetSAIEventFlags
           end
           object edcyevent_param1: TJvComboEdit
-            Left = 128
-            Top = 354
+            Left = 130
+            Top = 363
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 9
             Text = 'edcyevent_param1'
           end
           object edcyevent_param2: TJvComboEdit
-            Left = 255
-            Top = 354
+            Left = 257
+            Top = 363
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 10
             Text = 'edcyevent_param2'
           end
           object edcyevent_param3: TJvComboEdit
-            Left = 382
-            Top = 354
+            Left = 384
+            Top = 363
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 11
             Text = 'edcyevent_param3'
           end
           object edcyevent_param4: TJvComboEdit
-            Left = 509
-            Top = 354
+            Left = 511
+            Top = 363
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 12
             Text = 'edcyevent_param4'
           end
           object edcyaction_type: TJvComboEdit
-            Left = 1
-            Top = 400
+            Left = 3
+            Top = 406
             Width = 121
             Height = 21
             TabOrder = 13
             Text = 'edcyaction_type'
+            OnButtonClick = GetSAIActionType
           end
           object edcyaction_param1: TJvComboEdit
-            Left = 128
-            Top = 400
+            Left = 130
+            Top = 406
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 14
             Text = 'edcyaction_param1'
           end
           object edcyaction_param2: TJvComboEdit
-            Left = 255
-            Top = 400
+            Left = 257
+            Top = 406
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 15
             Text = 'edcyaction_param2'
           end
           object edcyaction_param3: TJvComboEdit
-            Left = 382
-            Top = 400
+            Left = 384
+            Top = 406
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 16
             Text = 'edcyaction_param3'
           end
           object edcyaction_param4: TJvComboEdit
-            Left = 510
-            Top = 400
+            Left = 512
+            Top = 406
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 17
             Text = 'edcyaction_param4'
           end
           object edcyaction_param5: TJvComboEdit
-            Left = 128
-            Top = 437
+            Left = 130
+            Top = 445
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 18
             Text = 'edcyaction_param5'
           end
           object edcyaction_param6: TJvComboEdit
-            Left = 255
-            Top = 437
+            Left = 257
+            Top = 445
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 19
             Text = 'edcyaction_param6'
           end
           object edcytarget_type: TJvComboEdit
             Left = 3
-            Top = 488
+            Top = 491
             Width = 121
             Height = 21
             TabOrder = 20
             Text = 'edcytarget_type'
+            OnButtonClick = GetSAITargetType
           end
           object edcytarget_param1: TJvComboEdit
             Left = 130
-            Top = 488
+            Top = 490
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 21
             Text = 'edcytarget_param1'
           end
           object edcytarget_param2: TJvComboEdit
             Left = 257
-            Top = 488
+            Top = 490
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 22
             Text = 'edcytarget_param2'
           end
           object edcytarget_param3: TJvComboEdit
             Left = 384
-            Top = 488
+            Top = 490
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 23
             Text = 'edcytarget_param3'
           end
           object edcytarget_x: TJvComboEdit
             Left = 3
-            Top = 532
+            Top = 534
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 24
             Text = 'edcytarget_x'
           end
           object edcytarget_y: TJvComboEdit
             Left = 130
-            Top = 532
+            Top = 534
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 25
             Text = 'edcytarget_y'
           end
           object edcytarget_z: TJvComboEdit
             Left = 257
-            Top = 532
+            Top = 534
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 26
             Text = 'edcytarget_z'
           end
           object edcytarget_o: TJvComboEdit
             Left = 384
-            Top = 531
+            Top = 534
             Width = 121
             Height = 21
+            ShowButton = False
             TabOrder = 27
             Text = 'edcytarget_o'
           end
           object edcycomment: TJvComboEdit
             Left = 3
-            Top = 568
+            Top = 582
             Width = 502
             Height = 21
             ShowButton = False

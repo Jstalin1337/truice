@@ -1559,6 +1559,33 @@ type
     btSmartAIDel: TSpeedButton;
     btSmartAIUpd: TSpeedButton;
     edcyentryorguid: TJvComboEdit;
+    lbcysource_type: TLabel;
+    lbcyid: TLabel;
+    lbcylink: TLabel;
+    lbcyevent_phase_mask: TLabel;
+    lbcyevent_chance: TLabel;
+    lbcyevent_flags: TLabel;
+    lbcyevent_type: TLabel;
+    lbcyevent_param1: TLabel;
+    lbcyevent_param2: TLabel;
+    lbcyevent_param3: TLabel;
+    lbcyevent_param4: TLabel;
+    lbcyaction_type: TLabel;
+    lbcyaction_param1: TLabel;
+    lbcyaction_param2: TLabel;
+    lbcyaction_param3: TLabel;
+    lbcyaction_param4: TLabel;
+    lbcyaction_param5: TLabel;
+    lbcyaction_param6: TLabel;
+    lbcytarget_type: TLabel;
+    lbcytarget_param1: TLabel;
+    lbcytarget_param2: TLabel;
+    lbcytarget_param3: TLabel;
+    lbcytarget_x: TLabel;
+    lbcytarget_y: TLabel;
+    lbcytarget_z: TLabel;
+    lbcytarget_o: TLabel;
+    lbcycomment: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1912,6 +1939,12 @@ type
     procedure Button1Click(Sender: TObject);
     procedure GetEventType(Sender: TObject);
     procedure GetActionType(Sender: TObject);
+    procedure GetSAIEventType(Sender: TObject);
+    procedure GetSAIActionType(Sender: TObject);
+    procedure GetSAISourceType(Sender: TObject);
+    procedure GetSAITargetType(Sender: TObject);
+    procedure GetSAIEventFlags(Sender: TObject);
+    procedure GetSAICastFlags(Sender: TObject);
     procedure linkEventAIInfoClick(Sender: TObject);
     procedure GetMechanicImmuneMask(Sender: TObject);
     procedure lvSearchItemCustomDrawSubItem(Sender: TCustomListView; Item: TListItem;
@@ -1957,8 +1990,6 @@ type
     procedure edirentryButtonClick(Sender: TObject);
     procedure GetSpawnMask(Sender: TObject);
     procedure cyFullScriptClick(Sender: TObject);
-
-
 
   private
     { Private declarations }
@@ -5012,10 +5043,10 @@ begin
         lvQuickList.HideSelection := false;
         lvQuickList.Font.Name := F.lvList.Font.Name;
         with lvQuickList.Columns.Add do
-          Width := 30;
+          Width := 25;
         with lvQuickList.Columns.Add do
-          Width := 230;
-        lvQuickList.Width := 300;
+          Width := 315;
+        lvQuickList.Width := 350;
         SetList(lvQuickList, Name, Sort);
         edit := TJvComboEdit(sender);
         QLPrepare;
@@ -5574,6 +5605,36 @@ end;
 procedure TMainForm.GetEventType(Sender: TObject);
 begin
   GetValueFromSimpleList(Sender, 0, 'EventType', false);
+end;
+
+procedure TMainForm.GetSAIEventType(Sender: TObject);
+begin
+  GetValueFromSimpleList(Sender, 0, 'SAI_EventType', false);
+end;
+
+procedure TMainForm.GetSAIActionType(Sender: TObject);
+begin
+  GetValueFromSimpleList(Sender, 0, 'SAI_ActionType', false);
+end;
+
+procedure TMainForm.GetSAISourceType(Sender: TObject);
+begin
+  GetValueFromSimpleList(Sender, 0, 'SAI_SourceType', false);
+end;
+
+procedure TMainForm.GetSAITargetType(Sender: TObject);
+begin
+  GetValueFromSimpleList(Sender, 0, 'SAI_TargetType', false);
+end;
+
+procedure TMainForm.GetSAIEventFlags(Sender: TObject);
+begin
+  GetSomeFlags(Sender, 'SAI_EventFlags');
+end;
+
+procedure TMainForm.GetSAICastFlags(Sender: TObject);
+begin
+  GetSomeFlags(Sender, 'SAI_CastFlags');
 end;
 
 procedure TMainForm.GetArea(Sender: TObject);
