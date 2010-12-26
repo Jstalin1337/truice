@@ -1528,6 +1528,37 @@ type
     tsCreatureSmartAI: TTabSheet;
     lvcySmartAI: TJvListView;
     cyFullScript: TButton;
+    edcysource_type: TJvComboEdit;
+    edcyid: TJvComboEdit;
+    edcylink: TJvComboEdit;
+    edcyevent_type: TJvComboEdit;
+    edcyevent_phase_mask: TJvComboEdit;
+    edcyevent_chance: TJvComboEdit;
+    edcyevent_flags: TJvComboEdit;
+    edcyevent_param1: TJvComboEdit;
+    edcyevent_param2: TJvComboEdit;
+    edcyevent_param3: TJvComboEdit;
+    edcyevent_param4: TJvComboEdit;
+    edcyaction_type: TJvComboEdit;
+    edcyaction_param1: TJvComboEdit;
+    edcyaction_param2: TJvComboEdit;
+    edcyaction_param3: TJvComboEdit;
+    edcyaction_param4: TJvComboEdit;
+    edcyaction_param5: TJvComboEdit;
+    edcyaction_param6: TJvComboEdit;
+    edcytarget_type: TJvComboEdit;
+    edcytarget_param1: TJvComboEdit;
+    edcytarget_param2: TJvComboEdit;
+    edcytarget_param3: TJvComboEdit;
+    edcytarget_x: TJvComboEdit;
+    edcytarget_y: TJvComboEdit;
+    edcytarget_z: TJvComboEdit;
+    edcytarget_o: TJvComboEdit;
+    edcycomment: TJvComboEdit;
+    btSmartAIAdd: TSpeedButton;
+    btSmartAIDel: TSpeedButton;
+    btSmartAIUpd: TSpeedButton;
+    edcyentryorguid: TJvComboEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1877,6 +1908,7 @@ type
     procedure GetMovementType(Sender: TObject);
     procedure GetInhabitType(Sender: TObject);
     procedure lvcnEventAISelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+    procedure lvcySmartAISelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
     procedure Button1Click(Sender: TObject);
     procedure GetEventType(Sender: TObject);
     procedure GetActionType(Sender: TObject);
@@ -1894,9 +1926,14 @@ type
     procedure nEditCreatureAIClick(Sender: TObject);
     procedure btEventAIAddClick(Sender: TObject);
     procedure btEventAIUpdClick(Sender: TObject);
+    procedure btSmartAIAddClick(Sender: TObject);
+    procedure btSmartAIUpdClick(Sender: TObject);
     procedure lvcnEventAIChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
+    procedure lvcySmartAIChange(Sender: TObject; Item: TListItem;
+      Change: TItemChange);
     procedure btEventAIDelClick(Sender: TObject);
+    procedure btSmartAIDelClick(Sender: TObject);
     procedure btlqShowFullLocalesScriptClick(Sender: TObject);
     procedure lvitMillingLootSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
@@ -2052,8 +2089,13 @@ type
     procedure EventAiDel(lvList: TJvListView);
     procedure ShowFullEventAiScript(TableName: string; lvList: TJvListView; Memo: TMemo; entry: string);
 
+    {Smart AI}
     procedure ShowFullSmartAIScript(TableName: string; lvList: TJvListView; Memo: TMemo; entry: string);
-    
+    procedure SetSmartAIEditFields(pfx: string; lvList: TJvListView);
+    procedure SmartAIAdd(pfx: string; lvList: TJvListView);
+    procedure SmartAIUpd(pfx: string; lvList: TJvListView);
+    procedure SmartAIDel(lvList: TJvListView);
+
     {other}
     function MakeUpdate(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
     function MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
@@ -4277,19 +4319,34 @@ PageControl3.ActivePageIndex := 4;
 LoadCreatureEquip(StrToIntDef(edctequipment_id.Text,0));
 end;
 
+procedure TMainForm.btSmartAIAddClick(Sender: TObject);
+begin
+	SmartAIAdd('edcy', lvcySmartAI);
+end;
+
+procedure TMainForm.btSmartAIDelClick(Sender: TObject);
+begin
+	SmartAIDel(lvcySmartAI);
+end;
+
+procedure TMainForm.btSmartAIUpdClick(Sender: TObject);
+begin
+	SmartAIUpd('edcy',lvcySmartAI);
+end;
+
 procedure TMainForm.btEventAIAddClick(Sender: TObject);
 begin
-EventAIAdd('edcn', lvcnEventAI);
+	EventAIAdd('edcn', lvcnEventAI);
 end;
 
 procedure TMainForm.btEventAIDelClick(Sender: TObject);
 begin
-EventAiDel(lvcnEventAI);
+	EventAiDel(lvcnEventAI);
 end;
 
 procedure TMainForm.btEventAIUpdClick(Sender: TObject);
 begin
-EventAIUpd('edcn',lvcnEventAI);
+	EventAIUpd('edcn',lvcnEventAI);
 end;
 
 procedure TMainForm.btExecuteCreatureScriptClick(Sender: TObject);
@@ -5593,6 +5650,19 @@ procedure TMainForm.lvcnEventAISelectItem(Sender: TObject; Item: TListItem; Sele
 begin
   if Selected then
    SetEventAIEditFields('edcn', lvcnEventAI);
+end;
+
+procedure TMainForm.lvcySmartAISelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+   SetSmartAIEditFields('edcy', lvcySmartAI);
+end;
+
+procedure TMainForm.lvcySmartAIChange(Sender: TObject; Item: TListItem;
+  Change: TItemChange);
+begin
+ btSmartAIUpd.Enabled := Assigned(TJvListView(Sender).Selected);
+ btSmartAIDel.Enabled := Assigned(TJvListView(Sender).Selected);
 end;
 
 procedure TMainForm.LoadCreatureLocation(GUID: integer);
@@ -7424,6 +7494,11 @@ begin
   LootDel(lvList);
 end;
 
+procedure TMainForm.SmartAIDel(lvList: TJvListView);
+begin
+  LootDel(lvList);
+end;
+
 procedure TMainForm.MvmntUpd(pfx: string; lvList: TJvListView);
 begin
   if Assigned(lvList.Selected) then
@@ -7480,6 +7555,44 @@ begin
       SubItems[19] := TCustomEdit(FindComponent(pfx + 'action3_param2')).Text;
       SubItems[20] := TCustomEdit(FindComponent(pfx + 'action3_param3')).Text;
       SubItems[21] := TCustomEdit(FindComponent(pfx + 'comment')).Text;
+    end;
+  end;
+end;
+
+procedure TMainForm.SmartAIUpd(pfx: string; lvList: TJvListView);
+begin
+  if Assigned(lvList.Selected) then
+  begin
+    with lvList.Selected do
+    begin
+      Caption := TCustomEdit(FindComponent(pfx + 'entryorguid')).Text;
+      SubItems[0] := TCustomEdit(FindComponent(pfx + 'source_type')).Text;
+      SubItems[1] := TCustomEdit(FindComponent(pfx + 'id')).Text;
+      SubItems[2] := TCustomEdit(FindComponent(pfx + 'link')).Text;
+      SubItems[3] := TCustomEdit(FindComponent(pfx + 'event_type')).Text;
+      SubItems[4] := TCustomEdit(FindComponent(pfx + 'event_phase_mask')).Text;
+      SubItems[5] := TCustomEdit(FindComponent(pfx + 'event_chance')).Text;
+      SubItems[6] := TCustomEdit(FindComponent(pfx + 'event_flags')).Text;
+      SubItems[7] := TCustomEdit(FindComponent(pfx + 'event_param1')).Text;
+      SubItems[8] := TCustomEdit(FindComponent(pfx + 'event_param2')).Text;
+      SubItems[9] := TCustomEdit(FindComponent(pfx + 'event_param3')).Text;
+      SubItems[10] := TCustomEdit(FindComponent(pfx + 'event_param4')).Text;
+      SubItems[11] := TCustomEdit(FindComponent(pfx + 'action_type')).Text;
+      SubItems[12] := TCustomEdit(FindComponent(pfx + 'action_param1')).Text;
+      SubItems[13] := TCustomEdit(FindComponent(pfx + 'action_param2')).Text;
+      SubItems[14] := TCustomEdit(FindComponent(pfx + 'action_param3')).Text;
+      SubItems[15] := TCustomEdit(FindComponent(pfx + 'action_param4')).Text;
+      SubItems[16] := TCustomEdit(FindComponent(pfx + 'action_param5')).Text;
+      SubItems[17] := TCustomEdit(FindComponent(pfx + 'action_param6')).Text;
+      SubItems[18] := TCustomEdit(FindComponent(pfx + 'target_type')).Text;
+      SubItems[19] := TCustomEdit(FindComponent(pfx + 'target_param1')).Text;
+      SubItems[20] := TCustomEdit(FindComponent(pfx + 'target_param2')).Text;
+      SubItems[21] := TCustomEdit(FindComponent(pfx + 'target_param3')).Text;
+      SubItems[22] := TCustomEdit(FindComponent(pfx + 'target_x')).Text;
+      SubItems[23] := TCustomEdit(FindComponent(pfx + 'target_y')).Text;
+      SubItems[24] := TCustomEdit(FindComponent(pfx + 'target_z')).Text;
+      SubItems[25] := TCustomEdit(FindComponent(pfx + 'target_o')).Text;
+      SubItems[26] := TCustomEdit(FindComponent(pfx + 'comment')).Text;
     end;
   end;
 end;
@@ -7583,6 +7696,41 @@ begin
   end;
 end;
 
+procedure TMainForm.SmartAIAdd(pfx: string; lvList: TJvListView);
+begin
+  with lvList.Items.Add do
+  begin
+    Caption := TCustomEdit(FindComponent(pfx + 'entryorguid')).Text;
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'source_type')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'id')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'link')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_type')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_phase_mask')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_chance')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_flags')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_param1')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_param2')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_param3')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_param4')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_type')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_param1')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_param2')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_param3')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_param4')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_param5')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_param6')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_type')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param1')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param2')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param3')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_x')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_y')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_z')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_o')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'comment')).Text);
+  end;
+end;
+
 procedure TMainForm.LootUpd(pfx: string; lvList: TJvListView);
 begin
   if Assigned(lvList.Selected) then
@@ -7680,6 +7828,44 @@ begin
       TCustomEdit(FindComponent(pfx + 'action3_param2')).Text := SubItems[19];
       TCustomEdit(FindComponent(pfx + 'action3_param3')).Text := SubItems[20];
       TCustomEdit(FindComponent(pfx + 'comment')).Text := SubItems[21];
+    end;
+  end;
+end;
+
+procedure TMainForm.SetSmartAIEditFields(pfx: string; lvList: TJvListView);
+begin
+  if Assigned(lvList.Selected) then
+  begin
+    with lvList.Selected do
+    begin
+      TCustomEdit(FindComponent(pfx + 'entryorguid')).Text := Caption;
+      TCustomEdit(FindComponent(pfx + 'source_type')).Text := SubItems[0];
+      TCustomEdit(FindComponent(pfx + 'id')).Text := SubItems[1];
+      TCustomEdit(FindComponent(pfx + 'link')).Text := SubItems[2];
+      TCustomEdit(FindComponent(pfx + 'event_type')).Text := SubItems[3];
+      TCustomEdit(FindComponent(pfx + 'event_phase_mask')).Text := SubItems[4];
+      TCustomEdit(FindComponent(pfx + 'event_chance')).Text := SubItems[5];
+      TCustomEdit(FindComponent(pfx + 'event_flags')).Text := SubItems[6];
+      TCustomEdit(FindComponent(pfx + 'event_param1')).Text := SubItems[7];
+      TCustomEdit(FindComponent(pfx + 'event_param2')).Text := SubItems[8];
+      TCustomEdit(FindComponent(pfx + 'event_param3')).Text := SubItems[9];
+      TCustomEdit(FindComponent(pfx + 'event_param4')).Text := SubItems[10];
+      TCustomEdit(FindComponent(pfx + 'action_type')).Text := SubItems[11];
+      TCustomEdit(FindComponent(pfx + 'action_param1')).Text := SubItems[12];
+      TCustomEdit(FindComponent(pfx + 'action_param2')).Text := SubItems[13];
+      TCustomEdit(FindComponent(pfx + 'action_param3')).Text := SubItems[14];
+      TCustomEdit(FindComponent(pfx + 'action_param4')).Text := SubItems[15];
+      TCustomEdit(FindComponent(pfx + 'action_param5')).Text := SubItems[16];
+      TCustomEdit(FindComponent(pfx + 'action_param6')).Text := SubItems[17];
+      TCustomEdit(FindComponent(pfx + 'target_type')).Text := SubItems[18];
+      TCustomEdit(FindComponent(pfx + 'target_param1')).Text := SubItems[19];
+      TCustomEdit(FindComponent(pfx + 'target_param2')).Text := SubItems[20];
+      TCustomEdit(FindComponent(pfx + 'target_param3')).Text := SubItems[21];
+      TCustomEdit(FindComponent(pfx + 'target_x')).Text := SubItems[22];
+      TCustomEdit(FindComponent(pfx + 'target_y')).Text := SubItems[23];
+      TCustomEdit(FindComponent(pfx + 'target_z')).Text := SubItems[24];
+      TCustomEdit(FindComponent(pfx + 'target_o')).Text := SubItems[25];
+      TCustomEdit(FindComponent(pfx + 'comment')).Text := SubItems[26];
     end;
   end;
 end;
