@@ -7,3 +7,4 @@ __history\
 *.identcache
 *.dll
 Thumbs.db
+rls\
