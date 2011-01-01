@@ -307,6 +307,7 @@ TEXT154=The error has accured while loading the Character:
 TEXT155=AreaTrigger
 TEXT156=LootCondition
 TEXT157=The error has accured while loading Creature EventAI:
+TEXT158=Please specify a source type!
 
 [MAIN]
 Caption=Quice
@@ -968,14 +969,12 @@ lbcnaction3_param2=action3_param2
 lbcnaction3_param1=action3_param1
 lbcnaction3_type=action3_type
 linkEventAIInfo=http://wiki.udbforums.org/index.php/Event_AI
-lbcnevent_param4=event_param4
 Button1=Show FULL EventAI Script
 Button2=Show Event AI Script
 edcnid=id
 edcncreature_id=creature_id
 edcncomment=comment
 edcnevent_chance=event_chance
-edcnevent_flags=event_flags
 tsCreatureScript=Script
 btCopyToClipboardCreature=Copy script to clipboard
 btExecuteCreatureScript=Execute script

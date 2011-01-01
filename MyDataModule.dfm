@@ -13,7 +13,6 @@ object dmMain: TdmMain
     end
   end
   object MyQuery: TZQuery
-    Connection = MainForm.MyMangosConnection
     Params = <>
     Left = 128
     Top = 144

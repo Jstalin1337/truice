@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsCreature
+    ActivePage = tsGameObject
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -13285,6 +13285,60 @@ object MainForm: TMainForm
             TabOrder = 1
           end
         end
+        object tsLocalesNPCText: TTabSheet
+          Caption = 'Locales NPC Text'
+          ImageIndex = 18
+          inline NPCTextLoc1: TNPCTextLoc
+            Left = 0
+            Top = 0
+            Width = 872
+            Height = 602
+            Align = alClient
+            TabOrder = 0
+            ExplicitHeight = 602
+            inherited gbNPCTextLoc: TGroupBox
+              Height = 415
+              ExplicitHeight = 415
+              inherited lblxentry: TLabel
+                Width = 24
+                ExplicitWidth = 24
+              end
+              inherited Panel1: TPanel
+                Left = 161
+                Top = 147
+                Width = 524
+                Font.Color = cl3DDkShadow
+                Font.Name = 'Microsoft Sans Serif'
+                ExplicitLeft = 161
+                ExplicitTop = 147
+                ExplicitWidth = 524
+              end
+            end
+          end
+        end
+        object tsCreatureSmartAI: TTabSheet
+          Caption = 'SmartAI'
+          ImageIndex = 18
+          object lbctGoToSmartAI: TLabel
+            Left = 15
+            Top = 52
+            Width = 397
+            Height = 26
+            Caption = 
+              'Jump to SmartAI-Tab and load current creature.'#13#10'If there is alre' +
+              'ady something loaded in SmartAI-Tab, all unsaved changes will be' +
+              ' lost.'
+          end
+          object btctGoToSmartAI: TButton
+            Left = 13
+            Top = 19
+            Width = 75
+            Height = 25
+            Caption = 'Goto SmartAI'
+            TabOrder = 0
+            OnClick = btctGoToSmartAIClick
+          end
+        end
         object tsCreatureEventAI: TTabSheet
           Caption = 'Event AI'
           ImageIndex = 17
@@ -14463,821 +14517,6 @@ object MainForm: TMainForm
             TabOrder = 25
           end
         end
-        object tsCreatureSmartAI: TTabSheet
-          Caption = 'SmartAI'
-          ImageIndex = 19
-          ExplicitTop = 45
-          DesignSize = (
-            872
-            602)
-          object btSmartAIAdd: TSpeedButton
-            Left = 643
-            Top = 315
-            Width = 23
-            Height = 22
-            Glyph.Data = {
-              36050000424D3605000000000000360400002800000010000000100000000100
-              080000000000000100000000000000000000000100000000000000000000FFFF
-              FF003DD36D000985120091F7AB0026AD330067E58C0027872A0053DB7C0032C2
-              5B007AF09B0015971E00289A300059E8860046DD770039CB64000F8D1A002292
-              290089F4A5002181240068EE910021A62E005CE0840053E4810060EA8B0045D7
-              71002A9230007FF39F004EE17D000F84150058DF7F00238A260060E487003ACF
-              69000B8A1500268228004ADF7A0034C55F0040D670008DF6A80064ED8E00289F
-              3100258C2A0036C862002B96320076F099005BE4860044DA740023962A00138E
-              1A0023A9300056E684002386260064E48A0056E282004ADC7800258F2B000B87
-              15005EE1860041D8720039CD67008BF5A6000E8E1800118F1900228325002489
-              2800299C310025AB320051DA7B0026842900248C28005EEA8A0022942A005AE8
-              880024AB30002A9430003BCD67000A8413000A8814000C8916004BDD7900299E
-              320047DE780046D872003FD56F003ED46E0033C45E002384250027862900258B
-              2900258D290054E4820023952B002B95310021A72D0049DC7700289C300022A9
-              2F0044DB750025AD320041D7710037C861007EF39F00258F2A004AE07A00299D
-              310045D8720039CB6500C0C0C000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000000000000000006C6C6C6C6C6C
-              6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C1F3E224E03236C6C6C6C6C6C6C6C6C6C46
-              44213C09456C6C6C6C6C6C6C6C6C6C5A16550225586C6C6C6C6C6C6C6C6C6C67
-              35645465076C6C6C6C6C6C305C48113F362F3B0F1D345740136C6C5E2050375F
-              680E62264C6B2B564D6C6C612D474933171C52623B54023C396C6C4A66142818
-              0D5B1C0E2F6455214F6C6C6304273D120A0D17242E063A08106C6C2969600C0B
-              1218336A31382A59416C6C6C6C6C6C0C3D2849191A6C6C6C6C6C6C6C6C6C6C42
-              271447534B6C6C6C6C6C6C6C6C6C6C42041B2D1E5D6C6C6C6C6C6C6C6C6C6C51
-              054332152C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C}
-            OnClick = btSmartAIAddClick
-          end
-          object btSmartAIDel: TSpeedButton
-            Left = 701
-            Top = 315
-            Width = 23
-            Height = 22
-            Enabled = False
-            Glyph.Data = {
-              36060000424D3606000000000000360000002800000020000000100000000100
-              18000000000000060000C40E0000C40E00000000000000000000C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              2427AE161CAC5A5AA9C0C0C0C0C0C0C0C0C0C0C0C0C0C0C05353A94F4FA2C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0696969616161818181C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C07E7E7E787878C0C0C0C0C0C0C0C0C0C0C0C0C0C0C04E4EAB
-              1844F6194DF81031D22021AAC0C0C0C0C0C0C0C0C04A4AAF0928D7092ED70313
-              B34D4DADC0C0C0C0C0C0C0C0C07C7C7C878787888888717171656565C0C0C0C0
-              C0C0C0C0C07C7C7C7070707070705B5B5B7D7D7DC0C0C0C0C0C0C0C0C02022B1
-              2451F91F52FF1D4FFF1744E81017AFC0C0C04747AC0D2EDD1142F90D3DF50B3B
-              F0041ABC6F6FAAC0C0C0C0C0C06868688E8E8E8F8F8F8E8E8E7F7F7F5F5F5FC0
-              C0C07979797575758585858181817D7D7D6060608C8C8CC0C0C0C0C0C0C0C0C0
-              1832DB285BFF2456FF2253FF1B4BF1060EAF0F30DD164AFE1344F91041F60E3E
-              F60A3CF02C2CA2C0C0C0C0C0C0C0C0C07979799393939191919090908686865A
-              5A5A7676768A8A8A8686868383838282827D7D7D676767C0C0C0C0C0C07777B3
-              1F37DD3A6FFF2C5EFF295AFF2657FF2052FC1C4FFF194AFD1646FA1445FA0F3D
-              F21119AFC0C0C0C0C0C0C0C0C09595957E7E7E9C9C9C9595959494949292928E
-              8E8E8D8D8D8B8B8B888888878787808080606060C0C0C0C0C0C0C0C0C0C0C0C0
-              6969B81A25C53D6AFB3567FF2C5DFF2859FF2253FF1D4EFF1A4DFF123DED2324
-              ABC0C0C0C0C0C0C0C0C0C0C0C0C0C0C09090906F6F6F9C9C9C9A9A9A95959593
-              93939090908E8E8E8C8C8C7F7F7F676767C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C02F2FB32E4EE73668FF2E5EFF2859FF2254FF163DEA2C2CA8C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C07171718A8A8A9A9A9A96
-              96969393939090908080806A6A6AC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0253FDF3B6DFF3464FF2E5EFF2759FF1B46EA2121ACC0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C08282829D9D9D99
-              9999969696939393828282666666C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C02B2CC04B7CFF4170FF3B6BFF396CFF2D5EFF2558FF1336D74A4A
-              B2C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0757575A5A5A5A0A0A09D
-              9D9D9C9C9C9696969292927575757E7E7EC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0253BD95080FF4575FF3662FA0C13C13C6DFF2A5BFF2053FD0B1D
-              C2C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C07F7F7FA7A7A7A2A2A298
-              98986666669D9D9D9494948E8E8E666666C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C04F4FBD527CFA5081FF4B7DFF181FC5C0C0C01B22C4386AFF2456FF1A4A
-              F21419B1C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0868686A6A6A6A7A7A7A5A5A56E
-              6E6EC0C0C06F6F6F9B9B9B919191868686626262C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0252DD66A9CFF5788FF2B46E77070B9C0C0C0C0C0C01621C73065FF1F51
-              FF1439DD4444AFC0C0C0C0C0C0C0C0C0C0C0C07D7D7DB4B4B4ABABAB89898994
-              9494C0C0C0C0C0C06E6E6E9797978F8F8F787878797979C0C0C0C0C0C0C0C0C0
-              C0C0C04B4BC83951E25782FB2929C6C0C0C0C0C0C0C0C0C0C0C0C01628D3265A
-              FF0F2EE32123B5C0C0C0C0C0C0C0C0C0C0C0C08989898D8D8DA9A9A9777777C0
-              C0C0C0C0C0C0C0C0C0C0C07474749292927979796B6B6BC0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C03E3EB9C0C0C0C0C0C0C0C0C0C0C0C0C0C0C06B6BB62E2E
-              B5C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C07B7B7BC0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0909090717171C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
-            NumGlyphs = 2
-            OnClick = btSmartAIDelClick
-          end
-          object btSmartAIUpd: TSpeedButton
-            Left = 672
-            Top = 315
-            Width = 23
-            Height = 22
-            Enabled = False
-            Glyph.Data = {
-              36060000424D3606000000000000360000002800000020000000100000000100
-              18000000000000060000C40E0000C40E00000000000000000000C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0B0723CC86B1ACB6B15B5672BAD8265C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C076767671
-              7171707070707070898989C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0CE7622FFAE4FFFAD48FFA73DFF972AEA7E18B6784CC0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0787878A7A7A7A3
-              A3A39E9E9E949494818181818181C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0CE7F31
-              D08A41C0C0C0CA7421FFB763FFB259D47721B67D4FB28D76B17D5AB3530FB28B
-              71C0C0C0C0C0C0C0C0C0C0C0C07F7F7F888888C0C0C0757575B1B1B1ACACAC7A
-              7A7A828282949494858585616161919191C0C0C0C0C0C0C0C0C0C0C0C0D18638
-              FDC285BF6D0DFFC98EFFBE74D67E26C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0B67F
-              5BC0C0C0C0C0C0C0C0C0C0C0C0848484C1C1C1666666C6C6C6B9B9B97E7E7EC0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0888888C0C0C0C0C0C0C0C0C0C0C0C0C7843B
-              FFE0BDFFCF9EFFCC96ECA660BA8D62C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0818181DEDEDECECECECACACAA6A6A68E8E8EC0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0BE823B
-              FFE9D1FFD2A4FFCF9FCF822AB6885EC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C07C7C7CE8E8E8D1D1D1CFCFCF7C7C7C8A8A8AC0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0B8834B
-              FFF3E5FFE2C5FFDCB7FFD4A1FFC37EBB864BC0C0C0BD7B45C3763CCA7C3FC383
-              46C3783EAC8A76C0C0C0C0C0C0818181F2F2F2E2E2E2DBDBDBD0D0D0BEBEBE83
-              8383C0C0C08181817F7F7F848484848484808080919191C0C0C0C0C0C0B59574
-              DD9D47DDA04FE0983ED78D3AC98539C0C0C0B27A49FFD9A0FFE5BCFFE4C0FFE2
-              BCFFE4BAA3694DC0C0C0C0C0C09494949292929696968F8F8F888888818181C0
-              C0C07D7D7DCFCFCFDDDDDDDFDFDFDDDDDDDCDCDC787878C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0AB7A5BCB7D38FFD3A0FFD1
-              A2FFE0B1A86439C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0838383818181CFCFCFD0D0D0D8D8D8707070C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0B48460F8B776FFCC94FFCF
-              98FFDFB0B46A35C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C08A8A8AB7B7B7C9C9C9CBCBCBD7D7D7747474C0C0C0C0C0C0C0C0C0
-              C0C0C0C1874CC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0DE8731FFBE75FFCA88AB52
-              0BFECC9BC37232C0C0C0C0C0C0C0C0C0C0C0C0868686C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0878787BABABAC3C3C35B5B5BCCCCCC7A7A7AC0C0C0C0C0C0C0C0C0
-              C0C0C0BB966ED27F11C3965DC0C0C0C18B51E18728FFB057FFC179CB7426C0C0
-              C0C4793FC77237C0C0C0C0C0C0C0C0C0C0C0C0949494717171909090C0C0C089
-              8989848484ABABABBCBCBC787878C0C0C08181817F7F7FC0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0CC9048F68E1AFC952AFFA13AFFA743FFBF75D07622B38C6BC0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C08A8A8A8888889393939C
-              9C9CA1A1A1BABABA7979798F8F8FC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0BA9063CE8832D47E20CE7C26B77533C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C08E8E8E8080807A
-              7A7A7A7A7A757575C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
-              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
-            NumGlyphs = 2
-            OnClick = btSmartAIUpdClick
-          end
-          object lbcysource_type: TLabel
-            Left = 3
-            Top = 304
-            Width = 58
-            Height = 13
-            Caption = 'source_type'
-          end
-          object lbcyid: TLabel
-            Left = 130
-            Top = 304
-            Width = 8
-            Height = 13
-            Caption = 'id'
-          end
-          object lbcylink: TLabel
-            Left = 209
-            Top = 304
-            Width = 16
-            Height = 13
-            Caption = 'link'
-          end
-          object lbcyevent_phase_mask: TLabel
-            Left = 305
-            Top = 304
-            Width = 93
-            Height = 13
-            Caption = 'event_phase_mask'
-          end
-          object lbcyevent_chance: TLabel
-            Left = 408
-            Top = 304
-            Width = 69
-            Height = 13
-            Caption = 'event_chance'
-          end
-          object lbcyevent_flags: TLabel
-            Left = 485
-            Top = 304
-            Width = 55
-            Height = 13
-            Caption = 'event_flags'
-          end
-          object lbcyevent_type: TLabel
-            Left = 3
-            Top = 347
-            Width = 53
-            Height = 13
-            Caption = 'event_type'
-          end
-          object lbcyevent_param1: TLabel
-            Left = 130
-            Top = 347
-            Width = 68
-            Height = 13
-            Caption = 'event_param1'
-          end
-          object lbcyevent_param2: TLabel
-            Left = 257
-            Top = 347
-            Width = 68
-            Height = 13
-            Caption = 'event_param2'
-          end
-          object lbcyevent_param3: TLabel
-            Left = 384
-            Top = 347
-            Width = 68
-            Height = 13
-            Caption = 'event_param3'
-          end
-          object lbcyevent_param4: TLabel
-            Left = 512
-            Top = 347
-            Width = 68
-            Height = 13
-            Caption = 'event_param4'
-          end
-          object lbcyaction_type: TLabel
-            Left = 3
-            Top = 389
-            Width = 55
-            Height = 13
-            Caption = 'action_type'
-          end
-          object lbcyaction_param1: TLabel
-            Left = 130
-            Top = 390
-            Width = 70
-            Height = 13
-            Caption = 'action_param1'
-          end
-          object lbcyaction_param2: TLabel
-            Left = 258
-            Top = 392
-            Width = 70
-            Height = 13
-            Caption = 'action_param2'
-          end
-          object lbcyaction_param3: TLabel
-            Left = 384
-            Top = 392
-            Width = 70
-            Height = 13
-            Caption = 'action_param3'
-          end
-          object lbcyaction_param4: TLabel
-            Left = 511
-            Top = 392
-            Width = 70
-            Height = 13
-            Caption = 'action_param4'
-          end
-          object lbcyaction_param5: TLabel
-            Left = 130
-            Top = 431
-            Width = 70
-            Height = 13
-            Caption = 'action_param5'
-          end
-          object lbcyaction_param6: TLabel
-            Left = 257
-            Top = 430
-            Width = 70
-            Height = 13
-            Caption = 'action_param6'
-          end
-          object lbcytarget_type: TLabel
-            Left = 3
-            Top = 474
-            Width = 53
-            Height = 13
-            Caption = 'target_type'
-          end
-          object lbcytarget_param1: TLabel
-            Left = 130
-            Top = 474
-            Width = 68
-            Height = 13
-            Caption = 'target_param1'
-          end
-          object lbcytarget_param2: TLabel
-            Left = 257
-            Top = 474
-            Width = 68
-            Height = 13
-            Caption = 'target_param2'
-          end
-          object lbcytarget_param3: TLabel
-            Left = 384
-            Top = 474
-            Width = 68
-            Height = 13
-            Caption = 'target_param3'
-          end
-          object lbcytarget_x: TLabel
-            Left = 2
-            Top = 520
-            Width = 38
-            Height = 13
-            Caption = 'target_x'
-          end
-          object lbcytarget_y: TLabel
-            Left = 130
-            Top = 519
-            Width = 38
-            Height = 13
-            Caption = 'target_y'
-          end
-          object lbcytarget_z: TLabel
-            Left = 257
-            Top = 520
-            Width = 38
-            Height = 13
-            Caption = 'target_z'
-          end
-          object lbcytarget_o: TLabel
-            Left = 384
-            Top = 520
-            Width = 39
-            Height = 13
-            Caption = 'target_o'
-          end
-          object lbcycomment: TLabel
-            Left = 3
-            Top = 567
-            Width = 43
-            Height = 13
-            Caption = 'comment'
-          end
-          object lvcySmartAI: TJvListView
-            Left = 3
-            Top = 23
-            Width = 866
-            Height = 278
-            Anchors = [akLeft, akTop, akRight]
-            Columns = <
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-                Width = 36
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end>
-            Groups = <>
-            HideSelection = False
-            ReadOnly = True
-            RowSelect = True
-            TabOrder = 0
-            ViewStyle = vsReport
-            OnChange = lvcySmartAIChange
-            OnSelectItem = lvcySmartAISelectItem
-            ColumnsOrder = 
-              '0=36,1=36,2=36,3=36,4=36,5=36,6=36,7=36,8=36,9=36,10=36,11=36,12' +
-              '=36,13=36,14=36,15=36,16=36,17=36,18=36,19=36,20=36,21=36,22=36,' +
-              '23=50,24=50,25=50,26=50,27=50'
-            ExtendedColumns = <
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end
-              item
-              end>
-          end
-          object cyFullScript: TButton
-            Left = 726
-            Top = 574
-            Width = 145
-            Height = 25
-            Caption = 'Show FULL SmartAI Script'
-            TabOrder = 1
-            OnClick = cyFullScriptClick
-          end
-          object edcysource_type: TJvComboEdit
-            Left = 3
-            Top = 318
-            Width = 121
-            Height = 21
-            TabOrder = 2
-            Text = 'edcysource_type'
-            OnButtonClick = GetSAISourceType
-          end
-          object edcyid: TJvComboEdit
-            Left = 130
-            Top = 318
-            Width = 73
-            Height = 21
-            ShowButton = False
-            TabOrder = 3
-            Text = 'edcyid'
-          end
-          object edcylink: TJvComboEdit
-            Left = 209
-            Top = 318
-            Width = 90
-            Height = 21
-            ShowButton = False
-            TabOrder = 4
-            Text = 'edcylink'
-          end
-          object edcyevent_type: TJvComboEdit
-            Left = 3
-            Top = 363
-            Width = 121
-            Height = 21
-            TabOrder = 5
-            Text = 'edcyevent_type'
-            OnButtonClick = GetSAIEventType
-          end
-          object edcyevent_phase_mask: TJvComboEdit
-            Left = 310
-            Top = 318
-            Width = 78
-            Height = 21
-            ShowButton = False
-            TabOrder = 6
-            Text = 'edcyevent_phase_mask'
-          end
-          object edcyevent_chance: TJvComboEdit
-            Left = 408
-            Top = 318
-            Width = 61
-            Height = 21
-            ShowButton = False
-            TabOrder = 7
-            Text = 'edcyevent_chance'
-          end
-          object edcyevent_flags: TJvComboEdit
-            Left = 485
-            Top = 317
-            Width = 106
-            Height = 21
-            TabOrder = 8
-            Text = 'edcyevent_flags'
-            OnButtonClick = GetSAIEventFlags
-          end
-          object edcyevent_param1: TJvComboEdit
-            Left = 130
-            Top = 363
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 9
-            Text = 'edcyevent_param1'
-          end
-          object edcyevent_param2: TJvComboEdit
-            Left = 257
-            Top = 363
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 10
-            Text = 'edcyevent_param2'
-          end
-          object edcyevent_param3: TJvComboEdit
-            Left = 384
-            Top = 363
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 11
-            Text = 'edcyevent_param3'
-          end
-          object edcyevent_param4: TJvComboEdit
-            Left = 511
-            Top = 363
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 12
-            Text = 'edcyevent_param4'
-          end
-          object edcyaction_type: TJvComboEdit
-            Left = 3
-            Top = 406
-            Width = 121
-            Height = 21
-            TabOrder = 13
-            Text = 'edcyaction_type'
-            OnButtonClick = GetSAIActionType
-          end
-          object edcyaction_param1: TJvComboEdit
-            Left = 130
-            Top = 406
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 14
-            Text = 'edcyaction_param1'
-          end
-          object edcyaction_param2: TJvComboEdit
-            Left = 257
-            Top = 406
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 15
-            Text = 'edcyaction_param2'
-          end
-          object edcyaction_param3: TJvComboEdit
-            Left = 384
-            Top = 406
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 16
-            Text = 'edcyaction_param3'
-          end
-          object edcyaction_param4: TJvComboEdit
-            Left = 512
-            Top = 406
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 17
-            Text = 'edcyaction_param4'
-          end
-          object edcyaction_param5: TJvComboEdit
-            Left = 130
-            Top = 445
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 18
-            Text = 'edcyaction_param5'
-          end
-          object edcyaction_param6: TJvComboEdit
-            Left = 257
-            Top = 445
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 19
-            Text = 'edcyaction_param6'
-          end
-          object edcytarget_type: TJvComboEdit
-            Left = 3
-            Top = 491
-            Width = 121
-            Height = 21
-            TabOrder = 20
-            Text = 'edcytarget_type'
-            OnButtonClick = GetSAITargetType
-          end
-          object edcytarget_param1: TJvComboEdit
-            Left = 130
-            Top = 490
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 21
-            Text = 'edcytarget_param1'
-          end
-          object edcytarget_param2: TJvComboEdit
-            Left = 257
-            Top = 490
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 22
-            Text = 'edcytarget_param2'
-          end
-          object edcytarget_param3: TJvComboEdit
-            Left = 384
-            Top = 490
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 23
-            Text = 'edcytarget_param3'
-          end
-          object edcytarget_x: TJvComboEdit
-            Left = 3
-            Top = 534
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 24
-            Text = 'edcytarget_x'
-          end
-          object edcytarget_y: TJvComboEdit
-            Left = 130
-            Top = 534
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 25
-            Text = 'edcytarget_y'
-          end
-          object edcytarget_z: TJvComboEdit
-            Left = 257
-            Top = 534
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 26
-            Text = 'edcytarget_z'
-          end
-          object edcytarget_o: TJvComboEdit
-            Left = 384
-            Top = 534
-            Width = 121
-            Height = 21
-            ShowButton = False
-            TabOrder = 27
-            Text = 'edcytarget_o'
-          end
-          object edcycomment: TJvComboEdit
-            Left = 3
-            Top = 582
-            Width = 502
-            Height = 21
-            ShowButton = False
-            TabOrder = 28
-            Text = 'edcycomment'
-          end
-          object edcyentryorguid: TJvComboEdit
-            Left = 626
-            Top = 316
-            Width = 11
-            Height = 21
-            ShowButton = False
-            TabOrder = 29
-            Visible = False
-          end
-        end
-        object tsLocalesNPCText: TTabSheet
-          Caption = 'Locales NPC Text'
-          ImageIndex = 18
-          inline NPCTextLoc1: TNPCTextLoc
-            Left = 0
-            Top = 0
-            Width = 872
-            Height = 602
-            Align = alClient
-            TabOrder = 0
-            ExplicitHeight = 602
-            inherited gbNPCTextLoc: TGroupBox
-              Height = 415
-              ExplicitHeight = 415
-              inherited lblxentry: TLabel
-                Width = 24
-                ExplicitWidth = 24
-              end
-              inherited Panel1: TPanel
-                Left = 161
-                Top = 147
-                Width = 524
-                Font.Color = cl3DDkShadow
-                Font.Name = 'Microsoft Sans Serif'
-                ExplicitLeft = 161
-                ExplicitTop = 147
-                ExplicitWidth = 524
-              end
-            end
-          end
-        end
         object tsCreatureScript: TTabSheet
           Caption = 'Script'
           ImageIndex = 3
@@ -15327,7 +14566,7 @@ object MainForm: TMainForm
             Anchors = [akTop, akRight]
             Caption = 'Execute script'
             TabOrder = 3
-            OnClick = btExecuteCreatureScriptClick
+            OnClick = btExecuteEventAIScriptClick
           end
         end
       end
@@ -15349,7 +14588,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsSearchGO
+        ActivePage = tsGOSmartAI
         Align = alClient
         TabOrder = 0
         object tsSearchGO: TTabSheet
@@ -17918,6 +17157,29 @@ object MainForm: TMainForm
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 1
+          end
+        end
+        object tsGOSmartAI: TTabSheet
+          Caption = 'GO SmartAI'
+          ImageIndex = 7
+          object lbgtGotoSmartAI: TLabel
+            Left = 15
+            Top = 67
+            Width = 397
+            Height = 26
+            Caption = 
+              'Jump to SmartAI-Tab and load current gameobject.'#13#10'If there is so' +
+              'mething loaded in SmartAI-Tab already, all unsaved changes will ' +
+              'be lost.'
+          end
+          object btgtGotoSmartAI: TButton
+            Left = 15
+            Top = 27
+            Width = 75
+            Height = 25
+            Caption = 'Goto SmartAI'
+            TabOrder = 0
+            OnClick = btgtGotoSmartAIClick
           end
         end
         object tsGOScript: TTabSheet
@@ -24750,6 +24012,864 @@ object MainForm: TMainForm
         end
       end
     end
+    object SmartAI: TTabSheet
+      Caption = 'SmartAI'
+      ImageIndex = 5
+      object PageControl9: TPageControl
+        Left = 0
+        Top = 25
+        Width = 881
+        Height = 648
+        ActivePage = tsSmartAI
+        TabOrder = 0
+        object tsSmartAI: TTabSheet
+          Caption = 'SmartAI'
+          ImageIndex = 19
+          DesignSize = (
+            873
+            620)
+          object btSmartAIAdd: TSpeedButton
+            Left = 787
+            Top = 315
+            Width = 23
+            Height = 22
+            Glyph.Data = {
+              36050000424D3605000000000000360400002800000010000000100000000100
+              080000000000000100000000000000000000000100000000000000000000FFFF
+              FF003DD36D000985120091F7AB0026AD330067E58C0027872A0053DB7C0032C2
+              5B007AF09B0015971E00289A300059E8860046DD770039CB64000F8D1A002292
+              290089F4A5002181240068EE910021A62E005CE0840053E4810060EA8B0045D7
+              71002A9230007FF39F004EE17D000F84150058DF7F00238A260060E487003ACF
+              69000B8A1500268228004ADF7A0034C55F0040D670008DF6A80064ED8E00289F
+              3100258C2A0036C862002B96320076F099005BE4860044DA740023962A00138E
+              1A0023A9300056E684002386260064E48A0056E282004ADC7800258F2B000B87
+              15005EE1860041D8720039CD67008BF5A6000E8E1800118F1900228325002489
+              2800299C310025AB320051DA7B0026842900248C28005EEA8A0022942A005AE8
+              880024AB30002A9430003BCD67000A8413000A8814000C8916004BDD7900299E
+              320047DE780046D872003FD56F003ED46E0033C45E002384250027862900258B
+              2900258D290054E4820023952B002B95310021A72D0049DC7700289C300022A9
+              2F0044DB750025AD320041D7710037C861007EF39F00258F2A004AE07A00299D
+              310045D8720039CB6500C0C0C000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000000000000000000000000000000006C6C6C6C6C6C
+              6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C1F3E224E03236C6C6C6C6C6C6C6C6C6C46
+              44213C09456C6C6C6C6C6C6C6C6C6C5A16550225586C6C6C6C6C6C6C6C6C6C67
+              35645465076C6C6C6C6C6C305C48113F362F3B0F1D345740136C6C5E2050375F
+              680E62264C6B2B564D6C6C612D474933171C52623B54023C396C6C4A66142818
+              0D5B1C0E2F6455214F6C6C6304273D120A0D17242E063A08106C6C2969600C0B
+              1218336A31382A59416C6C6C6C6C6C0C3D2849191A6C6C6C6C6C6C6C6C6C6C42
+              271447534B6C6C6C6C6C6C6C6C6C6C42041B2D1E5D6C6C6C6C6C6C6C6C6C6C51
+              054332152C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C}
+            OnClick = btSmartAIAddClick
+          end
+          object btSmartAIDel: TSpeedButton
+            Left = 845
+            Top = 315
+            Width = 23
+            Height = 22
+            Enabled = False
+            Glyph.Data = {
+              36060000424D3606000000000000360000002800000020000000100000000100
+              18000000000000060000C40E0000C40E00000000000000000000C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              2427AE161CAC5A5AA9C0C0C0C0C0C0C0C0C0C0C0C0C0C0C05353A94F4FA2C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0696969616161818181C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C07E7E7E787878C0C0C0C0C0C0C0C0C0C0C0C0C0C0C04E4EAB
+              1844F6194DF81031D22021AAC0C0C0C0C0C0C0C0C04A4AAF0928D7092ED70313
+              B34D4DADC0C0C0C0C0C0C0C0C07C7C7C878787888888717171656565C0C0C0C0
+              C0C0C0C0C07C7C7C7070707070705B5B5B7D7D7DC0C0C0C0C0C0C0C0C02022B1
+              2451F91F52FF1D4FFF1744E81017AFC0C0C04747AC0D2EDD1142F90D3DF50B3B
+              F0041ABC6F6FAAC0C0C0C0C0C06868688E8E8E8F8F8F8E8E8E7F7F7F5F5F5FC0
+              C0C07979797575758585858181817D7D7D6060608C8C8CC0C0C0C0C0C0C0C0C0
+              1832DB285BFF2456FF2253FF1B4BF1060EAF0F30DD164AFE1344F91041F60E3E
+              F60A3CF02C2CA2C0C0C0C0C0C0C0C0C07979799393939191919090908686865A
+              5A5A7676768A8A8A8686868383838282827D7D7D676767C0C0C0C0C0C07777B3
+              1F37DD3A6FFF2C5EFF295AFF2657FF2052FC1C4FFF194AFD1646FA1445FA0F3D
+              F21119AFC0C0C0C0C0C0C0C0C09595957E7E7E9C9C9C9595959494949292928E
+              8E8E8D8D8D8B8B8B888888878787808080606060C0C0C0C0C0C0C0C0C0C0C0C0
+              6969B81A25C53D6AFB3567FF2C5DFF2859FF2253FF1D4EFF1A4DFF123DED2324
+              ABC0C0C0C0C0C0C0C0C0C0C0C0C0C0C09090906F6F6F9C9C9C9A9A9A95959593
+              93939090908E8E8E8C8C8C7F7F7F676767C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C02F2FB32E4EE73668FF2E5EFF2859FF2254FF163DEA2C2CA8C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C07171718A8A8A9A9A9A96
+              96969393939090908080806A6A6AC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0253FDF3B6DFF3464FF2E5EFF2759FF1B46EA2121ACC0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C08282829D9D9D99
+              9999969696939393828282666666C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C02B2CC04B7CFF4170FF3B6BFF396CFF2D5EFF2558FF1336D74A4A
+              B2C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0757575A5A5A5A0A0A09D
+              9D9D9C9C9C9696969292927575757E7E7EC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0253BD95080FF4575FF3662FA0C13C13C6DFF2A5BFF2053FD0B1D
+              C2C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C07F7F7FA7A7A7A2A2A298
+              98986666669D9D9D9494948E8E8E666666C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C04F4FBD527CFA5081FF4B7DFF181FC5C0C0C01B22C4386AFF2456FF1A4A
+              F21419B1C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0868686A6A6A6A7A7A7A5A5A56E
+              6E6EC0C0C06F6F6F9B9B9B919191868686626262C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0252DD66A9CFF5788FF2B46E77070B9C0C0C0C0C0C01621C73065FF1F51
+              FF1439DD4444AFC0C0C0C0C0C0C0C0C0C0C0C07D7D7DB4B4B4ABABAB89898994
+              9494C0C0C0C0C0C06E6E6E9797978F8F8F787878797979C0C0C0C0C0C0C0C0C0
+              C0C0C04B4BC83951E25782FB2929C6C0C0C0C0C0C0C0C0C0C0C0C01628D3265A
+              FF0F2EE32123B5C0C0C0C0C0C0C0C0C0C0C0C08989898D8D8DA9A9A9777777C0
+              C0C0C0C0C0C0C0C0C0C0C07474749292927979796B6B6BC0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C03E3EB9C0C0C0C0C0C0C0C0C0C0C0C0C0C0C06B6BB62E2E
+              B5C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C07B7B7BC0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0909090717171C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+            NumGlyphs = 2
+            OnClick = btSmartAIDelClick
+          end
+          object btSmartAIUpd: TSpeedButton
+            Left = 816
+            Top = 315
+            Width = 23
+            Height = 22
+            Enabled = False
+            Glyph.Data = {
+              36060000424D3606000000000000360000002800000020000000100000000100
+              18000000000000060000C40E0000C40E00000000000000000000C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0B0723CC86B1ACB6B15B5672BAD8265C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C076767671
+              7171707070707070898989C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0CE7622FFAE4FFFAD48FFA73DFF972AEA7E18B6784CC0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0787878A7A7A7A3
+              A3A39E9E9E949494818181818181C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0CE7F31
+              D08A41C0C0C0CA7421FFB763FFB259D47721B67D4FB28D76B17D5AB3530FB28B
+              71C0C0C0C0C0C0C0C0C0C0C0C07F7F7F888888C0C0C0757575B1B1B1ACACAC7A
+              7A7A828282949494858585616161919191C0C0C0C0C0C0C0C0C0C0C0C0D18638
+              FDC285BF6D0DFFC98EFFBE74D67E26C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0B67F
+              5BC0C0C0C0C0C0C0C0C0C0C0C0848484C1C1C1666666C6C6C6B9B9B97E7E7EC0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0888888C0C0C0C0C0C0C0C0C0C0C0C0C7843B
+              FFE0BDFFCF9EFFCC96ECA660BA8D62C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0818181DEDEDECECECECACACAA6A6A68E8E8EC0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0BE823B
+              FFE9D1FFD2A4FFCF9FCF822AB6885EC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C07C7C7CE8E8E8D1D1D1CFCFCF7C7C7C8A8A8AC0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0B8834B
+              FFF3E5FFE2C5FFDCB7FFD4A1FFC37EBB864BC0C0C0BD7B45C3763CCA7C3FC383
+              46C3783EAC8A76C0C0C0C0C0C0818181F2F2F2E2E2E2DBDBDBD0D0D0BEBEBE83
+              8383C0C0C08181817F7F7F848484848484808080919191C0C0C0C0C0C0B59574
+              DD9D47DDA04FE0983ED78D3AC98539C0C0C0B27A49FFD9A0FFE5BCFFE4C0FFE2
+              BCFFE4BAA3694DC0C0C0C0C0C09494949292929696968F8F8F888888818181C0
+              C0C07D7D7DCFCFCFDDDDDDDFDFDFDDDDDDDCDCDC787878C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0AB7A5BCB7D38FFD3A0FFD1
+              A2FFE0B1A86439C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0838383818181CFCFCFD0D0D0D8D8D8707070C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0B48460F8B776FFCC94FFCF
+              98FFDFB0B46A35C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C08A8A8AB7B7B7C9C9C9CBCBCBD7D7D7747474C0C0C0C0C0C0C0C0C0
+              C0C0C0C1874CC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0DE8731FFBE75FFCA88AB52
+              0BFECC9BC37232C0C0C0C0C0C0C0C0C0C0C0C0868686C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0878787BABABAC3C3C35B5B5BCCCCCC7A7A7AC0C0C0C0C0C0C0C0C0
+              C0C0C0BB966ED27F11C3965DC0C0C0C18B51E18728FFB057FFC179CB7426C0C0
+              C0C4793FC77237C0C0C0C0C0C0C0C0C0C0C0C0949494717171909090C0C0C089
+              8989848484ABABABBCBCBC787878C0C0C08181817F7F7FC0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0CC9048F68E1AFC952AFFA13AFFA743FFBF75D07622B38C6BC0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C08A8A8A8888889393939C
+              9C9CA1A1A1BABABA7979798F8F8FC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0BA9063CE8832D47E20CE7C26B77533C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C08E8E8E8080807A
+              7A7A7A7A7A757575C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+              C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+            NumGlyphs = 2
+            OnClick = btSmartAIUpdClick
+          end
+          object lbcysource_type: TLabel
+            Left = 744
+            Top = 421
+            Width = 58
+            Height = 13
+            Caption = 'source_type'
+          end
+          object lbcyid: TLabel
+            Left = 3
+            Top = 306
+            Width = 8
+            Height = 13
+            Caption = 'id'
+          end
+          object lbcylink: TLabel
+            Left = 82
+            Top = 306
+            Width = 16
+            Height = 13
+            Caption = 'link'
+          end
+          object lbcyevent_phase_mask: TLabel
+            Left = 178
+            Top = 306
+            Width = 93
+            Height = 13
+            Caption = 'event_phase_mask'
+          end
+          object lbcyevent_chance: TLabel
+            Left = 281
+            Top = 306
+            Width = 69
+            Height = 13
+            Caption = 'event_chance'
+          end
+          object lbcyevent_flags: TLabel
+            Left = 358
+            Top = 306
+            Width = 55
+            Height = 13
+            Caption = 'event_flags'
+          end
+          object lbcyevent_type: TLabel
+            Left = 3
+            Top = 347
+            Width = 53
+            Height = 13
+            Caption = 'event_type'
+          end
+          object lbcyevent_param1: TLabel
+            Left = 130
+            Top = 347
+            Width = 68
+            Height = 13
+            Caption = 'event_param1'
+          end
+          object lbcyevent_param2: TLabel
+            Left = 257
+            Top = 347
+            Width = 68
+            Height = 13
+            Caption = 'event_param2'
+          end
+          object lbcyevent_param3: TLabel
+            Left = 384
+            Top = 347
+            Width = 68
+            Height = 13
+            Caption = 'event_param3'
+          end
+          object lbcyevent_param4: TLabel
+            Left = 512
+            Top = 347
+            Width = 68
+            Height = 13
+            Caption = 'event_param4'
+          end
+          object lbcyaction_type: TLabel
+            Left = 3
+            Top = 389
+            Width = 55
+            Height = 13
+            Caption = 'action_type'
+          end
+          object lbcyaction_param1: TLabel
+            Left = 130
+            Top = 390
+            Width = 70
+            Height = 13
+            Caption = 'action_param1'
+          end
+          object lbcyaction_param2: TLabel
+            Left = 258
+            Top = 392
+            Width = 70
+            Height = 13
+            Caption = 'action_param2'
+          end
+          object lbcyaction_param3: TLabel
+            Left = 384
+            Top = 392
+            Width = 70
+            Height = 13
+            Caption = 'action_param3'
+          end
+          object lbcyaction_param4: TLabel
+            Left = 511
+            Top = 392
+            Width = 70
+            Height = 13
+            Caption = 'action_param4'
+          end
+          object lbcyaction_param5: TLabel
+            Left = 130
+            Top = 431
+            Width = 70
+            Height = 13
+            Caption = 'action_param5'
+          end
+          object lbcyaction_param6: TLabel
+            Left = 257
+            Top = 430
+            Width = 70
+            Height = 13
+            Caption = 'action_param6'
+          end
+          object lbcytarget_type: TLabel
+            Left = 3
+            Top = 474
+            Width = 53
+            Height = 13
+            Caption = 'target_type'
+          end
+          object lbcytarget_param1: TLabel
+            Left = 130
+            Top = 474
+            Width = 68
+            Height = 13
+            Caption = 'target_param1'
+          end
+          object lbcytarget_param2: TLabel
+            Left = 257
+            Top = 474
+            Width = 68
+            Height = 13
+            Caption = 'target_param2'
+          end
+          object lbcytarget_param3: TLabel
+            Left = 384
+            Top = 474
+            Width = 68
+            Height = 13
+            Caption = 'target_param3'
+          end
+          object lbcytarget_x: TLabel
+            Left = 2
+            Top = 520
+            Width = 38
+            Height = 13
+            Caption = 'target_x'
+          end
+          object lbcytarget_y: TLabel
+            Left = 130
+            Top = 519
+            Width = 38
+            Height = 13
+            Caption = 'target_y'
+          end
+          object lbcytarget_z: TLabel
+            Left = 257
+            Top = 520
+            Width = 38
+            Height = 13
+            Caption = 'target_z'
+          end
+          object lbcytarget_o: TLabel
+            Left = 384
+            Top = 520
+            Width = 39
+            Height = 13
+            Caption = 'target_o'
+          end
+          object lbcycomment: TLabel
+            Left = 3
+            Top = 567
+            Width = 43
+            Height = 13
+            Caption = 'comment'
+          end
+          object lbcyentryorguid: TLabel
+            Left = 744
+            Top = 380
+            Width = 66
+            Height = 13
+            Caption = 'Entry or GUID'
+          end
+          object Shape1: TShape
+            Left = 738
+            Top = 376
+            Width = 132
+            Height = 146
+            Brush.Style = bsClear
+            Pen.Style = psInsideFrame
+          end
+          object Label9: TLabel
+            Left = 740
+            Top = 491
+            Width = 130
+            Height = 26
+            Caption = 'Note: Only change these '#13#10'fields if you load afterwards.'
+          end
+          object lvcySmartAI: TJvListView
+            Left = 3
+            Top = 23
+            Width = 867
+            Height = 278
+            Anchors = [akLeft, akTop, akRight]
+            Columns = <
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+                Width = 36
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end>
+            Groups = <>
+            HideSelection = False
+            ReadOnly = True
+            RowSelect = True
+            TabOrder = 0
+            ViewStyle = vsReport
+            OnChange = lvcySmartAIChange
+            OnSelectItem = lvcySmartAISelectItem
+            ColumnsOrder = 
+              '0=36,1=36,2=36,3=36,4=36,5=36,6=36,7=36,8=36,9=36,10=36,11=36,12' +
+              '=36,13=36,14=36,15=36,16=36,17=36,18=36,19=36,20=36,21=36,22=36,' +
+              '23=50,24=50,25=50,26=50,27=50'
+            ExtendedColumns = <
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end>
+          end
+          object btcyFullScript: TButton
+            Left = 726
+            Top = 574
+            Width = 145
+            Height = 25
+            Caption = 'Show FULL SmartAI Script'
+            TabOrder = 1
+            OnClick = btcyFullScriptClick
+          end
+          object edcysource_type: TJvComboEdit
+            Left = 744
+            Top = 436
+            Width = 121
+            Height = 21
+            TabOrder = 2
+            OnButtonClick = GetSAISourceType
+          end
+          object edcyid: TJvComboEdit
+            Left = 3
+            Top = 320
+            Width = 73
+            Height = 21
+            ShowButton = False
+            TabOrder = 3
+          end
+          object edcylink: TJvComboEdit
+            Left = 82
+            Top = 320
+            Width = 90
+            Height = 21
+            ShowButton = False
+            TabOrder = 4
+          end
+          object edcyevent_type: TJvComboEdit
+            Left = 3
+            Top = 363
+            Width = 121
+            Height = 21
+            TabOrder = 5
+            OnButtonClick = GetSAIEventType
+          end
+          object edcyevent_phase_mask: TJvComboEdit
+            Left = 183
+            Top = 320
+            Width = 78
+            Height = 21
+            ShowButton = False
+            TabOrder = 6
+          end
+          object edcyevent_chance: TJvComboEdit
+            Left = 281
+            Top = 320
+            Width = 61
+            Height = 21
+            ShowButton = False
+            TabOrder = 7
+          end
+          object edcyevent_flags: TJvComboEdit
+            Left = 358
+            Top = 319
+            Width = 106
+            Height = 21
+            TabOrder = 8
+            OnButtonClick = GetSAIEventFlags
+          end
+          object edcyevent_param1: TJvComboEdit
+            Left = 130
+            Top = 363
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 9
+          end
+          object edcyevent_param2: TJvComboEdit
+            Left = 257
+            Top = 363
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 10
+          end
+          object edcyevent_param3: TJvComboEdit
+            Left = 384
+            Top = 363
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 11
+          end
+          object edcyevent_param4: TJvComboEdit
+            Left = 511
+            Top = 363
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 12
+          end
+          object edcyaction_type: TJvComboEdit
+            Left = 3
+            Top = 406
+            Width = 121
+            Height = 21
+            TabOrder = 13
+            OnButtonClick = GetSAIActionType
+          end
+          object edcyaction_param1: TJvComboEdit
+            Left = 130
+            Top = 406
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 14
+          end
+          object edcyaction_param2: TJvComboEdit
+            Left = 257
+            Top = 406
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 15
+          end
+          object edcyaction_param3: TJvComboEdit
+            Left = 385
+            Top = 408
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 16
+          end
+          object edcyaction_param4: TJvComboEdit
+            Left = 512
+            Top = 406
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 17
+          end
+          object edcyaction_param5: TJvComboEdit
+            Left = 130
+            Top = 445
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 18
+          end
+          object edcyaction_param6: TJvComboEdit
+            Left = 257
+            Top = 445
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 19
+          end
+          object edcytarget_type: TJvComboEdit
+            Left = 3
+            Top = 491
+            Width = 121
+            Height = 21
+            TabOrder = 20
+            OnButtonClick = GetSAITargetType
+          end
+          object edcytarget_param1: TJvComboEdit
+            Left = 130
+            Top = 490
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 21
+          end
+          object edcytarget_param2: TJvComboEdit
+            Left = 257
+            Top = 490
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 22
+          end
+          object edcytarget_param3: TJvComboEdit
+            Left = 384
+            Top = 490
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 23
+          end
+          object edcytarget_x: TJvComboEdit
+            Left = 3
+            Top = 534
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 24
+          end
+          object edcytarget_z: TJvComboEdit
+            Left = 257
+            Top = 534
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 25
+          end
+          object edcytarget_o: TJvComboEdit
+            Left = 384
+            Top = 534
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 26
+          end
+          object edcycomment: TJvComboEdit
+            Left = 3
+            Top = 582
+            Width = 502
+            Height = 21
+            ShowButton = False
+            TabOrder = 27
+          end
+          object edcyentryorguid: TJvComboEdit
+            Left = 744
+            Top = 394
+            Width = 117
+            Height = 21
+            ShowButton = False
+            TabOrder = 28
+          end
+          object btcyLoad: TButton
+            Left = 765
+            Top = 460
+            Width = 75
+            Height = 25
+            Caption = 'Load'
+            TabOrder = 29
+            OnClick = btcyLoadClick
+          end
+          object edcytarget_y: TJvComboEdit
+            Left = 130
+            Top = 534
+            Width = 121
+            Height = 21
+            ShowButton = False
+            TabOrder = 30
+          end
+        end
+        object tsSmartAIScript: TTabSheet
+          Caption = 'Script'
+          ImageIndex = 1
+          DesignSize = (
+            873
+            620)
+          object btCopyToClipboardSmartAI: TButton
+            Left = 726
+            Top = 508
+            Width = 137
+            Height = 25
+            Anchors = [akTop, akRight]
+            Caption = 'Copy script to clipboard'
+            TabOrder = 0
+            OnClick = btCopyToClipboardSmartAIClick
+          end
+          object btExecuteSmartAIScript: TButton
+            Left = 726
+            Top = 540
+            Width = 137
+            Height = 25
+            Anchors = [akTop, akRight]
+            Caption = 'Execute script'
+            TabOrder = 1
+            OnClick = btExecuteSmartAIScriptClick
+          end
+          object mecyScript: TMemo
+            Left = 11
+            Top = 10
+            Width = 856
+            Height = 457
+            Anchors = [akLeft, akTop, akRight]
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Courier New'
+            Font.Style = []
+            ParentFont = False
+            ScrollBars = ssVertical
+            TabOrder = 2
+          end
+          object mecyLog: TMemo
+            Left = 11
+            Top = 472
+            Width = 703
+            Height = 97
+            Anchors = [akLeft, akTop, akRight]
+            ScrollBars = ssVertical
+            TabOrder = 3
+          end
+        end
+      end
+      object Panel25: TPanel
+        Left = 0
+        Top = 0
+        Width = 880
+        Height = 25
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+    end
     object tsOther: TTabSheet
       Caption = 'Other'
       ImageIndex = 4
@@ -24767,7 +24887,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsPageText
+        ActivePage = tsOtherScript
         Align = alClient
         TabOrder = 1
         object tsFishingLoot: TTabSheet

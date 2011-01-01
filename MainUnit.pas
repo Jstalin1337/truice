@@ -13,16 +13,17 @@ uses
   LocNPCFrame;
 
 const
-  REV = '9656';
+  REV = '10901';
   VERSION_1   = '1'; //*10000
   VERSION_2   = '2'; //*100
-  VERSION_3   = '50';
+  VERSION_3   = '51';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3;
 
   SCRIPT_TAB_NO_QUEST       =   8;
   SCRIPT_TAB_NO_CREATURE    =  19;
-  SCRIPT_TAB_NO_GAMEOBJECT  =   6;
+  SCRIPT_TAB_NO_GAMEOBJECT  =   7;
   SCRIPT_TAB_NO_ITEM        =  10;
+  SCRIPT_TAB_NO_SMARTAI			=   1;
   SCRIPT_TAB_NO_OTHER       =   3;
   SCRIPT_TAB_NO_CHARACTER   =   3;
 
@@ -1525,9 +1526,9 @@ type
     edqtunk0: TLabeledEdit;
     edgtWDBVerified: TLabeledEdit;
     edcvslot: TLabeledEdit;
-    tsCreatureSmartAI: TTabSheet;
+    tsSmartAI: TTabSheet;
     lvcySmartAI: TJvListView;
-    cyFullScript: TButton;
+    btcyFullScript: TButton;
     edcysource_type: TJvComboEdit;
     edcyid: TJvComboEdit;
     edcylink: TJvComboEdit;
@@ -1551,7 +1552,6 @@ type
     edcytarget_param2: TJvComboEdit;
     edcytarget_param3: TJvComboEdit;
     edcytarget_x: TJvComboEdit;
-    edcytarget_y: TJvComboEdit;
     edcytarget_z: TJvComboEdit;
     edcytarget_o: TJvComboEdit;
     edcycomment: TJvComboEdit;
@@ -1586,6 +1586,25 @@ type
     lbcytarget_z: TLabel;
     lbcytarget_o: TLabel;
     lbcycomment: TLabel;
+    SmartAI: TTabSheet;
+    PageControl9: TPageControl;
+    Panel25: TPanel;
+    tsCreatureSmartAI: TTabSheet;
+    lbcyentryorguid: TLabel;
+    tsSmartAIScript: TTabSheet;
+    btCopyToClipboardSmartAI: TButton;
+    btExecuteSmartAIScript: TButton;
+    mecyScript: TMemo;
+    mecyLog: TMemo;
+    btcyLoad: TButton;
+    edcytarget_y: TJvComboEdit;
+    Shape1: TShape;
+    Label9: TLabel;
+    btctGoToSmartAI: TButton;
+    lbctGoToSmartAI: TLabel;
+    tsGOSmartAI: TTabSheet;
+    lbgtGotoSmartAI: TLabel;
+    btgtGotoSmartAI: TButton;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1626,8 +1645,10 @@ type
     procedure btDeleteCreatureClick(Sender: TObject);
     procedure btBrowseCreatureClick(Sender: TObject);
     procedure edctEntryButtonClick(Sender: TObject);
-    procedure btExecuteCreatureScriptClick(Sender: TObject);
+    procedure btExecuteEventAIScriptClick(Sender: TObject);
+    procedure btExecuteSmartAIScriptClick(Sender: TObject);
     procedure btCopyToClipboardCreatureClick(Sender: TObject);
+    procedure btCopyToClipboardSmartAIClick(Sender: TObject);
     procedure tsCreatureScriptShow(Sender: TObject);
     procedure edctnpcflagButtonClick(Sender: TObject);
     procedure edctrankButtonClick(Sender: TObject);
@@ -1989,7 +2010,10 @@ type
     procedure btFullScriptReferenceLootClick(Sender: TObject);
     procedure edirentryButtonClick(Sender: TObject);
     procedure GetSpawnMask(Sender: TObject);
-    procedure cyFullScriptClick(Sender: TObject);
+    procedure btcyFullScriptClick(Sender: TObject);
+    procedure btcyLoadClick(Sender: TObject);
+    procedure btctGoToSmartAIClick(Sender: TObject);
+    procedure btgtGotoSmartAIClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -2121,11 +2145,13 @@ type
     procedure ShowFullEventAiScript(TableName: string; lvList: TJvListView; Memo: TMemo; entry: string);
 
     {Smart AI}
-    procedure ShowFullSmartAIScript(TableName: string; lvList: TJvListView; Memo: TMemo; entry: string);
+    procedure ShowFullSmartAIScript(TableName: string; lvList: TJvListView; Memo: TMemo; entry: string; sourcetype: string);
     procedure SetSmartAIEditFields(pfx: string; lvList: TJvListView);
     procedure SmartAIAdd(pfx: string; lvList: TJvListView);
     procedure SmartAIUpd(pfx: string; lvList: TJvListView);
     procedure SmartAIDel(lvList: TJvListView);
+    procedure LoadSmartAI(entryorguid: integer; sourcetype: integer);
+    procedure ClearSmartAIFields();
 
     {other}
     function MakeUpdate(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
@@ -3333,11 +3359,11 @@ var
 begin
   s := '';
   case Where of
-    ttQuest:  s := 'q';
-    ttNPC:    s := 'c';
-    ttObject: s := 'g';
-    ttItem:   s := 'i';
-    ttChar:   s := 'h';
+    ttQuest:    s := 'q';
+    ttNPC:      s := 'c';
+    ttObject:   s := 'g';
+    ttItem:     s := 'i';
+    ttChar:     s := 'h';
   end;
   for i := 0 to ComponentCount - 1 do
   begin
@@ -3378,6 +3404,25 @@ begin
              or (Pos('ed'+s+'p',Components[i].Name)=1)) or (Pos('ed'+s+'e',Components[i].Name)=1) then
              TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
+          TCustomListView(Components[i]).Clear;
+    end;
+  end;
+end;
+
+procedure TMainForm.ClearSmartAIFields();
+var
+  i: integer;
+  s: string;
+begin
+  s := 'cy';
+  for i := 0 to ComponentCount - 1 do
+  begin
+    if s<>'' then
+    begin
+        if (((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
+           ((Pos('ed'+s,Components[i].Name)=1) or (Pos('me'+s,Components[i].Name)=1))) and (Pos('ed'+s+'entryorguid',Components[i].Name)<>1) and (Pos('ed'+s+'source_type',Components[i].Name)<>1) then
+           TCustomEdit(Components[i]).Clear;
+        if (Components[i] is TJvListView) and ((Pos('lv'+s,Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
     end;
   end;
@@ -4198,6 +4243,21 @@ begin
   end;
 end;
 
+procedure TMainForm.LoadSmartAI(entryorguid: integer; sourcetype: integer);
+begin
+    if entryorguid<1 then exit;
+
+    ShowHourGlassCursor;
+    ClearSmartAIFields();
+
+    LoadQueryToListView(Format('SELECT `entryorguid` as `entry`,  `source_type` as `src`, `id`, `link`, `event_type` as `et`,  '+
+      '`event_phase_mask` as `epm`, `event_chance` as `ec`,  `event_flags` as `ef`, `event_param1` as `ep1`,  `event_param2` as `ep2`, '+
+      '`event_param3` as `ep3`, `event_param4` as `ep4`,  `action_type` as `at`,  `action_param1` as `a1`,  `action_param2` as `a2`, '+
+      '`action_param3` as `a3`, `action_param4` as `a4`,  `action_param5` as `a5`,  `action_param6` as `a6`, `target_type` as `tt`, '+
+      '`target_param1` as `t1`,  `target_param2` as `t2`,  `target_param3` as `t3`, `target_x` as `tx`, `target_y` as `ty`, '+
+      '`target_z` as `tz`, `target_o` as `to`, `comment` as `cmt` FROM `smart_scripts` WHERE `entryorguid`=%d AND `source_type`=%d',[entryorguid, sourcetype]), lvcySmartAI);
+end;
+
 procedure TMainForm.LoadCreature(Entry: integer);
 var
   i: integer;
@@ -4264,13 +4324,6 @@ begin
       '`action3_type` as `a3t`,  `action3_param1` as `a31`,  `action3_param2` as `a32`,  `action3_param3` as `a33`, '+
       '`comment` as `cmt` FROM `creature_ai_scripts` WHERE `creature_id`=%d',[Entry]), lvcnEventAI);
     //tsCreatureEventAI.TabVisible := isEventAI;
-
-    LoadQueryToListView(Format('SELECT `entryorguid` as `entry`,  `source_type` as `src`, `id`, `link`, `event_type` as `et`,  '+
-      '`event_phase_mask` as `epm`, `event_chance` as `ec`,  `event_flags` as `ef`, `event_param1` as `ep1`,  `event_param2` as `ep2`, '+
-      '`event_param3` as `ep3`, `event_param4` as `ep4`,  `action_type` as `at`,  `action_param1` as `a1`,  `action_param2` as `a2`, '+
-      '`action_param3` as `a3`, `action_param4` as `a4`,  `action_param5` as `a5`,  `action_param6` as `a6`, `target_type` as `tt`, '+
-      '`target_param1` as `t1`,  `target_param2` as `t2`,  `target_param3` as `t3`, `target_x` as `tx`, `target_y` as `ty`, '+
-      '`target_z` as `tz`, `target_o` as `to`, `comment` as `cmt` FROM `smart_scripts` WHERE `entryorguid`=%d',[Entry]), lvcySmartAI);
 
     if istrainer then
     begin
@@ -4344,6 +4397,22 @@ begin
     LoadCreature(id);
 end;
 
+procedure TMainForm.btcyLoadClick(Sender: TObject);
+var
+  id, sourcetype: integer;
+begin
+  id := abs(StrToIntDef(edcyentryorguid.Text,0));
+  sourcetype := abs(StrToIntDef(edcysource_type.Text,0));
+  if id = 0 then Exit;
+  if (sourcetype = 0) and (edcysource_type.Text = '') then
+  begin
+    ShowMessage(dmMain.Text[158]);
+    Exit;
+  end;
+
+  LoadSmartAI(id, sourcetype);
+end;
+
 procedure TMainForm.edctequipment_idDblClick(Sender: TObject);
 begin
 PageControl3.ActivePageIndex := 4;
@@ -4380,10 +4449,16 @@ begin
 	EventAIUpd('edcn',lvcnEventAI);
 end;
 
-procedure TMainForm.btExecuteCreatureScriptClick(Sender: TObject);
+procedure TMainForm.btExecuteEventAIScriptClick(Sender: TObject);
 begin
   if MessageDlg(dmMain.Text[9], mtConfirmation, mbYesNoCancel, -1)=mrYes then
     ExecuteScript(mectScript.Text, mectLog);
+end;
+
+procedure TMainForm.btExecuteSmartAIScriptClick(Sender: TObject);
+begin
+  if MessageDlg(dmMain.Text[9], mtConfirmation, mbYesNoCancel, -1)=mrYes then
+    ExecuteScript(mecyScript.Text, mecyLog);
 end;
 
 procedure TMainForm.btCopyToClipboardCreatureClick(Sender: TObject);
@@ -4392,6 +4467,14 @@ begin
   mectScript.CopyToClipboard;
   mectScript.SelStart := 0;
   mectScript.SelLength := 0;
+end;
+
+procedure TMainForm.btCopyToClipboardSmartAIClick(Sender: TObject);
+begin
+  mecyScript.SelectAll;
+  mecyScript.CopyToClipboard;
+  mecyScript.SelStart := 0;
+  mecyScript.SelLength := 0;
 end;
 
 procedure TMainForm.tsButtonScriptShow(Sender: TObject);
@@ -5028,7 +5111,7 @@ begin
   try
     SetList(F.lvList, Name, Sort);
     i := F.lvList.Items.Count;
-    if (i>0) and (i<=15) then
+    if (i>0) and (i<=15) and (Name<>'SAI_SourceType') then
     begin
       if not Assigned(lvQuickList) then
       begin
@@ -8098,7 +8181,7 @@ begin
 end;
 
 procedure TMainForm.ShowFullSmartAIScript(TableName: string; lvList: TJvListView;
-  Memo: TMemo; entry: string);
+  Memo: TMemo; entry: string; sourcetype: string);
 var
   i: integer;
   Values: string;
@@ -8174,15 +8257,15 @@ begin
   end;
   if values<>'' then
   begin
-      Memo.Text := Format('DELETE FROM `%0:s` WHERE (`entryorguid`=%1:s);'#13#10+
+      Memo.Text := Format('DELETE FROM `%0:s` WHERE (`entryorguid`=%1:s AND `source_type`=%2:s);'#13#10+
         'INSERT INTO `%0:s` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, '+
 				'`event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, '+
 				'`action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, '+
 				'`action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, '+
-				'`target_y`, `target_z`, `target_o`, `comment`) VALUES '#13#10'%2:s',[TableName, entry, Values]);
+				'`target_y`, `target_z`, `target_o`, `comment`) VALUES '#13#10'%3:s',[TableName, entry, sourcetype, Values]);
   end
   else
-    Memo.Text := Format('DELETE FROM `%s` WHERE (`entryorguid`=%s);', [TableName, entry]);
+    Memo.Text := Format('DELETE FROM `%s` WHERE (`entryorguid`=%s AND `source_type`=%s);', [TableName, entry, sourcetype]);
 end;
 
 procedure TMainForm.btPickpocketLootAddClick(Sender: TObject);
@@ -8237,6 +8320,14 @@ begin
   LootUpd('edgo', lvgoGOLoot);
 end;
 
+procedure TMainForm.btgtGotoSmartAIClick(Sender: TObject);
+begin
+	edcyentryorguid.Text := edgtentry.Text;
+	edcysource_type.Text := '1';
+	PageControl1.ActivePageIndex := 4;
+  btcyLoadClick(Sender);
+end;
+
 procedure TMainForm.btGOLootDelClick(Sender: TObject);
 begin
   LootDel(lvgoGOLoot);
@@ -8283,10 +8374,18 @@ begin
   ShowFullEventAiScript('creature_ai_scripts', lvcnEventAI, mectScript, edctEntry.Text);
 end;
 
-procedure TMainForm.cyFullScriptClick(Sender: TObject);
+procedure TMainForm.btctGoToSmartAIClick(Sender: TObject);
 begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-  ShowFullSmartAIScript('smart_scripts', lvcySmartAI, mectScript, edctEntry.Text);
+	edcyentryorguid.Text := edctEntry.Text;
+  edcysource_type.Text := '0';
+  PageControl1.ActivePageIndex := 4;
+  btcyLoadClick(Sender);
+end;
+
+procedure TMainForm.btcyFullScriptClick(Sender: TObject);
+begin
+  PageControl9.ActivePageIndex := SCRIPT_TAB_NO_SMARTAI;
+  ShowFullSmartAIScript('smart_scripts', lvcySmartAI, mecyScript, edcyentryorguid.Text, edcysource_type.Text);
 end;
 
 procedure TMainForm.btFullScriptReferenceLootClick(Sender: TObject);

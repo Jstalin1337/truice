@@ -20,6 +20,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>vcl;rtl;vclx;vclactnband;xmlrtl;dbrtl;vcldb;vcldbx;bdertl;dsnap;dsnapcon;TeeUI;TeeDB;Tee;adortl;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_100_120;Intraweb_100_120;VclSmp;vclie;websnap;webdsnap;inetdbbde;inetdbxpress;soaprtl;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DataSnapServer;DbxClientDriver;DBXInterBaseDriver;DBXMySQLDriver;dbxcds;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;ZComponent;ZDbc;ZPlain;ZCore;ZParseSql;Jcl;JclVcl;JvCoreD12R;JvSystemD12R;JvStdCtrlsD12R;JvAppFrmD12R;JvBandsD12R;JvDBD12R;JvDlgsD12R;JvBDED12R;JvCmpD12R;JvCryptD12R;JvCtrlsD12R;JvCustomD12R;JvDockingD12R;JvDotNetCtrlsD12R;JvEDID12R;JvGlobusD12R;JvHMID12R;JvInterpreterD12R;JvJansD12R;JvManagedThreadsD12R;JvMMD12R;JvNetD12R;JvPageCompsD12R;JvPluginD12R;JvPrintPreviewD12R;JvRuntimeDesignD12R;JvTimeFrameworkD12R;JvValidatorsD12R;JvWizardD12R;JvXPCtrlsD12R;TMSUnicodeD2009;acnt2009_R</DCC_UsePackage>
 			<DCC_UnitSearchPath>C:\Users\Public\Documents\RAD Studio\AlphaControlsv6.6\D2009\dcu;C:\Users\Public\Documents\RAD Studio\AlphaControlsv6.6\D2009;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
 			<DCC_RangeChecking>true</DCC_RangeChecking>
@@ -140,29 +141,29 @@
 					</Parameters>
 					<VersionInfo>
 						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
-						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">2</VersionInfo>
-						<VersionInfo Name="Release">49</VersionInfo>
-						<VersionInfo Name="Build">996</VersionInfo>
+						<VersionInfo Name="Release">51</VersionInfo>
+						<VersionInfo Name="Build">1024</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
 						<VersionInfo Name="Private">False</VersionInfo>
 						<VersionInfo Name="DLL">False</VersionInfo>
-						<VersionInfo Name="Locale">1049</VersionInfo>
-						<VersionInfo Name="CodePage">1251</VersionInfo>
+						<VersionInfo Name="Locale">1033</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
 					</VersionInfo>
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription">Truice - Trinity DB Editor</VersionInfoKeys>
-						<VersionInfoKeys Name="FileVersion">1.2.49.996</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.2.51.1024</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName">Truice</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalCopyright">© indomit, 2009 (Quice), Ishigure, 2010</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalTrademarks">indomit™</VersionInfoKeys>
 						<VersionInfoKeys Name="OriginalFilename">Truice.exe</VersionInfoKeys>
 						<VersionInfoKeys Name="ProductName">Truice</VersionInfoKeys>
-						<VersionInfoKeys Name="ProductVersion">1.2.49</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.2.51</VersionInfoKeys>
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
 				</Delphi.Personality>

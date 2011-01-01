@@ -156,4 +156,5 @@ TEXT154=The error has accured while loading the Character:
 TEXT155=AreaTrigger
 TEXT156=LootCondition
 TEXT157=The error has accured while loading Creature EventAI:
+TEXT158=Please specify a source type!
 
