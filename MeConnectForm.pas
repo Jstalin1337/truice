@@ -170,11 +170,7 @@ end;
 
 procedure TMeConnectForm.LoadPassword;
 begin
-  try
-    edPassword.Text:=ReadFromRegistry(CurrentUser, '', 'Password', tpString);
-  except
-    edPassword.Text:='';
-  end;
+  edPassword.Text:=ReadFromRegistry(CurrentUser, '', 'Password', tpString, '');
 end;
 
 procedure TMeConnectForm.SavePassword;
@@ -185,36 +181,12 @@ end;
 
 procedure TMeConnectForm.LoadSettings;
 begin
-  try
-    cbSavePassword.Checked:=ReadFromRegistry(CurrentUser, '', 'SavePass', tpBool);
-  except
-    cbSavePassword.Checked:=false;
-  end;
-  try
-    edServer.Text:=ReadFromRegistry(CurrentUser, '', 'Server',    tpString);
-  except
-    edServer.Clear;
-  end;
-  try
-    edUsername.Text:=ReadFromRegistry(CurrentUser, '', 'Username',  tpString);
-  except
-    edUsername.Clear;
-  end;
-  try
-    edPort.Text:=ReadFromRegistry(CurrentUser, '', 'Port',      tpString);
-  except
-    edPort.Clear;
-  end;
-  try
-    edCharSet.Text:=ReadFromRegistry(CurrentUser, '', 'Charset', tpString);
-  except
-    edCharSet.Clear;
-  end;
-  try
-    cbUnicode.Checked:=ReadFromRegistry(CurrentUser, '', 'Unicode', tpBool);
-  except
-    cbUnicode.Checked:=false;
-  end;
+  cbSavePassword.Checked:=ReadFromRegistry(CurrentUser, '', 'SavePass', tpBool, false);
+  edServer.Text:=ReadFromRegistry(CurrentUser, '', 'Server', tpString, '');
+  edUsername.Text:=ReadFromRegistry(CurrentUser, '', 'Username', tpString, '');
+  edPort.Text:=ReadFromRegistry(CurrentUser, '', 'Port', tpString, '');
+  edCharSet.Text:=ReadFromRegistry(CurrentUser, '', 'Charset', tpString, '');
+  cbUnicode.Checked:=ReadFromRegistry(CurrentUser, '', 'Unicode', tpBool, false);
 end;
 
 procedure TMeConnectForm.SaveSettings;
@@ -285,10 +257,10 @@ var
 begin
   dmMain.Translate.TranslateForm(TForm(Self));
   Caption := Format('Truice %s',[VERSION_EXE]);
-  mDBname:=ReadFromRegistry(CurrentUser, '', 'mDatabase',  tpString);
-  cDBname:=ReadFromRegistry(CurrentUser, '', 'cDatabase',  tpString);
-  rDBname:=ReadFromRegistry(CurrentUser, '', 'rDatabase',  tpString);
-  sDBname:=ReadFromRegistry(CurrentUser, '', 'sDatabase',  tpString);
+  mDBname:=ReadFromRegistry(CurrentUser, '', 'mDatabase',  tpString, '');
+  cDBname:=ReadFromRegistry(CurrentUser, '', 'cDatabase',  tpString, '');
+  rDBname:=ReadFromRegistry(CurrentUser, '', 'rDatabase',  tpString, '');
+  sDBname:=ReadFromRegistry(CurrentUser, '', 'sDatabase',  tpString, '');
 
   edExit(Sender);
 
@@ -319,49 +291,18 @@ end;
 
 procedure TMeConnectForm.edServerChange(Sender: TObject);
 begin
-  try
-    cbSavePassword.Checked:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'SavePass', tpBool);
-  except
-    cbSavePassword.Checked:=false;
-  end;
+  cbSavePassword.Checked:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'SavePass', tpBool, false);
+
   if cbSavePassword.Checked then
-  try
-    edPassword.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'Password', tpString);
-  except
-    edPassword.Text:='';
-  end;
-  try
-    edUsername.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'Username',  tpString);
-  except
-    edUsername.Clear;
-  end;
-  try
-    edmDatabase.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'mDatabase',  tpString);
-  except
-  end;
-  try
-    edcDatabase.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'cDatabase',  tpString);
-  except
-  end;
-  try
-    edrDatabase.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'rDatabase',  tpString);
-  except
-  end;
-  try
-    edPort.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'Port',      tpString);
-  except
-    edPort.Clear;
-  end;
-  try
-    edCharSet.Text:=ReadFromRegistry(CurrentUser,'servers\' + edServer.Text, 'Charset', tpString);
-  except
-    edCharSet.Clear;
-  end;
-  try
-    cbUnicode.Checked:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'Unicode', tpBool);
-  except
-    cbUnicode.Checked:=false;
-  end;
+    edPassword.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'Password', tpString, '');
+
+  edUsername.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'Username',  tpString, '');
+  edmDatabase.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'mDatabase',  tpString, '');
+  edcDatabase.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'cDatabase',  tpString, '');
+  edrDatabase.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'rDatabase',  tpString, '');
+  edPort.Text:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'Port',      tpString, '');
+  edCharSet.Text:=ReadFromRegistry(CurrentUser,'servers\' + edServer.Text, 'Charset', tpString, '');
+  cbUnicode.Checked:=ReadFromRegistry(CurrentUser, 'servers\' + edServer.Text, 'Unicode', tpBool, false);
 end;
 
 end.

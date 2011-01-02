@@ -27,7 +27,7 @@ procedure LoadStringListFromFile(List: TStrings; csvname: string); forward; expo
 procedure Sort(List: TTntListView; Column: integer); forward; export;
 
 procedure WriteToRegistry(Root: TRootKey; Part, Param: string; TypeOfParam: TParameter; Value: OleVariant); forward; overload;
-function ReadFromRegistry(Root: TRootKey; Part, Param: string; TypeOfParam: TParameter): OleVariant; forward; overload;
+function ReadFromRegistry(Root: TRootKey; Part, Param: string; TypeOfParam: TParameter; const DefaultValue: OleVariant): OleVariant; forward; overload;
 procedure WriteToRegistry(Root: TRootKey; Part, Param: string; var Buffer; BufSize: Integer); forward; overload;
 procedure ReadFromRegistry(Root: TRootKey; Part, Param: string; var Buffer; BufSize: Integer); forward; overload;
 
@@ -478,34 +478,37 @@ end;
 
 
 function ReadFromRegistry(Root: TRootKey; Part, Param: string;
-                         TypeOfParam: TParameter): OleVariant;
+                         TypeOfParam: TParameter; const DefaultValue: OleVariant): OleVariant;
 var
   Section: string;
   Value: OleVariant;
 begin
-{  if (Trim(ProgramName)='') then
-    raise Exception.Create('ProgramName can not be empty');}
-  if Part='' then
-    Section:='Software\' + Trim(ProgramName)
-  else
-    Section:='Software\' + Trim(ProgramName) + '\' + Trim(Part);
+  Value := DefaultValue;
+  Section:='Software\' + Trim(ProgramName) + '\' + Trim(Part);
   with TRegistry.Create do
   try
     case Root of
-      CurrentUser: RootKey:=HKEY_CURRENT_USER;
-      LocalMachine: RootKey:=HKEY_LOCAL_MACHINE;
+      CurrentUser:    RootKey:=HKEY_CURRENT_USER;
+      LocalMachine:   RootKey:=HKEY_LOCAL_MACHINE;
     end;
-    OpenKey(Section, false);
-    case TypeOfParam of
-      tpInteger     :   Value:=ReadInteger(Param);
-      tpFloat       :   Value:=ReadFloat(Param);
-      tpString      :   Value:=ReadString(Param);
-      tpDate        :   Value:=ReadDate(Param);
-      tpTime        :   Value:=ReadTime(Param);
-      tpDateTime    :   Value:=ReadDateTime(Param);
-      tpBool        :   Value:=ReadBool(Param);
-      tpCurrency    :   Value:=ReadCurrency(Param);
-      tpBinaryData  :   raise Exception.Create('use overloaded procedure');
+
+    if KeyExists(Section) then
+    begin
+      OpenKeyReadOnly(Section);
+      if ValueExists(Param) then
+      begin
+        case TypeOfParam of
+          tpInteger     :   Value:=ReadInteger(Param);
+          tpFloat       :   Value:=ReadFloat(Param);
+          tpString      :   Value:=ReadString(Param);
+          tpDate        :   Value:=ReadDate(Param);
+          tpTime        :   Value:=ReadTime(Param);
+          tpDateTime    :   Value:=ReadDateTime(Param);
+          tpBool        :   Value:=ReadBool(Param);
+          tpCurrency    :   Value:=ReadCurrency(Param);
+          tpBinaryData  :   raise Exception.Create('use overloaded procedure');
+        end;
+      end;
     end;
   finally
     Free;
@@ -530,8 +533,10 @@ begin
       CurrentUser: RootKey:=HKEY_CURRENT_USER;
       LocalMachine: RootKey:=HKEY_LOCAL_MACHINE;
     end;
-    OpenKey(Section, false);
-    ReadBinaryData(Param, Buffer, BufSize);
+    if OpenKey(Section, false) then
+    begin
+      ReadBinaryData(Param, Buffer, BufSize);
+    end;
   finally
     Free;
   end;

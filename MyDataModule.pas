@@ -75,36 +75,17 @@ begin
 
   FSite := sW;
   Init;
-  ProgramDir:=IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName));
-  try
-    DBCDir := ReadFromRegistry(CurrentUser, '', 'DBCDir', tpString);
-  except
-    DBCDir := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) + 'DBC';
-  end;
-  try
-    DBCLocale := ReadFromRegistry(CurrentUser, '', 'DBCLocale', tpInteger);
-  except
-    DBCLocale := 16;
-  end;
-  try
-    Language := ReadFromRegistry(CurrentUser, '', 'Language', tpString);
-  except
-    Language := DefaultLanguage;
-  end;
+  ProgramDir := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName));
 
-  try
-    IsAutoUpdates := ReadFromRegistry(CurrentUser, '', 'IsAutoUpdates', tpBool);
-  except
-    IsAutoUpdates := True;
-  end;
+  DBCDir := ReadFromRegistry(CurrentUser, '', 'DBCDir', tpString, ProgramDir + 'DBC');
+  DBCLocale := ReadFromRegistry(CurrentUser, '', 'DBCLocale', tpInteger, 16);
+  Language := ReadFromRegistry(CurrentUser, '', 'Language', tpString, DefaultLanguage);
+  IsAutoUpdates := ReadFromRegistry(CurrentUser, '', 'IsAutoUpdates', tpBool, True);
 
-  try
-    ProxyServer := ReadFromRegistry(CurrentUser, '', 'ProxyServer', tpString);
-    ProxyPort   := ReadFromRegistry(CurrentUser, '', 'ProxyPort', tpString);
-    ProxyUser   := ReadFromRegistry(CurrentUser, '', 'ProxyUser', tpString);
-    ProxyPass   := ReadFromRegistry(CurrentUser, '', 'ProxyPass', tpString);
-  except
-  end;                           
+  ProxyServer := ReadFromRegistry(CurrentUser, '', 'ProxyServer', tpString, '');
+  ProxyPort   := ReadFromRegistry(CurrentUser, '', 'ProxyPort', tpString, '');
+  ProxyUser   := ReadFromRegistry(CurrentUser, '', 'ProxyUser', tpString, '');
+  ProxyPass   := ReadFromRegistry(CurrentUser, '', 'ProxyPass', tpString, '');
 
   Translate:=TTranslate.Create;
   Translate.CreateCustomTranslation;

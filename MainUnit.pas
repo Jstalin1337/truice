@@ -3612,59 +3612,35 @@ procedure TMainForm.LoadFromReg;
 var
   i, c: integer;
 begin
-  with TRegistry.Create do
-  try
-    RootKey := HKEY_CURRENT_USER;
-    if not OpenKey('SOFTWARE\' + Trim(ProgramName), false) then exit;
-    try
-      case ReadInteger('SQLSyntaxStyle') of
-       0: SyntaxStyle := ssReplace;
-       1: SyntaxStyle := ssInsertDelete;
-       2: SyntaxStyle := ssUpdate;
-      end;
-    except
-      SyntaxStyle := ssReplace;
-    end;
+  case ReadFromRegistry(Functions.TRootKey.CurrentUser, '', 'SQLSyntaxStyle', Functions.TParameter.tpInteger, 0) of
+    0: SyntaxStyle := ssReplace;
+    1: SyntaxStyle := ssInsertDelete;
+    2: SyntaxStyle := ssUpdate;
+  end;
 
-    try
-      dmMain.Locales:=ReadInteger('Locales');
-    except
-     dmMain.Locales:=0;
-     WriteInteger('Locales', dmMain.Locales);
-    end;
+  dmMain.Locales := ReadFromRegistry(Functions.TRootKey.CurrentUser, '', 'Locales', Functions.TParameter.tpInteger, 0);
 
-    if not OpenKey('QuestList', false) then exit;
-    try
-      c := ReadInteger('ColumnCount');
-      lvQuest.Columns.Clear;
-      for i := 0 to c - 1 do
+  c := ReadFromRegistry(Functions.TRootKey.CurrentUser, 'QuestList', 'ColumnCount', Functions.TParameter.tpInteger, 0);
+  if c > 0 then
+  begin
+    lvQuest.Columns.Clear;
+    for i := 0 to c - 1 do
+    begin
+      with lvQuest.Columns.Add do
       begin
-        with lvQuest.Columns.Add do
-        begin
-          Caption := ReadString(Format('N%d',[i]));
-          Width := ReadInteger(Format('W%d',[i]));
-        end;
+        Caption := ReadFromRegistry(Functions.TRootKey.CurrentUser, 'QuestList', Format('N%d', [i]), Functions.TParameter.tpString, 'Error');
+        Width := ReadFromRegistry(Functions.TRootKey.CurrentUser, 'QuestList', Format('W%d', [i]), Functions.TParameter.tpInteger, 40);
       end;
-    except
     end;
 
-    try
-      c := ReadInteger('Site');
-      case c of
-        0: dmMain.Site := sW;
-        1: dmMain.Site:= sRW;
-        2: dmMain.Site := sT;
-        3: dmMain.Site := sA;
-      end;
-    except
-      dmMain.Site := sW;
+    case ReadFromRegistry(Functions.TRootKey.CurrentUser, 'QuestList', 'Site', Functions.TParameter.tpInteger, 0) of
+      0: dmMain.Site := sW;
+      1: dmMain.Site := sRW;
+      2: dmMain.Site := sT;
+      3: dmMain.Site := sA;
     end;
-  finally
-    Free;
   end;
 end;
-
-
 
 procedure TMainForm.SetCreatureModelEditFields(pfx: string; lvList: TJvListView);
 begin
@@ -6044,8 +6020,10 @@ begin
 end;
 
 procedure TMainForm.CompleteCreatureMovementScript;
+{
 var
   caguid,cmpoint, Fields, Values: string;
+}
 begin
   {mectLog.Clear;
   caguid := trim( edcmid.Text );
