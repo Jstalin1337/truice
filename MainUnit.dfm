@@ -14588,7 +14588,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsGOSmartAI
+        ActivePage = tsEditGO
         Align = alClient
         TabOrder = 0
         object tsSearchGO: TTabSheet
@@ -15429,9 +15429,9 @@ object MainForm: TMainForm
               OnChange = edflagsChange
             end
             object edgtcastBarCaption: TLabeledEdit
-              Left = 159
-              Top = 112
-              Width = 117
+              Left = 116
+              Top = 111
+              Width = 98
               Height = 21
               EditLabel.Width = 72
               EditLabel.Height = 13
@@ -15441,7 +15441,7 @@ object MainForm: TMainForm
             object edgtIconName: TLabeledEdit
               Left = 8
               Top = 111
-              Width = 144
+              Width = 100
               Height = 21
               EditLabel.Width = 49
               EditLabel.Height = 13
@@ -15449,8 +15449,8 @@ object MainForm: TMainForm
               TabOrder = 9
             end
             object edgtunk1: TLabeledEdit
-              Left = 284
-              Top = 112
+              Left = 220
+              Top = 111
               Width = 66
               Height = 21
               EditLabel.Width = 24
@@ -15459,14 +15459,24 @@ object MainForm: TMainForm
               TabOrder = 10
             end
             object edgtWDBVerified: TLabeledEdit
-              Left = 358
-              Top = 112
-              Width = 82
+              Left = 292
+              Top = 111
+              Width = 60
               Height = 21
               EditLabel.Width = 61
               EditLabel.Height = 13
               EditLabel.Caption = 'WDBVerified'
               TabOrder = 11
+            end
+            object edgtAIName: TLabeledEdit
+              Left = 356
+              Top = 111
+              Width = 91
+              Height = 21
+              EditLabel.Width = 38
+              EditLabel.Height = 13
+              EditLabel.Caption = 'AIName'
+              TabOrder = 12
             end
           end
           object btScriptGOTemplate: TButton

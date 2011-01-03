@@ -1605,6 +1605,7 @@ type
     tsGOSmartAI: TTabSheet;
     lbgtGotoSmartAI: TLabel;
     btgtGotoSmartAI: TButton;
+    edgtAIName: TLabeledEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
