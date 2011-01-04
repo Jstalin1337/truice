@@ -85,10 +85,9 @@ lbUsername=Username
 lbPassword=Password
 lbServer=Server
 lbPort=Port
-lbmDatabase=mangos
+lbmDatabase=world
 lbcDatabase=characters
-lbrDatabase=realmd
-lbsDatabase=script
+lbrDatabase=auth
 cbSavePassword=Store Password
 
 [SETTINGS]

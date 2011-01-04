@@ -109,7 +109,7 @@ lbUsername=Username
 lbPassword=Heslo
 lbServer=Server
 lbPort=Port
-lbmDatabase=Mangos DB
+lbmDatabase=World DB
 lbcDatabase=Char DB
 cbSavePassword=Uložit heslo
 
