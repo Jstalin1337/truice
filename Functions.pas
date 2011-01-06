@@ -45,19 +45,19 @@ const
   I_CreatureFamily       =  10;
   I_ChrClasses           =  4;
   I_QuestInfo            =  1;
-  I_Faction              = 23;
+  I_Faction              =  1;
   I_SkillLine            =  3;
-  I_ChrRaces             = 14;
+  I_ChrRaces             =  14;
   I_CreatureType         =  1;
   I_Languages            =  1;
-  I_SpellItemEnchantment = 14;
+  I_SpellItemEnchantment =  14;
   I_ItemClass            =  3;
   I_ItemSet              =  1;
   I_Map                  =  4;
   I_ItemPetFood          =  1;
-  I_AreaTable            = 11;
-  I_SpellName            = 136;
-  I_SpellRank            = 153;
+  I_AreaTable            =  11;
+  I_SpellName            =  136;
+  I_SpellRank            =  153;
 
   MAX_ITEM_LENGTH        = 1000;
 
