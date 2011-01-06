@@ -180,7 +180,7 @@ object ItemForm: TItemForm
     end
   end
   object MyQuery: TZQuery
-    Connection = MainForm.MyMangosConnection
+    Connection = MainForm.MyTrinityConnection
     Params = <>
     Left = 276
     Top = 64

@@ -120,7 +120,7 @@ object ItemLootForm: TItemLootForm
     end
   end
   object MyQuery: TZQuery
-    Connection = MainForm.MyMangosConnection
+    Connection = MainForm.MyTrinityConnection
     Params = <>
     Left = 65
     Top = 81

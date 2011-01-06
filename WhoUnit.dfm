@@ -100,6 +100,7 @@ object WhoQuestForm: TWhoQuestForm
             Caption = 'Name'
             Width = 300
           end>
+        Groups = <>
         HideSelection = False
         ReadOnly = True
         RowSelect = True
@@ -108,7 +109,6 @@ object WhoQuestForm: TWhoQuestForm
         OnChange = lvWhoChange
         OnDblClick = lvWhoDblClick
         ColumnsOrder = '0=60,1=300'
-        Groups = <>
         ExtendedColumns = <
           item
           end
@@ -204,10 +204,8 @@ object WhoQuestForm: TWhoQuestForm
       Top = 8
       Width = 17
       Height = 25
+      DoubleBuffered = True
       Enabled = False
-      PopupMenu = pmBrowseSite
-      TabOrder = 4
-      OnClick = btBrowseQuesterPopupClick
       Glyph.Data = {
         32010000424D3201000000000000360000002800000009000000090000000100
         180000000000FC00000000000000000000000000000000000000FFFFFFFFFFFF
@@ -219,10 +217,14 @@ object WhoQuestForm: TWhoQuestForm
         FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
+      ParentDoubleBuffered = False
+      PopupMenu = pmBrowseSite
+      TabOrder = 4
+      OnClick = btBrowseQuesterPopupClick
     end
   end
   object MyQuery: TZQuery
-    Connection = MainForm.MyMangosConnection
+    Connection = MainForm.MyTrinityConnection
     Params = <>
     Left = 464
     Top = 72

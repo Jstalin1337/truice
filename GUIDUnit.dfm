@@ -189,7 +189,7 @@ object GUIDForm: TGUIDForm
     end
   end
   object MyQuery: TZQuery
-    Connection = MainForm.MyMangosConnection
+    Connection = MainForm.MyTrinityConnection
     Params = <>
     Left = 328
     Top = 24
