@@ -45,7 +45,7 @@ const
   I_CreatureFamily       =  10;
   I_ChrClasses           =  4;
   I_QuestInfo            =  1;
-  I_Faction              =  1;
+  I_Faction              =  20;
   I_SkillLine            =  3;
   I_ChrRaces             =  14;
   I_CreatureType         =  1;
