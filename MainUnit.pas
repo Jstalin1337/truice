@@ -1606,6 +1606,14 @@ type
     lbgtGotoSmartAI: TLabel;
     btgtGotoSmartAI: TButton;
     edgtAIName: TLabeledEdit;
+    edclnpcflag: TJvComboEdit;
+    edclunit_flags: TJvComboEdit;
+    edcldynamicflags: TJvComboEdit;
+    lbclnpcflag: TLabel;
+    lbclunit_flags: TLabel;
+    lbcldynamicflags: TLabel;
+    edptWDBVerified: TLabeledEdit;
+    edgeworld_event: TLabeledEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -3884,6 +3892,7 @@ begin
   edgeentry.Clear;
   edgelength.Clear;
   edgeoccurence.Clear;
+  edgeworld_event.Clear;
   edSearchPageTextText.Clear;
   edSearchPageTextNextPage.Clear;
   edQuestID.Clear;
@@ -6616,6 +6625,7 @@ begin
     edgelength.Text := Item.SubItems[3];
     edgeholiday.Text := Item.SubItems[4];
     edgedescription.Text := Item.SubItems[5];
+    edgeworld_event.Text := Item.SubItems[6];
     LoadCreaturesAndGOForGameEvent(Item.Caption);
   end
   else
@@ -9623,6 +9633,7 @@ begin
     SubItems.Add(edgeoccurence.Text);
     SubItems.Add(edgelength.Text);
     SubItems.Add(edgedescription.Text);
+    SubItems.Add(edgeworld_event.Text);
     Selected := true;
     MakeVisible(false);
   end;
@@ -9653,6 +9664,7 @@ begin
       SubItems[2] := edgeoccurence.Text;
       SubItems[3] := edgelength.Text;
       SubItems[4] := edgedescription.Text;
+      SubItems[5] := edgeworld_event.Text;
     end;
   end;
 end;
