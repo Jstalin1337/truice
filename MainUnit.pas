@@ -10297,6 +10297,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     1:  //SMART_EVENT_UPDATE_OOC
         begin
@@ -10305,6 +10306,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     2:  //SMART_EVENT_HEALT_PCT
         begin
@@ -10313,6 +10315,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     3:  //SMART_EVENT_MANA_PCT
         begin
@@ -10321,6 +10324,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     4:  //SMART_EVENT_AGGRO
         begin
@@ -10329,6 +10333,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     5:  //SMART_EVENT_KILL
         begin
@@ -10337,6 +10342,7 @@ begin
             lbcyevent_param3.Caption := 'playerOnly2';
             lbcyevent_param4.Caption := 'else creature entry3';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     6:  //SMART_EVENT_DEATH
         begin
@@ -10345,6 +10351,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     7:  //SMART_EVENT_EVADE
         begin
@@ -10353,6 +10360,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     8:  //SMART_EVENT_SPELLHIT
         begin
@@ -10361,6 +10369,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     9:  //SMART_EVENT_RANGE
         begin
@@ -10369,6 +10378,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     10:  //SMART_EVENT_OOC_LOS
         begin
@@ -10377,6 +10387,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     11:  //SMART_EVENT_RESPAWN
         begin
@@ -10385,6 +10396,7 @@ begin
             lbcyevent_param3.Caption := 'ZoneId';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     12:  //SMART_EVENT_TARGET_HEALTH_PCT
         begin
@@ -10393,6 +10405,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     13:  //SMART_EVENT_TARGET_CASTING
         begin
@@ -10401,6 +10414,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     14:  //SMART_EVENT_FRIENDLY_HEALTH
         begin
@@ -10409,6 +10423,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     15:  //SMART_EVENT_FRIENDLY_IS_CC
         begin
@@ -10417,6 +10432,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMax';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     16:  //SMART_EVENT_FRIENDLY_MISSING_BUFF
         begin
@@ -10425,6 +10441,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     17:  //SMART_EVENT_SUMMONED_UNIT
         begin
@@ -10433,6 +10450,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     18:  //SMART_EVENT_TARGET_MANA_PCT
         begin
@@ -10441,6 +10459,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     19:  //SMART_EVENT_ACCEPTED_QUEST
         begin
@@ -10449,6 +10468,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     20:  //SMART_EVENT_REWARD_QUEST
         begin
@@ -10457,6 +10477,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     21:  //SMART_EVENT_REACHED_HOME
         begin
@@ -10465,6 +10486,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     22:  //SMART_EVENT_RECEIVE_EMOTE
         begin
@@ -10473,6 +10495,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := 'condition';
             lbcyevent_type.Hint := 'val1,val2,val3 (?)';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     23:  //SMART_EVENT_HAS_AURA
         begin
@@ -10481,6 +10504,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     24:  //SMART_EVENT_TARGET_BUFFED
         begin
@@ -10489,6 +10513,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     25:  //SMART_EVENT_RESET
         begin
@@ -10497,6 +10522,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := 'Called after combat, when the creature respawns or at spawn.';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     26:  //SMART_EVENT_IC_LOS
         begin
@@ -10505,6 +10531,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     27:  //SMART_EVENT_PASSENGER_BOARDED
         begin
@@ -10513,6 +10540,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     28:  //SMART_EVENT_PASSENGER_REMOVED
         begin
@@ -10521,6 +10549,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     29:  //SMART_EVENT_CHARMED
         begin
@@ -10529,6 +10558,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     30:  //SMART_EVENT_CHARMED_TARGET
         begin
@@ -10537,6 +10567,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     31:  //SMART_EVENT_SPELLHIT_TARGET
         begin
@@ -10545,6 +10576,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     32:  //SMART_EVENT_DAMAGED
         begin
@@ -10553,6 +10585,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     33:  //SMART_EVENT_DAMAGED_TARGET
         begin
@@ -10561,6 +10594,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     34:  //SMART_EVENT_MOVEMENTINFORM
         begin
@@ -10569,6 +10603,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     35:  //SMART_EVENT_SUMMON_DESPAWNED
         begin
@@ -10577,6 +10612,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     36:  //SMART_EVENT_CORPSE_REMOVED
         begin
@@ -10585,6 +10621,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     37:  //SMART_EVENT_AI_INIT
         begin
@@ -10593,6 +10630,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     38:  //SMART_EVENT_DATA_SET
         begin
@@ -10601,6 +10639,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     39:  //SMART_EVENT_WAYPOINT_START
         begin
@@ -10609,6 +10648,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     40:  //SMART_EVENT_WAYPOINT_REACHED
         begin
@@ -10617,6 +10657,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     41:  //SMART_EVENT_TRANSPORT_ADDPLAYER
         begin
@@ -10625,6 +10666,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     42:  //SMART_EVENT_TRANSPORT_ADDCREATURE
         begin
@@ -10633,6 +10675,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     43:  //SMART_EVENT_TRANSPORT_REMOVE_PLAYER
         begin
@@ -10641,6 +10684,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     44:  //SMART_EVENT_TRANSPORT_RELOCATE
         begin
@@ -10649,6 +10693,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     45:  //SMART_EVENT_INSTANCE_PLAYER_ENTER
         begin
@@ -10657,6 +10702,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     46:  //SMART_EVENT_AREATRIGGER_ONTRIGGER
         begin
@@ -10665,6 +10711,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     47:  //SMART_EVENT_QUEST_ACCEPTED
         begin
@@ -10673,6 +10720,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     48:  //SMART_EVENT_QUEST_OBJ_COPLETETION
         begin
@@ -10681,6 +10729,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     49:  //SMART_EVENT_QUEST_COMPLETION
         begin
@@ -10689,6 +10738,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     50:  //SMART_EVENT_QUEST_REWARDED
         begin
@@ -10697,6 +10747,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     51:  //SMART_EVENT_QUEST_FAIL
         begin
@@ -10705,6 +10756,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     52:  //SMART_EVENT_TEXT_OVER
         begin
@@ -10713,6 +10765,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     53:  //SMART_EVENT_RECEIVE_HEAL
         begin
@@ -10721,6 +10774,7 @@ begin
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     54:  //SMART_EVENT_JUST_SUMMONED
         begin
@@ -10729,6 +10783,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     55:  //SMART_EVENT_WAYPOINT_PAUSED
         begin
@@ -10737,6 +10792,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     56:  //SMART_EVENT_WAYPOINT_RESUMED
         begin
@@ -10745,6 +10801,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     57:  //SMART_EVENT_WAYPOINT_STOPPED
         begin
@@ -10753,6 +10810,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     58:  //SMART_EVENT_WAYPOINT_ENDED
         begin
@@ -10761,6 +10819,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     59:  //SMART_EVENT_TIMED_EVENT_TRIGGERED
         begin
@@ -10769,6 +10828,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     60:  //SMART_EVENT_UPDATE
         begin
@@ -10777,6 +10837,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     61:  //SMART_EVENT_LINK
         begin
@@ -10785,6 +10846,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := 'used to link together multiple events';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     62:  //SMART_EVENT_GOSSIP_SELECT
         begin
@@ -10793,6 +10855,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     63:  //SMART_EVENT_JUST_CREATED
         begin
@@ -10801,6 +10864,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     64:  //SMART_EVENT_GOSSIP_HELLO
         begin
@@ -10809,6 +10873,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     65:  //SMART_EVENT_FOLLOW_COMPLETED
         begin
@@ -10817,6 +10882,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     66:  //SMART_EVENT_DUMMY_EFFECT
         begin
@@ -10825,6 +10891,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     end;
     SAI_Event := t;
@@ -10832,9 +10899,26 @@ end;
 
 procedure TMainForm.SetSAIAction(t: integer);
 begin
-    edcyaction_param2.ShowButton := false;
+    //Buttons
     edcyaction_param1.ShowButton := false;
+    edcyaction_param2.ShowButton := false;
     edcyaction_param6.ShowButton := false;
+    case t of
+    8:
+        begin
+            edcyaction_param1.ShowButton := true;
+        end;
+    12:
+        begin
+            edcyaction_param2.ShowButton := true;
+        end;
+    53:
+        begin
+            edcyaction_param6.ShowButton := true;
+        end;
+    end;
+
+    //Normal
     case t of
     0:  //SMART_ACTION_NONE
         begin
@@ -10845,6 +10929,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     1:  //SMART_ACTION_TALK
         begin
@@ -10855,6 +10940,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     2:  //SMART_ACTION_SET_FACTION
         begin
@@ -10865,6 +10951,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     3:  //SMART_ACTION_MORPH_TO_ENTRY_OR_MODEL
         begin
@@ -10875,6 +10962,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     4:  //SMART_ACTION_SOUND
         begin
@@ -10885,6 +10973,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     5:  //SMART_ACTION_PLAY_EMOTE
         begin
@@ -10895,6 +10984,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     6:  //SMART_ACTION_FAIL_QUEST
         begin
@@ -10905,6 +10995,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     7:  //SMART_ACTION_ADD_QUEST
         begin
@@ -10915,6 +11006,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     8:  //SMART_ACTION_SET_REACT_STATE
         begin
@@ -10925,7 +11017,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
-            edcyaction_param1.ShowButton := true;
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     9:  //SMART_ACTION_ACTIVATE_GOBJECT
         begin
@@ -10936,6 +11028,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     10:  //SMART_ACTION_RANDOM_EMOTE
         begin
@@ -10946,6 +11039,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     11:  //SMART_ACTION_CAST
         begin
@@ -10956,6 +11050,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     12:  //SMART_ACTION_SUMMON_CREATURE
         begin
@@ -10966,7 +11061,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := 'attackInvoker';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
-            edcyaction_param2.ShowButton := true;
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     13:  //SMART_ACTION_THREAT_SINGLE_PCT
         begin
@@ -10977,6 +11072,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     14:  //SMART_ACTION_THREAT_ALL_PCT
         begin
@@ -10987,6 +11083,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     15:  //SMART_ACTION_CALL_AREAEXPLOREDOREVENTHAPPENS
         begin
@@ -10997,6 +11094,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     16:  //SMART_ACTION_SEND_CASTCREATUREORGO
         begin
@@ -11007,6 +11105,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     17:  //SMART_ACTION_SET_EMOTE_STATE
         begin
@@ -11017,6 +11116,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     18:  //SMART_ACTION_SET_UNIT_FLAG
         begin
@@ -11027,6 +11127,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     19:  //SMART_ACTION_REMOVE_UNIT_FLAG
         begin
@@ -11037,6 +11138,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     20:  //SMART_ACTION_AUTO_ATTACK
         begin
@@ -11047,6 +11149,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     21:  //SMART_ACTION_ALLOW_COMBAT_MOVEMENT
         begin
@@ -11057,6 +11160,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     22:  //SMART_ACTION_SET_EVENT_PHASE
         begin
@@ -11067,6 +11171,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     23:  //SMART_ACTION_INC_EVENT_PHASE
         begin
@@ -11077,6 +11182,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     24:  //SMART_ACTION_EVADE
         begin
@@ -11087,6 +11193,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     25:  //SMART_ACTION_FLEE_FOR_ASSIST
         begin
@@ -11097,6 +11204,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     26:  //SMART_ACTION_CALL_GROUPEVENTHAPPENS
         begin
@@ -11107,6 +11215,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     27:  //SMART_ACTION_CALL_CASTEDCREATUREORGO
         begin
@@ -11117,6 +11226,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     28:  //SMART_ACTION_REMOVEAURASFROMSPELL
         begin
@@ -11127,6 +11237,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     29:  //SMART_ACTION_FOLLOW
         begin
@@ -11137,6 +11248,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := 'creditType (0monsterkill, 1event)';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     30:  //SMART_ACTION_RANDOM_PHASE
         begin
@@ -11147,6 +11259,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     31:  //SMART_ACTION_RANDOM_PHASE_RANGE
         begin
@@ -11157,6 +11270,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     32:  //SMART_ACTION_RESET_GOBJECT
         begin
@@ -11167,6 +11281,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     33:  //SMART_ACTION_CALL_KILLEDMONSTER
         begin
@@ -11177,6 +11292,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     34:  //SMART_ACTION_SET_INST_DATA
         begin
@@ -11187,6 +11303,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     35:  //SMART_ACTION_SET_INST_DATA64
         begin
@@ -11197,6 +11314,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     36:  //SMART_ACTION_UPDATE_TEMPLATE
         begin
@@ -11207,6 +11325,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     37:  //SMART_ACTION_DIE
         begin
@@ -11217,6 +11336,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     38:  //SMART_ACTION_SET_IN_COMBAT_WITH_ZONE
         begin
@@ -11227,6 +11347,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     39:  //SMART_ACTION_CALL_FOR_HELP
         begin
@@ -11237,6 +11358,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     40:  //SMART_ACTION_SET_SHEATH
         begin
@@ -11247,6 +11369,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     41:  //SMART_ACTION_FORCE_DESPAWN
         begin
@@ -11257,6 +11380,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     42:  //SMART_ACTION_SET_INVINCIBILITY_HP_LEVEL
         begin
@@ -11267,6 +11391,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     43:  //SMART_ACTION_MOUNT_TO_ENTRY_OR_MODEL
         begin
@@ -11277,6 +11402,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '(or 0 for both to unmount)';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     44:  //SMART_ACTION_SET_INGAME_PHASE_MASK
         begin
@@ -11287,6 +11413,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     45:  //SMART_ACTION_SET_DATA
         begin
@@ -11297,6 +11424,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '(only creature TODO)';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     46:  //SMART_ACTION_MOVE_FORWARD
         begin
@@ -11307,6 +11435,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     47:  //SMART_ACTION_SET_VISIBILITY
         begin
@@ -11317,6 +11446,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     48:  //SMART_ACTION_SET_ACTIVE
         begin
@@ -11327,6 +11457,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     49:  //SMART_ACTION_ATTACK_START
         begin
@@ -11337,6 +11468,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     50:  //SMART_ACTION_SUMMON_GO
         begin
@@ -11347,6 +11479,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     51:  //SMART_ACTION_KILL_UNIT
         begin
@@ -11357,6 +11490,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     52:  //SMART_ACTION_ACTIVATE_TAXI
         begin
@@ -11367,6 +11501,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     53:  //SMART_ACTION_WP_START
         begin
@@ -11377,7 +11512,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := 'despawntime';
             lbcyaction_param6.Caption := 'reactState';
             lbcyaction_type.Hint := '';
-            edcyaction_param6.ShowButton := true;
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     54:  //SMART_ACTION_WP_PAUSE
         begin
@@ -11388,6 +11523,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     55:  //SMART_ACTION_WP_STOP
         begin
@@ -11398,6 +11534,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     56:  //SMART_ACTION_ADD_ITEM
         begin
@@ -11408,6 +11545,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     57:  //SMART_ACTION_REMOVE_ITEM
         begin
@@ -11418,6 +11556,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     58:  //SMART_ACTION_INSTALL_AI_TEMPLATE
         begin
@@ -11428,6 +11567,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     59:  //SMART_ACTION_SET_RUN
         begin
@@ -11438,6 +11578,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     60:  //SMART_ACTION_SET_FLY
         begin
@@ -11448,6 +11589,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     61:  //SMART_ACTION_SET_SWIMM
         begin
@@ -11458,6 +11600,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     62:  //SMART_ACTION_TELEPORT
         begin
@@ -11468,6 +11611,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     63:  //SMART_ACTION_STORE_VARIABLE_DECIMAL
         begin
@@ -11478,6 +11622,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     64:  //SMART_ACTION_STORE_TARGET_LIST
         begin
@@ -11488,6 +11633,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     65:  //SMART_ACTION_WP_RESUME
         begin
@@ -11498,6 +11644,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     66:  //SMART_ACTION_SET_ORIENTATION
         begin
@@ -11508,6 +11655,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     67:  //SMART_ACTION_CREATE_TIMED_EVENT
         begin
@@ -11518,6 +11666,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := 'RepeatMax(only if it repeats)';
             lbcyaction_param6.Caption := 'chance';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     68:  //SMART_ACTION_PLAYMOVIE
         begin
@@ -11528,6 +11677,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     69:  //SMART_ACTION_MOVE_TO_POS
         begin
@@ -11538,6 +11688,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     70:  //SMART_ACTION_RESPAWN_TARGET
         begin
@@ -11548,6 +11699,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     71:  //SMART_ACTION_EQUIP
         begin
@@ -11558,6 +11710,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := 'Slot3';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := 'only slots with mask set will be sent to client, bits are 1, 2, 4, leaving mask 0 is defaulted to mask 7 (send all), Slots1-3 are only used if no entry is set';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     72:  //SMART_ACTION_CLOSE_GOSSIP
         begin
@@ -11568,6 +11721,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     73:  //SMART_ACTION_TRIGGER_TIMED_EVENT
         begin
@@ -11578,6 +11732,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     74:  //SMART_ACTION_REMOVE_TIMED_EVENT
         begin
@@ -11588,6 +11743,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     75:  //SMART_ACTION_ADD_AURA
         begin
@@ -11598,6 +11754,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     76:  //SMART_ACTION_OVERRIDE_SCRIPT_BASE_OBJECT
         begin
@@ -11608,6 +11765,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := 'WARNING: CAN CRASH CORE, do not use if you dont know what you are doing';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     77:  //SMART_ACTION_RESET_SCRIPT_BASE_OBJECT
         begin
@@ -11618,6 +11776,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     78:  //SMART_ACTION_CALL_SCRIPT_RESET
         begin
@@ -11628,6 +11787,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     79:  //SMART_ACTION_ENTER_VEHICLE
         begin
@@ -11638,6 +11798,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     80:  //SMART_ACTION_CALL_TIMED_ACTIONLIST
         begin
@@ -11648,6 +11809,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     81:  //SMART_ACTION_SET_NPC_FLAG
         begin
@@ -11658,6 +11820,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     82:  //SMART_ACTION_ADD_NPC_FLAG
         begin
@@ -11668,6 +11831,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     83:  //SMART_ACTION_REMOVE_NPC_FLAG
         begin
@@ -11678,6 +11842,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     84:  //SMART_ACTION_SIMPLE_TALK
         begin
@@ -11688,6 +11853,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := 'can be used to make players say groupID, Text_over event is not triggered, whisper can not be used (Target units will say the text)';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     85:  //SMART_ACTION_INVOKER_CAST
         begin
@@ -11698,6 +11864,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := 'if avaliable, last used invoker will cast spellId with castFlags on targets';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     86:  //SMART_ACTION_CROSS_CAST
         begin
@@ -11708,6 +11875,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := 'CasterTarget param2';
             lbcyaction_param6.Caption := 'CasterTarget param3';
             lbcyaction_type.Hint := '( + the original target fields as Destination target), CasterTargets will cast spellID on all Targets (use with caution if targeting multiple * multiple units)';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     87:  //SMART_ACTION_CALL_RANDOM_TIMED_ACTIONLIST
         begin
@@ -11718,6 +11886,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     88:  //SMART_ACTION_CALL_RANDOM_RANGE_TIMED_ACTIONLIST
         begin
@@ -11728,6 +11897,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     89:  //SMART_ACTION_RANDOM_MOVE
         begin
@@ -11738,6 +11908,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     90:  //SMART_ACTION_SET_UNIT_FIELD_BYTES_1
         begin
@@ -11748,6 +11919,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     91:  //SMART_ACTION_REMOVE_UNIT_FIELD_BYTES_1
         begin
@@ -11758,6 +11930,7 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     end;
     SAI_Action := t;
@@ -11775,6 +11948,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'None, default to invoker';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     1:  //SMART_TARGET_SELF
         begin
@@ -11785,6 +11959,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Self cast';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     2:  //SMART_TARGET_VICTIM
         begin
@@ -11795,6 +11970,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Our current target (ie: highest aggro)';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     3:  //SMART_TARGET_HOSTILE_SECOND_AGGRO
         begin
@@ -11805,6 +11981,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Second highest aggro';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     4:  //SMART_TARGET_HOSTILE_LAST_AGGRO
         begin
@@ -11815,6 +11992,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Dead last on aggro';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     5:  //SMART_TARGET_HOSTILE_RANDOM
         begin
@@ -11825,6 +12003,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Just any random target on our threat list';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     6:  //SMART_TARGET_HOSTILE_RANDOM_NOT_TOP
         begin
@@ -11835,6 +12014,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Any random target except top threat';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     7:  //SMART_TARGET_ACTION_INVOKER
         begin
@@ -11845,6 +12025,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Unit who caused this Event to occur';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     8:  //SMART_TARGET_POSITION
         begin
@@ -11855,6 +12036,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Use xyz from event params';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     9:  //SMART_TARGET_CREATURE_RANGE
         begin
@@ -11865,6 +12047,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     10:  //SMART_TARGET_CREATURE_GUID
         begin
@@ -11875,6 +12058,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     11:  //SMART_TARGET_CREATURE_DISTANCE
         begin
@@ -11885,6 +12069,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     12:  //SMART_TARGET_STORED
         begin
@@ -11895,6 +12080,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Uses pre-stored target(list)';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     13:  //SMART_TARGET_GAMEOBJECT_RANGE
         begin
@@ -11905,6 +12091,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     14:  //SMART_TARGET_GAMEOBJECT_GUID
         begin
@@ -11915,6 +12102,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     15:  //SMART_TARGET_GAMEOBJECT_DISTANCE
         begin
@@ -11925,6 +12113,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     16:  //SMART_TARGET_INVOKER_PARTY
         begin
@@ -11935,6 +12124,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Invoker''s party members';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     17:  //SMART_TARGET_PLAYER_RANGE
         begin
@@ -11945,6 +12135,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     18:  //SMART_TARGET_PLAYER_DISTANCE
         begin
@@ -11955,6 +12146,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     19:  //SMART_TARGET_CLOSEST_CREATURE
         begin
@@ -11965,6 +12157,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     20:  //SMART_TARGET_CLOSEST_GAMEOBJECT
         begin
@@ -11975,6 +12168,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     21:  //SMART_TARGET_CLOSEST_PLAYER
         begin
@@ -11985,6 +12179,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     22:  //SMART_TARGET_ACTION_INVOKER_VEHICLE
         begin
@@ -11995,6 +12190,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Unit''s vehicle who caused this Event to occur';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     23:  //SMART_TARGET_OWNER_OR_SUMMONER
         begin
@@ -12005,6 +12201,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'Unit''s owner or summoner';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     24:  //SMART_TARGET_THREAT_LIST
         begin
@@ -12015,6 +12212,7 @@ procedure TMainForm.SetSAITarget(t: integer);
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_type.Hint := 'All units on creature''s threat list';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     end;
     SAI_Target := t;
