@@ -13660,7 +13660,7 @@ object MainForm: TMainForm
               1218336A31382A59416C6C6C6C6C6C0C3D2849191A6C6C6C6C6C6C6C6C6C6C42
               271447534B6C6C6C6C6C6C6C6C6C6C42041B2D1E5D6C6C6C6C6C6C6C6C6C6C51
               054332152C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C}
-            OnClick = btSmartAIAddClick
+            OnClick = btEventAIAddClick
           end
           object btEventAIUpd: TSpeedButton
             Left = 211
@@ -13720,7 +13720,7 @@ object MainForm: TMainForm
               C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
               C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
             NumGlyphs = 2
-            OnClick = btSmartAIUpdClick
+            OnClick = btEventAIUpdClick
           end
           object btEventAIDel: TSpeedButton
             Left = 250
@@ -13780,7 +13780,7 @@ object MainForm: TMainForm
               C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
               C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
             NumGlyphs = 2
-            OnClick = btSmartAIDelClick
+            OnClick = btEventAIDelClick
           end
           object Button1: TButton
             Left = 688
