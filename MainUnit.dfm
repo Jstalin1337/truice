@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = SmartAI
+    ActivePage = tsQuest
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsQuestPart1
+        ActivePage = tsSearch
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsCreatureEventAI
+        ActivePage = tsSearchCreature
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -13586,10 +13586,10 @@ object MainForm: TMainForm
           object linkEventAIInfo: TLabel
             Left = 3
             Top = 11
-            Width = 219
+            Width = 250
             Height = 13
             Cursor = crHandPoint
-            Caption = 'http://wiki.udbforums.org/index.php/Event_AI'
+            Caption = 'http://www.trinitycore.org/w/Creature_ai_scripts_tc2'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clNavy
             Font.Height = -11

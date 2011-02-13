@@ -9405,7 +9405,7 @@ end;
 
 procedure TMainForm.linkEventAIInfoClick(Sender: TObject);
 begin
-  BrowseURL1.URL := 'http://wiki.udbforums.org/index.php/Event_AI';
+  BrowseURL1.URL := 'http://www.trinitycore.org/w/Creature_ai_scripts_tc2';
   BrowseURL1.Execute;
 end;
 
