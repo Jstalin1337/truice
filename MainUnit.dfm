@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsOther
+    ActivePage = SmartAI
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsCreatureLocation
+        ActivePage = tsCreatureEventAI
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -9178,7 +9178,6 @@ object MainForm: TMainForm
         object tsCreatureLocation: TTabSheet
           Caption = 'Creature Location'
           ImageIndex = 2
-          ExplicitTop = 40
           DesignSize = (
             872
             602)
@@ -24162,6 +24161,8 @@ object MainForm: TMainForm
         object tsSmartAI: TTabSheet
           Caption = 'SmartAI'
           ImageIndex = 19
+          ExplicitLeft = 9
+          ExplicitTop = 141
           DesignSize = (
             873
             620)
@@ -24387,30 +24388,23 @@ object MainForm: TMainForm
           object lbcyevent_param1: TLabel
             Left = 130
             Top = 347
-            Width = 68
+            Width = 130
             Height = 13
             Caption = 'event_param1'
           end
           object lbcyevent_param2: TLabel
-            Left = 257
+            Left = 266
             Top = 347
-            Width = 68
+            Width = 130
             Height = 13
             Caption = 'event_param2'
           end
           object lbcyevent_param3: TLabel
-            Left = 384
+            Left = 402
             Top = 347
-            Width = 68
+            Width = 130
             Height = 13
             Caption = 'event_param3'
-          end
-          object lbcyevent_param4: TLabel
-            Left = 512
-            Top = 347
-            Width = 68
-            Height = 13
-            Caption = 'event_param4'
           end
           object lbcyaction_type: TLabel
             Left = 3
@@ -24422,42 +24416,42 @@ object MainForm: TMainForm
           object lbcyaction_param1: TLabel
             Left = 130
             Top = 390
-            Width = 70
+            Width = 130
             Height = 13
             Caption = 'action_param1'
           end
           object lbcyaction_param2: TLabel
-            Left = 258
+            Left = 267
             Top = 392
-            Width = 70
+            Width = 130
             Height = 13
             Caption = 'action_param2'
           end
           object lbcyaction_param3: TLabel
-            Left = 384
+            Left = 402
             Top = 392
-            Width = 70
+            Width = 130
             Height = 13
             Caption = 'action_param3'
           end
           object lbcyaction_param4: TLabel
-            Left = 511
-            Top = 392
-            Width = 70
+            Left = 539
+            Top = 391
+            Width = 130
             Height = 13
             Caption = 'action_param4'
           end
           object lbcyaction_param5: TLabel
             Left = 130
             Top = 431
-            Width = 70
+            Width = 130
             Height = 13
             Caption = 'action_param5'
           end
           object lbcyaction_param6: TLabel
-            Left = 257
+            Left = 266
             Top = 430
-            Width = 70
+            Width = 130
             Height = 13
             Caption = 'action_param6'
           end
@@ -24471,21 +24465,21 @@ object MainForm: TMainForm
           object lbcytarget_param1: TLabel
             Left = 130
             Top = 474
-            Width = 68
+            Width = 130
             Height = 13
             Caption = 'target_param1'
           end
           object lbcytarget_param2: TLabel
-            Left = 257
+            Left = 266
             Top = 474
-            Width = 68
+            Width = 130
             Height = 13
             Caption = 'target_param2'
           end
           object lbcytarget_param3: TLabel
-            Left = 384
+            Left = 402
             Top = 474
-            Width = 68
+            Width = 130
             Height = 13
             Caption = 'target_param3'
           end
@@ -24499,21 +24493,21 @@ object MainForm: TMainForm
           object lbcytarget_y: TLabel
             Left = 130
             Top = 519
-            Width = 38
+            Width = 130
             Height = 13
             Caption = 'target_y'
           end
           object lbcytarget_z: TLabel
-            Left = 257
+            Left = 266
             Top = 520
-            Width = 38
+            Width = 130
             Height = 13
             Caption = 'target_z'
           end
           object lbcytarget_o: TLabel
-            Left = 384
+            Left = 402
             Top = 520
-            Width = 39
+            Width = 130
             Height = 13
             Caption = 'target_o'
           end
@@ -24545,6 +24539,13 @@ object MainForm: TMainForm
             Width = 130
             Height = 26
             Caption = 'Note: Only change these '#13#10'fields if you load afterwards.'
+          end
+          object lbcyevent_param4: TLabel
+            Left = 538
+            Top = 346
+            Width = 130
+            Height = 18
+            Caption = 'event_param4'
           end
           object lvcySmartAI: TJvListView
             Left = 3
@@ -24796,6 +24797,8 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 5
             OnButtonClick = GetSAIEventType
+            OnChange = edcyevent_typeChange
+            OnKeyUp = edcyevent_typeKeyUp
           end
           object edcyevent_phase_mask: TJvComboEdit
             Left = 183
@@ -24851,31 +24854,31 @@ object MainForm: TMainForm
           object edcyevent_param1: TJvComboEdit
             Left = 130
             Top = 363
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 9
           end
           object edcyevent_param2: TJvComboEdit
-            Left = 257
+            Left = 266
             Top = 363
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 10
           end
           object edcyevent_param3: TJvComboEdit
-            Left = 384
+            Left = 402
             Top = 363
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 11
           end
           object edcyevent_param4: TJvComboEdit
-            Left = 511
-            Top = 363
-            Width = 121
+            Left = 538
+            Top = 364
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 12
@@ -24914,35 +24917,39 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 13
             OnButtonClick = GetSAIActionType
+            OnChange = edcyaction_typeChange
+            OnKeyUp = edcyaction_typeKeyUp
           end
           object edcyaction_param1: TJvComboEdit
             Left = 130
             Top = 406
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 14
+            OnButtonClick = GetSAIReactState
           end
           object edcyaction_param2: TJvComboEdit
-            Left = 257
+            Left = 266
             Top = 406
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 15
+            OnButtonClick = GetSAISummonType
           end
           object edcyaction_param3: TJvComboEdit
-            Left = 385
+            Left = 403
             Top = 408
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 16
           end
           object edcyaction_param4: TJvComboEdit
-            Left = 512
-            Top = 406
-            Width = 121
+            Left = 539
+            Top = 408
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 17
@@ -24950,18 +24957,19 @@ object MainForm: TMainForm
           object edcyaction_param5: TJvComboEdit
             Left = 130
             Top = 445
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 18
           end
           object edcyaction_param6: TJvComboEdit
-            Left = 257
+            Left = 266
             Top = 445
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 19
+            OnButtonClick = GetSAIReactState
           end
           object edcytarget_type: TJvComboEdit
             Left = 3
@@ -24997,27 +25005,29 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 20
             OnButtonClick = GetSAITargetType
+            OnChange = edcytarget_typeChange
+            OnKeyUp = edcytarget_typeKeyUp
           end
           object edcytarget_param1: TJvComboEdit
             Left = 130
             Top = 490
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 21
           end
           object edcytarget_param2: TJvComboEdit
-            Left = 257
+            Left = 266
             Top = 490
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 22
           end
           object edcytarget_param3: TJvComboEdit
-            Left = 384
+            Left = 402
             Top = 490
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 23
@@ -25031,17 +25041,17 @@ object MainForm: TMainForm
             TabOrder = 24
           end
           object edcytarget_z: TJvComboEdit
-            Left = 257
+            Left = 266
             Top = 534
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 25
           end
           object edcytarget_o: TJvComboEdit
-            Left = 384
+            Left = 402
             Top = 534
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 26
@@ -25074,7 +25084,7 @@ object MainForm: TMainForm
           object edcytarget_y: TJvComboEdit
             Left = 130
             Top = 534
-            Width = 121
+            Width = 130
             Height = 21
             ShowButton = False
             TabOrder = 30
@@ -28657,5 +28667,11 @@ object MainForm: TMainForm
     SkinSection = 'HINT'
     Left = 584
     Top = 8
+  end
+  object Timer2: TTimer
+    Interval = 300
+    OnTimer = Timer2Timer
+    Left = 360
+    Top = 16
   end
 end

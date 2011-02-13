@@ -1614,6 +1614,7 @@ type
     lbcldynamicflags: TLabel;
     edptWDBVerified: TLabeledEdit;
     edgeworld_event: TLabeledEdit;
+    Timer2: TTimer;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1971,15 +1972,21 @@ type
     procedure GetActionType(Sender: TObject);
     procedure GetSAIEventType(Sender: TObject);
     procedure GetSAIActionType(Sender: TObject);
+    procedure GetSAISummonType(Sender: TObject);
+    procedure GetSAIReactState(Sender: TObject);
     procedure GetSAISourceType(Sender: TObject);
     procedure GetSAITargetType(Sender: TObject);
     procedure GetSAIEventFlags(Sender: TObject);
     procedure GetSAICastFlags(Sender: TObject);
+    procedure edcyevent_typeChange(Sender: TObject);
+    procedure edcyaction_typeChange(Sender: TObject);
+    procedure edcytarget_typeChange(Sender: TObject);
     procedure linkEventAIInfoClick(Sender: TObject);
     procedure GetMechanicImmuneMask(Sender: TObject);
     procedure lvSearchItemCustomDrawSubItem(Sender: TCustomListView; Item: TListItem;
       SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
     procedure Timer1Timer(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
     procedure edqtSkillOrClassMaskChange(Sender: TObject);
     procedure edqtSkillOrClassMaskButtonClick(Sender: TObject);
     procedure edcnevent_typeChange(Sender: TObject);
@@ -2023,6 +2030,12 @@ type
     procedure btcyLoadClick(Sender: TObject);
     procedure btctGoToSmartAIClick(Sender: TObject);
     procedure btgtGotoSmartAIClick(Sender: TObject);
+    procedure edcyevent_typeKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure edcyaction_typeKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure edcytarget_typeKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
 
   private
     { Private declarations }
@@ -2161,6 +2174,9 @@ type
     procedure SmartAIDel(lvList: TJvListView);
     procedure LoadSmartAI(entryorguid: integer; sourcetype: integer);
     procedure ClearSmartAIFields();
+    procedure SetSAIEvent(t: integer);
+    procedure SetSAIAction(t: integer);
+    procedure SetSAITarget(t: integer);
 
     {other}
     function MakeUpdate(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
@@ -2250,6 +2266,7 @@ end;
 
 var
   MainForm: TMainForm;
+  SAI_Event, SAI_Action, SAI_Target: Integer;
 
 implementation
 
@@ -5679,11 +5696,23 @@ end;
 procedure TMainForm.GetSAIEventType(Sender: TObject);
 begin
   GetValueFromSimpleList(Sender, 0, 'SAI_EventType', false);
+  SetSAIEvent(StrToIntDef(edcyevent_type.Text,0));
 end;
 
 procedure TMainForm.GetSAIActionType(Sender: TObject);
 begin
   GetValueFromSimpleList(Sender, 0, 'SAI_ActionType', false);
+  SetSAIAction(StrToIntDef(edcyaction_type.Text,0));
+end;
+
+procedure TMainForm.GetSAISummonType(Sender: TObject);
+begin
+  GetValueFromSimpleList(Sender, 0, 'SAI_SummonType', false);
+end;
+
+procedure TMainForm.GetSAIReactState(Sender: TObject);
+begin
+  GetValueFromSimpleList(Sender, 0, 'SAI_ReactState', false);
 end;
 
 procedure TMainForm.GetSAISourceType(Sender: TObject);
@@ -5694,6 +5723,7 @@ end;
 procedure TMainForm.GetSAITargetType(Sender: TObject);
 begin
   GetValueFromSimpleList(Sender, 0, 'SAI_TargetType', false);
+  SetSAITarget(StrToIntDef(edcytarget_type.Text,0));
 end;
 
 procedure TMainForm.GetSAIEventFlags(Sender: TObject);
@@ -9334,6 +9364,38 @@ begin
   end;
 end;
 
+procedure TMainForm.edcyevent_typeChange(Sender: TObject);
+begin
+  SetSAIEvent(StrToIntDef(edcyevent_type.Text,0));
+end;
+
+procedure TMainForm.edcyevent_typeKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    edcyevent_typeChange(Sender);
+end;
+
+procedure TMainForm.edcyaction_typeChange(Sender: TObject);
+begin
+  SetSAIAction(StrToIntDef(edcyevent_type.Text,0));
+end;
+
+procedure TMainForm.edcyaction_typeKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    edcyaction_typeChange(Sender);
+end;
+
+procedure TMainForm.edcytarget_typeChange(Sender: TObject);
+begin
+  SetSAITarget(StrToIntDef(edcyevent_type.Text,0));
+end;
+
+procedure TMainForm.edcytarget_typeKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    edcytarget_typeChange(Sender);
+end;
 
 procedure TMainForm.LangButtonClick(Sender: TObject);
 begin
@@ -9928,6 +9990,17 @@ begin
     MyTrinityConnection.Ping;
 end;
 
+procedure TMainForm.Timer2Timer(Sender: TObject);
+begin
+    // Sync labels..
+    if SAI_Event <> StrToIntDef(edcyevent_type.Text,0) then
+        SetSAIEvent(StrToIntDef(edcyevent_type.Text,0));
+    if SAI_Action <> StrToIntDef(edcyaction_type.Text,0) then
+        SetSAIAction(StrToIntDef(edcyaction_type.Text,0));
+    if SAI_Target <> StrToIntDef(edcytarget_type.Text,0) then
+        SetSAITarget(StrToIntDef(edcytarget_type.Text,0));
+end;
+
 procedure TMainForm.btSQLOpenClick(Sender: TObject);
 begin
   MySQLQuery.Close;
@@ -10212,6 +10285,1739 @@ begin
         edgtdata1.EditLabel.Caption := 'difficulty';
      end;
   end;
+end;
+
+procedure TMainForm.SetSAIEvent(t: integer);
+begin
+    case t of
+    0:  //SMART_EVENT_UPDATE_IC
+        begin
+            lbcyevent_param1.Caption := 'InitialMin';
+            lbcyevent_param2.Caption := 'InitialMax';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    1:  //SMART_EVENT_UPDATE_OOC
+        begin
+            lbcyevent_param1.Caption := 'InitialMin';
+            lbcyevent_param2.Caption := 'InitialMax';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    2:  //SMART_EVENT_HEALT_PCT
+        begin
+            lbcyevent_param1.Caption := 'HPMin%';
+            lbcyevent_param2.Caption := 'HPMax%';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    3:  //SMART_EVENT_MANA_PCT
+        begin
+            lbcyevent_param1.Caption := 'ManaMin%';
+            lbcyevent_param2.Caption := 'ManaMax%';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    4:  //SMART_EVENT_AGGRO
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    5:  //SMART_EVENT_KILL
+        begin
+            lbcyevent_param1.Caption := 'CooldownMin0';
+            lbcyevent_param2.Caption := 'CooldownMax1';
+            lbcyevent_param3.Caption := 'playerOnly2';
+            lbcyevent_param4.Caption := 'else creature entry3';
+            lbcyevent_type.Hint := '';
+        end;
+    6:  //SMART_EVENT_DEATH
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    7:  //SMART_EVENT_EVADE
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    8:  //SMART_EVENT_SPELLHIT
+        begin
+            lbcyevent_param1.Caption := 'SpellID';
+            lbcyevent_param2.Caption := 'School';
+            lbcyevent_param3.Caption := 'CooldownMin';
+            lbcyevent_param4.Caption := 'CooldownMax';
+            lbcyevent_type.Hint := '';
+        end;
+    9:  //SMART_EVENT_RANGE
+        begin
+            lbcyevent_param1.Caption := 'MinDist';
+            lbcyevent_param2.Caption := 'MaxDist';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    10:  //SMART_EVENT_OOC_LOS
+        begin
+            lbcyevent_param1.Caption := 'NoHostile';
+            lbcyevent_param2.Caption := 'MaxRange';
+            lbcyevent_param3.Caption := 'CooldownMin';
+            lbcyevent_param4.Caption := 'CooldownMax';
+            lbcyevent_type.Hint := '';
+        end;
+    11:  //SMART_EVENT_RESPAWN
+        begin
+            lbcyevent_param1.Caption := 'type';
+            lbcyevent_param2.Caption := 'MapId';
+            lbcyevent_param3.Caption := 'ZoneId';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    12:  //SMART_EVENT_TARGET_HEALTH_PCT
+        begin
+            lbcyevent_param1.Caption := 'HPMin%';
+            lbcyevent_param2.Caption := 'HPMax%';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    13:  //SMART_EVENT_TARGET_CASTING
+        begin
+            lbcyevent_param1.Caption := 'RepeatMin';
+            lbcyevent_param2.Caption := 'RepeatMax';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    14:  //SMART_EVENT_FRIENDLY_HEALTH
+        begin
+            lbcyevent_param1.Caption := 'HPDeficit';
+            lbcyevent_param2.Caption := 'Radius';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    15:  //SMART_EVENT_FRIENDLY_IS_CC
+        begin
+            lbcyevent_param1.Caption := 'Radius';
+            lbcyevent_param2.Caption := 'RepeatMin';
+            lbcyevent_param3.Caption := 'RepeatMax';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    16:  //SMART_EVENT_FRIENDLY_MISSING_BUFF
+        begin
+            lbcyevent_param1.Caption := 'SpellId';
+            lbcyevent_param2.Caption := 'Radius';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    17:  //SMART_EVENT_SUMMONED_UNIT
+        begin
+            lbcyevent_param1.Caption := 'CretureId (0 all)';
+            lbcyevent_param2.Caption := 'CooldownMin';
+            lbcyevent_param3.Caption := 'CooldownMax';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    18:  //SMART_EVENT_TARGET_MANA_PCT
+        begin
+            lbcyevent_param1.Caption := 'ManaMin%';
+            lbcyevent_param2.Caption := 'ManaMax%';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    19:  //SMART_EVENT_ACCEPTED_QUEST
+        begin
+            lbcyevent_param1.Caption := 'QuestID (0 any)';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    20:  //SMART_EVENT_REWARD_QUEST
+        begin
+            lbcyevent_param1.Caption := 'QuestID (0 any)';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    21:  //SMART_EVENT_REACHED_HOME
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    22:  //SMART_EVENT_RECEIVE_EMOTE
+        begin
+            lbcyevent_param1.Caption := 'EmoteId';
+            lbcyevent_param2.Caption := 'CooldownMin';
+            lbcyevent_param3.Caption := 'CooldownMax';
+            lbcyevent_param4.Caption := 'condition';
+            lbcyevent_type.Hint := 'val1,val2,val3 (?)';
+        end;
+    23:  //SMART_EVENT_HAS_AURA
+        begin
+            lbcyevent_param1.Caption := 'SpellID';
+            lbcyevent_param2.Caption := 'Stacks';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    24:  //SMART_EVENT_TARGET_BUFFED
+        begin
+            lbcyevent_param1.Caption := 'SpellID';
+            lbcyevent_param2.Caption := 'Stacks';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    25:  //SMART_EVENT_RESET
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := 'Called after combat, when the creature respawns or at spawn.';
+        end;
+    26:  //SMART_EVENT_IC_LOS
+        begin
+            lbcyevent_param1.Caption := 'NoHostile';
+            lbcyevent_param2.Caption := 'MaxRange';
+            lbcyevent_param3.Caption := 'CooldownMin';
+            lbcyevent_param4.Caption := 'CooldownMax';
+            lbcyevent_type.Hint := '';
+        end;
+    27:  //SMART_EVENT_PASSENGER_BOARDED
+        begin
+            lbcyevent_param1.Caption := 'CooldownMin';
+            lbcyevent_param2.Caption := 'CooldownMax';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    28:  //SMART_EVENT_PASSENGER_REMOVED
+        begin
+            lbcyevent_param1.Caption := 'CooldownMin';
+            lbcyevent_param2.Caption := 'CooldownMax';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    29:  //SMART_EVENT_CHARMED
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    30:  //SMART_EVENT_CHARMED_TARGET
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    31:  //SMART_EVENT_SPELLHIT_TARGET
+        begin
+            lbcyevent_param1.Caption := 'SpellId';
+            lbcyevent_param2.Caption := 'School';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    32:  //SMART_EVENT_DAMAGED
+        begin
+            lbcyevent_param1.Caption := 'MinDmg';
+            lbcyevent_param2.Caption := 'MaxDmg';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    33:  //SMART_EVENT_DAMAGED_TARGET
+        begin
+            lbcyevent_param1.Caption := 'MinDmg';
+            lbcyevent_param2.Caption := 'MaxDmg';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    34:  //SMART_EVENT_MOVEMENTINFORM
+        begin
+            lbcyevent_param1.Caption := 'MovementType (any)';
+            lbcyevent_param2.Caption := 'PointID';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    35:  //SMART_EVENT_SUMMON_DESPAWNED
+        begin
+            lbcyevent_param1.Caption := 'Entry';
+            lbcyevent_param2.Caption := 'CooldownMin';
+            lbcyevent_param3.Caption := 'CooldownMax';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    36:  //SMART_EVENT_CORPSE_REMOVED
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    37:  //SMART_EVENT_AI_INIT
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    38:  //SMART_EVENT_DATA_SET
+        begin
+            lbcyevent_param1.Caption := 'Id';
+            lbcyevent_param2.Caption := 'Value';
+            lbcyevent_param3.Caption := 'CooldownMin';
+            lbcyevent_param4.Caption := 'CooldownMax';
+            lbcyevent_type.Hint := '';
+        end;
+    39:  //SMART_EVENT_WAYPOINT_START
+        begin
+            lbcyevent_param1.Caption := 'PointId (0 any)';
+            lbcyevent_param2.Caption := 'pathId (0 any)';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    40:  //SMART_EVENT_WAYPOINT_REACHED
+        begin
+            lbcyevent_param1.Caption := 'PointId (0 any)';
+            lbcyevent_param2.Caption := 'pathId (0 any)';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    41:  //SMART_EVENT_TRANSPORT_ADDPLAYER
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    42:  //SMART_EVENT_TRANSPORT_ADDCREATURE
+        begin
+            lbcyevent_param1.Caption := 'Entry (0 any)';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    43:  //SMART_EVENT_TRANSPORT_REMOVE_PLAYER
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    44:  //SMART_EVENT_TRANSPORT_RELOCATE
+        begin
+            lbcyevent_param1.Caption := 'PointId';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    45:  //SMART_EVENT_INSTANCE_PLAYER_ENTER
+        begin
+            lbcyevent_param1.Caption := 'Team (0 any)';
+            lbcyevent_param2.Caption := 'CooldownMin';
+            lbcyevent_param3.Caption := 'CooldownMax';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    46:  //SMART_EVENT_AREATRIGGER_ONTRIGGER
+        begin
+            lbcyevent_param1.Caption := 'TriggerId (0 any)';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    47:  //SMART_EVENT_QUEST_ACCEPTED
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    48:  //SMART_EVENT_QUEST_OBJ_COPLETETION
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    49:  //SMART_EVENT_QUEST_COMPLETION
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    50:  //SMART_EVENT_QUEST_REWARDED
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    51:  //SMART_EVENT_QUEST_FAIL
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    52:  //SMART_EVENT_TEXT_OVER
+        begin
+            lbcyevent_param1.Caption := 'GroupId (from creatue_text)';
+            lbcyevent_param2.Caption := 'CreatureId (0 any)';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    53:  //SMART_EVENT_RECEIVE_HEAL
+        begin
+            lbcyevent_param1.Caption := 'MinHeal';
+            lbcyevent_param2.Caption := 'MaxHeal';
+            lbcyevent_param3.Caption := 'CooldownMin';
+            lbcyevent_param4.Caption := 'CooldownMax';
+            lbcyevent_type.Hint := '';
+        end;
+    54:  //SMART_EVENT_JUST_SUMMONED
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    55:  //SMART_EVENT_WAYPOINT_PAUSED
+        begin
+            lbcyevent_param1.Caption := 'PointId (0 any)';
+            lbcyevent_param2.Caption := 'pathID (0 any)';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    56:  //SMART_EVENT_WAYPOINT_RESUMED
+        begin
+            lbcyevent_param1.Caption := 'PointId (0 any)';
+            lbcyevent_param2.Caption := 'pathID (0 any)';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    57:  //SMART_EVENT_WAYPOINT_STOPPED
+        begin
+            lbcyevent_param1.Caption := 'PointId (0 any)';
+            lbcyevent_param2.Caption := 'pathID (0 any)';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    58:  //SMART_EVENT_WAYPOINT_ENDED
+        begin
+            lbcyevent_param1.Caption := 'PointId (0 any)';
+            lbcyevent_param2.Caption := 'pathID (0 any)';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    59:  //SMART_EVENT_TIMED_EVENT_TRIGGERED
+        begin
+            lbcyevent_param1.Caption := 'Id';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    60:  //SMART_EVENT_UPDATE
+        begin
+            lbcyevent_param1.Caption := 'InitialMin';
+            lbcyevent_param2.Caption := 'InitialMax';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_type.Hint := '';
+        end;
+    61:  //SMART_EVENT_LINK
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := 'used to link together multiple events';
+        end;
+    62:  //SMART_EVENT_GOSSIP_SELECT
+        begin
+            lbcyevent_param1.Caption := 'menuID';
+            lbcyevent_param2.Caption := 'actionID';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    63:  //SMART_EVENT_JUST_CREATED
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    64:  //SMART_EVENT_GOSSIP_HELLO
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    65:  //SMART_EVENT_FOLLOW_COMPLETED
+        begin
+            lbcyevent_param1.Caption := '';
+            lbcyevent_param2.Caption := '';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    66:  //SMART_EVENT_DUMMY_EFFECT
+        begin
+            lbcyevent_param1.Caption := 'spellId';
+            lbcyevent_param2.Caption := 'effectIndex';
+            lbcyevent_param3.Caption := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_type.Hint := '';
+        end;
+    end;
+    SAI_Event := t;
+end;
+
+procedure TMainForm.SetSAIAction(t: integer);
+begin
+    edcyaction_param2.ShowButton := false;
+    edcyaction_param1.ShowButton := false;
+    edcyaction_param6.ShowButton := false;
+    case t of
+    0:  //SMART_ACTION_NONE
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    1:  //SMART_ACTION_TALK
+        begin
+            lbcyaction_param1.Caption := 'Creature_text.groupid';
+            lbcyaction_param2.Caption := 'duration to wait before TEXT_OVER event is triggered';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    2:  //SMART_ACTION_SET_FACTION
+        begin
+            lbcyaction_param1.Caption := 'FactionID (or 0 for default)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    3:  //SMART_ACTION_MORPH_TO_ENTRY_OR_MODEL
+        begin
+            lbcyaction_param1.Caption := 'Creature_template.entry(param1) OR Creature_template.modelID(param2) (or 0 for both to demorph)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    4:  //SMART_ACTION_SOUND
+        begin
+            lbcyaction_param1.Caption := 'SoundId';
+            lbcyaction_param2.Caption := 'TextRange';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    5:  //SMART_ACTION_PLAY_EMOTE
+        begin
+            lbcyaction_param1.Caption := 'EmoteId';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    6:  //SMART_ACTION_FAIL_QUEST
+        begin
+            lbcyaction_param1.Caption := 'QuestID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    7:  //SMART_ACTION_ADD_QUEST
+        begin
+            lbcyaction_param1.Caption := 'QuestID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    8:  //SMART_ACTION_SET_REACT_STATE
+        begin
+            lbcyaction_param1.Caption := 'State';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_param1.ShowButton := true;
+        end;
+    9:  //SMART_ACTION_ACTIVATE_GOBJECT
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    10:  //SMART_ACTION_RANDOM_EMOTE
+        begin
+            lbcyaction_param1.Caption := 'EmoteId1';
+            lbcyaction_param2.Caption := 'EmoteId2';
+            lbcyaction_param3.Caption := 'EmoteId3...';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    11:  //SMART_ACTION_CAST
+        begin
+            lbcyaction_param1.Caption := 'SpellId';
+            lbcyaction_param2.Caption := 'CastFlags';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    12:  //SMART_ACTION_SUMMON_CREATURE
+        begin
+            lbcyaction_param1.Caption := 'CreatureID';
+            lbcyaction_param2.Caption := 'Summon type';
+            lbcyaction_param3.Caption := 'duration in ms';
+            lbcyaction_param4.Caption := 'StorageID';
+            lbcyaction_param5.Caption := 'attackInvoker';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_param2.ShowButton := true;
+        end;
+    13:  //SMART_ACTION_THREAT_SINGLE_PCT
+        begin
+            lbcyaction_param1.Caption := 'Threat%';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    14:  //SMART_ACTION_THREAT_ALL_PCT
+        begin
+            lbcyaction_param1.Caption := 'Threat%';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    15:  //SMART_ACTION_CALL_AREAEXPLOREDOREVENTHAPPENS
+        begin
+            lbcyaction_param1.Caption := 'QuestID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    16:  //SMART_ACTION_SEND_CASTCREATUREORGO
+        begin
+            lbcyaction_param1.Caption := 'QuestID';
+            lbcyaction_param2.Caption := 'SpellId';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    17:  //SMART_ACTION_SET_EMOTE_STATE
+        begin
+            lbcyaction_param1.Caption := 'emoteID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    18:  //SMART_ACTION_SET_UNIT_FLAG
+        begin
+            lbcyaction_param1.Caption := 'Creature_template.unit_flags (may be more than one field OR''d together)';
+            lbcyaction_param2.Caption := 'Target';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    19:  //SMART_ACTION_REMOVE_UNIT_FLAG
+        begin
+            lbcyaction_param1.Caption := 'Creature_template.unit_flags (may be more than one field OR''d together)';
+            lbcyaction_param2.Caption := 'Target';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    20:  //SMART_ACTION_AUTO_ATTACK
+        begin
+            lbcyaction_param1.Caption := 'AllowAttackState (0 = Stop attack, anything else means continue attacking)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    21:  //SMART_ACTION_ALLOW_COMBAT_MOVEMENT
+        begin
+            lbcyaction_param1.Caption := 'AllowCombatMovement (0 = Stop combat based movement, anything else continue attacking)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    22:  //SMART_ACTION_SET_EVENT_PHASE
+        begin
+            lbcyaction_param1.Caption := 'smart_scripts.event_phase_mask';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    23:  //SMART_ACTION_INC_EVENT_PHASE
+        begin
+            lbcyaction_param1.Caption := 'Value (may be negative to decrement phase, should not be 0)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    24:  //SMART_ACTION_EVADE
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    25:  //SMART_ACTION_FLEE_FOR_ASSIST
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    26:  //SMART_ACTION_CALL_GROUPEVENTHAPPENS
+        begin
+            lbcyaction_param1.Caption := 'QuestID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    27:  //SMART_ACTION_CALL_CASTEDCREATUREORGO
+        begin
+            lbcyaction_param1.Caption := 'Creature_template.entry';
+            lbcyaction_param2.Caption := 'SpellId';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    28:  //SMART_ACTION_REMOVEAURASFROMSPELL
+        begin
+            lbcyaction_param1.Caption := 'Spellid';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    29:  //SMART_ACTION_FOLLOW
+        begin
+            lbcyaction_param1.Caption := 'Distance';
+            lbcyaction_param2.Caption := 'Angle';
+            lbcyaction_param3.Caption := 'EndCreatureEntry';
+            lbcyaction_param4.Caption := 'credit';
+            lbcyaction_param5.Caption := 'creditType (0monsterkill, 1event)';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    30:  //SMART_ACTION_RANDOM_PHASE
+        begin
+            lbcyaction_param1.Caption := 'Creature.phasemask 1';
+            lbcyaction_param2.Caption := 'Creature.phasemask 2';
+            lbcyaction_param3.Caption := 'Creature.phasemask 3...';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    31:  //SMART_ACTION_RANDOM_PHASE_RANGE
+        begin
+            lbcyaction_param1.Caption := 'Creature.phasemask minimum';
+            lbcyaction_param2.Caption := 'Creature.phasemask maximum';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    32:  //SMART_ACTION_RESET_GOBJECT
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    33:  //SMART_ACTION_CALL_KILLEDMONSTER
+        begin
+            lbcyaction_param1.Caption := 'CreatureId';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    34:  //SMART_ACTION_SET_INST_DATA
+        begin
+            lbcyaction_param1.Caption := 'Field';
+            lbcyaction_param2.Caption := 'Data';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    35:  //SMART_ACTION_SET_INST_DATA64
+        begin
+            lbcyaction_param1.Caption := 'Field';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    36:  //SMART_ACTION_UPDATE_TEMPLATE
+        begin
+            lbcyaction_param1.Caption := 'Entry';
+            lbcyaction_param2.Caption := 'Team (updates creature_template to given entry)';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    37:  //SMART_ACTION_DIE
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    38:  //SMART_ACTION_SET_IN_COMBAT_WITH_ZONE
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    39:  //SMART_ACTION_CALL_FOR_HELP
+        begin
+            lbcyaction_param1.Caption := 'Radius in yards that other creatures must be to acknowledge the cry for help';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    40:  //SMART_ACTION_SET_SHEATH
+        begin
+            lbcyaction_param1.Caption := 'Sheath (0-unarmed, 1-melee, 2-ranged)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    41:  //SMART_ACTION_FORCE_DESPAWN
+        begin
+            lbcyaction_param1.Caption := 'timer';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    42:  //SMART_ACTION_SET_INVINCIBILITY_HP_LEVEL
+        begin
+            lbcyaction_param1.Caption := 'MinHpValue(+pct,-flat)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    43:  //SMART_ACTION_MOUNT_TO_ENTRY_OR_MODEL
+        begin
+            lbcyaction_param1.Caption := 'Creature_template.entry';
+            lbcyaction_param2.Caption := 'Creature_template.modelID';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '(or 0 for both to unmount)';
+        end;
+    44:  //SMART_ACTION_SET_INGAME_PHASE_MASK
+        begin
+            lbcyaction_param1.Caption := 'Creature.phasemask';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    45:  //SMART_ACTION_SET_DATA
+        begin
+            lbcyaction_param1.Caption := 'Field';
+            lbcyaction_param2.Caption := 'Data';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '(only creature TODO)';
+        end;
+    46:  //SMART_ACTION_MOVE_FORWARD
+        begin
+            lbcyaction_param1.Caption := 'Distance in yards';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    47:  //SMART_ACTION_SET_VISIBILITY
+        begin
+            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    48:  //SMART_ACTION_SET_ACTIVE
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    49:  //SMART_ACTION_ATTACK_START
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    50:  //SMART_ACTION_SUMMON_GO
+        begin
+            lbcyaction_param1.Caption := 'Gameobject_template.entry';
+            lbcyaction_param2.Caption := 'DespawnTime in ms';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    51:  //SMART_ACTION_KILL_UNIT
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    52:  //SMART_ACTION_ACTIVATE_TAXI
+        begin
+            lbcyaction_param1.Caption := 'TaxiID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    53:  //SMART_ACTION_WP_START
+        begin
+            lbcyaction_param1.Caption := 'run/walk';
+            lbcyaction_param2.Caption := 'Waypoint_data.PathID';
+            lbcyaction_param3.Caption := 'canRepeat';
+            lbcyaction_param4.Caption := 'Quest_template.entry';
+            lbcyaction_param5.Caption := 'despawntime';
+            lbcyaction_param6.Caption := 'reactState';
+            lbcyaction_type.Hint := '';
+            edcyaction_param6.ShowButton := true;
+        end;
+    54:  //SMART_ACTION_WP_PAUSE
+        begin
+            lbcyaction_param1.Caption := 'time';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    55:  //SMART_ACTION_WP_STOP
+        begin
+            lbcyaction_param1.Caption := 'despawnTime';
+            lbcyaction_param2.Caption := 'Quest_template.entry';
+            lbcyaction_param3.Caption := 'fail (0/1)';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    56:  //SMART_ACTION_ADD_ITEM
+        begin
+            lbcyaction_param1.Caption := 'Item_template.entry';
+            lbcyaction_param2.Caption := 'count';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    57:  //SMART_ACTION_REMOVE_ITEM
+        begin
+            lbcyaction_param1.Caption := 'Item_template.entry';
+            lbcyaction_param2.Caption := 'count';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    58:  //SMART_ACTION_INSTALL_AI_TEMPLATE
+        begin
+            lbcyaction_param1.Caption := 'AITemplateID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    59:  //SMART_ACTION_SET_RUN
+        begin
+            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    60:  //SMART_ACTION_SET_FLY
+        begin
+            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    61:  //SMART_ACTION_SET_SWIMM
+        begin
+            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    62:  //SMART_ACTION_TELEPORT
+        begin
+            lbcyaction_param1.Caption := 'MapID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    63:  //SMART_ACTION_STORE_VARIABLE_DECIMAL
+        begin
+            lbcyaction_param1.Caption := 'varID';
+            lbcyaction_param2.Caption := 'number';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    64:  //SMART_ACTION_STORE_TARGET_LIST
+        begin
+            lbcyaction_param1.Caption := 'varID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    65:  //SMART_ACTION_WP_RESUME
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    66:  //SMART_ACTION_SET_ORIENTATION
+        begin
+            lbcyaction_param1.Caption := '0 = North, West = 1.5, South = 3, East = 4.5';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    67:  //SMART_ACTION_CREATE_TIMED_EVENT
+        begin
+            lbcyaction_param1.Caption := 'id';
+            lbcyaction_param2.Caption := 'InitialMin';
+            lbcyaction_param3.Caption := 'InitialMax';
+            lbcyaction_param4.Caption := 'RepeatMin(only if it repeats)';
+            lbcyaction_param5.Caption := 'RepeatMax(only if it repeats)';
+            lbcyaction_param6.Caption := 'chance';
+            lbcyaction_type.Hint := '';
+        end;
+    68:  //SMART_ACTION_PLAYMOVIE
+        begin
+            lbcyaction_param1.Caption := 'entry';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    69:  //SMART_ACTION_MOVE_TO_POS
+        begin
+            lbcyaction_param1.Caption := 'x';
+            lbcyaction_param2.Caption := 'y';
+            lbcyaction_param3.Caption := 'z';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    70:  //SMART_ACTION_RESPAWN_TARGET
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    71:  //SMART_ACTION_EQUIP
+        begin
+            lbcyaction_param1.Caption := 'Creature_equip_template.entry';
+            lbcyaction_param2.Caption := 'Slotmask';
+            lbcyaction_param3.Caption := 'slot1';
+            lbcyaction_param4.Caption := 'Slot2';
+            lbcyaction_param5.Caption := 'Slot3';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'only slots with mask set will be sent to client, bits are 1, 2, 4, leaving mask 0 is defaulted to mask 7 (send all), Slots1-3 are only used if no entry is set';
+        end;
+    72:  //SMART_ACTION_CLOSE_GOSSIP
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    73:  //SMART_ACTION_TRIGGER_TIMED_EVENT
+        begin
+            lbcyaction_param1.Caption := 'id(>1)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    74:  //SMART_ACTION_REMOVE_TIMED_EVENT
+        begin
+            lbcyaction_param1.Caption := 'id(>1)';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    75:  //SMART_ACTION_ADD_AURA
+        begin
+            lbcyaction_param1.Caption := 'Spellid';
+            lbcyaction_param2.Caption := 'targets';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    76:  //SMART_ACTION_OVERRIDE_SCRIPT_BASE_OBJECT
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'WARNING: CAN CRASH CORE, do not use if you dont know what you are doing';
+        end;
+    77:  //SMART_ACTION_RESET_SCRIPT_BASE_OBJECT
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    78:  //SMART_ACTION_CALL_SCRIPT_RESET
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    79:  //SMART_ACTION_ENTER_VEHICLE
+        begin
+            lbcyaction_param1.Caption := 'SeatID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    80:  //SMART_ACTION_CALL_TIMED_ACTIONLIST
+        begin
+            lbcyaction_param1.Caption := 'ID (overwrites already running actionlist)';
+            lbcyaction_param2.Caption := 'Stop after combat (0/1)';
+            lbcyaction_param3.Caption := 'timer update type(0-OOC,1-IC,2-ALWAYS)';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    81:  //SMART_ACTION_SET_NPC_FLAG
+        begin
+            lbcyaction_param1.Caption := 'Creature_template.npcflag';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    82:  //SMART_ACTION_ADD_NPC_FLAG
+        begin
+            lbcyaction_param1.Caption := 'Add this number to the above flag';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    83:  //SMART_ACTION_REMOVE_NPC_FLAG
+        begin
+            lbcyaction_param1.Caption := 'Subtract this number from the above flag';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    84:  //SMART_ACTION_SIMPLE_TALK
+        begin
+            lbcyaction_param1.Caption := 'Creature_text.groupID';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'can be used to make players say groupID, Text_over event is not triggered, whisper can not be used (Target units will say the text)';
+        end;
+    85:  //SMART_ACTION_INVOKER_CAST
+        begin
+            lbcyaction_param1.Caption := 'SpellID';
+            lbcyaction_param2.Caption := 'castFlags';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'if avaliable, last used invoker will cast spellId with castFlags on targets';
+        end;
+    86:  //SMART_ACTION_CROSS_CAST
+        begin
+            lbcyaction_param1.Caption := 'SpellID';
+            lbcyaction_param2.Caption := 'castFlags';
+            lbcyaction_param3.Caption := 'CasterTargetType';
+            lbcyaction_param4.Caption := 'CasterTarget param1';
+            lbcyaction_param5.Caption := 'CasterTarget param2';
+            lbcyaction_param6.Caption := 'CasterTarget param3';
+            lbcyaction_type.Hint := '( + the original target fields as Destination target), CasterTargets will cast spellID on all Targets (use with caution if targeting multiple * multiple units)';
+        end;
+    87:  //SMART_ACTION_CALL_RANDOM_TIMED_ACTIONLIST
+        begin
+            lbcyaction_param1.Caption := 'Script9 ids 1-9';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    88:  //SMART_ACTION_CALL_RANDOM_RANGE_TIMED_ACTIONLIST
+        begin
+            lbcyaction_param1.Caption := 'Script9 entry of script1';
+            lbcyaction_param2.Caption := 'entry of script2';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    89:  //SMART_ACTION_RANDOM_MOVE
+        begin
+            lbcyaction_param1.Caption := 'maxDist';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    90:  //SMART_ACTION_SET_UNIT_FIELD_BYTES_1
+        begin
+            lbcyaction_param1.Caption := 'Value';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    91:  //SMART_ACTION_REMOVE_UNIT_FIELD_BYTES_1
+        begin
+            lbcyaction_param1.Caption := 'Value';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+        end;
+    end;
+    SAI_Action := t;
+end;
+
+procedure TMainForm.SetSAITarget(t: integer);
+begin
+    case t of
+    0:  //SMART_TARGET_NONE
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'None, default to invoker';
+        end;
+    1:  //SMART_TARGET_SELF
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Self cast';
+        end;
+    2:  //SMART_TARGET_VICTIM
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Our current target (ie: highest aggro)';
+        end;
+    3:  //SMART_TARGET_HOSTILE_SECOND_AGGRO
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Second highest aggro';
+        end;
+    4:  //SMART_TARGET_HOSTILE_LAST_AGGRO
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Dead last on aggro';
+        end;
+    5:  //SMART_TARGET_HOSTILE_RANDOM
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Just any random target on our threat list';
+        end;
+    6:  //SMART_TARGET_HOSTILE_RANDOM_NOT_TOP
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Any random target except top threat';
+        end;
+    7:  //SMART_TARGET_ACTION_INVOKER
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Unit who caused this Event to occur';
+        end;
+    8:  //SMART_TARGET_POSITION
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Use xyz from event params';
+        end;
+    9:  //SMART_TARGET_CREATURE_RANGE
+        begin
+            lbcytarget_param1.Caption := 'creatureEntry (0 any)';
+            lbcytarget_param2.Caption := 'minDist';
+            lbcytarget_param3.Caption := 'maxDist';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    10:  //SMART_TARGET_CREATURE_GUID
+        begin
+            lbcytarget_param1.Caption := 'guid';
+            lbcytarget_param2.Caption := 'entry';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    11:  //SMART_TARGET_CREATURE_DISTANCE
+        begin
+            lbcytarget_param1.Caption := 'creatureEntry (0 any)';
+            lbcytarget_param2.Caption := 'maxDist';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    12:  //SMART_TARGET_STORED
+        begin
+            lbcytarget_param1.Caption := 'id';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Uses pre-stored target(list)';
+        end;
+    13:  //SMART_TARGET_GAMEOBJECT_RANGE
+        begin
+            lbcytarget_param1.Caption := 'goEntry (0 any)';
+            lbcytarget_param2.Caption := 'minDist';
+            lbcytarget_param3.Caption := 'maxDist';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    14:  //SMART_TARGET_GAMEOBJECT_GUID
+        begin
+            lbcytarget_param1.Caption := 'guid';
+            lbcytarget_param2.Caption := 'entry';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    15:  //SMART_TARGET_GAMEOBJECT_DISTANCE
+        begin
+            lbcytarget_param1.Caption := 'goEntry (0 any)';
+            lbcytarget_param2.Caption := 'maxDist';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    16:  //SMART_TARGET_INVOKER_PARTY
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Invoker''s party members';
+        end;
+    17:  //SMART_TARGET_PLAYER_RANGE
+        begin
+            lbcytarget_param1.Caption := 'minDist';
+            lbcytarget_param2.Caption := 'maxDist';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    18:  //SMART_TARGET_PLAYER_DISTANCE
+        begin
+            lbcytarget_param1.Caption := 'maxDist';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    19:  //SMART_TARGET_CLOSEST_CREATURE
+        begin
+            lbcytarget_param1.Caption := 'creatureEntry (0 any)';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    20:  //SMART_TARGET_CLOSEST_GAMEOBJECT
+        begin
+            lbcytarget_param1.Caption := 'goEntry (0 any)';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    21:  //SMART_TARGET_CLOSEST_PLAYER
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := '';
+        end;
+    22:  //SMART_TARGET_ACTION_INVOKER_VEHICLE
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Unit''s vehicle who caused this Event to occur';
+        end;
+    23:  //SMART_TARGET_OWNER_OR_SUMMONER
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'Unit''s owner or summoner';
+        end;
+    24:  //SMART_TARGET_THREAT_LIST
+        begin
+            lbcytarget_param1.Caption := '';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_type.Hint := 'All units on creature''s threat list';
+        end;
+    end;
+    SAI_Target := t;
 end;
 
 procedure TMainForm.btFullScriptProsLootClick(Sender: TObject);
