@@ -145,8 +145,8 @@
 						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">2</VersionInfo>
-						<VersionInfo Name="Release">51</VersionInfo>
-						<VersionInfo Name="Build">1049</VersionInfo>
+						<VersionInfo Name="Release">52</VersionInfo>
+						<VersionInfo Name="Build">1</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -158,13 +158,13 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription">Truice - Trinity DB Editor</VersionInfoKeys>
-						<VersionInfoKeys Name="FileVersion">1.2.51.1049</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.2.52.1</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName">Truice</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalCopyright">© indomit, 2009 (Quice), Ishigure, 2010</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalTrademarks">indomit™</VersionInfoKeys>
 						<VersionInfoKeys Name="OriginalFilename">Truice.exe</VersionInfoKeys>
 						<VersionInfoKeys Name="ProductName">Truice</VersionInfoKeys>
-						<VersionInfoKeys Name="ProductVersion">1.2.51</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.2.52</VersionInfoKeys>
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
 				</Delphi.Personality>
