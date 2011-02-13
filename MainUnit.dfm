@@ -24745,6 +24745,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 2
+            Text = '0'
             OnButtonClick = GetSAISourceType
           end
           object edcyid: TJvComboEdit
@@ -24754,6 +24755,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 3
+            Text = '0'
           end
           object edcylink: TJvComboEdit
             Left = 82
@@ -24762,6 +24764,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 4
+            Text = '0'
           end
           object edcyevent_type: TJvComboEdit
             Left = 3
@@ -24796,6 +24799,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 5
+            Text = '0'
             OnButtonClick = GetSAIEventType
             OnChange = edcyevent_typeChange
             OnKeyUp = edcyevent_typeKeyUp
@@ -24807,6 +24811,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 6
+            Text = '0'
           end
           object edcyevent_chance: TJvComboEdit
             Left = 281
@@ -24815,6 +24820,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 7
+            Text = '0'
           end
           object edcyevent_flags: TJvComboEdit
             Left = 358
@@ -24849,6 +24855,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 8
+            Text = '0'
             OnButtonClick = GetSAIEventFlags
           end
           object edcyevent_param1: TJvComboEdit
@@ -24858,6 +24865,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 9
+            Text = '0'
           end
           object edcyevent_param2: TJvComboEdit
             Left = 266
@@ -24866,6 +24874,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 10
+            Text = '0'
           end
           object edcyevent_param3: TJvComboEdit
             Left = 402
@@ -24874,6 +24883,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 11
+            Text = '0'
           end
           object edcyevent_param4: TJvComboEdit
             Left = 538
@@ -24882,6 +24892,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 12
+            Text = '0'
           end
           object edcyaction_type: TJvComboEdit
             Left = 3
@@ -24916,6 +24927,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 13
+            Text = '0'
             OnButtonClick = GetSAIActionType
             OnChange = edcyaction_typeChange
             OnKeyUp = edcyaction_typeKeyUp
@@ -24927,6 +24939,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 14
+            Text = '0'
             OnButtonClick = GetSAIReactState
           end
           object edcyaction_param2: TJvComboEdit
@@ -24936,6 +24949,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 15
+            Text = '0'
             OnButtonClick = GetSAISummonType
           end
           object edcyaction_param3: TJvComboEdit
@@ -24945,6 +24959,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 16
+            Text = '0'
           end
           object edcyaction_param4: TJvComboEdit
             Left = 539
@@ -24953,6 +24968,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 17
+            Text = '0'
           end
           object edcyaction_param5: TJvComboEdit
             Left = 130
@@ -24961,6 +24977,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 18
+            Text = '0'
           end
           object edcyaction_param6: TJvComboEdit
             Left = 266
@@ -24969,6 +24986,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 19
+            Text = '0'
             OnButtonClick = GetSAIReactState
           end
           object edcytarget_type: TJvComboEdit
@@ -25004,6 +25022,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 20
+            Text = '0'
             OnButtonClick = GetSAITargetType
             OnChange = edcytarget_typeChange
             OnKeyUp = edcytarget_typeKeyUp
@@ -25015,6 +25034,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 21
+            Text = '0'
           end
           object edcytarget_param2: TJvComboEdit
             Left = 266
@@ -25023,6 +25043,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 22
+            Text = '0'
           end
           object edcytarget_param3: TJvComboEdit
             Left = 402
@@ -25031,6 +25052,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 23
+            Text = '0'
           end
           object edcytarget_x: TJvComboEdit
             Left = 3
@@ -25039,6 +25061,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 24
+            Text = '0'
           end
           object edcytarget_z: TJvComboEdit
             Left = 266
@@ -25047,6 +25070,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 25
+            Text = '0'
           end
           object edcytarget_o: TJvComboEdit
             Left = 402
@@ -25055,6 +25079,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 26
+            Text = '0'
           end
           object edcycomment: TJvComboEdit
             Left = 3
@@ -25088,6 +25113,7 @@ object MainForm: TMainForm
             Height = 21
             ShowButton = False
             TabOrder = 30
+            Text = '0'
           end
         end
         object tsSmartAIScript: TTabSheet
