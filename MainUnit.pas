@@ -2043,7 +2043,7 @@ type
     GlobalFlag : boolean;
     IsFirst : boolean;
     Thread: TCheckQuestThread;
-    ItemColors: array [0..6] of integer;
+    ItemColors: array [0..7] of integer;
     edit : TJvComboEdit;
     lvQuickList : TTntListView;
 
@@ -2546,6 +2546,7 @@ begin
   ItemColors[4] := $EE35A3;
   ItemColors[5] := $0080ff;
   ItemColors[6] := $80CCE5;
+  ItemColors[7] := $80CCE5; //heirloom color according to wowhead CSS
   {translation stuff}
   dmMain.Translate.CreateDefaultTranslation(TForm(Self));
   dmMain.Translate.TranslateForm(TForm(Self));
@@ -8693,7 +8694,7 @@ begin
   else
   begin
     DefaultDraw := false;
-    ACanvas.Brush.Color := clWhite;    
+    ACanvas.Brush.Color := clWhite;
     ACanvas.Font.Color := ItemColors[integer(Item.Data)];
     ACanvas.Font.Style := [fsBold];
     ACanvas.TextRect(ARect, ARect.Left+n, ARect.Top, sText);

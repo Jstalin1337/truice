@@ -24161,8 +24161,6 @@ object MainForm: TMainForm
         object tsSmartAI: TTabSheet
           Caption = 'SmartAI'
           ImageIndex = 19
-          ExplicitLeft = 9
-          ExplicitTop = 141
           DesignSize = (
             873
             620)
@@ -24388,21 +24386,21 @@ object MainForm: TMainForm
           object lbcyevent_param1: TLabel
             Left = 130
             Top = 347
-            Width = 130
+            Width = 68
             Height = 13
             Caption = 'event_param1'
           end
           object lbcyevent_param2: TLabel
             Left = 266
             Top = 347
-            Width = 130
+            Width = 68
             Height = 13
             Caption = 'event_param2'
           end
           object lbcyevent_param3: TLabel
             Left = 402
             Top = 347
-            Width = 130
+            Width = 68
             Height = 13
             Caption = 'event_param3'
           end
@@ -24416,42 +24414,42 @@ object MainForm: TMainForm
           object lbcyaction_param1: TLabel
             Left = 130
             Top = 390
-            Width = 130
+            Width = 70
             Height = 13
             Caption = 'action_param1'
           end
           object lbcyaction_param2: TLabel
             Left = 267
             Top = 392
-            Width = 130
+            Width = 70
             Height = 13
             Caption = 'action_param2'
           end
           object lbcyaction_param3: TLabel
             Left = 402
             Top = 392
-            Width = 130
+            Width = 70
             Height = 13
             Caption = 'action_param3'
           end
           object lbcyaction_param4: TLabel
             Left = 539
             Top = 391
-            Width = 130
+            Width = 70
             Height = 13
             Caption = 'action_param4'
           end
           object lbcyaction_param5: TLabel
             Left = 130
             Top = 431
-            Width = 130
+            Width = 70
             Height = 13
             Caption = 'action_param5'
           end
           object lbcyaction_param6: TLabel
             Left = 266
             Top = 430
-            Width = 130
+            Width = 70
             Height = 13
             Caption = 'action_param6'
           end
@@ -24465,21 +24463,21 @@ object MainForm: TMainForm
           object lbcytarget_param1: TLabel
             Left = 130
             Top = 474
-            Width = 130
+            Width = 68
             Height = 13
             Caption = 'target_param1'
           end
           object lbcytarget_param2: TLabel
             Left = 266
             Top = 474
-            Width = 130
+            Width = 68
             Height = 13
             Caption = 'target_param2'
           end
           object lbcytarget_param3: TLabel
             Left = 402
             Top = 474
-            Width = 130
+            Width = 68
             Height = 13
             Caption = 'target_param3'
           end
@@ -24493,21 +24491,21 @@ object MainForm: TMainForm
           object lbcytarget_y: TLabel
             Left = 130
             Top = 519
-            Width = 130
+            Width = 38
             Height = 13
             Caption = 'target_y'
           end
           object lbcytarget_z: TLabel
             Left = 266
             Top = 520
-            Width = 130
+            Width = 38
             Height = 13
             Caption = 'target_z'
           end
           object lbcytarget_o: TLabel
             Left = 402
             Top = 520
-            Width = 130
+            Width = 39
             Height = 13
             Caption = 'target_o'
           end
@@ -24543,8 +24541,8 @@ object MainForm: TMainForm
           object lbcyevent_param4: TLabel
             Left = 538
             Top = 346
-            Width = 130
-            Height = 18
+            Width = 68
+            Height = 13
             Caption = 'event_param4'
           end
           object lvcySmartAI: TJvListView
