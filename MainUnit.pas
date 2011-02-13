@@ -10760,8 +10760,8 @@ begin
         end;
     52:  //SMART_EVENT_TEXT_OVER
         begin
-            lbcyevent_param1.Caption := 'GroupId (from creatue_text)';
-            lbcyevent_param2.Caption := 'CreatureId (0 any)';
+            lbcyevent_param1.Caption := 'GroupId (creature_text)';
+            lbcyevent_param2.Caption := 'CreatureId (0 = any)';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_type.Hint := '';
@@ -10934,17 +10934,19 @@ procedure TMainForm.SetSAIAction(t: integer);
     1:  //SMART_ACTION_TALK
         begin
             lbcyaction_param1.Caption := 'Creature_text.groupid';
-            lbcyaction_param2.Caption := 'duration to wait before TEXT_OVER event is triggered';
+            lbcyaction_param2.Caption := 'duration';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param2.Hint := 'duration to wait before TEXT_OVER event is triggered';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     2:  //SMART_ACTION_SET_FACTION
         begin
-            lbcyaction_param1.Caption := 'FactionID (or 0 for default)';
+            lbcyaction_param1.Caption := 'FactionID (0 default)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -10955,12 +10957,16 @@ procedure TMainForm.SetSAIAction(t: integer);
         end;
     3:  //SMART_ACTION_MORPH_TO_ENTRY_OR_MODEL
         begin
-            lbcyaction_param1.Caption := 'Creature_template.entry(param1) OR Creature_template.modelID(param2) (or 0 for both to demorph)';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param1.Caption := 'CreatureID';
+            lbcyaction_param2.Caption := 'ModelID';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'Or 0 in both fields to demorph';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Hint := lbcyaction_param1.Hint;
+            edcyaction_param2.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -11034,10 +11040,10 @@ procedure TMainForm.SetSAIAction(t: integer);
         begin
             lbcyaction_param1.Caption := 'EmoteId1';
             lbcyaction_param2.Caption := 'EmoteId2';
-            lbcyaction_param3.Caption := 'EmoteId3...';
-            lbcyaction_param4.Caption := '';
-            lbcyaction_param5.Caption := '';
-            lbcyaction_param6.Caption := '';
+            lbcyaction_param3.Caption := 'EmoteId3';
+            lbcyaction_param4.Caption := 'EmoteId4';
+            lbcyaction_param5.Caption := 'EmoteId5';
+            lbcyaction_param6.Caption := 'EmoteId6';
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -11120,67 +11126,79 @@ procedure TMainForm.SetSAIAction(t: integer);
         end;
     18:  //SMART_ACTION_SET_UNIT_FLAG
         begin
-            lbcyaction_param1.Caption := 'Creature_template.unit_flags (may be more than one field OR''d together)';
+            lbcyaction_param1.Caption := 'unit_flags';
             lbcyaction_param2.Caption := 'Target';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'may be more than one field OR''d together';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     19:  //SMART_ACTION_REMOVE_UNIT_FLAG
         begin
-            lbcyaction_param1.Caption := 'Creature_template.unit_flags (may be more than one field OR''d together)';
+            lbcyaction_param1.Caption := 'unit_flags';
             lbcyaction_param2.Caption := 'Target';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'may be more than one field OR''d together';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     20:  //SMART_ACTION_AUTO_ATTACK
         begin
-            lbcyaction_param1.Caption := 'AllowAttackState (0 = Stop attack, anything else means continue attacking)';
+            lbcyaction_param1.Caption := 'AllowAttackState';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := '0 = Stop attack, anything else means continue attacking';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     21:  //SMART_ACTION_ALLOW_COMBAT_MOVEMENT
         begin
-            lbcyaction_param1.Caption := 'AllowCombatMovement (0 = Stop combat based movement, anything else continue attacking)';
+            lbcyaction_param1.Caption := 'AllowCombatMovement';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := '0 = Stop combat based movement, anything else continue attacking';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     22:  //SMART_ACTION_SET_EVENT_PHASE
         begin
-            lbcyaction_param1.Caption := 'smart_scripts.event_phase_mask';
+            lbcyaction_param1.Caption := 'event_phase_mask';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'smart_scripts.event_phase_mask';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     23:  //SMART_ACTION_INC_EVENT_PHASE
         begin
-            lbcyaction_param1.Caption := 'Value (may be negative to decrement phase, should not be 0)';
+            lbcyaction_param1.Caption := 'Value';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'may be negative to decrement phase, should not be 0';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -11245,26 +11263,28 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param2.Caption := 'Angle';
             lbcyaction_param3.Caption := 'EndCreatureEntry';
             lbcyaction_param4.Caption := 'credit';
-            lbcyaction_param5.Caption := 'creditType (0monsterkill, 1event)';
+            lbcyaction_param5.Caption := 'creditType';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param5.Hint := '0 = Monsterkill; 1 = Event';
+            edcyaction_param5.Hint := lbcyaction_param5.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     30:  //SMART_ACTION_RANDOM_PHASE
         begin
-            lbcyaction_param1.Caption := 'Creature.phasemask 1';
-            lbcyaction_param2.Caption := 'Creature.phasemask 2';
-            lbcyaction_param3.Caption := 'Creature.phasemask 3...';
-            lbcyaction_param4.Caption := '';
-            lbcyaction_param5.Caption := '';
-            lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Caption := 'phasemask 1';
+            lbcyaction_param2.Caption := 'phasemask 2';
+            lbcyaction_param3.Caption := 'phasemask 3';
+            lbcyaction_param4.Caption := 'phasemask 4';
+            lbcyaction_param5.Caption := 'phasemask 5';
+            lbcyaction_param6.Caption := 'phasemask 6';
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     31:  //SMART_ACTION_RANDOM_PHASE_RANGE
         begin
-            lbcyaction_param1.Caption := 'Creature.phasemask minimum';
-            lbcyaction_param2.Caption := 'Creature.phasemask maximum';
+            lbcyaction_param1.Caption := 'phasemask minimum';
+            lbcyaction_param2.Caption := 'phasemask maximum';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
@@ -11319,11 +11339,13 @@ procedure TMainForm.SetSAIAction(t: integer);
     36:  //SMART_ACTION_UPDATE_TEMPLATE
         begin
             lbcyaction_param1.Caption := 'Entry';
-            lbcyaction_param2.Caption := 'Team (updates creature_template to given entry)';
+            lbcyaction_param2.Caption := 'Team';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param2.Hint := 'updates creature_template to given entry';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -11351,23 +11373,27 @@ procedure TMainForm.SetSAIAction(t: integer);
         end;
     39:  //SMART_ACTION_CALL_FOR_HELP
         begin
-            lbcyaction_param1.Caption := 'Radius in yards that other creatures must be to acknowledge the cry for help';
+            lbcyaction_param1.Caption := 'radius';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'Radius in yards that other creatures must be to acknowledge the cry for help';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     40:  //SMART_ACTION_SET_SHEATH
         begin
-            lbcyaction_param1.Caption := 'Sheath (0-unarmed, 1-melee, 2-ranged)';
+            lbcyaction_param1.Caption := 'Sheath';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := '0-unarmed, 1-melee, 2-ranged';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -11648,12 +11674,14 @@ procedure TMainForm.SetSAIAction(t: integer);
         end;
     66:  //SMART_ACTION_SET_ORIENTATION
         begin
-            lbcyaction_param1.Caption := '0 = North, West = 1.5, South = 3, East = 4.5';
+            lbcyaction_param1.Caption := 'orientation';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := '0 = North, West = 1.5, South = 3, East = 4.5';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -11662,8 +11690,8 @@ procedure TMainForm.SetSAIAction(t: integer);
             lbcyaction_param1.Caption := 'id';
             lbcyaction_param2.Caption := 'InitialMin';
             lbcyaction_param3.Caption := 'InitialMax';
-            lbcyaction_param4.Caption := 'RepeatMin(only if it repeats)';
-            lbcyaction_param5.Caption := 'RepeatMax(only if it repeats)';
+            lbcyaction_param4.Caption := 'RepeatMin (if repeats)';
+            lbcyaction_param5.Caption := 'RepeatMax (if repeats)';
             lbcyaction_param6.Caption := 'chance';
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
@@ -11703,12 +11731,14 @@ procedure TMainForm.SetSAIAction(t: integer);
         end;
     71:  //SMART_ACTION_EQUIP
         begin
-            lbcyaction_param1.Caption := 'Creature_equip_template.entry';
+            lbcyaction_param1.Caption := 'equipentry';
             lbcyaction_param2.Caption := 'Slotmask';
             lbcyaction_param3.Caption := 'slot1';
             lbcyaction_param4.Caption := 'Slot2';
             lbcyaction_param5.Caption := 'Slot3';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'Creature_equip_template.entry';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := 'only slots with mask set will be sent to client, bits are 1, 2, 4, leaving mask 0 is defaulted to mask 7 (send all), Slots1-3 are only used if no entry is set';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -11802,12 +11832,16 @@ procedure TMainForm.SetSAIAction(t: integer);
         end;
     80:  //SMART_ACTION_CALL_TIMED_ACTIONLIST
         begin
-            lbcyaction_param1.Caption := 'ID (overwrites already running actionlist)';
+            lbcyaction_param1.Caption := 'ID';
             lbcyaction_param2.Caption := 'Stop after combat (0/1)';
-            lbcyaction_param3.Caption := 'timer update type(0-OOC,1-IC,2-ALWAYS)';
+            lbcyaction_param3.Caption := 'timer update type';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'overwrites already running actionlist';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param3.Hint := '0 = OOC; 1 = IC; 2 = ALWAYS';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -11824,7 +11858,7 @@ procedure TMainForm.SetSAIAction(t: integer);
         end;
     82:  //SMART_ACTION_ADD_NPC_FLAG
         begin
-            lbcyaction_param1.Caption := 'Add this number to the above flag';
+            lbcyaction_param1.Caption := 'Number to add to flag';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -11835,7 +11869,7 @@ procedure TMainForm.SetSAIAction(t: integer);
         end;
     83:  //SMART_ACTION_REMOVE_NPC_FLAG
         begin
-            lbcyaction_param1.Caption := 'Subtract this number from the above flag';
+            lbcyaction_param1.Caption := 'Number to remove from flag';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
