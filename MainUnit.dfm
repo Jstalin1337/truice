@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsQuest
+    ActivePage = tsChars
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -27099,9 +27099,7 @@ object MainForm: TMainForm
         Height = 25
         Align = alTop
         BevelOuter = bvNone
-        Caption = 
-          'This is alpha character editor. Use it at your own risk, and mak' +
-          'e sure you have backup!'
+        Caption = 'This char editor is old as fuck and is not ready for use, yet.'
         TabOrder = 0
       end
       object PageControl8: TPageControl

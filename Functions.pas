@@ -302,14 +302,23 @@ procedure SetList(List: TTntListView; Name: string; Sorted: boolean );
 var
   FileName: TFileName;
 begin
-  if not LoadListFromDBCFile(List, Name) then
-  begin
-    List.Items.Clear;
+    if Name = 'FactionTemplate' then
+        Name := 'Faction';
+
     FileName := WideFormat('%sCSV\%s.csv',[dmMain.ProgramDir, Name]);
     if FileExists(FileName) then
-      LoadListFromFile(List, FileName);
-  end;
-  if Sorted then Sort(List, 1);
+    begin
+        List.Items.Clear;
+        LoadListFromFile(List, FileName);
+    end
+    else
+    begin
+        if Name = 'Faction' then
+            Name := 'FactionTemplate';
+        LoadListFromDBCFile(List, Name);
+    end;
+
+    if Sorted then Sort(List, 1);
 end;
 
 procedure SetList(List: TTntListView; Name: string; id1: string; Sorted: boolean = false);
