@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsQuestPart1
+        ActivePage = tsQuestPart2
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -17398,7 +17398,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsSearchItem
+        ActivePage = tsItemTemplate
         Align = alClient
         TabOrder = 1
         object tsSearchItem: TTabSheet

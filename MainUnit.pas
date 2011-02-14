@@ -16,7 +16,7 @@ const
   REV = 'e87b6ce8fe4249409ce9';
   VERSION_1   = '1'; //*10000
   VERSION_2   = '2'; //*100
-  VERSION_3   = '52';
+  VERSION_3   = '53';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3;
 
   SCRIPT_TAB_NO_QUEST       =   8;
