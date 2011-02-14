@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsChars
+    ActivePage = tsQuest
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsSearch
+        ActivePage = tsQuestPart1
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsSearchCreature
+        ActivePage = rea
         Align = alClient
         MultiLine = True
         TabOrder = 0

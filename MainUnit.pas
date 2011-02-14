@@ -2992,7 +2992,7 @@ begin
   if rbqtSkill.Checked then
     GetSkill(Sender)
   else
-    GetValueFromSimpleList(Sender, 143, 'Class', false);
+    GetValueFromSimpleList(Sender, 143, 'ChrClasses', false);
 end;
 
 procedure TMainForm.edqtSkillOrClassMaskChange(Sender: TObject);
@@ -5115,7 +5115,7 @@ begin
   try
     SetList(F.lvList, Name, Sort);
     i := F.lvList.Items.Count;
-    if (i>0) and (i<=15) and (Name<>'SAI_SourceType') then
+    if (i>0) and (i<=15) and (Name<>'SAI_SourceType') and (Name<>'ChrClasses') then
     begin
       if not Assigned(lvQuickList) then
       begin
@@ -5155,6 +5155,11 @@ begin
       F.Prepare(TJvComboEdit(Sender).Text);
       if F.ShowModal = mrOk then
         TJvComboEdit(Sender).Text := F.lvList.Selected.Caption;
+
+      if ((Name = 'QuestSort') AND ((Sender as TComponent).Name = 'edqtZoneOrSort')) then
+        TJvComboEdit(Sender).Text := '-'+F.lvList.Selected.Caption;
+      if ((Name = 'ChrClasses') AND ((Sender as TComponent).Name = 'edqtSkillOrClassMask')) then
+        TJvComboEdit(Sender).Text := '-'+F.lvList.Selected.Caption;
     end;
   finally
     F.Free;
