@@ -8,3 +8,4 @@ __history\
 *.dll
 Thumbs.db
 rls\
+*.dproj.local

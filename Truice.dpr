@@ -24,8 +24,7 @@ uses
   MeConnectForm in 'MeConnectForm.pas' {MeConnectForm},
   DBCfile in 'DBCfile.pas',
   AreaTableUnit in 'AreaTableUnit.pas' {AreaTableForm},
-  Functions in 'Functions.pas',
-  LocNPCFrame in 'LocNPCFrame.pas' {NPCTextLoc: TFrame};
+  Functions in 'Functions.pas';
 
 {$R *.res}
 begin

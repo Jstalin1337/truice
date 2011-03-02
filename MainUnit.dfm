@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsQuest
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = rea
+        ActivePage = tsCreatureScript
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -12372,158 +12372,6 @@ object MainForm: TMainForm
             Text = '0'
           end
         end
-        object tsNPCgossip: TTabSheet
-          Caption = 'NPC gossip'
-          ImageIndex = 10
-          OnShow = tsNPCgossipShow
-          object lbHintNPCGossip: TLabel
-            Left = 8
-            Top = 8
-            Width = 226
-            Height = 13
-            Caption = 'First, select creature from Creature Location tab!'
-            Color = clInfoBk
-            ParentColor = False
-          end
-          object gbNPCgossip: TGroupBox
-            Left = 3
-            Top = 39
-            Width = 862
-            Height = 130
-            Caption = 'NPC gossip'
-            TabOrder = 0
-            object lbcgtextid: TLabel
-              Left = 100
-              Top = 29
-              Width = 25
-              Height = 13
-              Caption = 'textid'
-            end
-            object edcgnpc_guid: TLabeledEdit
-              Left = 13
-              Top = 46
-              Width = 74
-              Height = 21
-              EditLabel.Width = 44
-              EditLabel.Height = 13
-              EditLabel.Caption = 'npc_guid'
-              TabOrder = 0
-            end
-            object btScriptNPCgossip: TButton
-              Left = 8
-              Top = 88
-              Width = 137
-              Height = 25
-              Caption = 'Show NPC gossip script'
-              TabOrder = 2
-              OnClick = btScriptCreatureClick
-            end
-            object edcgtextid: TJvComboEdit
-              Left = 100
-              Top = 46
-              Width = 74
-              Height = 21
-              ButtonWidth = 22
-              ClickKey = 13
-              Glyph.Data = {
-                36050000424D3605000000000000360400002800000010000000100000000100
-                080000000000000100000000000000000000000100000000000000000000FFFF
-                FF00F28C0000FBC87E00B2795C00B8570C00E69D4B00CC782E00D39C7900A961
-                3300D66E0000F9B85A00ED972800CE854B00B6917700D97C1700B7642000F6A7
-                3700AE684D00EDB36C00CB6D1900F5971600DF8D3000B7856800D0946A00E680
-                0000C25A0000BF712900D08E5700CB650100B4652D00EFA64800D2813500CC76
-                2100DD770000CB6A0E00E9860900AF715500BA5B1500A8654600F5B86C00C06A
-                2300BB540000D8740700BA8D7000D27A2600C6702200BE631E00EB850000BB67
-                2700CF854400B7611A00D6771400CF6A0200B7806400B57D6000B68D7200D36A
-                0000CB6F1500B8886B00B0745800AC6B4F00B8692900C16D2500D0966D00E079
-                0000C06D2100CD752400CD660000B2662E00A8664800AA623400F18B0000CA65
-                0100C0C0C0000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                00000000000000000000000000000000000000000000000000004A4A4A4A4A4A
-                4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A33384A4A4A4A4A4A4A4A4A4A4A4A4A2103
-                433B4A4A4A4A4A4A4A4A4A4A4A3F13280B14364A4A4A4A4A4A4A4A4A4A4A2906
-                1F1123044A4A4A4A4A4A4A4A4A4A4A3E160C151D254A4A4A4A4A4A4A4A4A4A4A
-                450F244844124A4A4A4A4A4A4A4A4A4A4A093519020A274A4A4A4A4A4A4A4A4A
-                4A4749413039464A4A4A4A4A4A4A4A4A1E3A2B221A3D4A4A4A4A4A4A4A4A4A31
-                072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
-                1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
-                0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-              TabOrder = 1
-              OnButtonClick = edcgtextidButtonClick
-            end
-          end
-          object gbNPCText: TGroupBox
-            Left = 0
-            Top = 175
-            Width = 862
-            Height = 410
-            Caption = 'NPC text'
-            TabOrder = 1
-            DesignSize = (
-              862
-              410)
-            object btShowNPCtextScript: TButton
-              Left = 8
-              Top = 376
-              Width = 137
-              Height = 25
-              Anchors = [akLeft, akBottom]
-              Caption = 'Show NPC text script'
-              TabOrder = 0
-              OnClick = btShowNPCtextScriptClick
-            end
-            object edcxID: TLabeledEdit
-              Left = 152
-              Top = 376
-              Width = 121
-              Height = 21
-              EditLabel.Width = 11
-              EditLabel.Height = 13
-              EditLabel.Caption = 'ID'
-              TabOrder = 1
-              Visible = False
-            end
-            object Panel19: TPanel
-              Left = 240
-              Top = 144
-              Width = 377
-              Height = 41
-              BevelOuter = bvNone
-              Caption = 
-                'Editboxes for this groupbox created in procedure CreateNPCTextFi' +
-                'elds'
-              Enabled = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBtnShadow
-              Font.Height = -11
-              Font.Name = 'Microsoft Sans Serif'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 2
-              Visible = False
-            end
-          end
-        end
         object tsCreatureMovement: TTabSheet
           Caption = 'Creature Movement'
           ImageIndex = 12
@@ -13409,37 +13257,6 @@ object MainForm: TMainForm
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 1
-          end
-        end
-        object tsLocalesNPCText: TTabSheet
-          Caption = 'Locales NPC Text'
-          ImageIndex = 18
-          inline NPCTextLoc1: TNPCTextLoc
-            Left = 0
-            Top = 0
-            Width = 872
-            Height = 602
-            Align = alClient
-            TabOrder = 0
-            ExplicitHeight = 602
-            inherited gbNPCTextLoc: TGroupBox
-              Height = 415
-              ExplicitHeight = 415
-              inherited lblxentry: TLabel
-                Width = 24
-                ExplicitWidth = 24
-              end
-              inherited Panel1: TPanel
-                Left = 161
-                Top = 147
-                Width = 524
-                Font.Color = cl3DDkShadow
-                Font.Name = 'Microsoft Sans Serif'
-                ExplicitLeft = 161
-                ExplicitTop = 147
-                ExplicitWidth = 524
-              end
-            end
           end
         end
         object tsCreatureSmartAI: TTabSheet

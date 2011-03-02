@@ -9,8 +9,7 @@ uses
   CheckQuestThreadUnit, Buttons, About, xpman, ActnList, ExtActns, Mask, Grids, TextFieldEditorUnit,
   JvExComCtrls, JvListView, JvExMask, JvToolEdit, DBGrids, JvExDBGrids, JvDBGrid, JvComponentBase,
   JvUrlListGrabber, JvUrlGrabbers, JvExControls, JvLinkLabel, ZAbstractRODataset, ZAbstractDataset,
-  ZDataset, ZConnection, ZSqlProcessor, sSkinManager, sHintManager, sGroupBox,
-  LocNPCFrame;
+  ZDataset, ZConnection, ZSqlProcessor, sSkinManager, sHintManager, sGroupBox;
 
 const
   REV = 'e87b6ce8fe4249409ce9';
@@ -20,7 +19,7 @@ const
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3;
 
   SCRIPT_TAB_NO_QUEST       =   8;
-  SCRIPT_TAB_NO_CREATURE    =  19;
+  SCRIPT_TAB_NO_CREATURE    =  17;
   SCRIPT_TAB_NO_GAMEOBJECT  =   7;
   SCRIPT_TAB_NO_ITEM        =  10;
   SCRIPT_TAB_NO_SMARTAI			=   1;
@@ -44,8 +43,6 @@ const
   PFX_PICKPOCKETING_LOOT_TEMPLATE = 'cp';
   PFX_SKINNING_LOOT_TEMPLATE      = 'cs';
   PFX_NPC_VENDOR                  = 'cv';
-  PFX_NPC_GOSSIP                  = 'cg';
-  PFX_NPC_TEXT                    = 'cx';
   PFX_NPC_TRAINER                 = 'cr';
   PFX_GAMEOBJECT_TEMPLATE         = 'gt';
   PFX_GAME_EVENT                  = 'ge';
@@ -1000,17 +997,6 @@ type
     btDelQuestGiver: TSpeedButton;
     btAddQuestTaker: TSpeedButton;
     btDelQuestTaker: TSpeedButton;
-    tsNPCgossip: TTabSheet;
-    lbHintNPCGossip: TLabel;
-    gbNPCgossip: TGroupBox;
-    edcgnpc_guid: TLabeledEdit;
-    btScriptNPCgossip: TButton;
-    edcgtextid: TJvComboEdit;
-    lbcgtextid: TLabel;
-    gbNPCText: TGroupBox;
-    btShowNPCtextScript: TButton;
-    edcxID: TLabeledEdit;
-    Panel19: TPanel;
     edqtRequiredMaxRepFaction: TJvComboEdit;
     edqtRequiredMaxRepValue: TLabeledEdit;
     lbRequiredMaxRepFaction: TLabel;
@@ -1418,8 +1404,6 @@ type
     lbceequipentry3: TLabel;
     edclphaseMask: TLabeledEdit;
     edglphaseMask: TLabeledEdit;
-    tsLocalesNPCText: TTabSheet;
-    NPCTextLoc1: TNPCTextLoc;
     edgeholiday: TLabeledEdit;
     edgtIconName: TLabeledEdit;
     edctdmg_multiplier: TLabeledEdit;
@@ -1900,8 +1884,6 @@ type
     procedure lvqtTakerTemplateChange(Sender: TObject; Item: TListItem; Change: TItemChange);
     procedure btDelQuestGiverClick(Sender: TObject);
     procedure btDelQuestTakerClick(Sender: TObject);
-    procedure edcgtextidButtonClick(Sender: TObject);
-    procedure btShowNPCtextScriptClick(Sender: TObject);
     procedure nReconnectClick(Sender: TObject);
     procedure tsCreatureUsedShow(Sender: TObject);
     procedure lvCreatureStartsEndsDblClick(Sender: TObject);
@@ -1920,7 +1902,6 @@ type
     procedure lvCreatureModelSearchSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
     procedure tsCreatureOnKillReputationShow(Sender: TObject);
     procedure reaShow(Sender: TObject);
-    procedure tsNPCgossipShow(Sender: TObject);
     procedure tsGOLootShow(Sender: TObject);
     procedure tsItemLootShow(Sender: TObject);
     procedure tsDisenchantLootShow(Sender: TObject);
@@ -2084,8 +2065,6 @@ type
     procedure LoadCreatureEquip(ENTRY: integer);
     procedure LoadCreatureMovement(GUID: integer);
     procedure LoadCreatureOnKillReputation(id: string);
-    procedure LoadNPCgossip(GUID: integer);
-    procedure LoadNPCText(textid: string);
     procedure LoadCreatureLocation(GUID: integer);
 
     procedure SetCreatureModelEditFields(pfx: string; lvList: TJvListView);
@@ -2104,8 +2083,6 @@ type
     procedure CompleteCreatureAddonScript;
     procedure CompleteCreatureMovementScript;
     procedure CompleteCreatureOnKillReputationScript;
-    procedure CompleteNPCgossipScript;
-    procedure CompleteNPCtextScript;
 
    {gameobjects}
     procedure SearchGO;
@@ -2188,8 +2165,7 @@ type
     procedure CompleteGameEventScript;
 
     procedure EditThis(objtype: string; entry: string);
-    procedure CreateNPCTextFields;
-    
+
     procedure SetGOdataHints(t: integer);
     procedure SetGOdataNames(t: integer);
 
@@ -2217,7 +2193,6 @@ type
 
     procedure LoadCreaturesAndGOForGameEvent(entry: string);
     function FullScript(TableName, KeyName, KeyValue: string): string;
-    procedure EditButtonClick(Sender: TObject);
     procedure LoadCreatureInvolvedIn(Entry: string);
     procedure LoadGOInvolvedIn(Entry: string);
     procedure LoadItemInvolvedIn(Entry: string);
@@ -2523,8 +2498,6 @@ begin
 
   Application.ProcessMessages;
   SetCursor(LoadCursor(0, IDC_WAIT));
-  CreateNPCTextFields;
-  NPCTextLoc1.CreateLocalesNPCTextFields;
   ChangeNamesOfComponents;
   LoadFromReg;
   Spells :=  TList.Create;
@@ -3297,7 +3270,7 @@ end;
 
 procedure TMainForm.nEditCreatureAIClick(Sender: TObject);
 begin
-PageControl3.ActivePageIndex := 16;
+  PageControl3.ActivePageIndex := 1;
   if Assigned(lvSearchCreature.Selected) then
     LoadCreature(StrToInt(lvSearchCreature.Selected.Caption));
 end;
@@ -4574,11 +4547,6 @@ begin
     9: CompleteNPCTrainerScript;
     10: CompleteCreatureTemplateAddonScript;
     11: CompleteCreatureAddonScript;
-    12:
-      begin
-        mectScript.Clear;
-        CompleteNPCgossipScript;
-      end;
     13: CompleteCreatureMovementScript;
     14: CompleteCreatureOnKillReputationScript;
     15: {involved in tab - do nothing};
@@ -5203,12 +5171,6 @@ begin
   GetValueFromSimpleList(Sender, 142, 'ChrRaces', false);
 end;
 
-procedure TMainForm.edcgtextidButtonClick(Sender: TObject);
-begin
-  LoadNPCText(TJvComboEdit(Sender).Text);
-  NPCTextLoc1.LoadLocalesNPCText(TJvComboEdit(Sender).Text);
-end;
-
 procedure TMainForm.GetSpawnMask(Sender: TObject);
 begin
 GetSomeFlags(Sender, 'SpawnMaskFlags');
@@ -5788,8 +5750,6 @@ begin
     LoadCreatureLocation(StrToIntDef(Item.Caption,0));
     LoadCreatureMovement(StrToIntDef(Item.Caption,0));
     LoadCreatureAddon(StrToIntDef(Item.Caption,0));
-    LoadNPCgossip(StrToIntDef(Item.Caption,0));
-    edcgtextid.Button.Click;
   end;
 end;
 
@@ -6171,75 +6131,6 @@ begin
   end;
 end;
 
-procedure TMainForm.CreateNPCTextFields;
-var
-  i, j, L: integer;
-  ed: TCustomEdit;
-begin
-  for i := 0 to 7 do
-  begin
-    L := 8;
-    for j := 0 to 9 do
-    begin
-      case j of
-        0,1,2: ed := TJvComboEdit.Create(self);
-        else
-           ed := TLabeledEdit.Create(Self);
-      end;
-      ed.Parent := gbNPCText;
-      case j of
-        0: ed.Name := Format('edcxtext%d_0',[i]);
-        1: ed.Name := Format('edcxtext%d_1',[i]);
-        2: ed.Name := Format('edcxlang%d',[i]);
-        3: ed.Name := Format('edcxprob%d',[i]);
-        else
-          ed.Name := Format('edcxem%d_%d',[i, j - 4]);
-      end;
-
-      case j of
-        0: ed.Width := 220;
-        1: ed.Width := 220;
-        else
-          ed.Width := 38;
-      end;
-
-      if ed is TLabeledEdit then
-      begin
-          TLabeledEdit(ed).EditLabel.Caption := MidStr(ed.Name, 5, 10);
-      end
-      else
-      if ed is TJvComboEdit then
-      begin
-        with TLabel.Create(Self) do
-        begin
-          Parent := gbNPCText;
-          case j of
-            0: Name := Format('lbcxtext%d_0',[i]);
-            1: Name := Format('lbcxtext%d_1',[i]);
-            2: Name := Format('lbcxlang%d',[i]);
-            3: Name := Format('lbcxprob%d',[i]);
-            else
-              Name := Format('lbcxem%d_%d',[i, j - 4]);
-          end;
-          Left := L;
-          Top := 32 - 16 + i*(ed.Height + 24);
-          Caption := MidStr(Name, 5, 10);
-        end;
-        TJvComboEdit(ed).Button.Glyph := edqtZoneOrSort.Button.Glyph;
-        case j of
-          0,1: TJvComboEdit(ed).OnButtonClick := EditButtonClick;
-          2: TJvComboEdit(ed).OnButtonClick := LangButtonClick;
-        end;
-      end;
-
-      ed.Text := '';
-      ed.Top := 32 + i*(ed.Height + 24);
-      ed.Left := L;
-      L := L + ed.Width + 8;
-    end;
-  end;
-end;
-
 function TMainForm.CreateVer(Ver: integer): string;
 var
   a, b, c: integer;
@@ -6313,34 +6204,6 @@ begin
   SetFieldsAndValues(Fields, Values, 'npc_vendor', PFX_NPC_VENDOR, mectLog);
   mectScript.Text := Format('DELETE FROM `npc_vendor` WHERE (`entry`=%s) AND (`item`=%s);'#13#10+
    'INSERT INTO `npc_vendor` (%s) VALUES (%s);'#13#10,[cventry, cvitem, Fields, Values])
-end;
-
-procedure TMainForm.CompleteNPCgossipScript;
-var
-   guid, Fields, Values: string;
-begin
-  mectLog.Clear;
-  //id   := edcgid.Text;
-  guid := edcgnpc_guid.Text;
-  if (guid='') then exit;
-  SetFieldsAndValues(Fields, Values, 'npc_gossip', PFX_NPC_GOSSIP, mectLog);
-
-  Values := StringReplace(Values, '''''', 'NULL', [rfReplaceAll]);
-
-  mectScript.Text := Format('DELETE FROM `npc_gossip` WHERE (`npc_guid`=%s);'#13#10+
-      'INSERT INTO `npc_gossip` (%s) VALUES (%s);'#13#10,[guid, Fields, Values])
-end;
-
-procedure TMainForm.CompleteNPCtextScript;
-var
-  id, Fields, Values: string;
-begin
-  mectLog.Clear;
-  id   := edcgtextid.Text;
-  if trim(id) = ''  then exit;
-  SetFieldsAndValues(Fields, Values, 'npc_text', PFX_NPC_TEXT, mectLog);
-  mectScript.Text := Format('DELETE FROM `npc_text` WHERE (`ID`=%s);'#13#10+
-      'INSERT INTO `npc_text` (%s) VALUES (%s);'#13#10,[id, Fields, Values])
 end;
 
 procedure TMainForm.CompleteNPCTrainerScript;
@@ -7222,10 +7085,7 @@ begin
       for j := 0 to Query.Fields.Count - 1 do
         if LowerCase(Components[i].Name) = 'ed'+pfx+LowerCase(Query.Fields[j].FieldName) then
         begin
-          if pfx = PFX_NPC_TEXT then
-            TCustomEdit(Components[i]).Text := Query.Fields[j].AsString
-          else
-            TCustomEdit(Components[i]).Text := DollToSym(Query.Fields[j].AsString);
+          TCustomEdit(Components[i]).Text := DollToSym(Query.Fields[j].AsString);
         end;
     if Components[i] is TCheckBox then
       for j := 0 to Query.Fields.Count - 1 do
@@ -7390,34 +7250,6 @@ begin
     end;
   end;
   lvList.SortType := stBoth;
-end;
-
-procedure TMainForm.LoadNPCgossip(GUID: integer);
-begin
-  if GUID<1 then Exit;
-  MyQuery.SQL.Text := Format('SELECT * FROM `npc_gossip` WHERE (`npc_guid` = %d)',[GUID]);
-  MyQuery.Open;
-  try
-    FillFields(MyQuery, PFX_NPC_GOSSIP);
-    MyQuery.Close;
-  except
-    on E: Exception do
-      raise Exception.Create(dmMain.Text[144]+#10#13+E.Message);
-  end;
-end;
-
-procedure TMainForm.LoadNPCText(textid: string);
-begin
-  if trim(textid) = '' then textid := '-1';
-  MyQuery.SQL.Text := Format('SELECT * FROM `npc_text` WHERE (`ID` = %s)',[textid]);
-  MyQuery.Open;
-  try
-    FillFields(MyQuery, PFX_NPC_TEXT);
-    MyQuery.Close;
-  except
-    on E: Exception do
-      raise Exception.Create(dmMain.Text[145]+#10#13+E.Message);
-  end;
 end;
 
 procedure TMainForm.pmSiteClick(Sender: TObject);
@@ -9307,12 +9139,6 @@ begin
  if (edipentry.Text = '') then edipentry.Text := editentry.Text;
 end;
 
-procedure TMainForm.tsNPCgossipShow(Sender: TObject);
-begin
-  if (edcgnpc_guid.Text='') then edcgnpc_guid.Text := edclguid.Text;
-  //if (edcgid.Text='') then edcgid.Text := '0';
-end;
-
 procedure TMainForm.editQualityButtonClick(Sender: TObject);
 begin
   GetValueFromSimpleList(Sender, 119, 'ItemQuality', false);
@@ -9354,20 +9180,6 @@ end;
 procedure TMainForm.editbondingButtonClick(Sender: TObject);
 begin
   GetValueFromSimpleList(Sender, 124, 'ItemBonding', false);
-end;
-
-procedure TMainForm.EditButtonClick(Sender: TObject);
-var
-  F: TTextFieldEditorForm;
-begin
-  F := TTextFieldEditorForm.Create(Self);
-  try
-    F.Memo.Text := DollToSym(TCustomEdit(Sender).Text);
-    if F.ShowModal = mrOk then
-      TCustomEdit(Sender).Text := SymToDoll(F.Memo.Text);
-  finally
-    F.Free;
-  end;
 end;
 
 procedure TMainForm.edcyevent_typeChange(Sender: TObject);
@@ -9854,12 +9666,6 @@ begin
       SetFocus;
       Selected := Items[0];
     end;
-end;
-
-procedure TMainForm.btShowNPCtextScriptClick(Sender: TObject);
-begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-  CompleteNPCtextScript;
 end;
 
 procedure TMainForm.lvSearchPageTextSelectItem(Sender: TObject; Item: TListItem;

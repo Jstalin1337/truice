@@ -110,10 +110,6 @@
 				<Form>AreaTableForm</Form>
 			</DCCReference>
 			<DCCReference Include="Functions.pas"/>
-			<DCCReference Include="LocNPCFrame.pas">
-				<Form>NPCTextLoc</Form>
-				<DesignClass>TFrame</DesignClass>
-			</DCCReference>
 			<BuildConfiguration Include="Basis">
 				<Key>Base</Key>
 			</BuildConfiguration>
