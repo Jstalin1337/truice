@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsCreatureScript
+        ActivePage = tsNPCTrainer
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -11896,8 +11896,8 @@ object MainForm: TMainForm
             ParentColor = False
           end
           object lvcrNPCTrainer: TJvListView
-            Left = 8
-            Top = 32
+            Left = 3
+            Top = 27
             Width = 855
             Height = 434
             Anchors = [akLeft, akTop, akRight]
@@ -11947,7 +11947,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 863
           end
           object edcrentry: TLabeledEdit
             Left = 8
@@ -28204,10 +28203,10 @@ object MainForm: TMainForm
     end
   end
   object MyTrinityConnection: TZConnection
+    BeforeConnect = MyTrinityConnectionBeforeConnect
     Protocol = 'mysql-5'
     Port = 3306
     Database = 'world'
-    BeforeConnect = MyTrinityConnectionBeforeConnect
     Left = 632
     Top = 8
   end

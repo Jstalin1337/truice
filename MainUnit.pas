@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, ComCtrls, DB, DBCFile,  MyDataModule,
-  Menus, Registry, ShellAPI, TntComCtrls,
+  Menus, Registry, ShellAPI, TnTComCtrls,
   CheckQuestThreadUnit, Buttons, About, xpman, ActnList, ExtActns, Mask, Grids, TextFieldEditorUnit,
   JvExComCtrls, JvListView, JvExMask, JvToolEdit, DBGrids, JvExDBGrids, JvDBGrid, JvComponentBase,
   JvUrlListGrabber, JvUrlGrabbers, JvExControls, JvLinkLabel, ZAbstractRODataset, ZAbstractDataset,
-  ZDataset, ZConnection, ZSqlProcessor, sSkinManager, sHintManager, sGroupBox;
+  ZDataset, ZConnection, ZSqlProcessor, sSkinManager, sHintManager, sGroupBox,
+  ZAbstractConnection;
 
 const
   REV = 'e87b6ce8fe4249409ce9';
@@ -2250,6 +2251,7 @@ uses StrUtils, Functions, WhoUnit, ItemUnit, CreatureOrGOUnit, ListUnit, CheckUn
      UnitFlagsUnit;
 
 {$R *.dfm}
+{$SETPEFLAGS 1}
 
 procedure TMainForm.FormActivate(Sender: TObject);
 begin
@@ -2481,7 +2483,7 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
-  DecimalSeparator := '.';
+  FormatSettings.DecimalSeparator := '.';
   {$IFDEF DEBUG}
     ReportMemoryLeaksOnShutdown := TRUE;
   {$ENDIF}
