@@ -12528,7 +12528,7 @@ begin
   memo.Text := dmMain.Text[10]; //'Script executed successfully.'
   Log := TStringList.Create;
   try
-    FN := Format('%sLog_%s_%s_%s.sql',[dmMain.ProgramDir, VERSION_1, VERSION_2, VERSION_3]);
+    FN := Format('%sTruiceLog_%s_%s_%s.sql',[dmMain.ProgramDir, VERSION_1, VERSION_2, VERSION_3]);
     if FileExists(FN) then Log.LoadFromFile(FN);
     Log.Add('-- '+DateTimeToStr(Now));
     Log.Add(script);
