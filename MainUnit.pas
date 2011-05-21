@@ -1186,24 +1186,14 @@ type
     edhttransguid: TLabeledEdit;
     edhtstable_slots: TLabeledEdit;
     edhtat_login: TLabeledEdit;
-    edhtpending_honor: TLabeledEdit;
-    edhtlast_honor_date: TLabeledEdit;
-    edhtlast_kill_date: TLabeledEdit;
     cbhtonline: TCheckBox;
     cbhtcinematic: TCheckBox;
-    cbhtis_logout_resting: TCheckBox;
-    cbhtat_login: TCheckBox;
-    cbhtgmstate: TCheckBox;
-    edhtdata: TJvComboEdit;
-    lbhtdata: TLabel;
     edhtrace: TJvComboEdit;
     lbhtrace: TLabel;
     edhtclass: TJvComboEdit;
     lbhtclass: TLabel;
     edhtmap: TJvComboEdit;
     lbhtmap: TLabel;
-    edhttaximask: TJvComboEdit;
-    lbhttaximask: TLabel;
     edhtzone: TJvComboEdit;
     lbhtzone: TLabel;
     tsCharacterScript: TTabSheet;
@@ -1222,11 +1212,9 @@ type
     btCharInvAdd: TSpeedButton;
     lvCharacterInventory: TJvListView;
     edhiguid: TLabeledEdit;
-    edhiitem_template: TJvComboEdit;
     edhibag: TLabeledEdit;
     edhislot: TLabeledEdit;
     edhiitem: TLabeledEdit;
-    lbhiitem_template: TLabel;
     edcolootmode: TJvComboEdit;
     lbcolootmode: TLabel;
     lbcplootmode: TLabel;
@@ -1600,6 +1588,50 @@ type
     edptWDBVerified: TLabeledEdit;
     edgeworld_event: TLabeledEdit;
     Timer2: TTimer;
+    edhtgender: TLabeledEdit;
+    edhtlevel: TLabeledEdit;
+    edhtxp: TLabeledEdit;
+    edhtmoney: TLabeledEdit;
+    edhtplayerBytes: TLabeledEdit;
+    edhtplayerBytes2: TLabeledEdit;
+    edhtplayerFlags: TLabeledEdit;
+    edhtinstance_id: TLabeledEdit;
+    edhtinstance_mode_mask: TLabeledEdit;
+    edhtextra_flags: TLabeledEdit;
+    edhtdeath_expire_time: TLabeledEdit;
+    edhttaxi_path: TLabeledEdit;
+    edhtarenaPoints: TLabeledEdit;
+    edhttotalHonorPoints: TLabeledEdit;
+    edhttodayHonorPoints: TLabeledEdit;
+    edhtyesterdayHonorPoints: TLabeledEdit;
+    edhttotalKills: TLabeledEdit;
+    edhttodayKills: TLabeledEdit;
+    edhtyesterdayKills: TLabeledEdit;
+    edhtchosenTitle: TLabeledEdit;
+    edhtknownCurrencies: TLabeledEdit;
+    edhtwatchedFaction: TLabeledEdit;
+    edhtdrunk: TLabeledEdit;
+    edhthealth: TLabeledEdit;
+    edhtpower1: TLabeledEdit;
+    edhtpower2: TLabeledEdit;
+    edhtpower3: TLabeledEdit;
+    edhtpower4: TLabeledEdit;
+    edhtpower5: TLabeledEdit;
+    edhtpower6: TLabeledEdit;
+    edhtpower7: TLabeledEdit;
+    edhtlatency: TLabeledEdit;
+    edhtspeccount: TLabeledEdit;
+    edhtactivespec: TLabeledEdit;
+    edhtexploredZones: TLabeledEdit;
+    edhtequipmentCache: TLabeledEdit;
+    edhtammoId: TLabeledEdit;
+    edhtknownTitles: TLabeledEdit;
+    edhtactionBars: TLabeledEdit;
+    edhtdeleteInfos_Account: TLabeledEdit;
+    edhtdeleteInfos_Name: TLabeledEdit;
+    edhtdeleteDate: TLabeledEdit;
+    edhttaximask: TLabeledEdit;
+    cbhtis_logout_resting: TCheckBox;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -4181,8 +4213,8 @@ begin
 end;
 procedure TMainForm.LoadCharacterInventory(GUID: integer);
 begin
-  LoadCharQueryToListView(Format('SELECT ci.*, i.name FROM `'+CharDBName+'`.`character_inventory` ci '+
-  'LEFT OUTER JOIN `item_template` i ON i.entry = ci.item_template '+
+  LoadCharQueryToListView(Format('SELECT ci.*, i.name FROM `'+CharDBName+'`.`character_inventory` ci LEFT JOIN `'+CharDBName+'`.`item_instance` ii'+
+  ' ON ii.guid = ci.item LEFT JOIN `item_template` i ON i.entry = ii.itemEntry '+
   'WHERE ci.`guid` = %d ORDER BY ci.`bag`, ci.`slot`',[guid]), lvCharacterInventory);
 end;
 
@@ -5740,7 +5772,6 @@ begin
     edhibag.Text := SubItems[0];
     edhislot.Text := SubItems[1];
     edhiitem.Text := SubItems[2];
-    edhiitem_template.Text := SubItems[3];
   end;
 end;
 
@@ -12719,7 +12750,6 @@ begin
     SubItems.Add(edhibag.Text);
     SubItems.Add(edhislot.Text);
     SubItems.Add(edhiitem.Text);
-    SubItems.Add(edhiitem_template.Text);
   end;
 end;
 
@@ -12739,7 +12769,6 @@ begin
       SubItems[0] := edhibag.Text;
       SubItems[1] := edhislot.Text;
       SubItems[2] := edhiitem.Text;
-      SubItems[3] := edhiitem_template.Text;
     end;
   end;
 end;
