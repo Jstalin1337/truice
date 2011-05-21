@@ -1397,12 +1397,12 @@ type
     btMillingLootDel: TSpeedButton;
     btFullScriptMillingLoot: TButton;
     btScriptMillingLoot: TButton;
-    edceequipentry1: TJvComboEdit;
-    edceequipentry2: TJvComboEdit;
-    edceequipentry3: TJvComboEdit;
-    lbceequipentry1: TLabel;
-    lbceequipentry2: TLabel;
-    lbceequipentry3: TLabel;
+    edceitemEntry1: TJvComboEdit;
+    edceitemEntry2: TJvComboEdit;
+    edceitemEntry3: TJvComboEdit;
+    lbceitemEntry1: TLabel;
+    lbceitemEntry2: TLabel;
+    lbceitemEntry3: TLabel;
     edclphaseMask: TLabeledEdit;
     edglphaseMask: TLabeledEdit;
     edgeholiday: TLabeledEdit;
@@ -4485,19 +4485,19 @@ end;
 
 procedure TMainForm.tsCreatureEquipTemplateShow(Sender: TObject);
 var
-  equipentry: integer;
+  itemEntry: integer;
 begin
-  if (edceequipentry1.Text='') then edceequipentry1.Text := '0';
-  if (edceequipentry2.Text='') then edceequipentry2.Text := '0';
-  if (edceequipentry3.Text='') then edceequipentry3.Text := '0';
+  if (edceitemEntry1.Text='') then edceitemEntry1.Text := '0';
+  if (edceitemEntry2.Text='') then edceitemEntry2.Text := '0';
+  if (edceitemEntry3.Text='') then edceitemEntry3.Text := '0';
 
   if Assigned(lvclCreatureLocation.Selected) and (StrToIntDef(edclequipment_id.Text,0)<>0) then
-    equipentry := StrToIntDef(edclequipment_id.Text,0)
+    itemEntry := StrToIntDef(edclequipment_id.Text,0)
   else
-    equipentry := StrToIntDef(edctequipment_id.Text,0);
-  if equipentry <> 0 then
+    itemEntry := StrToIntDef(edctequipment_id.Text,0);
+  if itemEntry <> 0 then
   begin
-    edceEntry.Text := IntToStr(equipentry);
+    edceEntry.Text := IntToStr(itemEntry);
 
   end;
 end;

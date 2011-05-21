@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsNPCTrainer
+        ActivePage = tsCreatureEquipTemplate
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -9914,26 +9914,26 @@ object MainForm: TMainForm
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
-            object lbceequipentry2: TLabel
+            object lbceitemEntry2: TLabel
               Left = 211
               Top = 4
-              Width = 55
+              Width = 49
               Height = 13
-              Caption = 'equipentry2'
+              Caption = 'itemEntry2'
             end
-            object lbceequipentry3: TLabel
+            object lbceitemEntry3: TLabel
               Left = 327
               Top = 3
-              Width = 55
+              Width = 49
               Height = 13
-              Caption = 'equipentry3'
+              Caption = 'itemEntry3'
             end
-            object lbceequipentry1: TLabel
+            object lbceitemEntry1: TLabel
               Left = 95
               Top = 4
-              Width = 55
+              Width = 49
               Height = 13
-              Caption = 'equipentry1'
+              Caption = 'itemEntry1'
             end
             object edceentry: TLabeledEdit
               Left = 9
@@ -9948,7 +9948,7 @@ object MainForm: TMainForm
               TabOrder = 0
               OnChange = edSearchCreatureChange
             end
-            object edceequipentry1: TJvComboEdit
+            object edceitemEntry1: TJvComboEdit
               Left = 95
               Top = 23
               Width = 97
@@ -9985,7 +9985,7 @@ object MainForm: TMainForm
               TabOrder = 1
               OnButtonClick = GetItem
             end
-            object edceequipentry2: TJvComboEdit
+            object edceitemEntry2: TJvComboEdit
               Left = 211
               Top = 23
               Width = 97
@@ -10022,7 +10022,7 @@ object MainForm: TMainForm
               TabOrder = 2
               OnButtonClick = GetItem
             end
-            object edceequipentry3: TJvComboEdit
+            object edceitemEntry3: TJvComboEdit
               Left = 327
               Top = 23
               Width = 97
