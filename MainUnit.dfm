@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsCreature
+    ActivePage = tsOther
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -25927,9 +25927,9 @@ object MainForm: TMainForm
               Top = 32
               Width = 81
               Height = 21
-              EditLabel.Width = 24
+              EditLabel.Width = 51
               EditLabel.Height = 13
-              EditLabel.Caption = 'Entry'
+              EditLabel.Caption = 'eventEntry'
               TabOrder = 3
             end
           end
@@ -26336,7 +26336,8 @@ object MainForm: TMainForm
                   Width = 80
                 end
                 item
-                  Caption = 'event'
+                  Caption = 'eventEntry'
+                  Width = 70
                 end
                 item
                   Caption = 'Creature entry'
@@ -26356,7 +26357,7 @@ object MainForm: TMainForm
               OnChange = lvGameEventCreatureChange
               OnDblClick = lvGameEventCreatureDblClick
               OnSelectItem = lvGameEventCreatureSelectItem
-              ColumnsOrder = '0=80,1=50,2=80,3=160'
+              ColumnsOrder = '0=80,1=70,2=80,3=160'
               ExtendedColumns = <
                 item
                 end
@@ -26379,7 +26380,8 @@ object MainForm: TMainForm
                   Width = 80
                 end
                 item
-                  Caption = 'event'
+                  Caption = 'eventEntry'
+                  Width = 70
                 end
                 item
                   Caption = 'GO entry'
@@ -26399,7 +26401,7 @@ object MainForm: TMainForm
               OnChange = lvGameEventGOChange
               OnDblClick = lvGameEventGODblClick
               OnSelectItem = lvGameEventGOSelectItem
-              ColumnsOrder = '0=80,1=50,2=80,3=160'
+              ColumnsOrder = '0=80,1=70,2=80,3=160'
               ExtendedColumns = <
                 item
                 end
@@ -26514,7 +26516,7 @@ object MainForm: TMainForm
               BorderStyle = bsNone
               Columns = <
                 item
-                  Caption = 'entry'
+                  Caption = 'eventEntry'
                   Width = 80
                 end
                 item
@@ -26816,15 +26818,15 @@ object MainForm: TMainForm
                 TabOrder = 1
                 Text = '0000-00-00 00:00:00'
               end
-              object edgeentry: TLabeledEdit
+              object edgeeventEntry: TLabeledEdit
                 Left = 8
                 Top = 29
                 Width = 62
                 Height = 21
                 Hint = 'Entry of the game event'
-                EditLabel.Width = 23
+                EditLabel.Width = 51
                 EditLabel.Height = 13
-                EditLabel.Caption = 'entry'
+                EditLabel.Caption = 'eventEntry'
                 TabOrder = 0
               end
               object edgeholiday: TLabeledEdit
