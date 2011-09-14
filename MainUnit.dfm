@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsChars
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsCreatureEquipTemplate
+        ActivePage = tsCreatureLocation
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -9205,22 +9205,22 @@ object MainForm: TMainForm
             Caption = 'spawnMask'
           end
           object lbclnpcflag: TLabel
-            Left = 285
-            Top = 472
+            Left = 197
+            Top = 471
             Width = 35
             Height = 13
             Caption = 'npcflag'
           end
           object lbclunit_flags: TLabel
-            Left = 373
-            Top = 472
+            Left = 285
+            Top = 471
             Width = 45
             Height = 13
             Caption = 'unit_flags'
           end
           object lbcldynamicflags: TLabel
-            Left = 462
-            Top = 473
+            Left = 374
+            Top = 472
             Width = 61
             Height = 13
             Caption = 'dynamicflags'
@@ -9438,26 +9438,15 @@ object MainForm: TMainForm
             EditLabel.Caption = 'edclcurmana'
             TabOrder = 17
           end
-          object edclDeathState: TLabeledEdit
-            Left = 198
-            Top = 445
-            Width = 81
-            Height = 21
-            Hint = 'Current creature state.'
-            EditLabel.Width = 74
-            EditLabel.Height = 13
-            EditLabel.Caption = 'edclDeathState'
-            TabOrder = 18
-          end
           object edclMovementType: TLabeledEdit
             Left = 198
-            Top = 488
+            Top = 447
             Width = 81
             Height = 21
             EditLabel.Width = 94
             EditLabel.Height = 13
             EditLabel.Caption = 'edclMovementType'
-            TabOrder = 19
+            TabOrder = 18
           end
           object btScriptCreatureLocation: TButton
             Left = 8
@@ -9465,7 +9454,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show Creature Location Script'
-            TabOrder = 20
+            TabOrder = 19
             OnClick = btScriptCreatureClick
           end
           object btScriptCreatureLocationCustomToAll: TButton
@@ -9477,7 +9466,7 @@ object MainForm: TMainForm
               'Add / Replace entered values to all creatures at list.'#13#10'Press th' +
               'is button to generate UPDATE script for this.'
             Caption = 'Add to all'
-            TabOrder = 21
+            TabOrder = 20
             Visible = False
             OnClick = btScriptCreatureLocationCustomToAllClick
           end
@@ -9491,7 +9480,7 @@ object MainForm: TMainForm
               'ipt for location, then execute it first.'
             Anchors = [akTop, akRight]
             Caption = 'Show FULL Creature Location Script'
-            TabOrder = 22
+            TabOrder = 21
             OnClick = btFullScriptCreatureLocationClick
           end
           object edclequipment_id: TLabeledEdit
@@ -9560,7 +9549,7 @@ object MainForm: TMainForm
             EditLabel.Width = 75
             EditLabel.Height = 13
             EditLabel.Caption = 'edclphaseMask'
-            TabOrder = 23
+            TabOrder = 22
           end
           object edclspawnMask: TJvComboEdit
             Left = 642
@@ -9596,12 +9585,47 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 24
+            TabOrder = 23
             OnButtonClick = GetSpawnMask
           end
           object edclnpcflag: TJvComboEdit
+            Left = 198
+            Top = 488
+            Width = 81
+            Height = 21
+            Glyph.Data = {
+              36030000424D3603000000000000360000002800000010000000100000000100
+              18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
+              DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
+              FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
+              B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
+              D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
+              52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
+              8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+            TabOrder = 24
+            OnButtonClick = edctnpcflagButtonClick
+          end
+          object edclunit_flags: TJvComboEdit
             Left = 286
-            Top = 489
+            Top = 488
             Width = 81
             Height = 21
             Glyph.Data = {
@@ -9632,11 +9656,11 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 25
-            OnButtonClick = edctnpcflagButtonClick
+            OnButtonClick = GetUnitFlags
           end
-          object edclunit_flags: TJvComboEdit
+          object edcldynamicflags: TJvComboEdit
             Left = 374
-            Top = 489
+            Top = 488
             Width = 81
             Height = 21
             Glyph.Data = {
@@ -9667,41 +9691,6 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
             TabOrder = 26
-            OnButtonClick = GetUnitFlags
-          end
-          object edcldynamicflags: TJvComboEdit
-            Left = 462
-            Top = 489
-            Width = 81
-            Height = 21
-            Glyph.Data = {
-              36030000424D3603000000000000360000002800000010000000100000000100
-              18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
-              DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
-              FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
-              B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
-              D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
-              52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
-              8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 27
             OnButtonClick = GetCreatureDynamicFlags
           end
         end
@@ -27117,7 +27106,7 @@ object MainForm: TMainForm
         object tsCharacter: TTabSheet
           Caption = 'Character'
           ImageIndex = 1
-          ExplicitLeft = 0
+          ExplicitLeft = 28
           object lbhtrace: TLabel
             Left = 318
             Top = 21
@@ -28006,6 +27995,16 @@ object MainForm: TMainForm
             Height = 17
             Caption = 'cbhtis_logout_resting'
             TabOrder = 70
+          end
+          object edhtgrantableLevels: TLabeledEdit
+            Left = 505
+            Top = 281
+            Width = 64
+            Height = 21
+            EditLabel.Width = 96
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtgrantableLevels'
+            TabOrder = 71
           end
         end
         object tsCharacterInventory: TTabSheet

@@ -433,7 +433,6 @@ type
     edclspawn_position_z: TLabeledEdit;
     edclcurhealth: TLabeledEdit;
     edclcurmana: TLabeledEdit;
-    edclDeathState: TLabeledEdit;
     edclMovementType: TLabeledEdit;
     btScriptCreatureLocation: TButton;
     btScriptCreatureLocationCustomToAll: TButton;
@@ -1632,6 +1631,7 @@ type
     edhtdeleteDate: TLabeledEdit;
     edhttaximask: TLabeledEdit;
     cbhtis_logout_resting: TCheckBox;
+    edhtgrantableLevels: TLabeledEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
