@@ -1,4 +1,4 @@
-To compile use Delphi 2009 and next additional components:
+To compile use Delphi XE and next additional components:
 
 ZeosDBO 7.0.0-alpha (SVN rev878)
 http://zeos.firmos.at/portal.php
