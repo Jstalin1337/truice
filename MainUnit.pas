@@ -161,22 +161,22 @@ type
     StatusBar: TStatusBar;
     tsQuestPart1: TTabSheet;
     gbqtKeys: TGroupBox;
-    lbEntry: TLabel;
+    lbId: TLabel;
     lbPrevQuestId: TLabel;
     lbNextQuestId: TLabel;
-    lbNextQuestInChain: TLabel;
-    edqtEntry: TJvComboEdit;
+    lbNextQuestIdChain: TLabel;
+    edqtId: TJvComboEdit;
     edqtPrevQuestId: TJvComboEdit;
     edqtNextQuestId: TJvComboEdit;
     edqtExclusiveGroup: TLabeledEdit;
-    edqtNextQuestInChain: TJvComboEdit;
+    edqtNextQuestIdChain: TJvComboEdit;
     gbQuestSorting: TGroupBox;
     gbFlags: TGroupBox;
     lbType: TLabel;
     lbQuestFlags: TLabel;
     edqtLimitTime: TLabeledEdit;
     edqtType: TJvComboEdit;
-    edqtQuestFlags: TJvComboEdit;
+    edqtFlags: TJvComboEdit;
     gbRequirementsBegin: TGroupBox;
     lbRequiredRaces: TLabel;
     lbRequiredMinRepFaction: TLabel;
@@ -184,11 +184,11 @@ type
     edqtRequiredMinRepFaction: TJvComboEdit;
     edqtRequiredRaces: TJvComboEdit;
     gbSource: TGroupBox;
-    lbSrcItemId: TLabel;
-    lbSrcSpell: TLabel;
-    edqtsrcItemCount: TLabeledEdit;
-    edqtSrcItemId: TJvComboEdit;
-    edqtSrcSpell: TJvComboEdit;
+    lbSourceItemId: TLabel;
+    lbSourceSpellId: TLabel;
+    edqtSourceItemCount: TLabeledEdit;
+    edqtSourceItemId: TJvComboEdit;
+    edqtSourceSpellId: TJvComboEdit;
     gbDescription: TGroupBox;
     lDetails: TLabel;
     lObjectives: TLabel;
@@ -208,99 +208,99 @@ type
     tsQuestPart2: TTabSheet;
     gbRequirementsEnd: TGroupBox;
     lbReqItemId1: TLabel;
-    lbReqSourceId1: TLabel;
-    lbReqCreatureOrGOId4: TLabel;
-    lbReqCreatureOrGOId3: TLabel;
-    lbReqCreatureOrGOId2: TLabel;
-    lbReqCreatureOrGOId1: TLabel;
-    lbReqSpellCast1: TLabel;
-    lbReqSpellCast2: TLabel;
-    lbReqSpellCast3: TLabel;
-    lbReqSpellCast4: TLabel;
-    edqtReqItemCount1: TLabeledEdit;
-    edqtReqItemCount2: TLabeledEdit;
-    edqtReqItemCount3: TLabeledEdit;
-    edqtReqItemCount4: TLabeledEdit;
-    edqtReqCreatureOrGOCount4: TLabeledEdit;
-    edqtReqCreatureOrGOCount3: TLabeledEdit;
-    edqtReqCreatureOrGOCount2: TLabeledEdit;
-    edqtReqCreatureOrGOCount1: TLabeledEdit;
-    edqtReqSourceCount1: TLabeledEdit;
-    edqtReqSourceCount2: TLabeledEdit;
-    edqtReqSourceCount3: TLabeledEdit;
-    edqtReqSourceCount4: TLabeledEdit;
-    edqtReqItemId1: TJvComboEdit;
-    edqtReqItemId2: TJvComboEdit;
-    edqtReqItemId3: TJvComboEdit;
-    edqtReqItemId4: TJvComboEdit;
-    edqtReqSourceId1: TJvComboEdit;
-    edqtReqSourceId2: TJvComboEdit;
-    edqtReqSourceId3: TJvComboEdit;
-    edqtReqSourceId4: TJvComboEdit;
-    edqtReqCreatureOrGOId4: TJvComboEdit;
-    edqtReqCreatureOrGOId3: TJvComboEdit;
-    edqtReqCreatureOrGOId2: TJvComboEdit;
-    edqtReqCreatureOrGOId1: TJvComboEdit;
-    edqtReqSpellCast1: TJvComboEdit;
-    edqtReqSpellCast2: TJvComboEdit;
-    edqtReqSpellCast3: TJvComboEdit;
-    edqtReqSpellCast4: TJvComboEdit;
+    lbRequiredSourceItemId1: TLabel;
+    lbRequiredNpcOrGo4: TLabel;
+    lbRequiredNpcOrGo3: TLabel;
+    lbRequiredNpcOrGo2: TLabel;
+    lbRequiredNpcOrGo1: TLabel;
+    lbRequiredSpellCast1: TLabel;
+    lbRequiredSpellCast2: TLabel;
+    lbRequiredSpellCast3: TLabel;
+    lbRequiredSpellCast4: TLabel;
+    edqtRequiredItemCount1: TLabeledEdit;
+    edqtRequiredItemCount2: TLabeledEdit;
+    edqtRequiredItemCount3: TLabeledEdit;
+    edqtRequiredItemCount4: TLabeledEdit;
+    edqtRequiredNpcOrGoCount4: TLabeledEdit;
+    edqtRequiredNpcOrGoCount3: TLabeledEdit;
+    edqtRequiredNpcOrGoCount2: TLabeledEdit;
+    edqtRequiredNpcOrGoCount1: TLabeledEdit;
+    edqtRequiredSourceItemCount1: TLabeledEdit;
+    edqtRequiredSourceItemCount2: TLabeledEdit;
+    edqtRequiredSourceItemCount3: TLabeledEdit;
+    edqtRequiredSourceItemCount4: TLabeledEdit;
+    edqtRequiredItemId1: TJvComboEdit;
+    edqtRequiredItemId2: TJvComboEdit;
+    edqtRequiredItemId3: TJvComboEdit;
+    edqtRequiredItemId4: TJvComboEdit;
+    edqtRequiredSourceItemId1: TJvComboEdit;
+    edqtRequiredSourceItemId2: TJvComboEdit;
+    edqtRequiredSourceItemId3: TJvComboEdit;
+    edqtRequiredSourceItemId4: TJvComboEdit;
+    edqtRequiredNpcOrGo4: TJvComboEdit;
+    edqtRequiredNpcOrGo3: TJvComboEdit;
+    edqtRequiredNpcOrGo2: TJvComboEdit;
+    edqtRequiredNpcOrGo1: TJvComboEdit;
+    edqtRequiredSpellCast1: TJvComboEdit;
+    edqtRequiredSpellCast2: TJvComboEdit;
+    edqtRequiredSpellCast3: TJvComboEdit;
+    edqtRequiredSpellCast4: TJvComboEdit;
     gbRewards: TGroupBox;
-    lbRewChoiceItemId1: TLabel;
+    lbRewardChoiceItemId1: TLabel;
     lbRewChoiceItemId2: TLabel;
     lbRewChoiceItemId3: TLabel;
     lbRewChoiceItemId4: TLabel;
     lbRewChoiceItemId5: TLabel;
     lbRewChoiceItemId6: TLabel;
-    lbRewItemId1: TLabel;
-    lbRewItemId2: TLabel;
-    lbRewItemId3: TLabel;
-    lbRewItemId4: TLabel;
-    lbRewRepFaction1: TLabel;
-    lbRewRepFaction2: TLabel;
-    lbRewRepFaction3: TLabel;
-    lbRewRepFaction4: TLabel;
-    lbRewRepFaction5: TLabel;
-    lbRewSpell: TLabel;
-    edqtRewChoiceItemCount1: TLabeledEdit;
-    edqtRewChoiceItemCount2: TLabeledEdit;
-    edqtRewChoiceItemCount3: TLabeledEdit;
-    edqtRewChoiceItemCount4: TLabeledEdit;
-    edqtRewChoiceItemCount5: TLabeledEdit;
-    edqtRewChoiceItemCount6: TLabeledEdit;
-    edqtRewItemCount1: TLabeledEdit;
-    edqtRewItemCount2: TLabeledEdit;
-    edqtRewItemCount3: TLabeledEdit;
-    edqtRewItemCount4: TLabeledEdit;
-    edqtRewRepValue1: TLabeledEdit;
-    edqtRewRepValue2: TLabeledEdit;
-    edqtRewOrReqMoney: TLabeledEdit;
-    edqtRewMoneyMaxLevel: TLabeledEdit;
-    edqtRewRepValue3: TLabeledEdit;
-    edqtRewRepValue4: TLabeledEdit;
-    edqtRewRepValue5: TLabeledEdit;
-    edqtRewChoiceItemId1: TJvComboEdit;
-    edqtRewItemId1: TJvComboEdit;
-    edqtRewRepFaction1: TJvComboEdit;
-    edqtRewSpell: TJvComboEdit;
-    edqtRewChoiceItemId2: TJvComboEdit;
-    edqtRewChoiceItemId3: TJvComboEdit;
-    edqtRewChoiceItemId4: TJvComboEdit;
-    edqtRewChoiceItemId5: TJvComboEdit;
-    edqtRewChoiceItemId6: TJvComboEdit;
-    edqtRewItemId2: TJvComboEdit;
-    edqtRewItemId3: TJvComboEdit;
-    edqtRewItemId4: TJvComboEdit;
-    edqtRewRepFaction2: TJvComboEdit;
-    edqtRewRepFaction3: TJvComboEdit;
-    edqtRewRepFaction4: TJvComboEdit;
-    edqtRewRepFaction5: TJvComboEdit;
+    lbRewardItemId1: TLabel;
+    lbRewardItemId2: TLabel;
+    lbRewardItemId3: TLabel;
+    lbRewardItemId4: TLabel;
+    lbRewardFactionId1: TLabel;
+    lbRewardFactionId2: TLabel;
+    lbRewardFactionId3: TLabel;
+    lbRewardFactionId4: TLabel;
+    lbRewardFactionId5: TLabel;
+    lbRewardSpell: TLabel;
+    edqtRewardChoiceItemCount1: TLabeledEdit;
+    edqtRewardChoiceItemCount2: TLabeledEdit;
+    edqtRewardChoiceItemCount3: TLabeledEdit;
+    edqtRewardChoiceItemCount4: TLabeledEdit;
+    edqtRewardChoiceItemCount5: TLabeledEdit;
+    edqtRewardChoiceItemCount6: TLabeledEdit;
+    edqtRewardItemCount1: TLabeledEdit;
+    edqtRewardItemCount2: TLabeledEdit;
+    edqtRewardItemCount3: TLabeledEdit;
+    edqtRewardItemCount4: TLabeledEdit;
+    edqtRewardFactionValueId1: TLabeledEdit;
+    edqtRewardFactionValueId2: TLabeledEdit;
+    edqtRewardOrRequiredMoney: TLabeledEdit;
+    edqtRewardMoneyMaxLevel: TLabeledEdit;
+    edqtRewardFactionValueId3: TLabeledEdit;
+    edqtRewardFactionValueId4: TLabeledEdit;
+    edqtRewardFactionValueId5: TLabeledEdit;
+    edqtRewardChoiceItemId1: TJvComboEdit;
+    edqtRewardItemId1: TJvComboEdit;
+    edqtRewardFactionId1: TJvComboEdit;
+    edqtRewardSpell: TJvComboEdit;
+    edqtRewardChoiceItemId2: TJvComboEdit;
+    edqtRewardChoiceItemId3: TJvComboEdit;
+    edqtRewardChoiceItemId4: TJvComboEdit;
+    edqtRewardChoiceItemId5: TJvComboEdit;
+    edqtRewardChoiceItemId6: TJvComboEdit;
+    edqtRewardItemId2: TJvComboEdit;
+    edqtRewardItemId3: TJvComboEdit;
+    edqtRewardItemId4: TJvComboEdit;
+    edqtRewardFactionId2: TJvComboEdit;
+    edqtRewardFactionId3: TJvComboEdit;
+    edqtRewardFactionId4: TJvComboEdit;
+    edqtRewardFactionId5: TJvComboEdit;
     gbOther: TGroupBox;
     edqtPointX: TLabeledEdit;
     edqtPointY: TLabeledEdit;
-    edqtPointOpt: TLabeledEdit;
-    edqtIncompleteEmote: TJvComboEdit;
-    edqtCompleteEmote: TJvComboEdit;
+    edqtPointOption: TLabeledEdit;
+    edqtEmoteOnIncomplete: TJvComboEdit;
+    edqtEmoteOnComplete: TJvComboEdit;
     edqtCompleteScript: TLabeledEdit;
     edqtDetailsEmote1: TJvComboEdit;
     edqtDetailsEmote2: TJvComboEdit;
@@ -1002,9 +1002,9 @@ type
     lbRequiredMaxRepFaction: TLabel;
     UpDown2: TUpDown;
     UpDown1: TUpDown;
-    edqtQuestLevel: TLabeledEdit;
+    edqtLevel: TLabeledEdit;
     edqtMinLevel: TLabeledEdit;
-    edqtRequiredSkillValue: TLabeledEdit;
+    edqtRequiredSkillPoints: TLabeledEdit;
     cbctRacialLeader: TCheckBox;
     edctdmgschool: TLabeledEdit;
     nReconnect: TMenuItem;
@@ -1075,7 +1075,7 @@ type
     lbqtDetailsEmote3: TLabel;
     lbqtDetailsEmote4: TLabel;
     lbqtIncompleteEmote: TLabel;
-    lbqtCompleteEmote: TLabel;
+    lbqtEmoteOnComplete: TLabel;
     lbqtOfferRewardEmote1: TLabel;
     lbqtOfferRewardEmote2: TLabel;
     lbqtOfferRewardEmote3: TLabel;
@@ -1230,9 +1230,9 @@ type
     lbiplootmode: TLabel;
     edqtSpecialFlags: TJvComboEdit;
     lbqtSpecialFlags: TLabel;
-    edqtRepObjectiveValue: TLabeledEdit;
-    lbqtRepObjectiveFaction: TLabel;
-    edqtRepObjectiveFaction: TJvComboEdit;
+    edqtRequiredFactionValue1: TLabeledEdit;
+    lbqtRequiredFactionId1: TLabel;
+    edqtRequiredFactionId1: TJvComboEdit;
     editarea: TJvComboEdit;
     lbitarea: TLabel;
     JvDBGrid1: TJvDBGrid;
@@ -1314,28 +1314,26 @@ type
     edcvExtendedCost: TJvComboEdit;
     lbcvExtendedCost: TLabel;
     editDuration: TLabeledEdit;
-    lbRewSpellCast: TLabel;
-    edqtRewSpellCast: TJvComboEdit;
-    edqtCharTitleId: TLabeledEdit;
+    lbRewardSpellCast: TLabel;
+    edqtRewardSpellCast: TJvComboEdit;
+    edqtRewardTitleId: TLabeledEdit;
     edcdmoveflags: TLabeledEdit;
     edcamoveflags: TLabeledEdit;
     edqtSuggestedPlayers: TLabeledEdit;
-    edqtSkillOrClassMask: TJvComboEdit;
-    rbqtSkill: TRadioButton;
-    rbqtClass: TRadioButton;
+    edqtRequiredSkillId: TJvComboEdit;
     edqtZoneOrSort: TJvComboEdit;
     rbqtQuestSort: TRadioButton;
     rbqtZoneID: TRadioButton;
     edctPetSpellDataId: TLabeledEdit;
-    edqtRewMailTemplateId: TLabeledEdit;
-    edqtRewMailDelaySecs: TLabeledEdit;
+    edqtRewardMailTemplateId: TLabeledEdit;
+    edqtRewardMailDelay: TLabeledEdit;
     edctflags_extra: TLabeledEdit;
     edctdifficulty_entry_1: TJvComboEdit;
     lbctdifficulty_entry_1: TLabel;
     lbcnevent_param4: TLabel;
     edcnevent_param4: TJvComboEdit;
     edcnevent_flags: TLabeledEdit;
-    edqtRewHonorAddition: TLabeledEdit;
+    edqtRewardHonor: TLabeledEdit;
     edqtMethod: TLabeledEdit;
     pmruwowhead: TMenuItem;
     sHintManager1: TsHintManager;
@@ -1366,8 +1364,8 @@ type
     editScalingStatValue: TLabeledEdit;
     editItemLimitCategory: TLabeledEdit;
     editStatsCount: TLabeledEdit;
-    edqtPlayersSlain: TLabeledEdit;
-    edqtBonusTalents: TLabeledEdit;
+    edqtRequiredPlayerKills: TLabeledEdit;
+    edqtRewardTalents: TLabeledEdit;
     tsMillingLoot: TTabSheet;
     lvitMillingLoot: TJvListView;
     edimitem: TJvComboEdit;
@@ -1424,10 +1422,10 @@ type
     edgtquestItem5: TLabeledEdit;
     edgtquestItem6: TLabeledEdit;
     editFlagsExtra: TLabeledEdit;
-    edqtReqItemId5: TJvComboEdit;
-    edqtReqItemCount5: TLabeledEdit;
-    edqtReqItemCount6: TLabeledEdit;
-    edqtReqItemId6: TJvComboEdit;
+    edqtRequiredItemId5: TJvComboEdit;
+    edqtRequiredItemCount5: TLabeledEdit;
+    edqtRequiredItemCount6: TLabeledEdit;
+    edqtRequiredItemId6: TJvComboEdit;
     edSearchItemItemLevel: TLabeledEdit;
     edSearchGOdata0: TLabeledEdit;
     edSearchGOdata1: TLabeledEdit;
@@ -1466,13 +1464,13 @@ type
     lbctgossip_menu_id: TLabel;
     edqtCompletedText: TLabeledEdit;
     edlqCompletedText: TLabeledEdit;
-    edqtRewXPId: TLabeledEdit;
-    edqtRewHonorMultiplier: TLabeledEdit;
-    edqtRewRepValueId1: TLabeledEdit;
-    edqtRewRepValueId2: TLabeledEdit;
-    edqtRewRepValueId3: TLabeledEdit;
-    edqtRewRepValueId4: TLabeledEdit;
-    edqtRewRepValueId5: TLabeledEdit;
+    edqtRewardXPId: TLabeledEdit;
+    edqtRewardHonorMultiplier: TLabeledEdit;
+    edqtRewardFactionValueIdOverride1: TLabeledEdit;
+    edqtRewardFactionValueIdOverride2: TLabeledEdit;
+    edqtRewardFactionValueIdOverride3: TLabeledEdit;
+    edqtRewardFactionValueIdOverride4: TLabeledEdit;
+    edqtRewardFactionValueIdOverride5: TLabeledEdit;
     editWDBVerified: TLabeledEdit;
     edctspeed_run: TLabeledEdit;
     edctVehicleId: TLabeledEdit;
@@ -1490,12 +1488,12 @@ type
     edcdpath_id: TLabeledEdit;
     UpDown3: TUpDown;
     edqtMaxLevel: TLabeledEdit;
-    edqtRepObjectiveValue2: TLabeledEdit;
-    edqtRepObjectiveFaction2: TJvComboEdit;
+    edqtRequiredFactionValue2: TLabeledEdit;
+    edqtRequiredFactionId2: TJvComboEdit;
     lbqtRepObjectiveFaction2: TLabel;
     edqtWDBVerified: TLabeledEdit;
     edqtRewardArenaPoints: TLabeledEdit;
-    edqtunk0: TLabeledEdit;
+    edqtUnknown0: TLabeledEdit;
     edgtWDBVerified: TLabeledEdit;
     edcvslot: TLabeledEdit;
     tsSmartAI: TTabSheet;
@@ -1632,6 +1630,9 @@ type
     edhttaximask: TLabeledEdit;
     cbhtis_logout_resting: TCheckBox;
     edhtgrantableLevels: TLabeledEdit;
+    lbRequiredSkillId: TLabel;
+    edqtRequiredClasses: TJvComboEdit;
+    lbRequiredClasses: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -2001,8 +2002,8 @@ type
       SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
-    procedure edqtSkillOrClassMaskChange(Sender: TObject);
-    procedure edqtSkillOrClassMaskButtonClick(Sender: TObject);
+    procedure edqtRequiredSkillIdChange(Sender: TObject);
+    procedure edqtRequiredSkillIdButtonClick(Sender: TObject);
     procedure edcnevent_typeChange(Sender: TObject);
     procedure edcnaction1_typeChange(Sender: TObject);
     procedure edcnaction2_typeChange(Sender: TObject);
@@ -2389,9 +2390,9 @@ begin
   if ID<>'' then
   begin
     if pos('-', ID)=0 then
-      WhereStr := Format('WHERE (qt.`entry` in (%s))',[ID])
+      WhereStr := Format('WHERE (qt.`Id` in (%s))',[ID])
     else
-      WhereStr := Format('WHERE (qt.`entry` >= %s) AND (qt.`entry` <= %s)',[MidStr(ID,1,pos('-',id)-1), MidStr(ID,pos('-',id)+1,length(id))]);
+      WhereStr := Format('WHERE (qt.`Id` >= %s) AND (qt.`Id` <= %s)',[MidStr(ID,1,pos('-',id)-1), MidStr(ID,pos('-',id)+1,length(id))]);
   end;
 
   if QTilte<>'%%' then
@@ -2405,17 +2406,17 @@ begin
   if qgq<>'' then
   begin
     if WhereStr<> '' then
-      WhereStr := Format('%s AND (qt.`entry` IN (%s))',[WhereStr, qgq])
+      WhereStr := Format('%s AND (qt.`Id` IN (%s))',[WhereStr, qgq])
     else
-      WhereStr := Format('WHERE (qt.`entry` IN (%s))',[qgq]);
+      WhereStr := Format('WHERE (qt.`Id` IN (%s))',[qgq]);
   end;
 
   if qtq<>'' then
   begin
     if WhereStr<> '' then
-      WhereStr := Format('%s AND (qt.`entry` IN (%s))',[WhereStr, qtq])
+      WhereStr := Format('%s AND (qt.`Id` IN (%s))',[WhereStr, qtq])
     else
-      WhereStr := Format('WHERE (qt.`entry` IN (%s))',[qtq]);
+      WhereStr := Format('WHERE (qt.`Id` IN (%s))',[qtq]);
   end;
 
   zoneorsort := edZoneOrSortSearch.Text;
@@ -2434,16 +2435,16 @@ begin
     if rbExact.Checked then
     begin
       if WhereStr<> '' then
-        WhereStr := Format('%s AND (qt.`QuestFlags`=%s)',[WhereStr, QuestFlags])
+        WhereStr := Format('%s AND (qt.`Flags`=%s)',[WhereStr, QuestFlags])
       else
-        WhereStr := Format('WHERE (qt.`QuestFlags`=%s)',[QuestFlags]);
+        WhereStr := Format('WHERE (qt.`Flags`=%s)',[QuestFlags]);
     end
     else
     begin
       if WhereStr<> '' then
-        WhereStr := Format('%s AND (qt.`QuestFlags` & %1:s = %1:s)',[WhereStr, QuestFlags])
+        WhereStr := Format('%s AND (qt.`Flags` & %1:s = %1:s)',[WhereStr, QuestFlags])
       else
-        WhereStr := Format('WHERE (qt.`QuestFlags` & %0:s = %0:s)',[QuestFlags]);
+        WhereStr := Format('WHERE (qt.`Flags` & %0:s = %0:s)',[QuestFlags]);
     end;
   end;
 
@@ -2469,7 +2470,7 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT * FROM quest_template qt LEFT OUTER JOIN locales_quest lq ON qt.entry=lq.entry %s',[WhereStr]);
+  QueryStr := Format('SELECT * FROM quest_template qt LEFT OUTER JOIN locales_quest lq ON qt.Id=lq.entry %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvQuest.Items.BeginUpdate;
@@ -2627,13 +2628,13 @@ begin
   if QuestID<1 then exit;
 
   // load full description for quest
-  MyQuery.SQL.Text := Format('SELECT * FROM `quest_template` WHERE `entry`=%d',[
+  MyQuery.SQL.Text := Format('SELECT * FROM `quest_template` WHERE `Id`=%d',[
     QuestID]);
   MyQuery.Open;
   try
     if MyQuery.Eof then
       raise Exception.Create(Format(dmMain.Text[2], [QuestID]));  //'Error: Quest (%d) not found'
-    edqtEntry.Text := IntToStr(QuestID);
+    edqtId.Text := IntToStr(QuestID);
     FillFields(MyQuery, PFX_QUEST_TEMPLATE);
     MyQuery.Close;
 
@@ -2814,7 +2815,7 @@ var
   i: integer;
 begin
   s4 := '';
-  quest := edqtEntry.Text;
+  quest := edqtId.Text;
   if quest='' then exit;
   meqtLog.Clear;
 
@@ -2872,10 +2873,10 @@ begin
   SetFieldsAndValues(Fields, Values, 'quest_template', PFX_QUEST_TEMPLATE, meqtLog);
 
   case SyntaxStyle of
-    ssInsertDelete: s3 := Format('DELETE FROM `quest_template` WHERE `entry` = %s;'#13#10+
+    ssInsertDelete: s3 := Format('DELETE FROM `quest_template` WHERE `Id` = %s;'#13#10+
                       'INSERT INTO `quest_template` (%s) VALUES (%s);'#13#10,[quest, Fields, Values]);
     ssReplace: s3 := Format('REPLACE INTO `quest_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: s3 := MakeUpdate('quest_template', PFX_QUEST_TEMPLATE, 'entry', quest);
+    ssUpdate: s3 := MakeUpdate('quest_template', PFX_QUEST_TEMPLATE, 'Id', quest);
   end;
 
   if edqtAreatrigger.Text<>'' then
@@ -2994,18 +2995,21 @@ begin
   GetSomeFlags(Sender, 'SpecialFlags');
 end;
 
-procedure TMainForm.edqtSkillOrClassMaskButtonClick(Sender: TObject);
+procedure TMainForm.edqtRequiredSkillIdButtonClick(Sender: TObject);
 begin
-  if rbqtSkill.Checked then
+  {if rbqtSkill.Checked then
     GetSkill(Sender)
   else
     GetValueFromSimpleList(Sender, 143, 'ChrClasses', false);
+  }
 end;
 
-procedure TMainForm.edqtSkillOrClassMaskChange(Sender: TObject);
+procedure TMainForm.edqtRequiredSkillIdChange(Sender: TObject);
 begin
+  {
   if StrToIntDef(edqtSkillOrClassMask.Text,0)>=0 then rbqtSkill.Checked := true else
   rbqtClass.Checked := true;
+  }
 end;
 
 procedure TMainForm.edqtZoneOrSortButtonClick(Sender: TObject);
@@ -3880,7 +3884,7 @@ procedure TMainForm.btDeleteQuestClick(Sender: TObject);
 begin
   PageControl2.ActivePageIndex := SCRIPT_TAB_NO_QUEST;
   meqtScript.Text := Format(
-  'DELETE FROM `quest_template` WHERE (`entry`=%0:s);'#13#10+
+  'DELETE FROM `quest_template` WHERE (`Id`=%0:s);'#13#10+
   'DELETE FROM `creature_questrelation` WHERE (`quest`=%0:s);'#13#10+
   'DELETE FROM `gameobject_questrelation` WHERE (`quest`=%0:s);'#13#10+
   'DELETE FROM `creature_involvedrelation` WHERE (`quest`=%0:s);'#13#10+
@@ -4627,7 +4631,7 @@ begin
   if trim(entry)='' then Exit;
   // STARTS
   MyTempQuery.SQL.Text := Format('Select qt.* from creature_questrelation ci' +
-                                 ' INNER JOIN quest_template qt ON ci.quest = qt.entry' +
+                                 ' INNER JOIN quest_template qt ON ci.quest = qt.Id' +
                                  ' where ci.id = %s', [Entry]);
   MyTempQuery.Open;
   lvCreatureStarts.Items.BeginUpdate;
@@ -4636,15 +4640,15 @@ begin
   begin
     with lvCreatureStarts.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4658,7 +4662,7 @@ begin
 
   // ENDS
   MyTempQuery.SQL.Text := Format('Select qt.* from creature_involvedrelation ci' +
-                                 ' INNER JOIN quest_template qt ON ci.quest = qt.entry' +
+                                 ' INNER JOIN quest_template qt ON ci.quest = qt.Id' +
                                  ' where ci.id = %s',[Entry]);
   MyTempQuery.Open;
   lvCreatureEnds.Items.BeginUpdate;
@@ -4667,15 +4671,15 @@ begin
   begin
     with lvCreatureEnds.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4689,9 +4693,9 @@ begin
 
   // Objective of
   MyTempQuery.SQL.Text := Format('Select * from quest_template ' +
-                                 ' where reqcreatureorgoid1 = %0:s OR' +
-                                 ' reqcreatureorgoid2 = %0:s OR reqcreatureorgoid3 = %0:s OR' +
-                                 ' reqcreatureorgoid4 = %0:s ',[Entry]);
+                                 ' where RequiredNpcOrGo1 = %0:s OR' +
+                                 ' RequiredNpcOrGo2 = %0:s OR RequiredNpcOrGo3 = %0:s OR' +
+                                 ' RequiredNpcOrGo4 = %0:s ',[Entry]);
   MyTempQuery.Open;
   lvCreatureObjectiveOf.Items.BeginUpdate;
   lvCreatureObjectiveOf.Items.Clear;
@@ -4699,15 +4703,15 @@ begin
   begin
     with lvCreatureObjectiveOf.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);      
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4732,7 +4736,7 @@ begin
 
   // STARTS
   MyTempQuery.SQL.Text := Format('Select qt.* from gameobject_questrelation ci' +
-                                 ' INNER JOIN quest_template qt ON ci.quest = qt.entry' +
+                                 ' INNER JOIN quest_template qt ON ci.quest = qt.Id' +
                                  ' where ci.id = %s',[Entry]);
   MyTempQuery.Open;
   lvGameObjectStarts.Items.BeginUpdate;
@@ -4741,15 +4745,15 @@ begin
   begin
     with lvGameObjectStarts.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4763,7 +4767,7 @@ begin
 
   // ENDS
   MyTempQuery.SQL.Text := Format('Select qt.* from gameobject_involvedrelation ci' +
-                                 ' INNER JOIN quest_template qt ON ci.quest = qt.entry' +
+                                 ' INNER JOIN quest_template qt ON ci.quest = qt.Id' +
                                  ' where ci.id = %s',[Entry]);
   MyTempQuery.Open;
   lvGameObjectEnds.Items.BeginUpdate;
@@ -4772,15 +4776,15 @@ begin
   begin
     with lvGameObjectEnds.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4794,9 +4798,9 @@ begin
 
   // Objective of
   MyTempQuery.SQL.Text := Format('Select * from quest_template ' +
-                                 ' where reqcreatureorgoid1 = -%0:s OR' +
-                                 ' reqcreatureorgoid2 = -%0:s OR reqcreatureorgoid3 = -%0:s OR' +
-                                 ' reqcreatureorgoid4 = -%0:s ',[Entry]);
+                                 ' where RequiredNpcOrGo1 = -%0:s OR' +
+                                 ' RequiredNpcOrGo2 = -%0:s OR RequiredNpcOrGo3 = -%0:s OR' +
+                                 ' RequiredNpcOrGo4 = -%0:s ',[Entry]);
   MyTempQuery.Open;
   lvGameObjectObjectiveOf.Items.BeginUpdate;
   lvGameObjectObjectiveOf.Items.Clear;
@@ -4804,15 +4808,15 @@ begin
   begin
     with lvGameObjectObjectiveOf.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4836,7 +4840,7 @@ begin
   if trim(entry)='' then Exit;
   // STARTS
   MyTempQuery.SQL.Text := Format('Select qt.* from item_template it' +
-                                 ' INNER JOIN quest_template qt ON it.startquest = qt.entry' +
+                                 ' INNER JOIN quest_template qt ON it.startquest = qt.Id' +
                                  ' where it.entry = %s',[Entry]);
   MyTempQuery.Open;
   lvItemStarts.Items.BeginUpdate;
@@ -4845,15 +4849,15 @@ begin
   begin
     with lvItemStarts.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4867,9 +4871,9 @@ begin
 
   // Objective of
   MyTempQuery.SQL.Text := Format('Select * from quest_template ' +
-                                 ' where ReqItemId1 = %0:s OR' +
-                                 ' ReqItemId2 = %0:s OR ReqItemId3 = %0:s OR' +
-                                 ' ReqItemId4 = %0:s ',[Entry]);
+                                 ' where RequiredItemId1 = %0:s OR' +
+                                 ' RequiredItemId2 = %0:s OR RequiredItemId3 = %0:s OR' +
+                                 ' RequiredItemId4 = %0:s ',[Entry]);
   MyTempQuery.Open;
   lvItemObjectiveOf.Items.BeginUpdate;
   lvItemObjectiveOf.Items.Clear;
@@ -4877,15 +4881,15 @@ begin
   begin
     with lvItemObjectiveOf.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4899,9 +4903,9 @@ begin
 
   // Source for
   MyTempQuery.SQL.Text := Format('Select * from quest_template ' +
-                                 ' where ReqSourceId1 = %0:s OR' +
-                                 ' ReqSourceId2 = %0:s OR ReqSourceId3 = %0:s OR' +
-                                 ' ReqSourceId4 = %0:s ',[Entry]);
+                                 ' where RequiredSourceItemId1 = %0:s OR' +
+                                 ' RequiredSourceItemId2 = %0:s OR RequiredSourceItemId3 = %0:s OR' +
+                                 ' RequiredSourceItemId4 = %0:s ',[Entry]);
   MyTempQuery.Open;
   lvItemSourceFor.Items.BeginUpdate;
   lvItemSourceFor.Items.Clear;
@@ -4909,15 +4913,15 @@ begin
   begin
     with lvItemSourceFor.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4931,7 +4935,7 @@ begin
 
   // Provided for
   MyTempQuery.SQL.Text := Format('Select * from quest_template ' +
-                                 ' where srcitemid = %s ',[Entry]);
+                                 ' where SourceItemId = %s ',[Entry]);
   MyTempQuery.Open;
   lvItemProvidedFor.Items.BeginUpdate;
   lvItemProvidedFor.Items.Clear;
@@ -4939,15 +4943,15 @@ begin
   begin
     with lvItemProvidedFor.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -4961,12 +4965,12 @@ begin
 
   // Reward from
   MyTempQuery.SQL.Text := Format('Select * from quest_template ' +
-                                 ' where RewChoiceItemId1 = %0:s OR' +
-                                 ' RewChoiceItemId2 = %0:s OR RewChoiceItemId3 = %0:s OR' +
-                                 ' RewChoiceItemId4 = %0:s OR RewChoiceItemId5 = %0:s OR' +
-                                 ' RewItemId2 = %0:s OR RewItemId3 = %0:s OR' +
-                                 ' RewItemId4 = %0:s OR RewItemId1 = %0:s OR' +
-                                 ' RewChoiceItemId6 = %0:s ',[Entry]);
+                                 ' where RewardChoiceItemId1 = %0:s OR' +
+                                 ' RewardChoiceItemId2 = %0:s OR RewardChoiceItemId3 = %0:s OR' +
+                                 ' RewardChoiceItemId4 = %0:s OR RewardChoiceItemId5 = %0:s OR' +
+                                 ' RewardItemId2 = %0:s OR RewardItemId3 = %0:s OR' +
+                                 ' RewardItemId4 = %0:s OR RewardItemId1 = %0:s OR' +
+                                 ' RewardChoiceItemId6 = %0:s ',[Entry]);
   MyTempQuery.Open;
   lvItemRewardFrom.Items.BeginUpdate;
   lvItemRewardFrom.Items.Clear;
@@ -4974,15 +4978,15 @@ begin
   begin
     with lvItemRewardFrom.Items.Add do
     begin
-      Caption := MyTempQuery.FieldByName('entry').AsString;
+      Caption := MyTempQuery.FieldByName('Id').AsString;
       SubItems.Add(MyTempQuery.FieldByName('title').AsString);
-      SubItems.Add(MyTempQuery.FieldByName('QuestLevel').AsString);
+      SubItems.Add(MyTempQuery.FieldByName('Level').AsString);
       SubItems.Add(GetRaceAcronym(MyTempQuery.FieldByName('RequiredRaces').AsInteger));
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewMoneyMaxLevel').AsString + ' MML';
-      if MyTempQuery.FieldByName('reworreqmoney').AsInteger>0 then b := MyTempQuery.FieldByName('reworreqmoney').AsString + 'c';
+      if MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsInteger>0 then a := MyTempQuery.FieldByName('RewardMoneyMaxLevel').AsString + ' MML';
+      if MyTempQuery.FieldByName('RewardOrRequiredMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardOrRequiredMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
       SubItems.Add(temp);
@@ -6025,9 +6029,9 @@ var
   lqentry : string;
 begin
   meqtLog.Clear;
-  lqentry:= edqtEntry.Text;
+  lqentry:= edqtId.Text;
   if lqentry='' then exit;
-  meqtScript.Text := MakeUpdateLocales('locales_quest', PFX_LOCALES_QUEST, 'entry', lqentry);
+  meqtScript.Text := MakeUpdateLocales('locales_quest', PFX_LOCALES_QUEST, 'Id', lqentry);
 end;
 
 procedure TMainForm.CompleteCreatureEventAIScript;
@@ -9404,15 +9408,15 @@ var
 begin
   ShowHourGlassCursor;
   MyTempQuery.SQL.Text :=
-  'SELECT `SrcSpell` FROM `quest_template` WHERE `SrcSpell`<>0 '+
+  'SELECT `SourceSpellId` FROM `quest_template` WHERE `SourceSpellId`<>0 '+
   'UNION ' +
-  'SELECT `ReqSpellCast1` FROM `quest_template` WHERE `ReqSpellCast1`<>0 '+
+  'SELECT `RequiredSpellCast1` FROM `quest_template` WHERE `RequiredSpellCast1`<>0 '+
   'UNION ' +
-  'SELECT `ReqSpellCast2` FROM `quest_template` WHERE `ReqSpellCast2`<>0 '+
+  'SELECT `RequiredSpellCast2` FROM `quest_template` WHERE `RequiredSpellCast2`<>0 '+
   'UNION ' +
-  'SELECT `ReqSpellCast3` FROM `quest_template` WHERE `ReqSpellCast3`<>0 '+
+  'SELECT `RequiredSpellCast3` FROM `quest_template` WHERE `RequiredSpellCast3`<>0 '+
   'UNION ' +
-  'SELECT `ReqSpellCast4` FROM `quest_template` WHERE `ReqSpellCast4`<>0 '+
+  'SELECT `RequiredSpellCast4` FROM `quest_template` WHERE `RequiredSpellCast4`<>0 '+
   'UNION ' +
   'SELECT `spell1` FROM `creature_template` WHERE `spell1`<>0 '+
   'UNION ' +
@@ -9438,9 +9442,9 @@ begin
   'UNION ' +
   'SELECT `spellid_5` FROM `item_template` WHERE `spellid_5`<>0 '+
   'UNION ' +
-  'SELECT `RewSpellCast` FROM `quest_template` WHERE `RewSpellCast`<>0 '+
+  'SELECT `RewardSpellCast` FROM `quest_template` WHERE `RewardSpellCast`<>0 '+
   'UNION ' +
-  'SELECT `RewSpell` FROM `quest_template` WHERE `RewSpell`<>0 ';
+  'SELECT `RewardSpell` FROM `quest_template` WHERE `RewardSpell`<>0 ';
   MyTempQuery.Open;
   list := TStringList.Create;
   try

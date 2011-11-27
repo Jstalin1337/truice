@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsCreature
+    ActivePage = tsQuest
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsQuestPart2
+        ActivePage = tsQuestPart1
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -898,12 +898,12 @@ object MainForm: TMainForm
             Height = 146
             Caption = 'Keys'
             TabOrder = 0
-            object lbEntry: TLabel
+            object lbId: TLabel
               Left = 8
               Top = 16
-              Width = 24
+              Width = 9
               Height = 13
-              Caption = 'Entry'
+              Caption = 'Id'
             end
             object lbPrevQuestId: TLabel
               Left = 95
@@ -919,12 +919,12 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'NextQuestId'
             end
-            object lbNextQuestInChain: TLabel
+            object lbNextQuestIdChain: TLabel
               Left = 8
               Top = 95
               Width = 86
               Height = 13
-              Caption = 'NextQuestInChain'
+              Caption = 'NextQuestIdChain'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -932,7 +932,7 @@ object MainForm: TMainForm
               Font.Style = []
               ParentFont = False
             end
-            object edqtEntry: TJvComboEdit
+            object edqtId: TJvComboEdit
               Left = 8
               Top = 31
               Width = 81
@@ -1112,7 +1112,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'ExclusiveGroup'
               TabOrder = 3
             end
-            object edqtNextQuestInChain: TJvComboEdit
+            object edqtNextQuestIdChain: TJvComboEdit
               Left = 9
               Top = 111
               Width = 81
@@ -1166,14 +1166,14 @@ object MainForm: TMainForm
               TabOrder = 4
               OnButtonClick = btLoadQuest
             end
-            object edqtRewXPId: TLabeledEdit
+            object edqtRewardXPId: TLabeledEdit
               Left = 96
               Top = 111
               Width = 81
               Height = 21
-              EditLabel.Width = 45
+              EditLabel.Width = 60
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewXPId'
+              EditLabel.Caption = 'RewardXPId'
               TabOrder = 5
             end
           end
@@ -1184,12 +1184,19 @@ object MainForm: TMainForm
             Height = 146
             Caption = 'Zone, Sort, Level'
             TabOrder = 1
+            object lbRequiredSkillId: TLabel
+              Left = 8
+              Top = 58
+              Width = 71
+              Height = 13
+              Caption = 'RequiredSkillId'
+            end
             object UpDown2: TUpDown
               Left = 168
               Top = 113
               Width = 16
               Height = 21
-              Associate = edqtQuestLevel
+              Associate = edqtLevel
               Max = 255
               TabOrder = 3
             end
@@ -1202,7 +1209,7 @@ object MainForm: TMainForm
               Max = 255
               TabOrder = 1
             end
-            object edqtQuestLevel: TLabeledEdit
+            object edqtLevel: TLabeledEdit
               Left = 134
               Top = 113
               Width = 34
@@ -1210,9 +1217,9 @@ object MainForm: TMainForm
               Hint = 
                 'Level of quest. Player recieves full experience amount only if t' +
                 'heir level is less than or equal to QuestLevel+5'
-              EditLabel.Width = 75
+              EditLabel.Width = 47
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtQuestLevel'
+              EditLabel.Caption = 'edqtLevel'
               TabOrder = 2
               Text = '0'
             end
@@ -1294,10 +1301,10 @@ object MainForm: TMainForm
                 TabOrder = 2
               end
             end
-            object edqtSkillOrClassMask: TJvComboEdit
+            object edqtRequiredSkillId: TJvComboEdit
               Left = 7
               Top = 72
-              Width = 154
+              Width = 74
               Height = 21
               Hint = 'if value>0 then Skill'#13#10'if value<0 then Class'
               ButtonWidth = 22
@@ -1330,26 +1337,8 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
               TabOrder = 5
-              OnButtonClick = edqtSkillOrClassMaskButtonClick
-              OnChange = edqtSkillOrClassMaskChange
-            end
-            object rbqtSkill: TRadioButton
-              Tag = 1
-              Left = 8
-              Top = 55
-              Width = 73
-              Height = 17
-              Caption = 'Skill'
-              TabOrder = 6
-            end
-            object rbqtClass: TRadioButton
-              Tag = 1
-              Left = 87
-              Top = 55
-              Width = 73
-              Height = 17
-              Caption = 'Class'
-              TabOrder = 7
+              OnButtonClick = edqtRequiredSkillIdButtonClick
+              OnChange = edqtRequiredSkillIdChange
             end
             object UpDown3: TUpDown
               Left = 105
@@ -1358,7 +1347,7 @@ object MainForm: TMainForm
               Height = 21
               Associate = edqtMaxLevel
               Max = 255
-              TabOrder = 8
+              TabOrder = 6
             end
             object edqtMaxLevel: TLabeledEdit
               Left = 71
@@ -1369,7 +1358,7 @@ object MainForm: TMainForm
               EditLabel.Width = 67
               EditLabel.Height = 13
               EditLabel.Caption = 'edqtMaxLevel'
-              TabOrder = 9
+              TabOrder = 7
               Text = '0'
             end
           end
@@ -1443,7 +1432,7 @@ object MainForm: TMainForm
               TabOrder = 0
               OnButtonClick = btTypeClick
             end
-            object edqtQuestFlags: TJvComboEdit
+            object edqtFlags: TJvComboEdit
               Left = 8
               Top = 72
               Width = 73
@@ -1517,10 +1506,17 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'ReqMaxRepFaction'
             end
+            object lbRequiredClasses: TLabel
+              Left = 93
+              Top = 16
+              Width = 79
+              Height = 13
+              Caption = 'RequiredClasses'
+            end
             object edqtRequiredMinRepValue: TLabeledEdit
-              Left = 120
+              Left = 93
               Top = 72
-              Width = 89
+              Width = 44
               Height = 21
               Hint = 'Minimum reputation value to recieve the quest'
               EditLabel.Width = 36
@@ -1533,7 +1529,7 @@ object MainForm: TMainForm
             object edqtRequiredMinRepFaction: TJvComboEdit
               Left = 8
               Top = 72
-              Width = 105
+              Width = 73
               Height = 21
               Hint = 'Faction ID for reputation requirement'
               ButtonWidth = 22
@@ -1571,7 +1567,7 @@ object MainForm: TMainForm
             object edqtRequiredRaces: TJvComboEdit
               Left = 8
               Top = 32
-              Width = 105
+              Width = 73
               Height = 21
               Hint = 'Races required to get the quest.'
               ButtonWidth = 22
@@ -1609,7 +1605,7 @@ object MainForm: TMainForm
             object edqtRequiredMaxRepFaction: TJvComboEdit
               Left = 8
               Top = 112
-              Width = 105
+              Width = 73
               Height = 21
               Hint = 'Faction ID for reputation requirement'
               ButtonWidth = 22
@@ -1645,9 +1641,9 @@ object MainForm: TMainForm
               OnButtonClick = GetFaction
             end
             object edqtRequiredMaxRepValue: TLabeledEdit
-              Left = 120
+              Left = 93
               Top = 112
-              Width = 89
+              Width = 44
               Height = 21
               Hint = 'Maximum reputation value to recieve the quest'
               EditLabel.Width = 36
@@ -1655,18 +1651,56 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Value'
               TabOrder = 5
             end
-            object edqtRequiredSkillValue: TLabeledEdit
-              Left = 119
-              Top = 32
-              Width = 82
+            object edqtRequiredSkillPoints: TLabeledEdit
+              Left = 143
+              Top = 111
+              Width = 58
               Height = 21
               Hint = 
                 'Player skill value requirement for skill correspond to ZoneOrSor' +
                 't field.'
-              EditLabel.Width = 89
+              EditLabel.Width = 68
               EditLabel.Height = 13
-              EditLabel.Caption = 'RequiredSkillValue'
+              EditLabel.Caption = 'ReqSkillPoints'
               TabOrder = 1
+            end
+            object edqtRequiredClasses: TJvComboEdit
+              Left = 93
+              Top = 32
+              Width = 73
+              Height = 21
+              Hint = 'Classes required to get the quest.'
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36030000424D3603000000000000360000002800000010000000100000000100
+                18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
+                DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
+                FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
+                B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
+                D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
+                52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
+                8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              TabOrder = 6
+              OnButtonClick = GetClasses
             end
           end
           object gbSource: TGroupBox
@@ -1676,32 +1710,32 @@ object MainForm: TMainForm
             Height = 146
             Caption = 'Source for quest'
             TabOrder = 4
-            object lbSrcItemId: TLabel
+            object lbSourceItemId: TLabel
               Left = 8
               Top = 16
-              Width = 45
+              Width = 63
               Height = 13
-              Caption = 'SrcItemId'
+              Caption = 'SourceItemId'
             end
-            object lbSrcSpell: TLabel
+            object lbSourceSpellId: TLabel
               Left = 8
               Top = 96
-              Width = 39
+              Width = 66
               Height = 13
-              Caption = 'SrcSpell'
+              Caption = 'SourceSpellId'
             end
-            object edqtsrcItemCount: TLabeledEdit
+            object edqtSourceItemCount: TLabeledEdit
               Left = 8
               Top = 72
               Width = 105
               Height = 21
               Hint = 'Number of Item given at quest start.'
-              EditLabel.Width = 83
+              EditLabel.Width = 103
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtsrcItemCount'
+              EditLabel.Caption = 'edqtSourceItemCount'
               TabOrder = 1
             end
-            object edqtSrcItemId: TJvComboEdit
+            object edqtSourceItemId: TJvComboEdit
               Left = 8
               Top = 32
               Width = 105
@@ -1739,7 +1773,7 @@ object MainForm: TMainForm
               TabOrder = 0
               OnButtonClick = GetItem
             end
-            object edqtSrcSpell: TJvComboEdit
+            object edqtSourceSpellId: TJvComboEdit
               Left = 8
               Top = 112
               Width = 105
@@ -1953,128 +1987,128 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'ReqItemId..'
             end
-            object lbReqSourceId1: TLabel
+            object lbRequiredSourceItemId1: TLabel
               Left = 192
               Top = 13
-              Width = 69
+              Width = 112
               Height = 13
-              Caption = 'ReqSourceId..'
+              Caption = 'RequiredSourceItemId..'
             end
-            object lbReqCreatureOrGOId4: TLabel
+            object lbRequiredNpcOrGo4: TLabel
               Left = 6
               Top = 290
-              Width = 102
+              Width = 94
               Height = 13
-              Caption = 'ReqCreatureOrGOId4'
+              Caption = 'RequiredNpcOrGo4'
             end
-            object lbReqCreatureOrGOId3: TLabel
+            object lbRequiredNpcOrGo3: TLabel
               Left = 6
               Top = 254
-              Width = 102
+              Width = 94
               Height = 13
-              Caption = 'ReqCreatureOrGOId3'
+              Caption = 'RequiredNpcOrGo3'
             end
-            object lbReqCreatureOrGOId2: TLabel
+            object lbRequiredNpcOrGo2: TLabel
               Left = 8
               Top = 217
-              Width = 102
+              Width = 94
               Height = 13
-              Caption = 'ReqCreatureOrGOId2'
+              Caption = 'RequiredNpcOrGo2'
             end
-            object lbReqCreatureOrGOId1: TLabel
+            object lbRequiredNpcOrGo1: TLabel
               Left = 8
               Top = 180
-              Width = 102
+              Width = 94
               Height = 13
-              Caption = 'ReqCreatureOrGOId1'
+              Caption = 'RequiredNpcOrGo1'
             end
-            object lbReqSpellCast1: TLabel
+            object lbRequiredSpellCast1: TLabel
               Left = 225
               Top = 180
-              Width = 70
+              Width = 93
               Height = 13
-              Caption = 'ReqSpellCast1'
+              Caption = 'RequiredSpellCast1'
             end
-            object lbReqSpellCast2: TLabel
+            object lbRequiredSpellCast2: TLabel
               Left = 225
               Top = 217
-              Width = 70
+              Width = 93
               Height = 13
-              Caption = 'ReqSpellCast2'
+              Caption = 'RequiredSpellCast2'
             end
-            object lbReqSpellCast3: TLabel
+            object lbRequiredSpellCast3: TLabel
               Left = 223
               Top = 254
-              Width = 70
+              Width = 93
               Height = 13
-              Caption = 'ReqSpellCast3'
+              Caption = 'RequiredSpellCast3'
             end
-            object lbReqSpellCast4: TLabel
+            object lbRequiredSpellCast4: TLabel
               Left = 223
               Top = 290
-              Width = 70
+              Width = 93
               Height = 13
-              Caption = 'ReqSpellCast4'
+              Caption = 'RequiredSpellCast4'
             end
-            object lbqtRepObjectiveFaction: TLabel
+            object lbqtRequiredFactionId1: TLabel
               Left = 320
               Top = 180
-              Width = 100
+              Width = 93
               Height = 13
-              Caption = 'RepObjectiveFaction'
+              Caption = 'RequiredFactionId1'
             end
             object lbqtRepObjectiveFaction2: TLabel
               Left = 321
               Top = 218
-              Width = 106
+              Width = 93
               Height = 13
-              Caption = 'RepObjectiveFaction2'
+              Caption = 'RequiredFactionId2'
             end
-            object edqtReqItemCount1: TLabeledEdit
+            object edqtRequiredItemCount1: TLabeledEdit
               Left = 96
               Top = 29
               Width = 85
               Height = 21
-              Hint = 'ReqItemCount1'
+              Hint = 'RequiredItemCount1'
               EditLabel.Width = 74
               EditLabel.Height = 13
               EditLabel.Caption = 'ReqItemCount..'
               TabOrder = 1
             end
-            object edqtReqItemCount2: TLabeledEdit
+            object edqtRequiredItemCount2: TLabeledEdit
               Left = 96
               Top = 54
               Width = 85
               Height = 21
-              Hint = 'ReqItemCount2'
-              EditLabel.Width = 95
+              Hint = 'RequiredItemCount2'
+              EditLabel.Width = 118
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtReqItemCount2'
+              EditLabel.Caption = 'edqtRequiredItemCount2'
               TabOrder = 3
             end
-            object edqtReqItemCount3: TLabeledEdit
+            object edqtRequiredItemCount3: TLabeledEdit
               Left = 96
               Top = 80
               Width = 85
               Height = 21
-              Hint = 'ReqItemCount3'
-              EditLabel.Width = 95
+              Hint = 'RequiredItemCount3'
+              EditLabel.Width = 118
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtReqItemCount3'
+              EditLabel.Caption = 'edqtRequiredItemCount3'
               TabOrder = 5
             end
-            object edqtReqItemCount4: TLabeledEdit
+            object edqtRequiredItemCount4: TLabeledEdit
               Left = 96
               Top = 105
               Width = 85
               Height = 21
-              Hint = 'ReqItemCount4'
-              EditLabel.Width = 95
+              Hint = 'RequiredItemCount4'
+              EditLabel.Width = 118
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtReqItemCount4'
+              EditLabel.Caption = 'edqtRequiredItemCount4'
               TabOrder = 7
             end
-            object edqtReqCreatureOrGOCount4: TLabeledEdit
+            object edqtRequiredNpcOrGoCount4: TLabeledEdit
               Left = 144
               Top = 306
               Width = 73
@@ -2087,7 +2121,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count4'
               TabOrder = 26
             end
-            object edqtReqCreatureOrGOCount3: TLabeledEdit
+            object edqtRequiredNpcOrGoCount3: TLabeledEdit
               Left = 144
               Top = 270
               Width = 73
@@ -2100,7 +2134,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count3'
               TabOrder = 23
             end
-            object edqtReqCreatureOrGOCount2: TLabeledEdit
+            object edqtRequiredNpcOrGoCount2: TLabeledEdit
               Left = 144
               Top = 233
               Width = 73
@@ -2113,7 +2147,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count2'
               TabOrder = 20
             end
-            object edqtReqCreatureOrGOCount1: TLabeledEdit
+            object edqtRequiredNpcOrGoCount1: TLabeledEdit
               Left = 144
               Top = 196
               Width = 73
@@ -2126,7 +2160,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count1'
               TabOrder = 17
             end
-            object edqtReqSourceCount1: TLabeledEdit
+            object edqtRequiredSourceItemCount1: TLabeledEdit
               Left = 319
               Top = 29
               Width = 111
@@ -2137,45 +2171,45 @@ object MainForm: TMainForm
               EditLabel.Caption = 'ReqSourceCount..'
               TabOrder = 9
             end
-            object edqtReqSourceCount2: TLabeledEdit
+            object edqtRequiredSourceItemCount2: TLabeledEdit
               Left = 319
               Top = 54
               Width = 111
               Height = 21
               Hint = 'Count of Source Items'
-              EditLabel.Width = 109
+              EditLabel.Width = 152
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtReqSourceCount2'
+              EditLabel.Caption = 'edqtRequiredSourceItemCount2'
               TabOrder = 11
             end
-            object edqtReqSourceCount3: TLabeledEdit
+            object edqtRequiredSourceItemCount3: TLabeledEdit
               Left = 319
               Top = 80
               Width = 111
               Height = 21
               Hint = 'Count of Source Items'
-              EditLabel.Width = 109
+              EditLabel.Width = 152
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtReqSourceCount3'
+              EditLabel.Caption = 'edqtRequiredSourceItemCount3'
               TabOrder = 13
             end
-            object edqtReqSourceCount4: TLabeledEdit
+            object edqtRequiredSourceItemCount4: TLabeledEdit
               Left = 319
               Top = 105
               Width = 111
               Height = 21
               Hint = 'Count of Source Items'
-              EditLabel.Width = 109
+              EditLabel.Width = 152
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtReqSourceCount4'
+              EditLabel.Caption = 'edqtRequiredSourceItemCount4'
               TabOrder = 15
             end
-            object edqtReqItemId1: TJvComboEdit
+            object edqtRequiredItemId1: TJvComboEdit
               Left = 8
               Top = 29
               Width = 81
               Height = 21
-              Hint = 'ReqItemId1'
+              Hint = 'RequiredItemId1'
               ButtonWidth = 22
               ClickKey = 13
               Glyph.Data = {
@@ -2208,7 +2242,7 @@ object MainForm: TMainForm
               TabOrder = 0
               OnButtonClick = GetItem
             end
-            object edqtReqItemId2: TJvComboEdit
+            object edqtRequiredItemId2: TJvComboEdit
               Left = 8
               Top = 54
               Width = 81
@@ -2246,7 +2280,7 @@ object MainForm: TMainForm
               TabOrder = 2
               OnButtonClick = GetItem
             end
-            object edqtReqItemId3: TJvComboEdit
+            object edqtRequiredItemId3: TJvComboEdit
               Left = 8
               Top = 80
               Width = 81
@@ -2284,7 +2318,7 @@ object MainForm: TMainForm
               TabOrder = 4
               OnButtonClick = GetItem
             end
-            object edqtReqItemId4: TJvComboEdit
+            object edqtRequiredItemId4: TJvComboEdit
               Left = 8
               Top = 105
               Width = 81
@@ -2322,7 +2356,7 @@ object MainForm: TMainForm
               TabOrder = 6
               OnButtonClick = GetItem
             end
-            object edqtReqSourceId1: TJvComboEdit
+            object edqtRequiredSourceItemId1: TJvComboEdit
               Left = 192
               Top = 29
               Width = 111
@@ -2370,7 +2404,7 @@ object MainForm: TMainForm
               TabOrder = 8
               OnButtonClick = GetItem
             end
-            object edqtReqSourceId2: TJvComboEdit
+            object edqtRequiredSourceItemId2: TJvComboEdit
               Left = 192
               Top = 54
               Width = 111
@@ -2418,7 +2452,7 @@ object MainForm: TMainForm
               TabOrder = 10
               OnButtonClick = GetItem
             end
-            object edqtReqSourceId3: TJvComboEdit
+            object edqtRequiredSourceItemId3: TJvComboEdit
               Left = 192
               Top = 80
               Width = 111
@@ -2466,7 +2500,7 @@ object MainForm: TMainForm
               TabOrder = 12
               OnButtonClick = GetItem
             end
-            object edqtReqSourceId4: TJvComboEdit
+            object edqtRequiredSourceItemId4: TJvComboEdit
               Left = 192
               Top = 105
               Width = 111
@@ -2514,7 +2548,7 @@ object MainForm: TMainForm
               TabOrder = 14
               OnButtonClick = GetItem
             end
-            object edqtReqCreatureOrGOId4: TJvComboEdit
+            object edqtRequiredNpcOrGo4: TJvComboEdit
               Left = 8
               Top = 306
               Width = 129
@@ -2556,7 +2590,7 @@ object MainForm: TMainForm
               TabOrder = 25
               OnButtonClick = GetCreatureOrGO
             end
-            object edqtReqCreatureOrGOId3: TJvComboEdit
+            object edqtRequiredNpcOrGo3: TJvComboEdit
               Left = 8
               Top = 270
               Width = 129
@@ -2598,7 +2632,7 @@ object MainForm: TMainForm
               TabOrder = 22
               OnButtonClick = GetCreatureOrGO
             end
-            object edqtReqCreatureOrGOId2: TJvComboEdit
+            object edqtRequiredNpcOrGo2: TJvComboEdit
               Left = 8
               Top = 233
               Width = 129
@@ -2640,7 +2674,7 @@ object MainForm: TMainForm
               TabOrder = 19
               OnButtonClick = GetCreatureOrGO
             end
-            object edqtReqCreatureOrGOId1: TJvComboEdit
+            object edqtRequiredNpcOrGo1: TJvComboEdit
               Left = 8
               Top = 196
               Width = 129
@@ -2682,7 +2716,7 @@ object MainForm: TMainForm
               TabOrder = 16
               OnButtonClick = GetCreatureOrGO
             end
-            object edqtReqSpellCast1: TJvComboEdit
+            object edqtRequiredSpellCast1: TJvComboEdit
               Left = 225
               Top = 196
               Width = 81
@@ -2724,7 +2758,7 @@ object MainForm: TMainForm
               TabOrder = 18
               OnButtonClick = GetSpell
             end
-            object edqtReqSpellCast2: TJvComboEdit
+            object edqtRequiredSpellCast2: TJvComboEdit
               Left = 225
               Top = 233
               Width = 81
@@ -2766,7 +2800,7 @@ object MainForm: TMainForm
               TabOrder = 21
               OnButtonClick = GetSpell
             end
-            object edqtReqSpellCast3: TJvComboEdit
+            object edqtRequiredSpellCast3: TJvComboEdit
               Left = 225
               Top = 267
               Width = 81
@@ -2808,7 +2842,7 @@ object MainForm: TMainForm
               TabOrder = 24
               OnButtonClick = GetSpell
             end
-            object edqtReqSpellCast4: TJvComboEdit
+            object edqtRequiredSpellCast4: TJvComboEdit
               Left = 225
               Top = 306
               Width = 81
@@ -2850,17 +2884,17 @@ object MainForm: TMainForm
               TabOrder = 27
               OnButtonClick = GetSpell
             end
-            object edqtRepObjectiveValue: TLabeledEdit
+            object edqtRequiredFactionValue1: TLabeledEdit
               Left = 320
               Top = 270
               Width = 105
               Height = 21
-              EditLabel.Width = 92
+              EditLabel.Width = 111
               EditLabel.Height = 13
-              EditLabel.Caption = 'RepObjectiveValue'
+              EditLabel.Caption = 'RequiredFactionValue1'
               TabOrder = 29
             end
-            object edqtRepObjectiveFaction: TJvComboEdit
+            object edqtRequiredFactionId1: TJvComboEdit
               Left = 320
               Top = 196
               Width = 105
@@ -2897,7 +2931,7 @@ object MainForm: TMainForm
               TabOrder = 28
               OnButtonClick = GetFaction
             end
-            object edqtReqItemId5: TJvComboEdit
+            object edqtRequiredItemId5: TJvComboEdit
               Left = 8
               Top = 130
               Width = 81
@@ -2935,29 +2969,29 @@ object MainForm: TMainForm
               TabOrder = 30
               OnButtonClick = GetItem
             end
-            object edqtReqItemCount5: TLabeledEdit
+            object edqtRequiredItemCount5: TLabeledEdit
               Left = 96
               Top = 130
               Width = 85
               Height = 21
-              Hint = 'ReqItemCount5'
-              EditLabel.Width = 95
+              Hint = 'RequiredItemCount5'
+              EditLabel.Width = 118
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtReqItemCount5'
+              EditLabel.Caption = 'edqtRequiredItemCount5'
               TabOrder = 31
             end
-            object edqtReqItemCount6: TLabeledEdit
+            object edqtRequiredItemCount6: TLabeledEdit
               Left = 96
               Top = 155
               Width = 85
               Height = 21
-              Hint = 'ReqItemCount6'
-              EditLabel.Width = 95
+              Hint = 'RequiredItemCount6'
+              EditLabel.Width = 118
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtReqItemCount6'
+              EditLabel.Caption = 'edqtRequiredItemCount6'
               TabOrder = 32
             end
-            object edqtReqItemId6: TJvComboEdit
+            object edqtRequiredItemId6: TJvComboEdit
               Left = 8
               Top = 155
               Width = 81
@@ -2995,17 +3029,17 @@ object MainForm: TMainForm
               TabOrder = 33
               OnButtonClick = GetItem
             end
-            object edqtRepObjectiveValue2: TLabeledEdit
+            object edqtRequiredFactionValue2: TLabeledEdit
               Left = 320
               Top = 306
               Width = 105
               Height = 21
-              EditLabel.Width = 98
+              EditLabel.Width = 111
               EditLabel.Height = 13
-              EditLabel.Caption = 'RepObjectiveValue2'
+              EditLabel.Caption = 'RequiredFactionValue2'
               TabOrder = 34
             end
-            object edqtRepObjectiveFaction2: TJvComboEdit
+            object edqtRequiredFactionId2: TJvComboEdit
               Left = 320
               Top = 233
               Width = 105
@@ -3050,7 +3084,7 @@ object MainForm: TMainForm
             Height = 516
             Caption = 'Rewards for quest'
             TabOrder = 1
-            object lbRewChoiceItemId1: TLabel
+            object lbRewardChoiceItemId1: TLabel
               Left = 8
               Top = 14
               Width = 90
@@ -3092,84 +3126,84 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'RewChoiceItemId6'
             end
-            object lbRewItemId1: TLabel
+            object lbRewardItemId1: TLabel
               Left = 198
               Top = 14
-              Width = 57
+              Width = 72
               Height = 13
-              Caption = 'RewItemId1'
+              Caption = 'RewardItemId1'
             end
-            object lbRewItemId2: TLabel
+            object lbRewardItemId2: TLabel
               Left = 198
               Top = 53
-              Width = 57
+              Width = 72
               Height = 13
-              Caption = 'RewItemId2'
+              Caption = 'RewardItemId2'
             end
-            object lbRewItemId3: TLabel
+            object lbRewardItemId3: TLabel
               Left = 198
               Top = 91
-              Width = 57
+              Width = 72
               Height = 13
-              Caption = 'RewItemId3'
+              Caption = 'RewardItemId3'
             end
-            object lbRewItemId4: TLabel
+            object lbRewardItemId4: TLabel
               Left = 199
               Top = 131
-              Width = 57
+              Width = 72
               Height = 13
-              Caption = 'RewItemId4'
+              Caption = 'RewardItemId4'
             end
-            object lbRewRepFaction1: TLabel
-              Left = 9
-              Top = 245
-              Width = 83
+            object lbRewardFactionId1: TLabel
+              Left = 8
+              Top = 248
+              Width = 87
               Height = 13
-              Caption = 'RewRepFaction1'
+              Caption = 'RewardFactionId1'
             end
-            object lbRewRepFaction2: TLabel
+            object lbRewardFactionId2: TLabel
               Left = 9
               Top = 283
-              Width = 83
+              Width = 87
               Height = 13
-              Caption = 'RewRepFaction2'
+              Caption = 'RewardFactionId2'
             end
-            object lbRewRepFaction3: TLabel
+            object lbRewardFactionId3: TLabel
               Left = 9
               Top = 321
-              Width = 83
+              Width = 87
               Height = 13
-              Caption = 'RewRepFaction3'
+              Caption = 'RewardFactionId3'
             end
-            object lbRewRepFaction4: TLabel
+            object lbRewardFactionId4: TLabel
               Left = 9
               Top = 359
-              Width = 83
+              Width = 87
               Height = 13
-              Caption = 'RewRepFaction4'
+              Caption = 'RewardFactionId4'
             end
-            object lbRewRepFaction5: TLabel
+            object lbRewardFactionId5: TLabel
               Left = 8
               Top = 397
-              Width = 83
+              Width = 87
               Height = 13
-              Caption = 'RewRepFaction5'
+              Caption = 'RewardFactionId5'
             end
-            object lbRewSpell: TLabel
+            object lbRewardSpell: TLabel
               Left = 301
               Top = 168
               Width = 45
               Height = 13
               Caption = 'RewSpell'
             end
-            object lbRewSpellCast: TLabel
+            object lbRewardSpellCast: TLabel
               Left = 301
               Top = 208
               Width = 66
               Height = 13
               Caption = 'RewSpellCast'
             end
-            object edqtRewChoiceItemCount1: TLabeledEdit
+            object edqtRewardChoiceItemCount1: TLabeledEdit
               Left = 108
               Top = 30
               Width = 70
@@ -3180,7 +3214,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count1'
               TabOrder = 1
             end
-            object edqtRewChoiceItemCount2: TLabeledEdit
+            object edqtRewardChoiceItemCount2: TLabeledEdit
               Left = 108
               Top = 69
               Width = 70
@@ -3191,7 +3225,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count2'
               TabOrder = 3
             end
-            object edqtRewChoiceItemCount3: TLabeledEdit
+            object edqtRewardChoiceItemCount3: TLabeledEdit
               Left = 108
               Top = 107
               Width = 70
@@ -3202,7 +3236,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count3'
               TabOrder = 5
             end
-            object edqtRewChoiceItemCount4: TLabeledEdit
+            object edqtRewardChoiceItemCount4: TLabeledEdit
               Left = 108
               Top = 144
               Width = 70
@@ -3213,7 +3247,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count4'
               TabOrder = 7
             end
-            object edqtRewChoiceItemCount5: TLabeledEdit
+            object edqtRewardChoiceItemCount5: TLabeledEdit
               Left = 108
               Top = 184
               Width = 70
@@ -3224,7 +3258,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count5'
               TabOrder = 9
             end
-            object edqtRewChoiceItemCount6: TLabeledEdit
+            object edqtRewardChoiceItemCount6: TLabeledEdit
               Left = 108
               Top = 224
               Width = 70
@@ -3235,7 +3269,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count6'
               TabOrder = 11
             end
-            object edqtRewItemCount1: TLabeledEdit
+            object edqtRewardItemCount1: TLabeledEdit
               Left = 301
               Top = 30
               Width = 73
@@ -3246,7 +3280,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count1'
               TabOrder = 13
             end
-            object edqtRewItemCount2: TLabeledEdit
+            object edqtRewardItemCount2: TLabeledEdit
               Left = 301
               Top = 69
               Width = 73
@@ -3257,7 +3291,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count1'
               TabOrder = 15
             end
-            object edqtRewItemCount3: TLabeledEdit
+            object edqtRewardItemCount3: TLabeledEdit
               Left = 301
               Top = 107
               Width = 73
@@ -3268,7 +3302,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count3'
               TabOrder = 17
             end
-            object edqtRewItemCount4: TLabeledEdit
+            object edqtRewardItemCount4: TLabeledEdit
               Left = 301
               Top = 144
               Width = 73
@@ -3279,7 +3313,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Count4'
               TabOrder = 19
             end
-            object edqtRewRepValue1: TLabeledEdit
+            object edqtRewardFactionValueId1: TLabeledEdit
               Left = 108
               Top = 261
               Width = 73
@@ -3294,7 +3328,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Value1'
               TabOrder = 24
             end
-            object edqtRewRepValue2: TLabeledEdit
+            object edqtRewardFactionValueId2: TLabeledEdit
               Left = 108
               Top = 299
               Width = 73
@@ -3309,9 +3343,9 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Value2'
               TabOrder = 26
             end
-            object edqtRewOrReqMoney: TLabeledEdit
+            object edqtRewardOrRequiredMoney: TLabeledEdit
               Left = 198
-              Top = 184
+              Top = 181
               Width = 97
               Height = 21
               Hint = 
@@ -3322,7 +3356,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'RewOrReqMoney'
               TabOrder = 20
             end
-            object edqtRewMoneyMaxLevel: TLabeledEdit
+            object edqtRewardMoneyMaxLevel: TLabeledEdit
               Left = 198
               Top = 224
               Width = 97
@@ -3333,7 +3367,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'RewMoneyMaxLevel'
               TabOrder = 21
             end
-            object edqtRewRepValue3: TLabeledEdit
+            object edqtRewardFactionValueId3: TLabeledEdit
               Left = 108
               Top = 337
               Width = 73
@@ -3348,7 +3382,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Value3'
               TabOrder = 28
             end
-            object edqtRewRepValue4: TLabeledEdit
+            object edqtRewardFactionValueId4: TLabeledEdit
               Left = 108
               Top = 375
               Width = 73
@@ -3363,7 +3397,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Value4'
               TabOrder = 30
             end
-            object edqtRewRepValue5: TLabeledEdit
+            object edqtRewardFactionValueId5: TLabeledEdit
               Left = 107
               Top = 413
               Width = 73
@@ -3378,7 +3412,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Value5'
               TabOrder = 32
             end
-            object edqtRewChoiceItemId1: TJvComboEdit
+            object edqtRewardChoiceItemId1: TJvComboEdit
               Left = 8
               Top = 30
               Width = 97
@@ -3416,7 +3450,7 @@ object MainForm: TMainForm
               TabOrder = 0
               OnButtonClick = GetItem
             end
-            object edqtRewItemId1: TJvComboEdit
+            object edqtRewardItemId1: TJvComboEdit
               Left = 198
               Top = 30
               Width = 97
@@ -3454,7 +3488,7 @@ object MainForm: TMainForm
               TabOrder = 12
               OnButtonClick = GetItem
             end
-            object edqtRewRepFaction1: TJvComboEdit
+            object edqtRewardFactionId1: TJvComboEdit
               Left = 9
               Top = 261
               Width = 97
@@ -3492,7 +3526,7 @@ object MainForm: TMainForm
               TabOrder = 23
               OnButtonClick = GetFaction
             end
-            object edqtRewSpell: TJvComboEdit
+            object edqtRewardSpell: TJvComboEdit
               Left = 301
               Top = 184
               Width = 73
@@ -3533,7 +3567,7 @@ object MainForm: TMainForm
               TabOrder = 22
               OnButtonClick = GetSpell
             end
-            object edqtRewChoiceItemId2: TJvComboEdit
+            object edqtRewardChoiceItemId2: TJvComboEdit
               Left = 8
               Top = 69
               Width = 97
@@ -3571,7 +3605,7 @@ object MainForm: TMainForm
               TabOrder = 2
               OnButtonClick = GetItem
             end
-            object edqtRewChoiceItemId3: TJvComboEdit
+            object edqtRewardChoiceItemId3: TJvComboEdit
               Left = 8
               Top = 107
               Width = 97
@@ -3609,7 +3643,7 @@ object MainForm: TMainForm
               TabOrder = 4
               OnButtonClick = GetItem
             end
-            object edqtRewChoiceItemId4: TJvComboEdit
+            object edqtRewardChoiceItemId4: TJvComboEdit
               Left = 8
               Top = 144
               Width = 97
@@ -3647,7 +3681,7 @@ object MainForm: TMainForm
               TabOrder = 6
               OnButtonClick = GetItem
             end
-            object edqtRewChoiceItemId5: TJvComboEdit
+            object edqtRewardChoiceItemId5: TJvComboEdit
               Left = 8
               Top = 184
               Width = 97
@@ -3685,7 +3719,7 @@ object MainForm: TMainForm
               TabOrder = 8
               OnButtonClick = GetItem
             end
-            object edqtRewChoiceItemId6: TJvComboEdit
+            object edqtRewardChoiceItemId6: TJvComboEdit
               Left = 8
               Top = 224
               Width = 97
@@ -3723,7 +3757,7 @@ object MainForm: TMainForm
               TabOrder = 10
               OnButtonClick = GetItem
             end
-            object edqtRewItemId2: TJvComboEdit
+            object edqtRewardItemId2: TJvComboEdit
               Left = 198
               Top = 69
               Width = 97
@@ -3761,7 +3795,7 @@ object MainForm: TMainForm
               TabOrder = 14
               OnButtonClick = GetItem
             end
-            object edqtRewItemId3: TJvComboEdit
+            object edqtRewardItemId3: TJvComboEdit
               Left = 198
               Top = 107
               Width = 97
@@ -3799,7 +3833,7 @@ object MainForm: TMainForm
               TabOrder = 16
               OnButtonClick = GetItem
             end
-            object edqtRewItemId4: TJvComboEdit
+            object edqtRewardItemId4: TJvComboEdit
               Left = 198
               Top = 144
               Width = 97
@@ -3837,7 +3871,7 @@ object MainForm: TMainForm
               TabOrder = 18
               OnButtonClick = GetItem
             end
-            object edqtRewRepFaction2: TJvComboEdit
+            object edqtRewardFactionId2: TJvComboEdit
               Left = 9
               Top = 299
               Width = 97
@@ -3875,7 +3909,7 @@ object MainForm: TMainForm
               TabOrder = 25
               OnButtonClick = GetFaction
             end
-            object edqtRewRepFaction3: TJvComboEdit
+            object edqtRewardFactionId3: TJvComboEdit
               Left = 9
               Top = 337
               Width = 97
@@ -3913,7 +3947,7 @@ object MainForm: TMainForm
               TabOrder = 27
               OnButtonClick = GetFaction
             end
-            object edqtRewRepFaction4: TJvComboEdit
+            object edqtRewardFactionId4: TJvComboEdit
               Left = 9
               Top = 375
               Width = 97
@@ -3951,7 +3985,7 @@ object MainForm: TMainForm
               TabOrder = 29
               OnButtonClick = GetFaction
             end
-            object edqtRewRepFaction5: TJvComboEdit
+            object edqtRewardFactionId5: TJvComboEdit
               Left = 8
               Top = 413
               Width = 97
@@ -3989,7 +4023,7 @@ object MainForm: TMainForm
               TabOrder = 31
               OnButtonClick = GetFaction
             end
-            object edqtRewSpellCast: TJvComboEdit
+            object edqtRewardSpellCast: TJvComboEdit
               Left = 301
               Top = 224
               Width = 73
@@ -4026,29 +4060,29 @@ object MainForm: TMainForm
               TabOrder = 33
               OnButtonClick = GetSpell
             end
-            object edqtRewMailTemplateId: TLabeledEdit
+            object edqtRewardMailTemplateId: TLabeledEdit
               Left = 8
               Top = 450
               Width = 97
               Height = 21
-              EditLabel.Width = 94
+              EditLabel.Width = 109
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewMailTemplateId'
+              EditLabel.Caption = 'RewardMailTemplateId'
               TabOrder = 34
             end
-            object edqtRewMailDelaySecs: TLabeledEdit
-              Left = 108
+            object edqtRewardMailDelay: TLabeledEdit
+              Left = 119
               Top = 450
               Width = 70
               Height = 21
-              EditLabel.Width = 92
+              EditLabel.Width = 83
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewMailDelaySecs'
+              EditLabel.Caption = 'RewardMailDelay'
               TabOrder = 35
             end
-            object edqtRewHonorAddition: TLabeledEdit
-              Left = 209
-              Top = 450
+            object edqtRewardHonor: TLabeledEdit
+              Left = 105
+              Top = 490
               Width = 87
               Height = 21
               Hint = 
@@ -4057,70 +4091,70 @@ object MainForm: TMainForm
                 'n honorable kill is 20.9 honor worth. Multiply this with 15 and ' +
                 'you receive 313.5, after the multiplication the value is rounded' +
                 ' up. So the honor rewarded at level 70 is 314 for this quest. '
-              EditLabel.Width = 89
+              EditLabel.Width = 66
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewHonorAddition'
+              EditLabel.Caption = 'RewardHonor'
               TabOrder = 36
             end
-            object edqtRewHonorMultiplier: TLabeledEdit
-              Left = 301
+            object edqtRewardHonorMultiplier: TLabeledEdit
+              Left = 205
               Top = 450
               Width = 73
               Height = 21
               Hint = 'RewHonorMultiplier'
-              EditLabel.Width = 79
+              EditLabel.Width = 107
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewHonorMultip'
+              EditLabel.Caption = 'RewardHonorMultiplier'
               TabOrder = 37
             end
-            object edqtRewRepValueId1: TLabeledEdit
+            object edqtRewardFactionValueIdOverride1: TLabeledEdit
               Left = 198
               Top = 261
               Width = 99
               Height = 21
-              EditLabel.Width = 84
+              EditLabel.Width = 154
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewRepValueId1'
+              EditLabel.Caption = 'RewardFactionValueIdOverride1'
               TabOrder = 38
             end
-            object edqtRewRepValueId2: TLabeledEdit
+            object edqtRewardFactionValueIdOverride2: TLabeledEdit
               Left = 198
               Top = 299
               Width = 99
               Height = 21
-              EditLabel.Width = 84
+              EditLabel.Width = 154
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewRepValueId2'
+              EditLabel.Caption = 'RewardFactionValueIdOverride2'
               TabOrder = 39
             end
-            object edqtRewRepValueId3: TLabeledEdit
+            object edqtRewardFactionValueIdOverride3: TLabeledEdit
               Left = 198
               Top = 337
               Width = 99
               Height = 21
-              EditLabel.Width = 84
+              EditLabel.Width = 154
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewRepValueId3'
+              EditLabel.Caption = 'RewardFactionValueIdOverride3'
               TabOrder = 40
             end
-            object edqtRewRepValueId4: TLabeledEdit
+            object edqtRewardFactionValueIdOverride4: TLabeledEdit
               Left = 198
               Top = 375
               Width = 99
               Height = 21
-              EditLabel.Width = 84
+              EditLabel.Width = 154
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewRepValueId4'
+              EditLabel.Caption = 'RewardFactionValueIdOverride4'
               TabOrder = 41
             end
-            object edqtRewRepValueId5: TLabeledEdit
+            object edqtRewardFactionValueIdOverride5: TLabeledEdit
               Left = 197
               Top = 413
               Width = 99
               Height = 21
-              EditLabel.Width = 84
+              EditLabel.Width = 154
               EditLabel.Height = 13
-              EditLabel.Caption = 'RewRepValueId5'
+              EditLabel.Caption = 'RewardFactionValueIdOverride5'
               TabOrder = 42
             end
             object edqtRewardArenaPoints: TLabeledEdit
@@ -4173,16 +4207,16 @@ object MainForm: TMainForm
             object lbqtIncompleteEmote: TLabel
               Left = 84
               Top = 208
-              Width = 82
+              Width = 70
               Height = 13
-              Caption = 'IncompleteEmote'
+              Caption = '    ..Incomplete'
             end
-            object lbqtCompleteEmote: TLabel
+            object lbqtEmoteOnComplete: TLabel
               Left = 6
               Top = 208
-              Width = 74
+              Width = 88
               Height = 13
-              Caption = 'CompleteEmote'
+              Caption = 'EmoteOnComplete'
             end
             object lbqtOfferRewardEmote1: TLabel
               Left = 179
@@ -4239,17 +4273,17 @@ object MainForm: TMainForm
               EditLabel.Caption = 'edqtPointY'
               TabOrder = 2
             end
-            object edqtPointOpt: TLabeledEdit
+            object edqtPointOption: TLabeledEdit
               Left = 280
               Top = 30
               Width = 90
               Height = 21
-              EditLabel.Width = 62
+              EditLabel.Width = 76
               EditLabel.Height = 13
-              EditLabel.Caption = 'edqtPointOpt'
+              EditLabel.Caption = 'edqtPointOption'
               TabOrder = 3
             end
-            object edqtIncompleteEmote: TJvComboEdit
+            object edqtEmoteOnIncomplete: TJvComboEdit
               Left = 78
               Top = 224
               Width = 90
@@ -4289,7 +4323,7 @@ object MainForm: TMainForm
               TabOrder = 8
               OnButtonClick = GetEmote
             end
-            object edqtCompleteEmote: TJvComboEdit
+            object edqtEmoteOnComplete: TJvComboEdit
               Left = 6
               Top = 223
               Width = 60
@@ -4880,14 +4914,14 @@ object MainForm: TMainForm
               OnButtonClick = GetSpecialFlags
               OnChange = edflagsChange
             end
-            object edqtCharTitleId: TLabeledEdit
+            object edqtRewardTitleId: TLabeledEdit
               Left = 281
               Top = 26
               Width = 92
               Height = 21
-              EditLabel.Width = 51
+              EditLabel.Width = 66
               EditLabel.Height = 13
-              EditLabel.Caption = 'CharTitleId'
+              EditLabel.Caption = 'RewardTitleId'
               TabOrder = 2
             end
             object edqtSuggestedPlayers: TLabeledEdit
@@ -4901,9 +4935,9 @@ object MainForm: TMainForm
               TabOrder = 3
             end
             object edqtMethod: TLabeledEdit
-              Left = 245
+              Left = 277
               Top = 68
-              Width = 69
+              Width = 36
               Height = 21
               Hint = 
                 'Accepted values: 0, 1 or 2. If value = 0 then Quest is autocompl' +
@@ -4913,26 +4947,26 @@ object MainForm: TMainForm
               EditLabel.Caption = 'Method'
               TabOrder = 4
             end
-            object edqtPlayersSlain: TLabeledEdit
+            object edqtRequiredPlayerKills: TLabeledEdit
               Left = 87
               Top = 68
               Width = 67
               Height = 21
               Hint = 'PlayersSlain'
-              EditLabel.Width = 57
+              EditLabel.Width = 90
               EditLabel.Height = 13
-              EditLabel.Caption = 'PlayersSlain'
+              EditLabel.Caption = 'RequiredPlayerKills'
               TabOrder = 5
             end
-            object edqtBonusTalents: TLabeledEdit
-              Left = 160
+            object edqtRewardTalents: TLabeledEdit
+              Left = 191
               Top = 68
               Width = 79
               Height = 21
               Hint = 'BonusTalents'
-              EditLabel.Width = 65
+              EditLabel.Width = 72
               EditLabel.Height = 13
-              EditLabel.Caption = 'BonusTalents'
+              EditLabel.Caption = 'RewardTalents'
               TabOrder = 6
             end
             object edqtWDBVerified: TLabeledEdit
@@ -4946,14 +4980,14 @@ object MainForm: TMainForm
               EditLabel.Caption = 'WDBVerified'
               TabOrder = 7
             end
-            object edqtunk0: TLabeledEdit
+            object edqtUnknown0: TLabeledEdit
               Left = 320
               Top = 68
               Width = 53
               Height = 21
-              EditLabel.Width = 24
+              EditLabel.Width = 52
               EditLabel.Height = 13
-              EditLabel.Caption = 'unk0'
+              EditLabel.Caption = 'Unknown0'
               TabOrder = 8
             end
           end
@@ -6505,7 +6539,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsCreatureLocation
+        ActivePage = tsSearchCreature
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -27106,7 +27140,6 @@ object MainForm: TMainForm
         object tsCharacter: TTabSheet
           Caption = 'Character'
           ImageIndex = 1
-          ExplicitLeft = 28
           object lbhtrace: TLabel
             Left = 318
             Top = 21

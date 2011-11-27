@@ -130,7 +130,7 @@ begin
   MyQuery.Close;
   MyTempQuery.Close;
   MyLootQuery.Close;
-  MyQuery.SQL.Text:=Format('SELECT * FROM `quest_template` WHERE `entry`=%d',[qid]);
+  MyQuery.SQL.Text:=Format('SELECT * FROM `quest_template` WHERE `Id`=%d',[qid]);
   MyQuery.Open;
   if MyQuery.Eof then
   begin
@@ -431,13 +431,13 @@ begin
 
   // quest check begin
   MyQuery.Close;
-  MyQuery.SQL.Text:=Format('SELECT * FROM `quest_template` WHERE `entry` = %d',[qid]);
+  MyQuery.SQL.Text:=Format('SELECT * FROM `quest_template` WHERE `Id` = %d',[qid]);
   MyQuery.Open;
   // prev quest id check
   cid:=MyQuery.FieldByName('PrevQuestId').AsInteger;
   if cid>0 then
   begin
-    MyTempQuery.SQL.Text:=Format('SELECT * FROM `quest_template` WHERE `entry` = %d', [cid]);
+    MyTempQuery.SQL.Text:=Format('SELECT * FROM `quest_template` WHERE `Id` = %d', [cid]);
     MyTempQuery.Open;
 
     if MyTempQuery.Eof then
@@ -453,7 +453,7 @@ begin
   cid:=MyQuery.FieldByName('NextQuestId').AsInteger;
   if cid>0 then
   begin
-    MyTempQuery.SQL.Text:=Format('SELECT * FROM `quest_template` WHERE `entry` = %d',[cid]);
+    MyTempQuery.SQL.Text:=Format('SELECT * FROM `quest_template` WHERE `Id` = %d',[cid]);
     MyTempQuery.Open;
     if MyTempQuery.Eof then
       Add(1, dmMain.Text[48], [cid]); //'Error: NextQuestId=%d, but quest with this id is not exists'
