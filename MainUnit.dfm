@@ -28442,7 +28442,7 @@ object MainForm: TMainForm
               Lines.Strings = (
                 'SELECT * '
                 'FROM `quest_template` '
-                'WHERE `entry`<500'
+                'WHERE `Id`<500'
                 'LIMIT 100')
               ParentFont = False
               ScrollBars = ssVertical
