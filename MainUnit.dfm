@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsQuest
+    ActivePage = tsGameObject
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -52,7 +52,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsQuestPart1
+        ActivePage = tsSearch
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -430,7 +430,7 @@ object MainForm: TMainForm
             BorderStyle = bsNone
             Columns = <
               item
-                Caption = 'Entry'
+                Caption = 'Id'
                 Width = 60
               end
               item
@@ -458,8 +458,7 @@ object MainForm: TMainForm
               item
               end>
             ExplicitLeft = 1
-            ExplicitTop = 107
-            ExplicitHeight = 453
+            ExplicitTop = 103
           end
           object Panel2: TPanel
             Left = 0
@@ -14553,7 +14552,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsEditGO
+        ActivePage = tsGOLoot
         Align = alClient
         TabOrder = 0
         object tsSearchGO: TTabSheet
@@ -16292,15 +16291,6 @@ object MainForm: TMainForm
             NumGlyphs = 2
             OnClick = btGOLootDelClick
           end
-          object lbgoGOLootHint: TLabel
-            Left = 8
-            Top = 8
-            Width = 238
-            Height = 13
-            Caption = 'entry must be equal to GO Template -> sound1 (!!!)'
-            Color = clInfoBk
-            ParentColor = False
-          end
           object lbgolootmode: TLabel
             Left = 432
             Top = 533
@@ -16530,9 +16520,9 @@ object MainForm: TMainForm
           object lbhintGOButtonScript: TLabel
             Left = 8
             Top = 8
-            Width = 193
+            Width = 143
             Height = 13
-            Caption = 'id must be equal to GO Template -> entry'
+            Caption = 'id must be equal to GO -> guid'
             Color = clInfoBk
             ParentColor = False
           end
@@ -16939,6 +16929,14 @@ object MainForm: TMainForm
             Caption = 'Show Full Button Script Script'
             TabOrder = 11
             OnClick = btScriptGOClick
+          end
+          object edgbGUID: TEdit
+            Left = 32
+            Top = 576
+            Width = 81
+            Height = 21
+            TabOrder = 12
+            Visible = False
           end
         end
         object tsGOInvolvedIn: TTabSheet
@@ -24951,6 +24949,22 @@ object MainForm: TMainForm
             ShowButton = False
             TabOrder = 30
             Text = '0'
+          end
+          object lbcyOutdated: TLinkLabel
+            Left = 237
+            Top = -3
+            Width = 398
+            Height = 24
+            Caption = 'OUTDATED!! Use Event Horizon to edit SmartAI scripts'
+            Color = clRed
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = 'Microsoft Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            TabOrder = 31
           end
         end
         object tsSmartAIScript: TTabSheet

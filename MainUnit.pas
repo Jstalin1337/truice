@@ -924,7 +924,6 @@ type
     edglanimprogress: TLabeledEdit;
     edglstate: TLabeledEdit;
     lbglGOLocationHint: TLabel;
-    lbgoGOLootHint: TLabel;
     lbitItemLootHint: TLabel;
     lbitDisLootHint: TLabel;
     lbitProsLootHint: TLabel;
@@ -1633,6 +1632,8 @@ type
     lbRequiredSkillId: TLabel;
     edqtRequiredClasses: TJvComboEdit;
     lbRequiredClasses: TLabel;
+    lbcyOutdated: TLinkLabel;
+    edgbGUID: TEdit;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -3667,6 +3668,8 @@ begin
       with lvQuest.Columns.Add do
       begin
         Caption := ReadFromRegistry(Functions.TRootKey.CurrentUser, 'QuestList', Format('N%d', [i]), Functions.TParameter.tpString, 'Error');
+        if LowerCase(Caption) = 'entry' then Caption := 'Id';
+
         Width := ReadFromRegistry(Functions.TRootKey.CurrentUser, 'QuestList', Format('W%d', [i]), Functions.TParameter.tpInteger, 40);
       end;
     end;
@@ -5969,7 +5972,7 @@ end;
 
 procedure TMainForm.CompleteButtonScriptScript;
 begin
-  megoScript.Text := ScriptSQLScript(lvgbButtonScript, 'gameobject_scripts',  edgtentry.Text);
+  megoScript.Text := ScriptSQLScript(lvgbButtonScript, 'gameobject_scripts', edgbGUID.Text);
 end;
 
 procedure TMainForm.CompleteCharacterInventoryScript;
@@ -6772,6 +6775,7 @@ begin
   begin
     LoadGOLocation(StrToIntDef(Item.Caption,0));
     LoadButtonScript(StrToIntDef(Item.Caption,0));
+    edgbGUID.Text := Item.Caption;
   end;
 end;
 
