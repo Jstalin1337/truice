@@ -39,7 +39,7 @@
 43;Basilisk
 44;Dragonflight, Green
 45;Lost Ones
-46; Blacksmithing - Armorsmithing
+46;Blacksmithing - Armorsmithing
 47;Ironforge
 48;Dark Iron Dwarves
 49;Human, Night Watch
@@ -76,10 +76,10 @@
 80;Dragonflight, Black
 81;Thunder Bluff
 82;Troll, Witherbark
-83; Leatherworking - Elemental
+83;Leatherworking - Elemental
 84;Quilboar, Razormane
 85;Quilboar, Bristleback
-86; Leatherworking - Dragonscale
+86;Leatherworking - Dragonscale
 87;Bloodsail Buccaneers
 88;Blackfathom
 89;Makrura
@@ -102,7 +102,7 @@
 249;Silithid
 269;Silvermoon Remnant
 270;Zandalar Tribe
-289; Blacksmithing - Weaponsmithing
+289;Blacksmithing - Weaponsmithing
 309;Scorpid
 310;Beast - Bat
 311;Titan
@@ -125,12 +125,12 @@
 530;Darkspear Trolls
 531;Dragonflight, Bronze
 532;Dragonflight, Blue
-549; Leatherworking - Tribal
-550; Engineering - Goblin
-551; Engineering - Gnome
-569; Blacksmithing - Hammersmithing
-570; Blacksmithing - Axesmithing
-571; Blacksmithing - Swordsmithing
+549;Leatherworking - Tribal
+550;Engineering - Goblin
+551;Engineering - Gnome
+569;Blacksmithing - Hammersmithing
+570;Blacksmithing - Axesmithing
+571;Blacksmithing - Swordsmithing
 572;Troll, Vilebranch
 573;Southsea Freebooters
 574;Caer Darrow

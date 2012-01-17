@@ -1,8 +1,8 @@
-0;Non Equip
+0;Non equipable
 1;Head
 2;Neck
 3;Shoulder
-4;Body
+4;Body (Shirt)
 5;Chest
 6;Waist (Belt)
 7;Legs (Pants)
@@ -15,7 +15,7 @@
 14;WEAPON Off Hand/SHIELD
 15;Ranged (Bows)
 16;Cloak (Back)
-17;2HWEAPON Two Hand
+17;2HWEAPON Two-Hand
 18;Bag (incl. Quivers)
 19;Tabard
 20;Robe
